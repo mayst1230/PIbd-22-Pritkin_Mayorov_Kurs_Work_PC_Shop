@@ -4,7 +4,10 @@ using System.Text;
 
 namespace ComputerEquipmentStoreBusinessLogic.BindingModels
 {
-    class ProductBindingModel
+    public class ProductBindingModel
     {
+        public int? Id { get; set; }
+        public string ProductName { get; set; }
+        public decimal Price { get; set; }
     }
 }

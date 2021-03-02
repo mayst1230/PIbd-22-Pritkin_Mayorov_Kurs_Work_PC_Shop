@@ -4,7 +4,12 @@ using System.Text;
 
 namespace ComputerEquipmentStoreBusinessLogic.BindingModels
 {
-    class OrderBindingModel
+    public class OrderBindingModel
     {
+        public int? Id { get; set; }
+        public int ProductId { get; set; }
+        public DateTime DateOrder { get; set; }
+
+        //продумать нужны ли будут внешние ключи? - ID продавца и ID товара
     }
 }

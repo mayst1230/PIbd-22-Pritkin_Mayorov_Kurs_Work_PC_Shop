@@ -1,10 +1,16 @@
-﻿using System;
+﻿using ComputerEquipmentStoreBusinessLogic.BindingModels;
+using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ComputerEquipmentStoreBusinessLogic.Seller.Interfaces
 {
-    class IProductStorage
+    public class IProductStorage
     {
+        List<ProductViewModel> GetFullList();
+        List<ProductViewModel> GetFilteredList(ProductBindingModel modelProduct);
+        ProductBindingModel GetElement(ProductBindingModel modelProduct);
+        void Insert(ProductBindingModel modelProduct);
+        void Update(ProductBindingModel modelProduct);
+        void Delete(ProductBindingModel modelProduct);
     }
 }
