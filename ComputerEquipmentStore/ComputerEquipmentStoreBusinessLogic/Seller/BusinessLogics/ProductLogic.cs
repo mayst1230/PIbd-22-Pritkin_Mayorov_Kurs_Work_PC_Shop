@@ -8,7 +8,7 @@ namespace ComputerEquipmentStoreBusinessLogic.BusinessLogics
 {
     public class ProductLogic
     {
-        private readonly IProductStorage _travelStorage;
+        /*private readonly IProductStorage _travelStorage;
         public TravelLogic(IProductStorage travelStorage)
         {
             _travelStorage = travelStorage;
@@ -55,6 +55,6 @@ namespace ComputerEquipmentStoreBusinessLogic.BusinessLogics
                 throw new Exception("Товар не найден");
             }
             _travelStorage.Delete(model);
-        }
+        }*/
     }
 }

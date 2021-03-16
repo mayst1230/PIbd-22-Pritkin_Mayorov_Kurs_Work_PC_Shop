@@ -12,7 +12,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
 
         //Общая стоимость покупки
         [Required]
-        public int TotalCost { get; set; }
+        public decimal TotalCost { get; set; }
 
         //Дата покупки
         [Required]
@@ -22,10 +22,10 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
 
         //Сборки находящиеся в этой покупке
         [ForeignKey("PurchaseId")]
-        public virtual List<PurchaseAssembly> PurchaseAssembly { get; set; }
+        public virtual List<PurchaseAssembly> PurchaseAssemblies { get; set; }
 
         //Товары находящиеся в этой покупке
         [ForeignKey("PurchaseId")]
-        public virtual List<PurchaseProduct> PurchaseProduct { get; set; }
+        public virtual List<PurchaseProduct> PurchaseProducts { get; set; }
     }
 }

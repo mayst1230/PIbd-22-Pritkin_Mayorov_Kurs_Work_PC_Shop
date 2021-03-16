@@ -173,8 +173,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ComputerStoreEquipmentFileImplement\ComputerEquipmentStoreDatabaseImplement.csproj">
-      <Project>{696b00d4-3f55-4d3c-b8b0-fabd0ca0b3fa}</Project>
+    <ProjectReference Include="..\ComputerEquipmentStoreBusinessLogic\ComputerEquipmentStoreBusinessLogic.csproj">
+      <Project>{26f5131e-3631-43cc-9f60-a93d3c4b37f3}</Project>
+      <Name>ComputerEquipmentStoreBusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ComputerEquipmentStoreDataBaseImplement\ComputerEquipmentStoreDatabaseImplement.csproj">
+      <Project>{3d2c9443-b6bb-42e9-b194-7ceb298b0d0f}</Project>
       <Name>ComputerEquipmentStoreDatabaseImplement</Name>
     </ProjectReference>
   </ItemGroup>

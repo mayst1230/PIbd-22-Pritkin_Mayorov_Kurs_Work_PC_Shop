@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ComputerEquipmentStoreFileImplement.Implements
+namespace ComputerStoreEquipmentDatabaseImplement.Implements
 {
     class OrderStorage
     {

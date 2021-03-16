@@ -8,7 +8,7 @@ namespace ComputerEquipmentStoreBusinessLogic.BusinessLogics
 {
     public class OrderLogic
     {
-        private readonly IOrderStorage _orderStorage;
+       /* private readonly IOrderStorage _orderStorage;
         public OrderLogic(IOrderStorage orderStorage)
         {
             _orderStorage = orderStorage;
@@ -55,7 +55,7 @@ namespace ComputerEquipmentStoreBusinessLogic.BusinessLogics
                 throw new Exception("Комплектующее не найдено");
             }
             _componentStorage.Delete(model);
-        }
+        }*/
 
         ///добавить метод добавления товара к заказу
     }

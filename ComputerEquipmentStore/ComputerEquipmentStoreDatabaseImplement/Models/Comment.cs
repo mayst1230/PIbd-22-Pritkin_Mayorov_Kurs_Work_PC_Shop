@@ -9,6 +9,8 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
     {
         //ID покупки
         public int Id { get; set; }
+        public int? BuyerId { get; set; }
+        public int? AssemblyId { get; set; }
 
         //Текст комментария
         [Required]
@@ -18,10 +20,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
         [Required]
         public DateTime DateComment { get; set; }
 
-        [Required]
         public Buyer Buyer { get; set; }
-
-        [ForeignKey("BuyerId")]
         public Assembly Assembly { get; set; }
     }
 }

@@ -6,11 +6,11 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.Interfaces
 {
     public interface ISellerStorage
     {
-        List<SellerViewModel> GetFullList();
+       /* List<SellerViewModel> GetFullList();
         List<SellerViewModel> GetFilteredList(SellerBindingModel modelSeller);
         SellerBindingModel GetElement(SellerBindingModel modelSeller);
         void Insert(SellerBindingModel modelSeller);
         void Update(SellerBindingModel modelSeller);
-        void Delete(SellerBindingModel modelSeller);
+        void Delete(SellerBindingModel modelSeller);*/
     }
 }

@@ -20,14 +20,14 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
 
         //Сборки находящиеся в этой покупке
         [ForeignKey("BuyerId")]
-        public virtual List<Purchase> Purchase { get; set; }
+        public virtual List<Purchase> Purchases { get; set; }
 
         //Товары находящиеся в этой покупке
         [ForeignKey("BuyerId")]
-        public virtual List<Assembly> Assembly { get; set; }
+        public virtual List<Assembly> Assemblies { get; set; }
 
         //Сборки находящиеся в этой покупке
         [ForeignKey("BuyerId")]
-        public virtual List<Comment> Comment { get; set; }
+        public virtual List<Comment> Comments { get; set; }
     }
 }

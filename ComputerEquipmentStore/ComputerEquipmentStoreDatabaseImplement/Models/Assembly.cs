@@ -9,6 +9,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
     {
         //ID покупки
         public int Id { get; set; }
+        public int BuyerId { get; set; }
 
         //Cтоимость сборки
         [Required]
@@ -19,11 +20,14 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
 
         //Продукты в которых эта сборка находится
         [ForeignKey("AssemblyId")]
-        public virtual List<PurchaseAssembly> PurchaseAssembly { get; set; }
+        public virtual List<PurchaseAssembly> PurchaseAssemblies { get; set; }
 
         //Комплеткующие находящиеся в этой покупке
         [ForeignKey("AssemblyId")]
-        public virtual List<PurchaseAssembly> AssemblyComponent { get; set; }
+        public virtual List<AssemblyComponent> AssemblyComponents { get; set; }
+
+        [ForeignKey("AssemblyId")]
+        public virtual List<Comment> Comments { get; set; }
 
     }
 }

@@ -7,13 +7,22 @@ using System.Text;
 
 namespace ComputerEquipmentStoreDatabaseImplement.Models
 {
-    public class Order
+    public class Component
     {
         public int Id { get; set; }
-        public int ProductId { get; set; }
         public int SellerId { get; set; }
-        public DateTime DateCreate { get; set; }
-        public Product Product { get; set; }
+
+        [Required]
+        public decimal Price { get; set; }
+
+        [Required]
+        public string NameProduct { get; set; }
         public Seller Seller { get; set; }
+
+        [ForeignKey("ComponentId")]
+        public virtual List<ProductComponent> ProductComponents { get; set; }
+
+        [ForeignKey("ComponentId")]
+        public virtual List<AssemblyComponent> AssemblyComponents { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using ComputerEquipmentStoreDatabaseImplement.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace ComputerStoreEquipmentFileImplement
+namespace ComputerStoreEquipmentDatabaseImplement
 {
     public class ComputerEquipmentStoreDatabase : DbContext
     {
