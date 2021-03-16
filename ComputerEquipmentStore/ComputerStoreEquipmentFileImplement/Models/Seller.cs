@@ -10,7 +10,16 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
    public class Seller
     {
         public int Id { get; set; }
-        public string Nickname { get; set; }
+        public string Login { get; set; }
         public string Password { get; set; }
+
+        [ForeignKey("SellerId")]
+        public virtual List<Order> Orders { get; set; }
+
+        [ForeignKey("SellerId")]
+        public virtual List<Product> Products { get; set; }
+
+        [ForeignKey("SellerId")]
+        public virtual List<Component> Components { get; set; }
     }
 }

@@ -4,12 +4,12 @@ using System.Text;
 
 namespace ComputerEquipmentStoreDatabaseImplement.Models
 {
-    public class OrderProduct
+    public class ProductComponent
     {
         public int Id { get; set; }
-        public int OrderId { get; set; }
         public int ProductId { get; set; }
-        public virtual Order Order { get; set; }
+        public int ComponentId { get; set; }
         public virtual Product Product { get; set; }
+        public virtual Component Component { get; set; }
     }
 }

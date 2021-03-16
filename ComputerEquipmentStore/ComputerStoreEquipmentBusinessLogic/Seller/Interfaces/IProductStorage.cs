@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ComputerEquipmentStoreBusinessLogic.Seller.Interfaces
 {
-    public class IProductStorage
+    public interface IProductStorage
     {
         List<ProductViewModel> GetFullList();
         List<ProductViewModel> GetFilteredList(ProductBindingModel modelProduct);
