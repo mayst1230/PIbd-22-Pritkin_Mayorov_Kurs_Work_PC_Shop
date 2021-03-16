@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerEquipmentStoreView", "ComputerEquipmentStoreView\ComputerEquipmentStoreView.csproj", "{A1DEAEB5-6C0A-4898-B2CA-93130E84F202}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerEquipmentStoreBusinessLogic", "ComputerStoreEquipmentBusinessLogic\ComputerEquipmentStoreBusinessLogic.csproj", "{80E40AD9-CA3D-47D3-8688-38175DAF82D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerEquipmentStoreBusinessLogic", "ComputerStoreEquipmentBusinessLogic\ComputerEquipmentStoreBusinessLogic.csproj", "{80E40AD9-CA3D-47D3-8688-38175DAF82D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerEquipmentStoreFileImplement", "ComputerStoreEquipmentFileImplement\ComputerEquipmentStoreFileImplement.csproj", "{696B00D4-3F55-4D3C-B8B0-FABD0CA0B3FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerEquipmentStoreDatabaseImplement", "ComputerStoreEquipmentFileImplement\ComputerEquipmentStoreDatabaseImplement.csproj", "{696B00D4-3F55-4D3C-B8B0-FABD0CA0B3FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
