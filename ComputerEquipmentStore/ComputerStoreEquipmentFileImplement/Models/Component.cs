@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ComputerEquipmentStoreFileImplement.Models
+namespace ComputerEquipmentStoreDatabaseImplement.Models
 {
     class Component
     {
+
     }
 }

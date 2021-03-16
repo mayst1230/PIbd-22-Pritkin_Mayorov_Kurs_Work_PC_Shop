@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Buyer\BindingModels\" />
-    <Folder Include="Buyer\Enums\" />
-    <Folder Include="Buyer\Interfaces\" />
-    <Folder Include="Buyer\ViewModels\" />
     <Folder Include="Seller\Enums\" />
   </ItemGroup>
 
