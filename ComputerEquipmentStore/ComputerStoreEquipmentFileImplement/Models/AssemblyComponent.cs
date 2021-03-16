@@ -4,16 +4,16 @@ using System.Text;
 
 namespace ComputerEquipmentStoreDatabaseImplement.Models
 {
-    public class PurchaseAssembly
+    public class AssemblyComponent
     {
         public int Id { get; set; }
 
-        public int PurchaseId { get; set; }
-
         public int AssemblyId { get; set; }
 
-        public virtual Purchase Purchase { get; set; }
+        public int ComponentId { get; set; }
 
         public virtual Assembly Assembly { get; set; }
+
+        public virtual Component Component { get; set; }
     }
 }

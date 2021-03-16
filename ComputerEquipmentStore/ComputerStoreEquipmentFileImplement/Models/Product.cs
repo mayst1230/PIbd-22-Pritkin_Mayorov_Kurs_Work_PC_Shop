@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ComputerEquipmentStoreDatabaseImplement.Models
 {
-    class Product
+    public class Product
     {
     }
 }
