@@ -8,9 +8,9 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
     {
         public int Id { get; set; }
 
-        public int? PurchaseId { get; set; }
+        public int PurchaseId { get; set; }
 
-        public int? ProductId { get; set; }
+        public int ProductId { get; set; }
 
         public virtual Purchase Purchase { get; set; }
 

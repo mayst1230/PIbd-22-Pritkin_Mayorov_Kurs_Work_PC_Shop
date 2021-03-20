@@ -88,10 +88,10 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AssemblyId")
+                    b.Property<int>("AssemblyId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("BuyerId")
+                    b.Property<int>("BuyerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateComment")
@@ -144,10 +144,10 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                     b.Property<DateTime>("DateCreate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("ProductId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SellerId")
+                    b.Property<int>("SellerId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -190,10 +190,10 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ComponentId")
+                    b.Property<int>("ComponentId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProductId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -235,10 +235,10 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AssemblyId")
+                    b.Property<int>("AssemblyId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PurchaseId")
+                    b.Property<int>("PurchaseId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -257,10 +257,10 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ProductId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PurchaseId")
+                    b.Property<int>("PurchaseId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -320,11 +320,15 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                 {
                     b.HasOne("ComputerEquipmentStoreDatabaseImplement.Models.Assembly", "Assembly")
                         .WithMany("Comments")
-                        .HasForeignKey("AssemblyId");
+                        .HasForeignKey("AssemblyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ComputerEquipmentStoreDatabaseImplement.Models.Buyer", "Buyer")
                         .WithMany("Comments")
-                        .HasForeignKey("BuyerId");
+                        .HasForeignKey("BuyerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ComputerEquipmentStoreDatabaseImplement.Models.Component", b =>
@@ -340,11 +344,15 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                 {
                     b.HasOne("ComputerEquipmentStoreDatabaseImplement.Models.Product", "Product")
                         .WithMany("Orders")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ComputerEquipmentStoreDatabaseImplement.Models.Seller", "Seller")
                         .WithMany("Orders")
-                        .HasForeignKey("SellerId");
+                        .HasForeignKey("SellerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ComputerEquipmentStoreDatabaseImplement.Models.Product", b =>
@@ -360,11 +368,15 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                 {
                     b.HasOne("ComputerEquipmentStoreDatabaseImplement.Models.Component", "Component")
                         .WithMany("ProductComponents")
-                        .HasForeignKey("ComponentId");
+                        .HasForeignKey("ComponentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ComputerEquipmentStoreDatabaseImplement.Models.Product", "Product")
                         .WithMany("ProductComponents")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ComputerEquipmentStoreDatabaseImplement.Models.Purchase", b =>
@@ -378,22 +390,30 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                 {
                     b.HasOne("ComputerEquipmentStoreDatabaseImplement.Models.Assembly", "Assembly")
                         .WithMany("PurchaseAssemblies")
-                        .HasForeignKey("AssemblyId");
+                        .HasForeignKey("AssemblyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ComputerEquipmentStoreDatabaseImplement.Models.Purchase", "Purchase")
                         .WithMany("PurchaseAssemblies")
-                        .HasForeignKey("PurchaseId");
+                        .HasForeignKey("PurchaseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ComputerEquipmentStoreDatabaseImplement.Models.PurchaseProduct", b =>
                 {
                     b.HasOne("ComputerEquipmentStoreDatabaseImplement.Models.Product", "Product")
                         .WithMany("PurchaseProducts")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ComputerEquipmentStoreDatabaseImplement.Models.Purchase", "Purchase")
                         .WithMany("PurchaseProducts")
-                        .HasForeignKey("PurchaseId");
+                        .HasForeignKey("PurchaseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

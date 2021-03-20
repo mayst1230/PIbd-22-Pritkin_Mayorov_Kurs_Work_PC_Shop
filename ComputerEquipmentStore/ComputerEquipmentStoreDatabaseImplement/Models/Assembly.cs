@@ -16,7 +16,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
         public int Cost { get; set; }
 
         //Вторичный ключ от покупателя
-        public Buyer Buyer { get; set; }
+        public virtual Buyer Buyer { get; set; }
 
         //Продукты в которых эта сборка находится
         [ForeignKey("AssemblyId")]

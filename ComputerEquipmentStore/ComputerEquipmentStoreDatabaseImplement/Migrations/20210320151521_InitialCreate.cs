@@ -52,7 +52,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         column: x => x.BuyerId,
                         principalTable: "Buyers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -94,7 +94,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         column: x => x.SellerId,
                         principalTable: "Sellers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -115,7 +115,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         column: x => x.SellerId,
                         principalTable: "Sellers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -124,8 +124,8 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BuyerId = table.Column<int>(nullable: true),
-                    AssemblyId = table.Column<int>(nullable: true),
+                    AssemblyId = table.Column<int>(nullable: false),
+                    BuyerId = table.Column<int>(nullable: false),
                     Text = table.Column<string>(nullable: false),
                     DateComment = table.Column<DateTime>(nullable: false)
                 },
@@ -137,7 +137,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         column: x => x.AssemblyId,
                         principalTable: "Assemblies",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Comments_Buyers_BuyerId",
                         column: x => x.BuyerId,
@@ -152,8 +152,8 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PurchaseId = table.Column<int>(nullable: true),
-                    AssemblyId = table.Column<int>(nullable: true)
+                    PurchaseId = table.Column<int>(nullable: false),
+                    AssemblyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -163,13 +163,13 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         column: x => x.AssemblyId,
                         principalTable: "Assemblies",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_PurchaseAssemblies_Purchases_PurchaseId",
                         column: x => x.PurchaseId,
                         principalTable: "Purchases",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -204,8 +204,8 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductId = table.Column<int>(nullable: true),
-                    SellerId = table.Column<int>(nullable: true),
+                    ProductId = table.Column<int>(nullable: false),
+                    SellerId = table.Column<int>(nullable: false),
                     DateCreate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -216,7 +216,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Orders_Sellers_SellerId",
                         column: x => x.SellerId,
@@ -231,8 +231,8 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductId = table.Column<int>(nullable: true),
-                    ComponentId = table.Column<int>(nullable: true)
+                    ProductId = table.Column<int>(nullable: false),
+                    ComponentId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -242,13 +242,13 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         column: x => x.ComponentId,
                         principalTable: "Components",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ProductComponents_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -257,8 +257,8 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PurchaseId = table.Column<int>(nullable: true),
-                    ProductId = table.Column<int>(nullable: true)
+                    PurchaseId = table.Column<int>(nullable: false),
+                    ProductId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -268,13 +268,13 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_PurchaseProducts_Purchases_PurchaseId",
                         column: x => x.PurchaseId,
                         principalTable: "Purchases",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A1DEAEB5-6C0A-4898-B2CA-93130E84F202}</ProjectGuid>
+    <ProjectGuid>{E1C45D65-DDC0-4E25-A8C2-B842F0066544}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ComputerEquipmentStoreView</RootNamespace>
     <AssemblyName>ComputerEquipmentStoreView</AssemblyName>

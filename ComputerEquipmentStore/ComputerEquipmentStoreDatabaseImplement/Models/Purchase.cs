@@ -18,7 +18,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
         [Required]
         public DateTime DatePurchase { get; set; }
 
-        public Buyer Buyer { get; set; }
+        public virtual Buyer Buyer { get; set; }
 
         //Сборки находящиеся в этой покупке
         [ForeignKey("PurchaseId")]

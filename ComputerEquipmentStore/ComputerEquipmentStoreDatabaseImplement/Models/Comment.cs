@@ -9,18 +9,16 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
     {
         //ID покупки
         public int Id { get; set; }
-        public int? BuyerId { get; set; }
-        public int? AssemblyId { get; set; }
-
+        public int AssemblyId { get; set; }
+        public int BuyerId { get; set; }
         //Текст комментария
         [Required]
         public string Text { get; set; }
-
         //Дата комменария
         [Required]
         public DateTime DateComment { get; set; }
-
-        public Buyer Buyer { get; set; }
-        public Assembly Assembly { get; set; }
+        public virtual Assembly Assembly { get; set; }
+        public virtual Buyer Buyer { get; set; }
+       
     }
 }
