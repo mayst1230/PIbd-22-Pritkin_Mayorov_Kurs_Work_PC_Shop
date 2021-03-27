@@ -8,11 +8,13 @@ namespace ComputerEquipmentStoreBusinessLogic.BusinessLogics
 {
     public class OrderLogic
     {
-       /* private readonly IOrderStorage _orderStorage;
+        private readonly IOrderStorage _orderStorage;
+
         public OrderLogic(IOrderStorage orderStorage)
         {
-            _orderStorage = orderStorage;
+            this._orderStorage = orderStorage;
         }
+
         public List<OrderViewModel> Read(OrderBindingModel model)
         {
             if (model == null)
@@ -25,38 +27,36 @@ namespace ComputerEquipmentStoreBusinessLogic.BusinessLogics
             }
             return _orderStorage.GetFilteredList(model);
         }
-        public void CreateOrUpdate(ComponentBindingModel model)
+
+        public void CreateOrUpdate(OrderBindingModel model)
         {
-            var element = _componentStorage.GetElement(new ComponentBindingModel
-            {
-                ComponentName = model.ComponentName
+            var element = _orderStorage.GetElement(new OrderBindingModel 
+            { OrderName = model.OrderName
             });
             if (element != null && element.Id != model.Id)
             {
-                throw new Exception("Уже есть компонент с таким названием");
+                throw new Exception("Заказ уже существует");
             }
             if (model.Id.HasValue)
             {
-                _componentStorage.Update(model);
+                _orderStorage.Update(model);
             }
             else
             {
-                _componentStorage.Insert(model);
+                _orderStorage.Insert(model);
             }
         }
-        public void Delete(ComponentBindingModel model)
+
+        public void Delete(OrderBindingModel model)
         {
-            var element = _componentStorage.GetElement(new ComponentBindingModel
-            {
-                Id = model.Id
+            var element = _orderStorage.GetElement(new OrderBindingModel 
+            { Id = model.Id 
             });
             if (element == null)
             {
-                throw new Exception("Комплектующее не найдено");
+                throw new Exception("Элемент не найден");
             }
-            _componentStorage.Delete(model);
-        }*/
-
-        ///добавить метод добавления товара к заказу
+            _orderStorage.Delete(model);
+        }
     }
 }

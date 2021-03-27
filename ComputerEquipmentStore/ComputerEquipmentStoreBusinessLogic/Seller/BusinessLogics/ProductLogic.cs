@@ -8,28 +8,31 @@ namespace ComputerEquipmentStoreBusinessLogic.BusinessLogics
 {
     public class ProductLogic
     {
-        /*private readonly IProductStorage _travelStorage;
-        public TravelLogic(IProductStorage travelStorage)
+        private readonly IProductStorage _productStorage;
+        public ProductLogic(IProductStorage productStorage)
         {
-            _travelStorage = travelStorage;
+            this._productStorage = productStorage;
         }
         public List<ProductViewModel> Read(ProductBindingModel model)
         {
             if (model == null)
             {
-                return _travelStorage.GetFullList();
+                return _productStorage.GetFullList();
             }
             if (model.Id.HasValue)
             {
-                return new List<ProductViewModel> { _travelStorage.GetElement(model) };
+                return new List<ProductViewModel> 
+                {
+                    _productStorage.GetElement(model)
+                };
             }
-            return _travelStorage.GetFilteredList(model);
+            return _productStorage.GetFilteredList(model);
         }
         public void CreateOrUpdate(ProductBindingModel model)
         {
-            var element = _travelStorage.GetElement(new ProductBindingModel
+            var element = _productStorage.GetElement(new ProductBindingModel
             {
-                TravelName = model.TravelName
+                ProductName = model.ProductName
             });
             if (element != null && element.Id != model.Id)
             {
@@ -37,16 +40,16 @@ namespace ComputerEquipmentStoreBusinessLogic.BusinessLogics
             }
             if (model.Id.HasValue)
             {
-                _travelStorage.Update(model);
+                _productStorage.Update(model);
             }
             else
             {
-                _travelStorage.Insert(model);
+                _productStorage.Insert(model);
             }
         }
         public void Delete(ProductBindingModel model)
         {
-            var element = _travelStorage.GetElement(new ProductBindingModel
+            var element = _productStorage.GetElement(new ProductBindingModel
             {
                 Id = model.Id
             });
@@ -54,7 +57,7 @@ namespace ComputerEquipmentStoreBusinessLogic.BusinessLogics
             {
                 throw new Exception("Товар не найден");
             }
-            _travelStorage.Delete(model);
-        }*/
+            _productStorage.Delete(model);
+        }
     }
 }

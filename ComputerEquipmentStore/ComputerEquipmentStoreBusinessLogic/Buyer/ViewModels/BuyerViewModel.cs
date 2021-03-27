@@ -14,7 +14,5 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels
 
         [DisplayName("Пароль покупателя")]
         public string Password { get; set; }
-
-        public Dictionary<int, (string, int)> Purchases { get; set; }
     }
 }

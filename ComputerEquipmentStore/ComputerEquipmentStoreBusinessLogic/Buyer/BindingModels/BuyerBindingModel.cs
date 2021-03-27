@@ -17,8 +17,5 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
 
         //Пароль покупателя
         public string Password { get; set; }
-
-        //Покупки покупателя
-        public Dictionary<int, (string, int)> Purchases { get; set; }
     }
 }

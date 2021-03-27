@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 
 namespace ComputerEquipmentStoreBusinessLogic.Seller.ViewModels
 {
@@ -9,11 +6,9 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.ViewModels
     {
         public int Id { get; set; }
 
+        public int SellerId { get; set; }
+
         [DisplayName("Комплектующее")]
         public string ComponentName { get; set; }
-        /// <summary>
-        /// У комплектующих словарь товаров
-        /// </summary>
-        public Dictionary<int, (string, int)> Products { get; set; }
     }
 }

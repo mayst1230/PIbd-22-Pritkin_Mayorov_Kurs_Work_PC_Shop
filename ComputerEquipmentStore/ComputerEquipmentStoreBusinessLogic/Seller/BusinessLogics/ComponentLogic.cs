@@ -56,7 +56,5 @@ namespace ComputerEquipmentStoreBusinessLogic.BusinessLogics
             }
             _componentStorage.Delete(model);
         }
-
-        ///метод привязки комплектующих к сборкам
     }
 }

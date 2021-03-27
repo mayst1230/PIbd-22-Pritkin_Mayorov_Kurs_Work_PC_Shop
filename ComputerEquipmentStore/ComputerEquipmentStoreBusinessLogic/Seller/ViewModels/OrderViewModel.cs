@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 
 namespace ComputerEquipmentStoreBusinessLogic.Seller.ViewModels
 {
@@ -9,12 +7,11 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.ViewModels
     {
         public int Id { get; set; }
         public int ProductId { get; set; }
+        public int SellerId { get; set; }
 
-        [DisplayName("Название товара")]
-        public string ProductName { get; set; }
-        /// <summary>
-        /// продумать что будет еще
-        /// </summary>
+        [DisplayName("Название заказа")]
+        public string OrderName { get; set; }
+       
         [DisplayName("Дата создания заказа")]
         public DateTime DateOrder { get; set; }
     }

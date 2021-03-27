@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ComputerEquipmentStoreBusinessLogic.BindingModels
 {
@@ -8,8 +6,8 @@ namespace ComputerEquipmentStoreBusinessLogic.BindingModels
     {
         public int? Id { get; set; }
         public int ProductId { get; set; }
+        public int SellerId { get; set; }
+        public string OrderName { get; set; }
         public DateTime DateOrder { get; set; }
-
-        //продумать нужны ли будут внешние ключи? - ID продавца и ID товара
     }
 }

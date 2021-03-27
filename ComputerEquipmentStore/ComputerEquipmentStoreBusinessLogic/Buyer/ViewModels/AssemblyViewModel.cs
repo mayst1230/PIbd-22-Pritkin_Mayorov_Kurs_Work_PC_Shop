@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 
 namespace ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels
 {
@@ -9,12 +7,12 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels
     {
         public int Id { get; set; }
 
+        public int BuyerId { get; set; }
+
+        public string AssemblyName { get; set; }
+
         [DisplayName("Общая стоимость")]
         public int TotalCost { get; set; }
-
-        public Dictionary<int, (string, int)> Purchases { get; set; }
-
-        public Dictionary<int, (string, int)> AssemblyComments { get; set; }
 
         public Dictionary<int, (string, int)> Components { get; set; }
     }

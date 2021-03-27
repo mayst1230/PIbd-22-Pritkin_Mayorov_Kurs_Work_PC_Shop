@@ -12,14 +12,12 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
         //ID сборки
         public int? Id { get; set; }
 
+        public int BuyerId { get; set; }
+
+        public string AssemblyName { get; set; }
+
         //Общая стоимость сборки
         public int TotalCost { get; set; }
-
-        //Покупки в которых присутствует эта сборка
-        public Dictionary<int, (string, int)> Purchases { get; set; }
-
-        //Комментарии к сборке
-        public Dictionary<int, (string, int)> AssemblyComments { get; set; }
 
         //Комплектующие находящиеся в этой сборке
         public Dictionary<int, (string, int)> Components { get; set; }

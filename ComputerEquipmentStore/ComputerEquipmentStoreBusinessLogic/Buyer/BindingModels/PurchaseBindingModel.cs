@@ -13,6 +13,10 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
         //ID покупки
         public int? Id { get; set; }
 
+        public int BuyerId { get; set; }
+
+        public string PurchaseName { get; set; }
+
         //Общая стоимость покупки
         public int TotalCost { get; set; }
 

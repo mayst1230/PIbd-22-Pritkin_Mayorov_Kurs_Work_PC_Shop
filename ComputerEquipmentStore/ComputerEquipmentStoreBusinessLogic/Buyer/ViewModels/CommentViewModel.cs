@@ -9,6 +9,10 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels
     {
         public int Id { get; set; }
 
+        public int AssemblyId { get; set; }
+
+        public int BuyerId { get; set; }
+
         [DisplayName("Текст комментария")]
         public string Text { get; set; }
 

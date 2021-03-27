@@ -12,6 +12,10 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
         //ID комментария
         public int? Id { get; set; }
 
+        public int AssemblyId { get; set; }
+
+        public int BuyerId { get; set; }
+
         //Текст комментария
         public string Text { get; set; }
 

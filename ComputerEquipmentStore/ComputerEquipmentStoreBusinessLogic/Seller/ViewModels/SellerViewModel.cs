@@ -1,10 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.ComponentModel;
 
 namespace ComputerEquipmentStoreBusinessLogic.Seller.ViewModels
 {
-    class SellerViewModel
+    public class SellerViewModel
     {
+        public int Id { get; set; }
+
+        [DisplayName("Никнейм")]
+        public string Login { get; set; }
+
+        [DisplayName("Пароль")]
+        public string Password { get; set; }
     }
 }

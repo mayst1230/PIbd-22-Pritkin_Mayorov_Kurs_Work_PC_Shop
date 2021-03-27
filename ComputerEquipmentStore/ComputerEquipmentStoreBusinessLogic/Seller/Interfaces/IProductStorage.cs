@@ -7,10 +7,10 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.Interfaces
     public interface IProductStorage
     {
         List<ProductViewModel> GetFullList();
-        List<ProductViewModel> GetFilteredList(ProductBindingModel modelProduct);
-        ProductBindingModel GetElement(ProductBindingModel modelProduct);
-        void Insert(ProductBindingModel modelProduct);
-        void Update(ProductBindingModel modelProduct);
-        void Delete(ProductBindingModel modelProduct);
+        List<ProductViewModel> GetFilteredList(ProductBindingModel model);
+        ProductViewModel GetElement(ProductBindingModel model);
+        void Insert(ProductBindingModel model);
+        void Update(ProductBindingModel model);
+        void Delete(ProductBindingModel model);
     }
 }
