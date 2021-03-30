@@ -1,7 +1,6 @@
-﻿
-namespace ComputerEquipmentStoreView
+﻿namespace ComputerEquipmentStoreViewSeller
 {
-    partial class AuthorizationFormBuyer
+    partial class AuthorizationFormSeller
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +28,6 @@ namespace ComputerEquipmentStoreView
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthorizationFormBuyer));
             this.labelAuthorization = new System.Windows.Forms.Label();
             this.labelLogin = new System.Windows.Forms.Label();
             this.labelPassword = new System.Windows.Forms.Label();
@@ -82,7 +80,7 @@ namespace ComputerEquipmentStoreView
             // textBoxLogin
             // 
             this.textBoxLogin.Location = new System.Drawing.Point(8, 92);
-            this.textBoxLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxLogin.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(231, 20);
             this.textBoxLogin.TabIndex = 5;
@@ -90,7 +88,7 @@ namespace ComputerEquipmentStoreView
             // textBoxPassword
             // 
             this.textBoxPassword.Location = new System.Drawing.Point(8, 144);
-            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(231, 20);
             this.textBoxPassword.TabIndex = 6;
@@ -98,9 +96,9 @@ namespace ComputerEquipmentStoreView
             // pictureBoxLogo
             // 
             this.pictureBoxLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBoxLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLogo.Image")));
+            this.pictureBoxLogo.Image = global::ComputerEquipmentStoreViewSeller.Properties.Resources.логотип_2;
             this.pictureBoxLogo.Location = new System.Drawing.Point(333, 68);
-            this.pictureBoxLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBoxLogo.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.Size = new System.Drawing.Size(154, 150);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -109,13 +107,13 @@ namespace ComputerEquipmentStoreView
             // 
             // ButtonAuthorization
             // 
-            this.ButtonAuthorization.BackColor = System.Drawing.Color.Purple;
+            this.ButtonAuthorization.BackColor = System.Drawing.Color.Brown;
             this.ButtonAuthorization.FlatAppearance.BorderSize = 0;
             this.ButtonAuthorization.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ButtonAuthorization.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F);
             this.ButtonAuthorization.ForeColor = System.Drawing.Color.White;
             this.ButtonAuthorization.Location = new System.Drawing.Point(8, 178);
-            this.ButtonAuthorization.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ButtonAuthorization.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonAuthorization.Name = "ButtonAuthorization";
             this.ButtonAuthorization.Size = new System.Drawing.Size(165, 25);
             this.ButtonAuthorization.TabIndex = 11;
@@ -125,13 +123,13 @@ namespace ComputerEquipmentStoreView
             // 
             // ButtonCancel
             // 
-            this.ButtonCancel.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.ButtonCancel.BackColor = System.Drawing.Color.Maroon;
             this.ButtonCancel.FlatAppearance.BorderSize = 0;
             this.ButtonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonCancel.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F);
             this.ButtonCancel.ForeColor = System.Drawing.Color.White;
             this.ButtonCancel.Location = new System.Drawing.Point(187, 178);
-            this.ButtonCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ButtonCancel.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonCancel.Name = "ButtonCancel";
             this.ButtonCancel.Size = new System.Drawing.Size(70, 25);
             this.ButtonCancel.TabIndex = 12;
@@ -153,13 +151,13 @@ namespace ComputerEquipmentStoreView
             // 
             // ButtonRegistration
             // 
-            this.ButtonRegistration.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.ButtonRegistration.BackColor = System.Drawing.Color.Maroon;
             this.ButtonRegistration.FlatAppearance.BorderSize = 0;
             this.ButtonRegistration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonRegistration.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ButtonRegistration.ForeColor = System.Drawing.Color.White;
             this.ButtonRegistration.Location = new System.Drawing.Point(238, 227);
-            this.ButtonRegistration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ButtonRegistration.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonRegistration.Name = "ButtonRegistration";
             this.ButtonRegistration.Size = new System.Drawing.Size(181, 25);
             this.ButtonRegistration.TabIndex = 14;
@@ -167,11 +165,11 @@ namespace ComputerEquipmentStoreView
             this.ButtonRegistration.UseVisualStyleBackColor = false;
             this.ButtonRegistration.Click += new System.EventHandler(this.ButtonRegistration_Click);
             // 
-            // AuthorizationFormBuyer
+            // AuthorizationFormSeller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.BackColor = System.Drawing.Color.Maroon;
             this.ClientSize = new System.Drawing.Size(533, 272);
             this.Controls.Add(this.ButtonRegistration);
             this.Controls.Add(this.labelRegistration);
@@ -183,8 +181,8 @@ namespace ComputerEquipmentStoreView
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.labelAuthorization);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "AuthorizationFormBuyer";
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "AuthorizationFormSeller";
             this.Text = "AuthorizationFormBuyer";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);

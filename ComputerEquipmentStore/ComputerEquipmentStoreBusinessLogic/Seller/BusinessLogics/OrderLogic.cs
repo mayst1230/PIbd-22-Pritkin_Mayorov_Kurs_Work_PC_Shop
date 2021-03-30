@@ -1,6 +1,7 @@
 ﻿using ComputerEquipmentStoreBusinessLogic.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
+using ComputerEquipmentStoreBusinessLogic.Seller.Enums;
 using System;
 using System.Collections.Generic;
 
@@ -26,6 +27,16 @@ namespace ComputerEquipmentStoreBusinessLogic.BusinessLogics
                 return new List<OrderViewModel> { _orderStorage.GetElement(model) };
             }
             return _orderStorage.GetFilteredList(model);
+        }
+        public void CreateOrder(CreateOrderBindingModel model)
+        {
+            _orderStorage.Insert(new OrderBindingModel
+            {
+                ProductId = model.ProductId,
+                Count = model.Count,
+                DateOrder = DateTime.Now,
+                Status = OrderStatus.Принят
+            });
         }
 
         public void CreateOrUpdate(OrderBindingModel model)

@@ -42,7 +42,8 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BuyerId = table.Column<int>(nullable: false),
-                    Cost = table.Column<int>(nullable: false)
+                    Cost = table.Column<int>(nullable: false),
+                    AssemblyName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -63,7 +64,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TotalCost = table.Column<decimal>(nullable: false),
                     DatePurchase = table.Column<DateTime>(nullable: false),
-                    BuyerId = table.Column<int>(nullable: true)
+                    BuyerId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -84,7 +85,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SellerId = table.Column<int>(nullable: false),
                     Price = table.Column<decimal>(nullable: false),
-                    NameProduct = table.Column<string>(nullable: false)
+                    ComponentName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -105,7 +106,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SellerId = table.Column<int>(nullable: false),
                     Price = table.Column<decimal>(nullable: false),
-                    NameProduct = table.Column<string>(nullable: false)
+                    ProductName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -206,7 +207,10 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductId = table.Column<int>(nullable: false),
                     SellerId = table.Column<int>(nullable: false),
-                    DateCreate = table.Column<DateTime>(nullable: false)
+                    OrderName = table.Column<string>(nullable: true),
+                    Count = table.Column<int>(nullable: false),
+                    DateOrder = table.Column<DateTime>(nullable: false),
+                    Status = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

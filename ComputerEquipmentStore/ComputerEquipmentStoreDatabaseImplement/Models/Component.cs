@@ -16,7 +16,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
         public decimal Price { get; set; }
 
         [Required]
-        public string NameProduct { get; set; }
+        public string ComponentName { get; set; }
         public Seller Seller { get; set; }
 
         [ForeignKey("ComponentId")]

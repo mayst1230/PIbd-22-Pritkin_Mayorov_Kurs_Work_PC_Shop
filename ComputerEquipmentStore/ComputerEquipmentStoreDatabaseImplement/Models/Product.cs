@@ -14,7 +14,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
         public decimal Price { get; set; }
 
         [Required]
-        public string NameProduct { get; set; }
+        public string ProductName { get; set; }
         public virtual Seller Seller { get; set; }
 
         [ForeignKey("ProductId")]
