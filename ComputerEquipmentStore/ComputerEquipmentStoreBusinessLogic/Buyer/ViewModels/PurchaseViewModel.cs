@@ -14,7 +14,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels
         public string PurchaseName { get; set; }
 
         [DisplayName("Общая стоимость")]
-        public int TotalCost { get; set; }
+        public decimal TotalCost { get; set; }
 
         [DisplayName("Дата покупки")]
         public DateTime DatePurchase { get; set; }

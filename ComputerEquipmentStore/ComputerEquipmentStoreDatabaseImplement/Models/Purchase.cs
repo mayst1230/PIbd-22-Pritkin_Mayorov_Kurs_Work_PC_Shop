@@ -18,6 +18,10 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
         [Required]
         public DateTime DatePurchase { get; set; }
 
+        //ID покупателя
+        public int BuyerId { get; set; }
+
+        //покупатель
         public virtual Buyer Buyer { get; set; }
 
         //Сборки находящиеся в этой покупке

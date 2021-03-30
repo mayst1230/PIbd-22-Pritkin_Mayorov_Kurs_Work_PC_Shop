@@ -17,7 +17,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
         public string AssemblyName { get; set; }
 
         //Общая стоимость сборки
-        public int TotalCost { get; set; }
+        public int Cost { get; set; }
 
         //Комплектующие находящиеся в этой сборке
         public Dictionary<int, (string, int)> Components { get; set; }

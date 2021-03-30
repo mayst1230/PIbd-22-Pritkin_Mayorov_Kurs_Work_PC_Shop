@@ -1,0 +1,91 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Unity;
+
+namespace ComputerEquipmentStoreView
+{
+    public partial class MainBuyerForm : Form
+
+    {
+        [Dependency]
+        public new IUnityContainer Container { get; set; }
+    
+        public MainBuyerForm()
+        {
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// Обработчик нажатия на кнопку перехода к покупкам
+        /// </summary>
+        /// <param name="sender"></param> Элемент вызвавший событие
+        /// <param name="e"></param> данные о событии
+        private void ButtonToPurchase_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Обработчик нажатия на кнопку перехода к сборкам
+        /// </summary>
+        /// <param name="sender"></param> Элемент вызвавший событие
+        /// <param name="e"></param> данные о событии
+        private void ButtonToAssembly_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Обработчик нажатия на кнопку перехода к комментриям к сборкам
+        /// </summary>
+        /// <param name="sender"></param> Элемент вызвавший событие
+        /// <param name="e"></param> данные о событии
+        private void ButtonToComment_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Обработчик нажатия на кнопку получения списка
+        /// </summary>
+        /// <param name="sender"></param> Элемент вызвавший событие
+        /// <param name="e"></param> данные о событии
+        private void ButtonGetList_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Обработчик нажатия на кнопку получения отчета
+        /// </summary>
+        /// <param name="sender"></param> Элемент вызвавший событие
+        /// <param name="e"></param> данные о событии
+        private void ButtonGetReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Обработчие нажатия на кнопку получения рекомендаций
+        /// </summary>
+        /// <param name="sender"></param> Элемент вызвавший событие
+        /// <param name="e"></param> данные о событии
+        private void ButtonRecomendations_Click(object sender, EventArgs e)
+        {
+            // Ещё не реализовано
+            throw new NotImplementedException();
+        }
+
+        private void MainBuyerForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+    }
+}

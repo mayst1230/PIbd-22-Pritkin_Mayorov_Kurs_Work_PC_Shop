@@ -9,11 +9,16 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
     {
         //ID покупки
         public int Id { get; set; }
+
         public int BuyerId { get; set; }
 
         //Cтоимость сборки
         [Required]
         public int Cost { get; set; }
+
+        //Название сборки
+        [Required]
+        public string AssemblyName { get; set; }
 
         //Вторичный ключ от покупателя
         public virtual Buyer Buyer { get; set; }
