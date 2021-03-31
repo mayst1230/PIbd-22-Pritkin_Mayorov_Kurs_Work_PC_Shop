@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderForm));
             this.buttonCreateOrder = new System.Windows.Forms.Button();
             this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
             this.buttonUpdateOrder = new System.Windows.Forms.Button();
@@ -38,13 +39,14 @@
             // 
             // buttonCreateOrder
             // 
+            this.buttonCreateOrder.BackColor = System.Drawing.Color.Brown;
             this.buttonCreateOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCreateOrder.Location = new System.Drawing.Point(646, 12);
             this.buttonCreateOrder.Name = "buttonCreateOrder";
             this.buttonCreateOrder.Size = new System.Drawing.Size(142, 27);
             this.buttonCreateOrder.TabIndex = 0;
             this.buttonCreateOrder.Text = "Создать заказ";
-            this.buttonCreateOrder.UseVisualStyleBackColor = true;
+            this.buttonCreateOrder.UseVisualStyleBackColor = false;
             this.buttonCreateOrder.Click += new System.EventHandler(this.ButtonCreateOrder_Click);
             // 
             // dataGridViewOrders
@@ -59,17 +61,19 @@
             // 
             // buttonUpdateOrder
             // 
+            this.buttonUpdateOrder.BackColor = System.Drawing.Color.Brown;
             this.buttonUpdateOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUpdateOrder.Location = new System.Drawing.Point(647, 50);
             this.buttonUpdateOrder.Name = "buttonUpdateOrder";
             this.buttonUpdateOrder.Size = new System.Drawing.Size(140, 24);
             this.buttonUpdateOrder.TabIndex = 3;
             this.buttonUpdateOrder.Text = "Изменить заказ";
-            this.buttonUpdateOrder.UseVisualStyleBackColor = true;
+            this.buttonUpdateOrder.UseVisualStyleBackColor = false;
             this.buttonUpdateOrder.Click += new System.EventHandler(this.buttonUpdateOrder_Click);
             // 
             // buttonDeleteOrder
             // 
+            this.buttonDeleteOrder.BackColor = System.Drawing.Color.Brown;
             this.buttonDeleteOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeleteOrder.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonDeleteOrder.Location = new System.Drawing.Point(647, 84);
@@ -77,7 +81,7 @@
             this.buttonDeleteOrder.Size = new System.Drawing.Size(139, 24);
             this.buttonDeleteOrder.TabIndex = 4;
             this.buttonDeleteOrder.Text = "Удалить заказ";
-            this.buttonDeleteOrder.UseVisualStyleBackColor = true;
+            this.buttonDeleteOrder.UseVisualStyleBackColor = false;
             this.buttonDeleteOrder.Click += new System.EventHandler(this.buttonDeleteOrder_Click);
             // 
             // OrderForm
@@ -91,6 +95,7 @@
             this.Controls.Add(this.dataGridViewOrders);
             this.Controls.Add(this.buttonCreateOrder);
             this.ForeColor = System.Drawing.SystemColors.Control;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OrderForm";
             this.Text = "Заказы на товары";
             this.Load += new System.EventHandler(this.OrderForm_Load);

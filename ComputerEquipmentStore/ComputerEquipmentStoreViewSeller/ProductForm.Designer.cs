@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductForm));
             this.labelProductName = new System.Windows.Forms.Label();
             this.labelProductPrice = new System.Windows.Forms.Label();
             this.textBoxProductName = new System.Windows.Forms.TextBox();
@@ -83,7 +84,6 @@
             this.textBoxProductPrice.Name = "textBoxProductPrice";
             this.textBoxProductPrice.Size = new System.Drawing.Size(321, 20);
             this.textBoxProductPrice.TabIndex = 3;
-            
             // 
             // groupBoxComponents
             // 
@@ -102,46 +102,50 @@
             // 
             // buttonUpdateComponent
             // 
+            this.buttonUpdateComponent.BackColor = System.Drawing.Color.Brown;
             this.buttonUpdateComponent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUpdateComponent.Location = new System.Drawing.Point(611, 157);
             this.buttonUpdateComponent.Name = "buttonUpdateComponent";
             this.buttonUpdateComponent.Size = new System.Drawing.Size(134, 28);
             this.buttonUpdateComponent.TabIndex = 4;
             this.buttonUpdateComponent.Text = "Обновить";
-            this.buttonUpdateComponent.UseVisualStyleBackColor = true;
+            this.buttonUpdateComponent.UseVisualStyleBackColor = false;
             this.buttonUpdateComponent.MouseCaptureChanged += new System.EventHandler(this.ButtonRef_Click);
             // 
             // buttonDeleteComponent
             // 
+            this.buttonDeleteComponent.BackColor = System.Drawing.Color.Brown;
             this.buttonDeleteComponent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeleteComponent.Location = new System.Drawing.Point(611, 115);
             this.buttonDeleteComponent.Name = "buttonDeleteComponent";
             this.buttonDeleteComponent.Size = new System.Drawing.Size(134, 27);
             this.buttonDeleteComponent.TabIndex = 3;
             this.buttonDeleteComponent.Text = "Удалить";
-            this.buttonDeleteComponent.UseVisualStyleBackColor = true;
+            this.buttonDeleteComponent.UseVisualStyleBackColor = false;
             this.buttonDeleteComponent.Click += new System.EventHandler(this.ButtonDel_Click);
             // 
             // buttonChangeComponent
             // 
+            this.buttonChangeComponent.BackColor = System.Drawing.Color.Brown;
             this.buttonChangeComponent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChangeComponent.Location = new System.Drawing.Point(611, 74);
             this.buttonChangeComponent.Name = "buttonChangeComponent";
             this.buttonChangeComponent.Size = new System.Drawing.Size(134, 27);
             this.buttonChangeComponent.TabIndex = 2;
             this.buttonChangeComponent.Text = "Изменить";
-            this.buttonChangeComponent.UseVisualStyleBackColor = true;
+            this.buttonChangeComponent.UseVisualStyleBackColor = false;
             this.buttonChangeComponent.Click += new System.EventHandler(this.ButtonUpd_Click);
             // 
             // buttonAddComponent
             // 
+            this.buttonAddComponent.BackColor = System.Drawing.Color.Brown;
             this.buttonAddComponent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddComponent.Location = new System.Drawing.Point(611, 36);
             this.buttonAddComponent.Name = "buttonAddComponent";
             this.buttonAddComponent.Size = new System.Drawing.Size(134, 26);
             this.buttonAddComponent.TabIndex = 1;
             this.buttonAddComponent.Text = "Добавить";
-            this.buttonAddComponent.UseVisualStyleBackColor = true;
+            this.buttonAddComponent.UseVisualStyleBackColor = false;
             this.buttonAddComponent.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
             // dataGridViewComponents
@@ -190,6 +194,7 @@
             // 
             // buttonSave
             // 
+            this.buttonSave.BackColor = System.Drawing.Color.Brown;
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonSave.Location = new System.Drawing.Point(560, 417);
@@ -197,11 +202,12 @@
             this.buttonSave.Size = new System.Drawing.Size(84, 24);
             this.buttonSave.TabIndex = 5;
             this.buttonSave.Text = "Сохранить";
-            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
             // buttonCancel
             // 
+            this.buttonCancel.BackColor = System.Drawing.Color.Brown;
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCancel.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonCancel.Location = new System.Drawing.Point(659, 417);
@@ -209,7 +215,7 @@
             this.buttonCancel.Size = new System.Drawing.Size(84, 24);
             this.buttonCancel.TabIndex = 6;
             this.buttonCancel.Text = "Отмена";
-            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.UseVisualStyleBackColor = false;
             this.buttonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
             // ProductForm
@@ -225,6 +231,7 @@
             this.Controls.Add(this.textBoxProductName);
             this.Controls.Add(this.labelProductPrice);
             this.Controls.Add(this.labelProductName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ProductForm";
             this.Text = "Товар";
             this.Load += new System.EventHandler(this.ProductForm_Load);

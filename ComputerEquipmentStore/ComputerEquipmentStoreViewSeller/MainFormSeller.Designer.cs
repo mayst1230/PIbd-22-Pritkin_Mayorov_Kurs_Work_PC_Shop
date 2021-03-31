@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFormSeller));
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.menuStripItem = new System.Windows.Forms.MenuStrip();
             this.componentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +55,7 @@
             // 
             // menuStripItem
             // 
+            this.menuStripItem.BackColor = System.Drawing.Color.Maroon;
             this.menuStripItem.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.componentsToolStripMenuItem,
             this.productsToolStripMenuItem,
@@ -68,6 +70,7 @@
             // 
             // componentsToolStripMenuItem
             // 
+            this.componentsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.componentsToolStripMenuItem.Name = "componentsToolStripMenuItem";
             this.componentsToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
             this.componentsToolStripMenuItem.Text = "Комплектующие";
@@ -75,6 +78,7 @@
             // 
             // productsToolStripMenuItem
             // 
+            this.productsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.productsToolStripMenuItem.Name = "productsToolStripMenuItem";
             this.productsToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.productsToolStripMenuItem.Text = "Товары";
@@ -82,6 +86,7 @@
             // 
             // ordersToolStripMenuItem
             // 
+            this.ordersToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.ordersToolStripMenuItem.Name = "ordersToolStripMenuItem";
             this.ordersToolStripMenuItem.Size = new System.Drawing.Size(117, 20);
             this.ordersToolStripMenuItem.Text = "Заказы на товары";
@@ -89,6 +94,7 @@
             // 
             // getListToolStripMenuItem
             // 
+            this.getListToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.getListToolStripMenuItem.Name = "getListToolStripMenuItem";
             this.getListToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
             this.getListToolStripMenuItem.Text = "Получение списка";
@@ -99,6 +105,7 @@
             this.docToolStripMenuItem,
             this.excelToolStripMenuItem,
             this.pdfToolStripMenuItem});
+            this.reportsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             this.reportsToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.reportsToolStripMenuItem.Text = "Отчеты";
@@ -129,6 +136,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.menuStripItem);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripItem;
             this.Name = "MainFormSeller";
             this.Text = "Магазин компьютерной тенхники \"Ты ж программист\" (Продавец)";

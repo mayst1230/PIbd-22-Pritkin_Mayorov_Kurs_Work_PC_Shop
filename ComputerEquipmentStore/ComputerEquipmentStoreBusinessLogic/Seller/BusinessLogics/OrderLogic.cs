@@ -40,6 +40,8 @@ namespace ComputerEquipmentStoreBusinessLogic.BusinessLogics
             }
             if (model.Id.HasValue)
             {
+                model.DateOrder = DateTime.Now;
+                model.Status = OrderStatus.Принят;
                 _orderStorage.Update(model);
             }
             else
