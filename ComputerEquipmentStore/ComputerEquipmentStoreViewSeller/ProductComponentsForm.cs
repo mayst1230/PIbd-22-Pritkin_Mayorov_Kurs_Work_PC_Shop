@@ -19,7 +19,6 @@ namespace ComputerEquipmentStoreViewSeller
         [Dependency]
         public new IUnityContainer Container { get; set; }
 
-        private readonly ProductLogic _logicP;
         private readonly ComponentLogic _logic;
         public int Id
         {
@@ -27,7 +26,7 @@ namespace ComputerEquipmentStoreViewSeller
             set { comboBoxComponent.SelectedValue = value; }
         }
 
-        public new string ProductName { get { return comboBoxComponent.Text; } }
+        public string ComponentName { get { return comboBoxComponent.Text; } }
 
         public int Count
         {
@@ -50,7 +49,7 @@ namespace ComputerEquipmentStoreViewSeller
         {
             InitializeComponent();
             _logic = logic;
-            _logicP = logicP;
+            
             List<ComponentViewModel> list = logic.Read(null);
             if (list != null)
             {

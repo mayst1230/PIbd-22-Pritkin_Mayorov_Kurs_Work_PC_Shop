@@ -6,6 +6,7 @@ namespace ComputerEquipmentStoreBusinessLogic.BindingModels
 {
     public class CreateOrderBindingModel
     {
+        public int? Id { get; set; }
         public string OrderName { get; set; }
         public int ProductId { get; set; }
         public int SellerId { get; set; }

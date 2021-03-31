@@ -1,5 +1,4 @@
 ﻿using ComputerEquipmentStoreBusinessLogic.BindingModels;
-using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.Enums;
@@ -29,18 +28,6 @@ namespace ComputerEquipmentStoreBusinessLogic.BusinessLogics
             }
             return _orderStorage.GetFilteredList(model);
         }
-        public void CreateOrder(CreateOrderBindingModel model)
-        {
-            _orderStorage.Insert(new OrderBindingModel
-            {
-                ProductId = model.ProductId,
-                SellerId = model.SellerId,
-                OrderName = model.OrderName,
-                Count = model.Count,
-                DateOrder = DateTime.Now,
-                Status = OrderStatus.Принят
-            });
-        }
 
         public void CreateOrUpdate(OrderBindingModel model)
         {
@@ -57,6 +44,8 @@ namespace ComputerEquipmentStoreBusinessLogic.BusinessLogics
             }
             else
             {
+                model.DateOrder = DateTime.Now;
+                model.Status = OrderStatus.Принят;
                 _orderStorage.Insert(model);
             }
         }
