@@ -1,7 +1,7 @@
 ﻿
 namespace ComputerEquipmentStoreView
 {
-    partial class MainBuyerForm
+    partial class MainFormBuyer
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace ComputerEquipmentStoreView
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainBuyerForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFormBuyer));
             this.ButtonToPurchase = new System.Windows.Forms.Button();
             this.ButtonToComment = new System.Windows.Forms.Button();
             this.ButtonGetList = new System.Windows.Forms.Button();

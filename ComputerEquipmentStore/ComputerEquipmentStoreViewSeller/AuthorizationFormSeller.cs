@@ -47,12 +47,15 @@ namespace ComputerEquipmentStoreViewSeller
             {
                 if (textBoxLogin.Text == login  && textBoxPassword.Text == password)
                 {
-                    var currentSeller = user[0];
-                    Program.Seller = currentSeller;
-                    var MainFormSeller = Container.Resolve<MainFormSeller>();
-                    MainFormSeller.Show();
-                    var AuthorizationFormSeller = Container.Resolve<AuthorizationFormSeller>();
-                    AuthorizationFormSeller.Close();
+                    if (user != null && user.Count > 0)
+                    {
+                        var currentSeller = user[0];
+                        Program.Seller = currentSeller;
+                        var MainFormSeller = Container.Resolve<MainFormSeller>();
+                        MainFormSeller.Show();
+                        var AuthorizationFormSeller = Container.Resolve<AuthorizationFormSeller>();
+                        AuthorizationFormSeller.Close();
+                    }
                 }
                 else
                 {

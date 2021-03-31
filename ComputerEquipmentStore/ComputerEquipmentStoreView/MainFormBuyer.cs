@@ -11,13 +11,13 @@ using Unity;
 
 namespace ComputerEquipmentStoreView
 {
-    public partial class MainBuyerForm : Form
+    public partial class MainFormBuyer : Form
 
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
     
-        public MainBuyerForm()
+        public MainFormBuyer()
         {
             InitializeComponent();
         }

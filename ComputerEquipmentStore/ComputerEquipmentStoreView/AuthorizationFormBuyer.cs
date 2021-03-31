@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using Unity;
+using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
+using ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics;
 
 namespace ComputerEquipmentStoreView
 {
@@ -9,9 +11,13 @@ namespace ComputerEquipmentStoreView
         [Dependency]
         public new IUnityContainer Container { get; set; }
 
-        public AuthorizationFormBuyer()
+        private readonly BuyerLogic buyerLogic;
+
+
+        public AuthorizationFormBuyer(BuyerLogic buyerLogic)
         {
             InitializeComponent();
+            this.buyerLogic = buyerLogic;
         }
 
         /// <summary>
@@ -21,9 +27,52 @@ namespace ComputerEquipmentStoreView
         /// <param name="e"></param> Данные о событии
         private void ButtonAuthorization_Click(object sender, EventArgs e)
         {
-            MainBuyerForm form = new MainBuyerForm();
-            form.Show();
-            Hide();
+            if (string.IsNullOrEmpty(textBoxLogin.Text))
+            {
+                MessageBox.Show("Введите логин", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (string.IsNullOrEmpty(textBoxPassword.Text))
+            {
+                MessageBox.Show("Введите пароль", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var buyer = buyerLogic.Read(new BuyerBindingModel
+            {
+                Login = textBoxLogin.Text,
+                Password = textBoxPassword.Text
+            });
+
+            if (buyer != null)
+            {
+                try
+                {
+                    /*
+                     * 
+                     * 
+                     * 
+                     * 
+                     * 
+                     * 
+                     */
+
+                    var currentBuyer = buyer[0];
+                    Program.Buyer = currentBuyer;
+                    var MainFormBuyer = Container.Resolve<MainFormBuyer>();
+                    MainFormBuyer.Show();
+
+                    MessageBox.Show("Авторизация проверена!", "Info");
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show("Неверно введен пароль или логин", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Error");
+                }
+
+
+                
+            }
         }
 
         /// <summary>
@@ -43,8 +92,8 @@ namespace ComputerEquipmentStoreView
         /// <param name="e"></param> Данные о событии
         private void ButtonRegistration_Click(object sender, EventArgs e)
         {
-            RegistrationFormBuyer form = new RegistrationFormBuyer();
-            form.Show();
+            var RegistrationFormBuyer = Container.Resolve<RegistrationFormBuyer>();
+            RegistrationFormBuyer.Show();
         }
     }
 }

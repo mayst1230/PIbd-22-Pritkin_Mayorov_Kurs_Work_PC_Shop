@@ -20,7 +20,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
         [Required]
         public string AssemblyName { get; set; }
 
-        //Вторичный ключ от покупателя
+        
         public virtual Buyer Buyer { get; set; }
 
         //Продукты в которых эта сборка находится
@@ -31,6 +31,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
         [ForeignKey("AssemblyId")]
         public virtual List<AssemblyComponent> AssemblyComponents { get; set; }
 
+        //Комментарии к сборке
         [ForeignKey("AssemblyId")]
         public virtual List<Comment> Comments { get; set; }
 
