@@ -78,12 +78,14 @@
             this.productsToolStripMenuItem.Name = "productsToolStripMenuItem";
             this.productsToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.productsToolStripMenuItem.Text = "Товары";
+            this.productsToolStripMenuItem.Click += new System.EventHandler(this.productsToolStripMenuItem_Click);
             // 
             // ordersToolStripMenuItem
             // 
             this.ordersToolStripMenuItem.Name = "ordersToolStripMenuItem";
             this.ordersToolStripMenuItem.Size = new System.Drawing.Size(117, 20);
             this.ordersToolStripMenuItem.Text = "Заказы на товары";
+            this.ordersToolStripMenuItem.Click += new System.EventHandler(this.ordersToolStripMenuItem_Click);
             // 
             // getListToolStripMenuItem
             // 

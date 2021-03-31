@@ -236,7 +236,9 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductId = table.Column<int>(nullable: false),
-                    ComponentId = table.Column<int>(nullable: false)
+                    ComponentId = table.Column<int>(nullable: false),
+                    Count = table.Column<int>(nullable: false),
+                    Price = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {

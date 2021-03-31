@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Windows;
 using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
-using System.Text.RegularExpressions;
 using Unity;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace ComputerEquipmentStoreViewSeller
 {
@@ -14,8 +11,10 @@ namespace ComputerEquipmentStoreViewSeller
         [Dependency]
         public new IUnityContainer Container { get; set; }
         private readonly SellerLogic logic;
-        string password = "123";
-        string login = "mayst1230@gmail.com";
+
+        private static string login = "mayst1230@gmail.com";
+        private static string login1 = "mayst1231@gmail.com";
+        private static string password = "123";
         public AuthorizationFormSeller(SellerLogic logic)
         {
             InitializeComponent();
@@ -43,22 +42,19 @@ namespace ComputerEquipmentStoreViewSeller
                 Password = textBoxPassword.Text
             });
 
-            if (user != null)
+            if (user != null && user.Count > 0)
             {
-                if (textBoxLogin.Text == login  && textBoxPassword.Text == password)
-                {
-                    var currentSeller = user[0];
-                    Program.Seller = currentSeller;
-                    var MainFormSeller = Container.Resolve<MainFormSeller>();
-                    MainFormSeller.Show();
-                    var AuthorizationFormSeller = Container.Resolve<AuthorizationFormSeller>();
-                    AuthorizationFormSeller.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Неверно введен пароль или логин", "Ошибка", MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
-                }
+                var currentSeller = user[0];
+                Program.Seller = currentSeller;
+                var MainFormSeller = Container.Resolve<MainFormSeller>();
+                MainFormSeller.Show();
+                var AuthorizationFormSeller = Container.Resolve<AuthorizationFormSeller>();
+                AuthorizationFormSeller.Close(); 
+            }
+            else
+            {
+                MessageBox.Show("Неверно введен пароль или логин", "Ошибка", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
             }
         }
 

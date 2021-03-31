@@ -20,5 +20,17 @@ namespace ComputerEquipmentStoreViewSeller
             var form = Container.Resolve<ComponentsForm>();
             form.ShowDialog();
         }
+
+        private void productsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<ProductsForm>();
+            form.ShowDialog();
+        }
+
+        private void ordersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<OrderForm>();
+            form.ShowDialog();
+        }
     }
 }

@@ -27,15 +27,30 @@ namespace ComputerStoreEquipmentDatabaseImplement.Implements
                 List<ProductComponent> productComponents = context.ProductComponents.Where(rec => rec.ProductId == model.Id.Value).ToList();
                 // удалили те, которых нет в модели
                 context.ProductComponents.RemoveRange(productComponents.Where(rec => !model.Components.ContainsKey(rec.ComponentId)).ToList());
+                //обновляем кол-во и цену у записей, которые существуют
+                foreach (var updateComponents in productComponents)
+                {
+                    if (model.Components.ContainsKey(updateComponents.ComponentId))
+                    { 
+                        updateComponents.Count =
+                        model.Components[updateComponents.ComponentId].Item2;
+                        updateComponents.Price =
+                        model.Components[updateComponents.ComponentId].Item3;
+                        model.Components.Remove(updateComponents.ComponentId);
+                    }
+                }
                 context.SaveChanges();
             }
             // добавили новые
-            foreach (KeyValuePair<int, string> CSP in model.Components)
+            foreach (KeyValuePair<int, (string, int, decimal)> CSP in model.Components)
             {
                 context.ProductComponents.Add(new ProductComponent
                 {
                     ProductId = product.Id,
-                    ComponentId = CSP.Key
+                    ComponentId = CSP.Key,
+                    Count = CSP.Value.Item2,
+                    Price = CSP.Value.Item3
+                    
                 });
                 context.SaveChanges();
             }
@@ -61,7 +76,7 @@ namespace ComputerStoreEquipmentDatabaseImplement.Implements
                     ProductName = product.ProductName,
                     SellerId = product.SellerId,
                     Price = product.Price,
-                    Components = product.ProductComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => recCSP.Component?.ComponentName)
+                    Components = product.ProductComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => (recCSP.Component?.ComponentName, recCSP.Count, recCSP.Price))
                 } :
                 null;
             }
@@ -86,7 +101,7 @@ namespace ComputerStoreEquipmentDatabaseImplement.Implements
                         ProductName = rec.ProductName,
                         SellerId = rec.SellerId,
                         Price = rec.Price,
-                        Components = rec.ProductComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => recCSP.Component?.ComponentName)
+                        Components = rec.ProductComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => (recCSP.Component?.ComponentName, recCSP.Count, recCSP.Price))
                     }).ToList();
             }
         }
@@ -105,7 +120,7 @@ namespace ComputerStoreEquipmentDatabaseImplement.Implements
                         ProductName = rec.ProductName,
                         SellerId = rec.SellerId,
                         Price = rec.Price,
-                        Components = rec.ProductComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => recCSP.Component?.ComponentName)
+                        Components = rec.ProductComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => (recCSP.Component?.ComponentName, recCSP.Count, recCSP.Price))
                     }).ToList();
             }
         }
