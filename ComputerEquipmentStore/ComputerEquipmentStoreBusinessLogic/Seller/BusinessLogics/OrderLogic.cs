@@ -1,4 +1,5 @@
 ﻿using ComputerEquipmentStoreBusinessLogic.BindingModels;
+using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.Enums;
@@ -33,6 +34,8 @@ namespace ComputerEquipmentStoreBusinessLogic.BusinessLogics
             _orderStorage.Insert(new OrderBindingModel
             {
                 ProductId = model.ProductId,
+                SellerId = model.SellerId,
+                OrderName = model.OrderName,
                 Count = model.Count,
                 DateOrder = DateTime.Now,
                 Status = OrderStatus.Принят

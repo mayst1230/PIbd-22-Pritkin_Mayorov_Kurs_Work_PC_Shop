@@ -88,7 +88,7 @@
             // textBoxLogin
             // 
             this.textBoxLogin.Location = new System.Drawing.Point(8, 67);
-            this.textBoxLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxLogin.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(231, 20);
             this.textBoxLogin.TabIndex = 4;
@@ -96,7 +96,7 @@
             // textBoxPassword
             // 
             this.textBoxPassword.Location = new System.Drawing.Point(8, 114);
-            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(231, 20);
             this.textBoxPassword.TabIndex = 5;
@@ -104,7 +104,7 @@
             // textBoxRepeatPassword
             // 
             this.textBoxRepeatPassword.Location = new System.Drawing.Point(8, 161);
-            this.textBoxRepeatPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxRepeatPassword.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxRepeatPassword.Name = "textBoxRepeatPassword";
             this.textBoxRepeatPassword.Size = new System.Drawing.Size(231, 20);
             this.textBoxRepeatPassword.TabIndex = 6;
@@ -117,7 +117,7 @@
             this.ButtonRegister.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F);
             this.ButtonRegister.ForeColor = System.Drawing.Color.White;
             this.ButtonRegister.Location = new System.Drawing.Point(11, 203);
-            this.ButtonRegister.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ButtonRegister.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonRegister.Name = "ButtonRegister";
             this.ButtonRegister.Size = new System.Drawing.Size(165, 25);
             this.ButtonRegister.TabIndex = 7;
@@ -133,7 +133,7 @@
             this.ButtonCancel.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F);
             this.ButtonCancel.ForeColor = System.Drawing.Color.White;
             this.ButtonCancel.Location = new System.Drawing.Point(200, 203);
-            this.ButtonCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ButtonCancel.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonCancel.Name = "ButtonCancel";
             this.ButtonCancel.Size = new System.Drawing.Size(70, 25);
             this.ButtonCancel.TabIndex = 8;
@@ -146,7 +146,7 @@
             this.pictureBoxLogo.Image = global::ComputerEquipmentStoreViewSeller.Properties.Resources.логотип_2;
             this.pictureBoxLogo.InitialImage = global::ComputerEquipmentStoreViewSeller.Properties.Resources.логотип_2;
             this.pictureBoxLogo.Location = new System.Drawing.Point(328, 58);
-            this.pictureBoxLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBoxLogo.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.Size = new System.Drawing.Size(154, 150);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -169,9 +169,9 @@
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.labelRegistration);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "RegistrationFormSeller";
-            this.Text = "Форма регистрации покупателя";
+            this.Text = "Форма регистрации продавца";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

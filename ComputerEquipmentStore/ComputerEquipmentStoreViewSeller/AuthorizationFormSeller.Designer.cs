@@ -156,7 +156,7 @@
             this.ButtonRegistration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonRegistration.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ButtonRegistration.ForeColor = System.Drawing.Color.White;
-            this.ButtonRegistration.Location = new System.Drawing.Point(238, 227);
+            this.ButtonRegistration.Location = new System.Drawing.Point(229, 227);
             this.ButtonRegistration.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonRegistration.Name = "ButtonRegistration";
             this.ButtonRegistration.Size = new System.Drawing.Size(181, 25);
@@ -183,7 +183,7 @@
             this.Controls.Add(this.labelAuthorization);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AuthorizationFormSeller";
-            this.Text = "AuthorizationFormBuyer";
+            this.Text = "Авторизация продавца";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

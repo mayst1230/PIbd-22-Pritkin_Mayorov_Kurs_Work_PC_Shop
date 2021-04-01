@@ -10,6 +10,6 @@ namespace ComputerEquipmentStoreBusinessLogic.BindingModels
         public int SellerId { get; set; }
         public string ProductName { get; set; }
         public decimal Price { get; set; }
-        public Dictionary<int, string> Components { get; set; }
+        public Dictionary<int, (string, int, decimal)> Components { get; set; }
     }
 }

@@ -1,25 +1,25 @@
-﻿using Unity;
+﻿using System;
 using ComputerEquipmentStoreBusinessLogic.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.BusinessLogics;
-using System;
 using System.Windows.Forms;
+using Unity;
 
 namespace ComputerEquipmentStoreViewSeller
 {
-    public partial class ComponentsForm : Form
+    public partial class ProductsForm : Form
     {
 
         [Dependency]
         public new IUnityContainer Container { get; set; }
+        private readonly ProductLogic logic;
 
-        private readonly ComponentLogic logic;
-        public ComponentsForm(ComponentLogic logic)
+        public ProductsForm(ProductLogic logic)
         {
             InitializeComponent();
             this.logic = logic;
         }
 
-        private void ComponentsForm_Load(object sender, EventArgs e)
+        private void ProductsForm_Load(object sender, EventArgs e)
         {
             LoadData();
         }
@@ -31,10 +31,12 @@ namespace ComputerEquipmentStoreViewSeller
                 var list = logic.Read(null);
                 if (list != null)
                 {
-                    dataGridViewComponents.DataSource = list;
-                    dataGridViewComponents.Columns[0].Visible = false;
-                    dataGridViewComponents.Columns[1].Visible = true;
-                    dataGridViewComponents.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridViewProducts.DataSource = list;
+                    dataGridViewProducts.Columns[0].Visible = false;
+                    dataGridViewProducts.Columns[1].Visible = false;
+                    dataGridViewProducts.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridViewProducts.Columns[3].Visible = false;
+                    dataGridViewProducts.Columns[4].Visible = false;
                 }
             }
             catch (Exception ex)
@@ -43,21 +45,21 @@ namespace ComputerEquipmentStoreViewSeller
             }
         }
 
-        private void ButtonAddComponent_Click(object sender, EventArgs e)
+        private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<ComponentForm>();
+            var form = Container.Resolve<ProductForm>();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
             }
         }
 
-        private void ButtonInsertComponent_Click(object sender, EventArgs e)
+        private void ButtonUpd_Click(object sender, EventArgs e)
         {
-            if (dataGridViewComponents.SelectedRows.Count == 1)
+            if (dataGridViewProducts.SelectedRows.Count == 1)
             {
-                var form = Container.Resolve<ComponentForm>();
-                form.Id = Convert.ToInt32(dataGridViewComponents.SelectedRows[0].Cells[0].Value);
+                var form = Container.Resolve<ProductForm>();
+                form.Id = Convert.ToInt32(dataGridViewProducts.SelectedRows[0].Cells[0].Value);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     LoadData();
@@ -65,17 +67,16 @@ namespace ComputerEquipmentStoreViewSeller
             }
         }
 
-        private void ButtonDeleteComponent_Click(object sender, EventArgs e)
+        private void ButtonDel_Click(object sender, EventArgs e)
         {
-            if (dataGridViewComponents.SelectedRows.Count == 1)
+            if (dataGridViewProducts.SelectedRows.Count == 1)
             {
                 if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    int id =
-                   Convert.ToInt32(dataGridViewComponents.SelectedRows[0].Cells[0].Value);
+                    int id = Convert.ToInt32(dataGridViewProducts.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        logic.Delete(new ComponentBindingModel { Id = id });
+                        logic.Delete(new ProductBindingModel { Id = id });
                     }
                     catch (Exception ex)
                     {
@@ -86,9 +87,10 @@ namespace ComputerEquipmentStoreViewSeller
             }
         }
 
-        private void ButtonUpdateComponent_Click(object sender, EventArgs e)
+        private void ButtonRef_Click(object sender, EventArgs e)
         {
             LoadData();
         }
+
     }
 }
