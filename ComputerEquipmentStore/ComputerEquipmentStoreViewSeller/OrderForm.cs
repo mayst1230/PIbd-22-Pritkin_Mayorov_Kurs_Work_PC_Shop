@@ -1,4 +1,4 @@
-﻿using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
+﻿using ComputerEquipmentStoreBusinessLogic.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.BusinessLogics;
 using System;
 using System.Windows.Forms;
@@ -10,6 +10,7 @@ namespace ComputerEquipmentStoreViewSeller
         [Dependency]
         public new IUnityContainer Container { get; set; }
         private readonly OrderLogic _orderLogic;
+       
         public OrderForm(OrderLogic orderLogic)
         {
             InitializeComponent();
@@ -47,6 +48,38 @@ namespace ComputerEquipmentStoreViewSeller
             var form = Container.Resolve<OrderCreateForm>();
             form.ShowDialog();
             LoadData();
+        }
+
+        private void buttonUpdateOrder_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewOrders.SelectedRows.Count == 1)
+            {
+                var form = Container.Resolve<OrderCreateForm>();
+                int id = Convert.ToInt32(dataGridViewOrders.SelectedRows[0].Cells[0].Value);
+                form.Id = id;
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    LoadData();
+                }
+            }
+        }
+
+        private void buttonDeleteOrder_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                int id =
+               Convert.ToInt32(dataGridViewOrders.SelectedRows[0].Cells[0].Value);
+                try
+                {
+                    _orderLogic.Delete(new OrderBindingModel { Id = id });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                LoadData();
+            }
         }
     }
 }

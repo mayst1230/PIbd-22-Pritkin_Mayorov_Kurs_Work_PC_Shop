@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComponentsForm));
             this.buttonCreateComponent = new System.Windows.Forms.Button();
             this.buttonChangeComponent = new System.Windows.Forms.Button();
             this.buttonDeleteComponent = new System.Windows.Forms.Button();
@@ -119,6 +120,7 @@
             this.Controls.Add(this.buttonChangeComponent);
             this.Controls.Add(this.buttonCreateComponent);
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ComponentsForm";
             this.Text = "Комплектующие";
             this.Load += new System.EventHandler(this.ComponentsForm_Load);

@@ -5,7 +5,7 @@ using System;
 using System.Windows.Forms;
 
 namespace ComputerEquipmentStoreViewSeller
-{
+{    
     public partial class ComponentsForm : Form
     {
 

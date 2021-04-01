@@ -77,11 +77,11 @@ namespace ComputerEquipmentStoreViewSeller
             {
                 if (productComponents.ContainsKey(form.Id))
                 {
-                    productComponents[form.Id] = (form.ProductName, form.Count, form.Price);
+                    productComponents[form.Id] = (form.ComponentName, form.Count, form.Price);
                 }
                 else
                 {
-                    productComponents.Add(form.Id, (form.ProductName, form.Count, form.Price));
+                    productComponents.Add(form.Id, (form.ComponentName, form.Count, form.Price));
                 }
                 LoadData();
             }
@@ -97,7 +97,7 @@ namespace ComputerEquipmentStoreViewSeller
                 form.Price = productComponents[id].Item3;
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    productComponents[form.Id] = (form.ProductName, form.Count, form.Price);
+                    productComponents[form.Id] = (form.ComponentName, form.Count, form.Price);
                     LoadData();
                 }
             }

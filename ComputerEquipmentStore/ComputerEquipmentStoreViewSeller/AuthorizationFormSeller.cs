@@ -12,9 +12,6 @@ namespace ComputerEquipmentStoreViewSeller
         public new IUnityContainer Container { get; set; }
         private readonly SellerLogic logic;
 
-        private static string login = "mayst1230@gmail.com";
-        private static string login1 = "mayst1231@gmail.com";
-        private static string password = "123";
         public AuthorizationFormSeller(SellerLogic logic)
         {
             InitializeComponent();

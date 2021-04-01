@@ -11,8 +11,25 @@ namespace ComputerEquipmentStoreViewSeller
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
+        public int Id { set { id = value; } }
         private readonly ProductLogic _logicP;
         private readonly OrderLogic _logicO;
+        private int? id;
+
+        public string OrderName
+        { 
+            get { return textBoxOrderName.Text; }
+            set { textBoxOrderName.Text = value.ToString(); }
+        }
+
+        public int Count
+        {
+            get { return Convert.ToInt32(textBoxCount.Text); }
+            set
+            {
+                textBoxCount.Text = value.ToString();
+            }
+        }
 
         public OrderCreateForm(ProductLogic logicP, OrderLogic logicO)
         {
@@ -38,6 +55,25 @@ namespace ComputerEquipmentStoreViewSeller
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            if (id.HasValue)
+            { 
+                try
+                {
+                    var list = _logicO.Read(new OrderBindingModel { 
+                        Id = id.Value
+                    })?[0];
+                    if (list != null)
+                    {
+                        comboBoxProduct.SelectedValue = list.ProductId;
+                        textBoxCount.Text = list.Count.ToString();
+                        textBoxOrderName.Text = list.OrderName;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void ButtonSave_Click(object sender, EventArgs e)
@@ -54,8 +90,9 @@ namespace ComputerEquipmentStoreViewSeller
             }
             try
             {
-                _logicO.CreateOrder(new CreateOrderBindingModel
+                _logicO.CreateOrUpdate(new OrderBindingModel
                 {
+                    Id = id,
                     ProductId = Convert.ToInt32(comboBoxProduct.SelectedValue),
                     SellerId = Program.Seller.Id,
                     OrderName = textBoxOrderName.Text,

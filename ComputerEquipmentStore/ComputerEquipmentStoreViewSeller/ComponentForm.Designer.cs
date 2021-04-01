@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComponentForm));
             this.labelNameComponent = new System.Windows.Forms.Label();
             this.textBoxComponent = new System.Windows.Forms.TextBox();
             this.buttonSave = new System.Windows.Forms.Button();
@@ -56,6 +57,7 @@
             // 
             // buttonSave
             // 
+            this.buttonSave.BackColor = System.Drawing.Color.Brown;
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonSave.Location = new System.Drawing.Point(46, 95);
@@ -63,11 +65,12 @@
             this.buttonSave.Size = new System.Drawing.Size(96, 25);
             this.buttonSave.TabIndex = 2;
             this.buttonSave.Text = "Сохранить";
-            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
             // buttonCancel
             // 
+            this.buttonCancel.BackColor = System.Drawing.Color.Brown;
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCancel.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonCancel.Location = new System.Drawing.Point(168, 95);
@@ -75,7 +78,7 @@
             this.buttonCancel.Size = new System.Drawing.Size(96, 25);
             this.buttonCancel.TabIndex = 3;
             this.buttonCancel.Text = "Отмена";
-            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.UseVisualStyleBackColor = false;
             this.buttonCancel.MouseCaptureChanged += new System.EventHandler(this.ButtonCancel_Click);
             // 
             // label1
@@ -108,6 +111,7 @@
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.textBoxComponent);
             this.Controls.Add(this.labelNameComponent);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ComponentForm";
             this.Text = "Комплектующее";
             this.Load += new System.EventHandler(this.ComponentForm_Load);
