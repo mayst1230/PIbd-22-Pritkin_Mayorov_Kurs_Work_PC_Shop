@@ -58,7 +58,7 @@ namespace ComputerEquipmentStoreView
 
         private void ButtonCreate_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<CommentCreateForm>();
+            var form = Container.Resolve<CommentForm>();
             form.ShowDialog();
             LoadData();
         }
@@ -67,7 +67,7 @@ namespace ComputerEquipmentStoreView
         {
             if (dataGridViewComments.SelectedRows.Count == 1)
             {
-                var form = Container.Resolve<CommentCreateForm>();
+                var form = Container.Resolve<CommentForm>();
                 int id = Convert.ToInt32(dataGridViewComments.SelectedRows[0].Cells[0].Value);
                 form.Id = id;
                 if (form.ShowDialog() == DialogResult.OK)

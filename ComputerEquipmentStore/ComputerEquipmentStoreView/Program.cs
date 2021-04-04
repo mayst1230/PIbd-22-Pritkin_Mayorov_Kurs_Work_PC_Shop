@@ -36,8 +36,14 @@ namespace ComputerEquipmentStoreView
             var currentContainer = new UnityContainer();
 
             currentContainer.RegisterType<IBuyerStorage, BuyerStorage>(new HierarchicalLifetimeManager());
-            
+            currentContainer.RegisterType<IPurchaseStorage, PurchaseStorage>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IAssemblyStorage, AssemblyStorage>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ICommentStorage, CommentStorage>(new HierarchicalLifetimeManager());
+
             currentContainer.RegisterType<BuyerLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<PurchaseStorage>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<AssemblyStorage>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<CommentStorage>(new HierarchicalLifetimeManager());
 
             return currentContainer;
         }

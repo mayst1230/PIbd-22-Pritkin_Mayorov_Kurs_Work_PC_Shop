@@ -50,7 +50,8 @@ namespace ComputerEquipmentStoreView
             this.labelRegistration.AutoSize = true;
             this.labelRegistration.Font = new System.Drawing.Font("MS Reference Sans Serif", 18F);
             this.labelRegistration.ForeColor = System.Drawing.Color.White;
-            this.labelRegistration.Location = new System.Drawing.Point(269, 9);
+            this.labelRegistration.Location = new System.Drawing.Point(179, 6);
+            this.labelRegistration.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelRegistration.Name = "labelRegistration";
             this.labelRegistration.Size = new System.Drawing.Size(252, 45);
             this.labelRegistration.TabIndex = 0;
@@ -61,7 +62,8 @@ namespace ComputerEquipmentStoreView
             this.labelLogin.AutoSize = true;
             this.labelLogin.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelLogin.ForeColor = System.Drawing.Color.White;
-            this.labelLogin.Location = new System.Drawing.Point(12, 74);
+            this.labelLogin.Location = new System.Drawing.Point(8, 48);
+            this.labelLogin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelLogin.Name = "labelLogin";
             this.labelLogin.Size = new System.Drawing.Size(74, 26);
             this.labelLogin.TabIndex = 1;
@@ -72,7 +74,8 @@ namespace ComputerEquipmentStoreView
             this.labelPassword.AutoSize = true;
             this.labelPassword.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F);
             this.labelPassword.ForeColor = System.Drawing.Color.White;
-            this.labelPassword.Location = new System.Drawing.Point(12, 147);
+            this.labelPassword.Location = new System.Drawing.Point(8, 96);
+            this.labelPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(86, 26);
             this.labelPassword.TabIndex = 2;
@@ -83,7 +86,8 @@ namespace ComputerEquipmentStoreView
             this.labelRepeatPassword.AutoSize = true;
             this.labelRepeatPassword.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F);
             this.labelRepeatPassword.ForeColor = System.Drawing.Color.White;
-            this.labelRepeatPassword.Location = new System.Drawing.Point(12, 218);
+            this.labelRepeatPassword.Location = new System.Drawing.Point(8, 142);
+            this.labelRepeatPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelRepeatPassword.Name = "labelRepeatPassword";
             this.labelRepeatPassword.Size = new System.Drawing.Size(199, 26);
             this.labelRepeatPassword.TabIndex = 3;
@@ -91,23 +95,26 @@ namespace ComputerEquipmentStoreView
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Location = new System.Drawing.Point(12, 103);
+            this.textBoxLogin.Location = new System.Drawing.Point(8, 67);
+            this.textBoxLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(344, 26);
+            this.textBoxLogin.Size = new System.Drawing.Size(231, 20);
             this.textBoxLogin.TabIndex = 4;
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(12, 176);
+            this.textBoxPassword.Location = new System.Drawing.Point(8, 114);
+            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(344, 26);
+            this.textBoxPassword.Size = new System.Drawing.Size(231, 20);
             this.textBoxPassword.TabIndex = 5;
             // 
             // textBoxRepeatPassword
             // 
-            this.textBoxRepeatPassword.Location = new System.Drawing.Point(12, 247);
+            this.textBoxRepeatPassword.Location = new System.Drawing.Point(8, 161);
+            this.textBoxRepeatPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxRepeatPassword.Name = "textBoxRepeatPassword";
-            this.textBoxRepeatPassword.Size = new System.Drawing.Size(344, 26);
+            this.textBoxRepeatPassword.Size = new System.Drawing.Size(231, 20);
             this.textBoxRepeatPassword.TabIndex = 6;
             // 
             // ButtonRegister
@@ -117,9 +124,10 @@ namespace ComputerEquipmentStoreView
             this.ButtonRegister.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ButtonRegister.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F);
             this.ButtonRegister.ForeColor = System.Drawing.Color.White;
-            this.ButtonRegister.Location = new System.Drawing.Point(16, 312);
+            this.ButtonRegister.Location = new System.Drawing.Point(11, 203);
+            this.ButtonRegister.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonRegister.Name = "ButtonRegister";
-            this.ButtonRegister.Size = new System.Drawing.Size(248, 39);
+            this.ButtonRegister.Size = new System.Drawing.Size(228, 43);
             this.ButtonRegister.TabIndex = 7;
             this.ButtonRegister.Text = "Зарегестрироваться";
             this.ButtonRegister.UseVisualStyleBackColor = false;
@@ -132,9 +140,10 @@ namespace ComputerEquipmentStoreView
             this.ButtonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonCancel.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F);
             this.ButtonCancel.ForeColor = System.Drawing.Color.White;
-            this.ButtonCancel.Location = new System.Drawing.Point(300, 312);
+            this.ButtonCancel.Location = new System.Drawing.Point(265, 212);
+            this.ButtonCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonCancel.Name = "ButtonCancel";
-            this.ButtonCancel.Size = new System.Drawing.Size(105, 39);
+            this.ButtonCancel.Size = new System.Drawing.Size(98, 34);
             this.ButtonCancel.TabIndex = 8;
             this.ButtonCancel.Text = "Отмена";
             this.ButtonCancel.UseVisualStyleBackColor = false;
@@ -143,19 +152,20 @@ namespace ComputerEquipmentStoreView
             // pictureBoxLogo
             // 
             this.pictureBoxLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLogo.Image")));
-            this.pictureBoxLogo.Location = new System.Drawing.Point(492, 89);
+            this.pictureBoxLogo.Location = new System.Drawing.Point(328, 58);
+            this.pictureBoxLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(231, 231);
+            this.pictureBoxLogo.Size = new System.Drawing.Size(154, 150);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxLogo.TabIndex = 9;
             this.pictureBoxLogo.TabStop = false;
             // 
             // RegistrationFormBuyer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ClientSize = new System.Drawing.Size(800, 431);
+            this.ClientSize = new System.Drawing.Size(533, 280);
             this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.ButtonCancel);
             this.Controls.Add(this.ButtonRegister);
@@ -166,6 +176,7 @@ namespace ComputerEquipmentStoreView
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.labelRegistration);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "RegistrationFormBuyer";
             this.Text = "Форма регистрации покупателя";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
