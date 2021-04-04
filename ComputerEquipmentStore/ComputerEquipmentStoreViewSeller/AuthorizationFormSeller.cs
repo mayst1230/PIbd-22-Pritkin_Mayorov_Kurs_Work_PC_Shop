@@ -50,28 +50,19 @@ namespace ComputerEquipmentStoreViewSeller
             }
             else
             {
-<<<<<<< HEAD
-                if (textBoxLogin.Text == login  && textBoxPassword.Text == password)
+                if (user != null && user.Count > 0)
                 {
-                    if (user != null && user.Count > 0)
-                    {
-                        var currentSeller = user[0];
-                        Program.Seller = currentSeller;
-                        var MainFormSeller = Container.Resolve<MainFormSeller>();
-                        MainFormSeller.Show();
-                        var AuthorizationFormSeller = Container.Resolve<AuthorizationFormSeller>();
-                        AuthorizationFormSeller.Close();
-                    }
+                    var currentSeller = user[0];
+                    Program.Seller = currentSeller;
+                    var MainFormSeller = Container.Resolve<MainFormSeller>();
+                    MainFormSeller.Show();
+                    var AuthorizationFormSeller = Container.Resolve<AuthorizationFormSeller>();
+                    AuthorizationFormSeller.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Неверно введен пароль или логин", "Ошибка", MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                    MessageBox.Show("Неверно введен пароль или логин", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-=======
-                MessageBox.Show("Неверно введен пароль или логин", "Ошибка", MessageBoxButtons.OK,
-               MessageBoxIcon.Error);
->>>>>>> 28e011a374479cf7818d4b99658d289e2cad8ddb
             }
         }
 
