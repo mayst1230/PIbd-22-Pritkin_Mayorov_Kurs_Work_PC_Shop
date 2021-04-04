@@ -39,7 +39,8 @@ namespace ComputerEquipmentStoreView
         /// <param name="e"></param> данные о событии
         private void ButtonToAssembly_Click(object sender, EventArgs e)
         {
-
+            var form = Container.Resolve<AssembliesForm>();
+            form.ShowDialog();
         }
 
         /// <summary>

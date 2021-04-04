@@ -147,17 +147,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssembliesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssembliesForm.Designer.cs">
+      <DependentUpon>AssembliesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssemblyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssemblyForm.Designer.cs">
+      <DependentUpon>AssemblyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AuthorizationFormBuyer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AuthorizationFormBuyer.Designer.cs">
       <DependentUpon>AuthorizationFormBuyer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="CommentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="CommentForm.Designer.cs">
+      <DependentUpon>CommentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CommentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommentsForm.Designer.cs">
+      <DependentUpon>CommentsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainFormBuyer.cs">
       <SubType>Form</SubType>
@@ -173,14 +191,38 @@
     <Compile Include="PurchaseForm.Designer.cs">
       <DependentUpon>PurchaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PurchaseProductsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseProductsForm.Designer.cs">
+      <DependentUpon>PurchaseProductsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasesForm.Designer.cs">
+      <DependentUpon>PurchasesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegistrationFormBuyer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RegistrationFormBuyer.Designer.cs">
       <DependentUpon>RegistrationFormBuyer.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AssembliesForm.resx">
+      <DependentUpon>AssembliesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssemblyForm.resx">
+      <DependentUpon>AssemblyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AuthorizationFormBuyer.resx">
       <DependentUpon>AuthorizationFormBuyer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommentForm.resx">
+      <DependentUpon>CommentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommentsForm.resx">
+      <DependentUpon>CommentsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainFormBuyer.resx">
       <DependentUpon>MainFormBuyer.cs</DependentUpon>
@@ -196,6 +238,12 @@
     </Compile>
     <EmbeddedResource Include="PurchaseForm.resx">
       <DependentUpon>PurchaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseProductsForm.resx">
+      <DependentUpon>PurchaseProductsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasesForm.resx">
+      <DependentUpon>PurchasesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrationFormBuyer.resx">
       <DependentUpon>RegistrationFormBuyer.cs</DependentUpon>
