@@ -24,10 +24,10 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
         public DateTime DatePurchase { get; set; }
 
         //Сборки находящиеся в этой покупке
-        public Dictionary<int, (string, int)> Assemblies { get; set; }
+        public Dictionary<int, (string, int, decimal)> Assemblies { get; set; }
 
         //Товары находящиеся в этой покупке
-        public Dictionary<int, (string, int)> Products { get; set; }
+        public Dictionary<int, (string, int, decimal)> Products { get; set; }
 
     }
 }

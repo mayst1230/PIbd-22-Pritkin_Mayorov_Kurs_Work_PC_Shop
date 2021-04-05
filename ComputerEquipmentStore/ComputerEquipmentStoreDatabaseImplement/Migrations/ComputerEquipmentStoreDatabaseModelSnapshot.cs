@@ -237,6 +237,9 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                     b.Property<DateTime>("DatePurchase")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("PurchaseName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("TotalCost")
                         .HasColumnType("decimal(18,2)");
 
@@ -275,6 +278,12 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");

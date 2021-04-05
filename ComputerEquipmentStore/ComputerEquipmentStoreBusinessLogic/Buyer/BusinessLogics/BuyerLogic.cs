@@ -13,7 +13,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
         {
             _buyerStorage = buyerStorage;
         }
-        public List<BuyerViewModel> Read(BuyerBindingModel model)
+        public List<BuyerViewModel> Read(BuyerBindingModel model) 
         {
             if (model == null)
             {

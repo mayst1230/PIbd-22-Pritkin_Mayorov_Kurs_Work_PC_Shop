@@ -10,6 +10,8 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
         //ID покупки
         public int Id { get; set; }
 
+        public string PurchaseName { get; set; }
+
         //Общая стоимость покупки
         [Required]
         public decimal TotalCost { get; set; }

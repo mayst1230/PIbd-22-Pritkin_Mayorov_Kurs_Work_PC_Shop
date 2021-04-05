@@ -50,8 +50,7 @@ namespace ComputerEquipmentStoreViewSeller
             }
             else
             {
-                MessageBox.Show("Неверно введен пароль или логин", "Ошибка", MessageBoxButtons.OK,
-               MessageBoxIcon.Error);
+                    MessageBox.Show("Неверно введен пароль или логин", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

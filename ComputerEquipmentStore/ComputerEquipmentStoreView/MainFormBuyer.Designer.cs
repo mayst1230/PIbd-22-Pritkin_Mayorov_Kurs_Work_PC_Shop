@@ -1,7 +1,7 @@
 ﻿
 namespace ComputerEquipmentStoreView
 {
-    partial class MainBuyerForm
+    partial class MainFormBuyer
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace ComputerEquipmentStoreView
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainBuyerForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFormBuyer));
             this.ButtonToPurchase = new System.Windows.Forms.Button();
             this.ButtonToComment = new System.Windows.Forms.Button();
             this.ButtonGetList = new System.Windows.Forms.Button();
@@ -49,9 +49,10 @@ namespace ComputerEquipmentStoreView
             this.ButtonToPurchase.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ButtonToPurchase.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F);
             this.ButtonToPurchase.ForeColor = System.Drawing.Color.White;
-            this.ButtonToPurchase.Location = new System.Drawing.Point(12, 12);
+            this.ButtonToPurchase.Location = new System.Drawing.Point(8, 8);
+            this.ButtonToPurchase.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonToPurchase.Name = "ButtonToPurchase";
-            this.ButtonToPurchase.Size = new System.Drawing.Size(248, 39);
+            this.ButtonToPurchase.Size = new System.Drawing.Size(165, 25);
             this.ButtonToPurchase.TabIndex = 12;
             this.ButtonToPurchase.Text = "Оформить покупку";
             this.ButtonToPurchase.UseVisualStyleBackColor = false;
@@ -64,9 +65,10 @@ namespace ComputerEquipmentStoreView
             this.ButtonToComment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ButtonToComment.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F);
             this.ButtonToComment.ForeColor = System.Drawing.Color.White;
-            this.ButtonToComment.Location = new System.Drawing.Point(444, 12);
+            this.ButtonToComment.Location = new System.Drawing.Point(296, 8);
+            this.ButtonToComment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonToComment.Name = "ButtonToComment";
-            this.ButtonToComment.Size = new System.Drawing.Size(344, 39);
+            this.ButtonToComment.Size = new System.Drawing.Size(229, 25);
             this.ButtonToComment.TabIndex = 13;
             this.ButtonToComment.Text = "Комментарий к сборкам";
             this.ButtonToComment.UseVisualStyleBackColor = false;
@@ -79,9 +81,10 @@ namespace ComputerEquipmentStoreView
             this.ButtonGetList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ButtonGetList.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F);
             this.ButtonGetList.ForeColor = System.Drawing.Color.White;
-            this.ButtonGetList.Location = new System.Drawing.Point(12, 57);
+            this.ButtonGetList.Location = new System.Drawing.Point(8, 37);
+            this.ButtonGetList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonGetList.Name = "ButtonGetList";
-            this.ButtonGetList.Size = new System.Drawing.Size(306, 39);
+            this.ButtonGetList.Size = new System.Drawing.Size(204, 25);
             this.ButtonGetList.TabIndex = 14;
             this.ButtonGetList.Text = "Получить список курсов";
             this.ButtonGetList.UseVisualStyleBackColor = false;
@@ -94,9 +97,10 @@ namespace ComputerEquipmentStoreView
             this.ButtonToAssembly.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ButtonToAssembly.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F);
             this.ButtonToAssembly.ForeColor = System.Drawing.Color.White;
-            this.ButtonToAssembly.Location = new System.Drawing.Point(266, 12);
+            this.ButtonToAssembly.Location = new System.Drawing.Point(177, 8);
+            this.ButtonToAssembly.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonToAssembly.Name = "ButtonToAssembly";
-            this.ButtonToAssembly.Size = new System.Drawing.Size(172, 39);
+            this.ButtonToAssembly.Size = new System.Drawing.Size(115, 25);
             this.ButtonToAssembly.TabIndex = 15;
             this.ButtonToAssembly.Text = "Сборки";
             this.ButtonToAssembly.UseVisualStyleBackColor = false;
@@ -109,9 +113,10 @@ namespace ComputerEquipmentStoreView
             this.ButtonGetReport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ButtonGetReport.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F);
             this.ButtonGetReport.ForeColor = System.Drawing.Color.White;
-            this.ButtonGetReport.Location = new System.Drawing.Point(324, 57);
+            this.ButtonGetReport.Location = new System.Drawing.Point(216, 37);
+            this.ButtonGetReport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonGetReport.Name = "ButtonGetReport";
-            this.ButtonGetReport.Size = new System.Drawing.Size(247, 39);
+            this.ButtonGetReport.Size = new System.Drawing.Size(165, 25);
             this.ButtonGetReport.TabIndex = 16;
             this.ButtonGetReport.Text = "Получить отчет";
             this.ButtonGetReport.UseVisualStyleBackColor = false;
@@ -124,9 +129,10 @@ namespace ComputerEquipmentStoreView
             this.ButtonRecomendations.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ButtonRecomendations.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F);
             this.ButtonRecomendations.ForeColor = System.Drawing.Color.White;
-            this.ButtonRecomendations.Location = new System.Drawing.Point(577, 57);
+            this.ButtonRecomendations.Location = new System.Drawing.Point(385, 37);
+            this.ButtonRecomendations.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonRecomendations.Name = "ButtonRecomendations";
-            this.ButtonRecomendations.Size = new System.Drawing.Size(211, 39);
+            this.ButtonRecomendations.Size = new System.Drawing.Size(141, 25);
             this.ButtonRecomendations.TabIndex = 17;
             this.ButtonRecomendations.Text = "Рекомендации";
             this.ButtonRecomendations.UseVisualStyleBackColor = false;
@@ -138,9 +144,10 @@ namespace ComputerEquipmentStoreView
             this.pictureBoxLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBoxLogo.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBoxLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLogo.Image")));
-            this.pictureBoxLogo.Location = new System.Drawing.Point(509, 163);
+            this.pictureBoxLogo.Location = new System.Drawing.Point(339, 106);
+            this.pictureBoxLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(207, 211);
+            this.pictureBoxLogo.Size = new System.Drawing.Size(138, 137);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxLogo.TabIndex = 18;
             this.pictureBoxLogo.TabStop = false;
@@ -150,7 +157,8 @@ namespace ComputerEquipmentStoreView
             this.labelTiZ.AutoSize = true;
             this.labelTiZ.Font = new System.Drawing.Font("Segoe Print", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelTiZ.ForeColor = System.Drawing.Color.White;
-            this.labelTiZ.Location = new System.Drawing.Point(59, 207);
+            this.labelTiZ.Location = new System.Drawing.Point(39, 135);
+            this.labelTiZ.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTiZ.Name = "labelTiZ";
             this.labelTiZ.Size = new System.Drawing.Size(159, 79);
             this.labelTiZ.TabIndex = 19;
@@ -161,18 +169,19 @@ namespace ComputerEquipmentStoreView
             this.labelProgrammer.AutoSize = true;
             this.labelProgrammer.Font = new System.Drawing.Font("Segoe Print", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelProgrammer.ForeColor = System.Drawing.Color.White;
-            this.labelProgrammer.Location = new System.Drawing.Point(59, 273);
+            this.labelProgrammer.Location = new System.Drawing.Point(39, 177);
+            this.labelProgrammer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelProgrammer.Name = "labelProgrammer";
             this.labelProgrammer.Size = new System.Drawing.Size(360, 79);
             this.labelProgrammer.TabIndex = 20;
             this.labelProgrammer.Text = "программист";
             // 
-            // MainBuyerForm
+            // MainFormBuyer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(533, 292);
             this.Controls.Add(this.labelProgrammer);
             this.Controls.Add(this.labelTiZ);
             this.Controls.Add(this.pictureBoxLogo);
@@ -182,7 +191,8 @@ namespace ComputerEquipmentStoreView
             this.Controls.Add(this.ButtonGetList);
             this.Controls.Add(this.ButtonToComment);
             this.Controls.Add(this.ButtonToPurchase);
-            this.Name = "MainBuyerForm";
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "MainFormBuyer";
             this.Text = "Основная форма покупателя";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainBuyerForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();

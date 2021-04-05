@@ -62,6 +62,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    PurchaseName = table.Column<string>(nullable: true),
                     TotalCost = table.Column<decimal>(nullable: false),
                     DatePurchase = table.Column<DateTime>(nullable: false),
                     BuyerId = table.Column<int>(nullable: false)
@@ -264,7 +265,9 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PurchaseId = table.Column<int>(nullable: false),
-                    ProductId = table.Column<int>(nullable: false)
+                    ProductId = table.Column<int>(nullable: false),
+                    Price = table.Column<decimal>(nullable: false),
+                    Count = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
