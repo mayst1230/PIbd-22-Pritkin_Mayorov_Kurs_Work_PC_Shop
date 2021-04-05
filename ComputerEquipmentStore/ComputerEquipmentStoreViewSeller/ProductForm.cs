@@ -137,11 +137,6 @@ namespace ComputerEquipmentStoreViewSeller
                 MessageBox.Show("Заполните цену", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (productComponents == null || productComponents.Count == 0)
-            {
-                MessageBox.Show("Заполните комплектующее", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             try
             {
                 logic.CreateOrUpdate(new ProductBindingModel
