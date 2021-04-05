@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using Microsoft.EntityFrameworkCore;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
@@ -20,14 +20,19 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         {
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                return context.Purchases.Select(rec => new PurchaseViewModel
-                {
-                    Id = rec.Id,
-                    TotalCost = rec.TotalCost,
-                    DatePurchase = rec.DatePurchase,
-                    BuyerId = rec.BuyerId
-                })
-                .ToList();
+                return context.Purchases.Include(rec => rec.PurchaseProducts)
+                    .ThenInclude(rec => rec.Product)
+                    .Include(rec => rec.Buyer)
+                    .ToList()
+                    .Select(rec => new PurchaseViewModel
+                    {
+                        Id = rec.Id,
+                        PurchaseName = rec.PurchaseName,
+                        BuyerId = rec.BuyerId,
+                        TotalCost = rec.TotalCost,
+                        DatePurchase = rec.DatePurchase,
+                        Products = rec.PurchaseProducts.ToDictionary(recCSP => recCSP.ProductId, recCSP => (recCSP.Product?.ProductName, recCSP.Count, recCSP.Price))
+                    }).ToList();
             }
         }
 
@@ -44,16 +49,20 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             }
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                return context.Purchases
-                .Where(rec => rec.Id.Equals(model.Id))
-                .Select(rec => new PurchaseViewModel
-                {
-                    Id = rec.Id,
-                    TotalCost = rec.TotalCost,
-                    DatePurchase = rec.DatePurchase,
-                    BuyerId = rec.BuyerId
-                })
-                .ToList();
+                return context.Purchases.Include(rec => rec.PurchaseProducts)
+                    .ThenInclude(rec => rec.Product)
+                    .Include(rec => rec.Buyer)
+                    .Where(rec => rec.PurchaseName.Contains(model.PurchaseName))
+                    .ToList()
+                    .Select(rec => new PurchaseViewModel
+                    {
+                        Id = rec.Id,
+                        PurchaseName = rec.PurchaseName,
+                        BuyerId = rec.BuyerId,
+                        TotalCost = rec.TotalCost,
+                        DatePurchase = rec.DatePurchase,
+                        Products = rec.PurchaseProducts.ToDictionary(recCSP => recCSP.ProductId, recCSP => (recCSP.Product?.ProductName, recCSP.Count, recCSP.Price))
+                    }).ToList();
             }
         }
 
@@ -70,17 +79,21 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             }
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                var component = context.Purchases.FirstOrDefault(
-                    rec => rec.Id == model.Id);
-                return component != null ?
+                var purchase = context.Purchases.Include(rec => rec.PurchaseProducts)
+                    .ThenInclude(rec => rec.Product)
+                    .Include(rec => rec.Buyer)
+                    .FirstOrDefault(rec => rec.Id == model.Id || rec.PurchaseName == model.PurchaseName);
+                return purchase != null ?
                 new PurchaseViewModel
                 {
-                    Id = component.Id,
-                    TotalCost = component.TotalCost,
-                    DatePurchase = component.DatePurchase,
-                    BuyerId = component.BuyerId
-                }
-                : null;
+                    Id = purchase.Id,
+                    PurchaseName = purchase.PurchaseName,
+                    BuyerId = purchase.BuyerId,
+                    TotalCost = purchase.TotalCost,
+                    DatePurchase = purchase.DatePurchase,
+                    Products = purchase.PurchaseProducts.ToDictionary(recCSP => recCSP.ProductId, recCSP => (recCSP.Product?.ProductName, recCSP.Count, recCSP.Price))
+                } :
+                null;
             }
         }
 
@@ -88,8 +101,19 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         {
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                context.Purchases.Add(CreateModel(model, new Purchase()));
-                context.SaveChanges();
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        CreateModel(model, new Purchase(), context);
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
             }
         }
 
@@ -97,13 +121,24 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         {
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                var element = context.Purchases.FirstOrDefault(rec => rec.Id == model.Id);
-                if (element == null)
+                using (var transaction = context.Database.BeginTransaction())
                 {
-                    throw new Exception("Элемент не найден");
+                    try
+                    {
+                        var element = context.Purchases.FirstOrDefault(rec => rec.Id == model.Id || rec.PurchaseName == model.PurchaseName);
+                        if (element == null)
+                        {
+                            throw new Exception("Покупка не найдена");
+                        }
+                        CreateModel(model, element, context);
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
                 }
-                CreateModel(model, element);
-                context.SaveChanges();
             }
         }
 
@@ -123,7 +158,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                 }
                 else
                 {
-                    throw new Exception("Элемент не найден");
+                    throw new Exception("Покупка не найдена");
                 }
             }
         }
@@ -134,11 +169,49 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         /// <param name="model"></param>
         /// <param name="purchase"></param>
         /// <returns></returns>
-        private Purchase CreateModel(PurchaseBindingModel model, Purchase purchase)
+        public Purchase CreateModel(PurchaseBindingModel model, Purchase purchase, ComputerEquipmentStoreDatabase context)
         {
+            purchase.PurchaseName = model.PurchaseName;
+            purchase.BuyerId = model.BuyerId;
             purchase.TotalCost = model.TotalCost;
             purchase.DatePurchase = model.DatePurchase;
-            purchase.BuyerId = model.BuyerId;
+            if (purchase.Id == 0)
+            {
+                context.Purchases.Add(purchase);
+                context.SaveChanges();
+            }
+            if (model.Id.HasValue)
+            {
+                List<PurchaseProduct> purchaseProducts = context.PurchaseProducts.Where(rec => rec.PurchaseId == model.Id.Value).ToList();
+                // удалили те, которых нет в модели
+                context.PurchaseProducts.RemoveRange(purchaseProducts.Where(rec => !model.Products.ContainsKey(rec.ProductId)).ToList());
+                //обновляем кол-во и цену у записей, которые существуют
+                foreach (var updateProducts in purchaseProducts)
+                {
+                    if (model.Products.ContainsKey(updateProducts.ProductId))
+                    {
+                        updateProducts.Count =
+                        model.Products[updateProducts.ProductId].Item2;
+                        updateProducts.Price =
+                        model.Products[updateProducts.ProductId].Item3;
+                        model.Products.Remove(updateProducts.ProductId);
+                    }
+                }
+                context.SaveChanges();
+            }
+            // добавили новые
+            foreach (KeyValuePair<int, (string, int, decimal)> CSP in model.Products)
+            {
+                context.PurchaseProducts.Add(new PurchaseProduct
+                {
+                    PurchaseId = purchase.Id,
+                    ProductId = CSP.Key,
+                    Count = CSP.Value.Item2,
+                    Price = CSP.Value.Item3
+
+                });
+                context.SaveChanges();
+            }
             return purchase;
         }
     }

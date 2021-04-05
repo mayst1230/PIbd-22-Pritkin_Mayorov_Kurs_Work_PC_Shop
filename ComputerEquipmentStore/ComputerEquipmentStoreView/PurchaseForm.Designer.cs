@@ -29,22 +29,24 @@ namespace ComputerEquipmentStoreView
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelNamePurhase = new System.Windows.Forms.Label();
             this.labelDatePurchase = new System.Windows.Forms.Label();
             this.textBoxNamePurchase = new System.Windows.Forms.TextBox();
             this.textBoxDatePurchase = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
+            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ButtonRefresh = new System.Windows.Forms.Button();
             this.ButtonDelete = new System.Windows.Forms.Button();
             this.ButtonChange = new System.Windows.Forms.Button();
             this.ButtonAddProduct = new System.Windows.Forms.Button();
             this.ButtonSaveProduct = new System.Windows.Forms.Button();
             this.ButtonCancel = new System.Windows.Forms.Button();
-            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
             this.SuspendLayout();
@@ -108,6 +110,8 @@ namespace ComputerEquipmentStoreView
             // 
             // dataGridViewProducts
             // 
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewProducts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnId,
@@ -118,9 +122,42 @@ namespace ComputerEquipmentStoreView
             this.dataGridViewProducts.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewProducts.Name = "dataGridViewProducts";
             this.dataGridViewProducts.RowHeadersWidth = 62;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewProducts.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewProducts.RowTemplate.Height = 28;
             this.dataGridViewProducts.Size = new System.Drawing.Size(680, 323);
             this.dataGridViewProducts.TabIndex = 20;
+            // 
+            // ColumnId
+            // 
+            this.ColumnId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnId.HeaderText = "ID";
+            this.ColumnId.MinimumWidth = 8;
+            this.ColumnId.Name = "ColumnId";
+            this.ColumnId.Visible = false;
+            // 
+            // ColumnProductName
+            // 
+            this.ColumnProductName.FillWeight = 300F;
+            this.ColumnProductName.HeaderText = "Название продукта";
+            this.ColumnProductName.MinimumWidth = 8;
+            this.ColumnProductName.Name = "ColumnProductName";
+            this.ColumnProductName.Width = 300;
+            // 
+            // ColumnCount
+            // 
+            this.ColumnCount.HeaderText = "Количество";
+            this.ColumnCount.MinimumWidth = 8;
+            this.ColumnCount.Name = "ColumnCount";
+            this.ColumnCount.Width = 150;
+            // 
+            // ColumnPrice
+            // 
+            this.ColumnPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnPrice.FillWeight = 300F;
+            this.ColumnPrice.HeaderText = "Цена";
+            this.ColumnPrice.MinimumWidth = 8;
+            this.ColumnPrice.Name = "ColumnPrice";
             // 
             // ButtonRefresh
             // 
@@ -205,37 +242,6 @@ namespace ComputerEquipmentStoreView
             this.ButtonCancel.Text = "Отмена";
             this.ButtonCancel.UseVisualStyleBackColor = false;
             this.ButtonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
-            // 
-            // ColumnId
-            // 
-            this.ColumnId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnId.HeaderText = "ID";
-            this.ColumnId.MinimumWidth = 8;
-            this.ColumnId.Name = "ColumnId";
-            this.ColumnId.Visible = false;
-            // 
-            // ColumnProductName
-            // 
-            this.ColumnProductName.FillWeight = 300F;
-            this.ColumnProductName.HeaderText = "Название продукта";
-            this.ColumnProductName.MinimumWidth = 8;
-            this.ColumnProductName.Name = "ColumnProductName";
-            this.ColumnProductName.Width = 300;
-            // 
-            // ColumnCount
-            // 
-            this.ColumnCount.HeaderText = "Количество";
-            this.ColumnCount.MinimumWidth = 8;
-            this.ColumnCount.Name = "ColumnCount";
-            this.ColumnCount.Width = 150;
-            // 
-            // ColumnPrice
-            // 
-            this.ColumnPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnPrice.FillWeight = 300F;
-            this.ColumnPrice.HeaderText = "Цена";
-            this.ColumnPrice.MinimumWidth = 8;
-            this.ColumnPrice.Name = "ColumnPrice";
             // 
             // PurchaseForm
             // 

@@ -44,36 +44,20 @@ namespace ComputerEquipmentStoreView
                 Password = textBoxPassword.Text
             });
 
-            if (buyer != null)
+            if (buyer != null && buyer.Count > 0)
             {
-                try
-                {
-                    /*
-                     * 
-                     * 
-                     * 
-                     * 
-                     * 
-                     * 
-                     */
-
-                    var currentBuyer = buyer[0];
-                    Program.Buyer = currentBuyer;
-                    var MainFormBuyer = Container.Resolve<MainFormBuyer>();
-                    MainFormBuyer.Show();
-
-                    MessageBox.Show("Авторизация проверена!", "Info");
-                }
-                catch (Exception ex)
-                {
-                    //MessageBox.Show("Неверно введен пароль или логин", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    MessageBox.Show(ex.Message, "Error");
-                }
-
-
-                
+                var currentBuyer = buyer[0];
+                Program.Buyer = currentBuyer;
+                var MainFormBuyer = Container.Resolve<MainFormBuyer>();
+                MainFormBuyer.Show();
+            }
+            else
+            {
+                MessageBox.Show("Неверно введен пароль или логин", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+    
+
 
         /// <summary>
         /// Обработчик нажатия на кнопку отмены авторизации

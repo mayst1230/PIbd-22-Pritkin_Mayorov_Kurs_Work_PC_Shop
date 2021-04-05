@@ -6,7 +6,9 @@ using System.Windows.Forms;
 using Unity;
 using Unity.Lifetime;
 using ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces;
+using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
 using ComputerEquipmentStoreDatabaseImplement.Implements;
+using ComputerStoreEquipmentDatabaseImplement.Implements;
 using ComputerEquipmentStoreBusinessLogic.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
@@ -39,11 +41,13 @@ namespace ComputerEquipmentStoreView
             currentContainer.RegisterType<IPurchaseStorage, PurchaseStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IAssemblyStorage, AssemblyStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ICommentStorage, CommentStorage>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IProductStorage, ProductStorage>(new HierarchicalLifetimeManager());
 
             currentContainer.RegisterType<BuyerLogic>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<PurchaseStorage>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<AssemblyStorage>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<CommentStorage>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<PurchaseLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<AssemblyLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<CommentLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ProductLogic>(new HierarchicalLifetimeManager());
 
             return currentContainer;
         }

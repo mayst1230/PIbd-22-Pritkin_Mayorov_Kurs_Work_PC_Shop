@@ -29,7 +29,8 @@ namespace ComputerEquipmentStoreView
         /// <param name="e"></param> данные о событии
         private void ButtonToPurchase_Click(object sender, EventArgs e)
         {
-
+            var form = Container.Resolve<PurchasesForm>();
+            form.ShowDialog();
         }
 
         /// <summary>
@@ -50,7 +51,8 @@ namespace ComputerEquipmentStoreView
         /// <param name="e"></param> данные о событии
         private void ButtonToComment_Click(object sender, EventArgs e)
         {
-
+            var form = Container.Resolve<CommentsForm>();
+            form.ShowDialog();
         }
 
         /// <summary>
@@ -60,7 +62,8 @@ namespace ComputerEquipmentStoreView
         /// <param name="e"></param> данные о событии
         private void ButtonGetList_Click(object sender, EventArgs e)
         {
-
+            var form = Container.Resolve<AssembliesForm>();
+            form.ShowDialog();
         }
 
         /// <summary>
@@ -70,7 +73,8 @@ namespace ComputerEquipmentStoreView
         /// <param name="e"></param> данные о событии
         private void ButtonGetReport_Click(object sender, EventArgs e)
         {
-
+            var form = Container.Resolve<AssembliesForm>();
+            form.ShowDialog();
         }
 
         /// <summary>

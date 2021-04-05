@@ -43,7 +43,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             using (var context = new ComputerEquipmentStoreDatabase())
             {
                 return context.Buyers
-                .Where(rec => rec.Id.Equals(model.Id))
+                .Where(rec => rec.Login.Equals(model.Login) && rec.Password.Equals(model.Password))
                 .Select(rec => new BuyerViewModel
                 {
                     Id = rec.Id,
