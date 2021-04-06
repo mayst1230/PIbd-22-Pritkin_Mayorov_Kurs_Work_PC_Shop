@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using Unity;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics;
+using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
+using System.Collections.Generic;
 
 namespace ComputerEquipmentStoreView
 {
@@ -23,6 +25,7 @@ namespace ComputerEquipmentStoreView
 
         private void AssembliesForm_Load(object sender, EventArgs e)
         {
+
             LoadData();
         }
 
@@ -94,6 +97,23 @@ namespace ComputerEquipmentStoreView
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void ButtonLink_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewAssemblies.SelectedRows.Count == 1)
+            {
+                var form = Container.Resolve<LinkAssemblyForm>();
+                int id = Convert.ToInt32(dataGridViewAssemblies.SelectedRows[0].Cells[0].Value);
+                form.Id = id;
+                form.AssemblyName = (string) dataGridViewAssemblies.SelectedRows[0].Cells[2].Value;
+                
+                
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    LoadData();
+                }
+            }
         }
     }
 }

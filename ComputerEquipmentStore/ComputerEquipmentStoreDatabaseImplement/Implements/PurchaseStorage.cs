@@ -197,6 +197,23 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                         model.Products.Remove(updateProducts.ProductId);
                     }
                 }
+
+                List<PurchaseAssembly> purchaseAssemblies = context.PurchaseAssemblies.Where(rec => rec.AssemblyId == model.Id.Value).ToList();
+                // удалили те, которых нет в модели
+                context.PurchaseAssemblies.RemoveRange(purchaseAssemblies.Where(rec => !model.Assemblies.ContainsKey(rec.AssemblyId)).ToList());
+                //обновляем кол-во и цену у записей, которые существуют
+                foreach (var updateAssemblies in purchaseAssemblies)
+                {
+                    if (model.Products.ContainsKey(updateAssemblies.AssemblyId))
+                    {
+                        updateAssemblies.Count =
+                        model.Assemblies[updateAssemblies.AssemblyId].Item2;
+                        updateAssemblies.Cost =
+                        model.Products[updateAssemblies.AssemblyId].Item3;
+                        model.Products.Remove(updateAssemblies.AssemblyId);
+                    }
+                }
+
                 context.SaveChanges();
             }
             // добавили новые
@@ -208,6 +225,19 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                     ProductId = CSP.Key,
                     Count = CSP.Value.Item2,
                     Price = CSP.Value.Item3
+
+                });
+                context.SaveChanges();
+            }
+
+            foreach (KeyValuePair<int, (string, int, decimal)> CSP in model.Assemblies)
+            {
+                context.PurchaseAssemblies.Add(new PurchaseAssembly
+                {
+                    PurchaseId = purchase.Id,
+                    AssemblyId = CSP.Key,
+                    Count = CSP.Value.Item2,
+                    Cost = CSP.Value.Item3
 
                 });
                 context.SaveChanges();

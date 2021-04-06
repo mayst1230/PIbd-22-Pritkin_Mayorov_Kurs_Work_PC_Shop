@@ -33,8 +33,8 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                     b.Property<int>("BuyerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Cost")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Cost")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

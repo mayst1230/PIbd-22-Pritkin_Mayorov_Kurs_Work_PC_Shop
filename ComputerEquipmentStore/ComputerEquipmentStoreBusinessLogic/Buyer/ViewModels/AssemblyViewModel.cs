@@ -14,7 +14,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels
         public string AssemblyName { get; set; }
 
         [DisplayName("Cтоимость")]
-        public int Cost { get; set; }
+        public decimal Cost { get; set; }
 
         public Dictionary<int, (string, int)> Components { get; set; }
     }

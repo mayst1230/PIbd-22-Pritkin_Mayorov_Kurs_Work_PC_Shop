@@ -42,7 +42,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BuyerId = table.Column<int>(nullable: false),
-                    Cost = table.Column<int>(nullable: false),
+                    Cost = table.Column<decimal>(nullable: false),
                     AssemblyName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
