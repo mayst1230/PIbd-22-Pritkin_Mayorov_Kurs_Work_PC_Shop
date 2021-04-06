@@ -260,6 +260,12 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                     b.Property<int>("AssemblyId")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("Cost")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
                     b.Property<int>("PurchaseId")
                         .HasColumnType("int");
 

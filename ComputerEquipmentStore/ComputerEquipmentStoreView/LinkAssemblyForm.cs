@@ -48,52 +48,12 @@ namespace ComputerEquipmentStoreView
                 comboBoxPurchase.DisplayMember = "PurchaseName";
                 comboBoxPurchase.ValueMember = "Id";
                 comboBoxPurchase.DataSource = list;
-                comboBoxPurchase.SelectedItem = null;
-            }
-
-
-            
-            comboBoxPurchase.SelectedIndex = 0;
-
-
-
-
-            if (comboBoxPurchase.SelectedValue != null)
-            {
-
-                MessageBox.Show(comboBoxPurchase.SelectedValue.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                try
-                {
-                    PurchaseViewModel view = purchaseLogic.Read(new PurchaseBindingModel
-                    {
-                        Id = (int)comboBoxPurchase.SelectedValue
-                    })?[0];
-                    if (view != null)
-                    {
-                        purchaseAssemblies = view.Assemblies;
-                        if (purchaseAssemblies == null)
-                        {
-                            MessageBox.Show("ВСЕ ТАКИ NULL", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                purchaseAssemblies = new Dictionary<int, (string, int, decimal)>();
-                MessageBox.Show("(int)comboBoxPurchase.SelectedValue == null", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-            
-            
+            }  
         }
 
-
+        /// <summary>
+        /// Подсчитать стоимость сборки (по комплектующим)
+        /// </summary>
         private void CalcSum()
         {
             if (!string.IsNullOrEmpty(textBoxCount.Text))
@@ -114,7 +74,11 @@ namespace ComputerEquipmentStoreView
             }
         }
 
-
+        /// <summary>
+        /// Привязать сборку к покупке
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonLinkAssembly_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxCount.Text))
@@ -127,17 +91,54 @@ namespace ComputerEquipmentStoreView
                 MessageBox.Show("Поле суммы почему то пусто", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            //purchaseAssemblies = new Dictionary<int, (string, int, decimal)>();
-
-            if (purchaseAssemblies.ContainsKey(id))
+            try
             {
-                purchaseAssemblies[id] = (AssemblyName, int.Parse(textBoxCount.Text), decimal.Parse(textBoxCost.Text));
+                PurchaseViewModel view = purchaseLogic.Read(new PurchaseBindingModel
+                {
+                    Id = int.Parse(comboBoxPurchase.SelectedValue.ToString())
+                })?[0];
+                if (view != null)
+                {
+                    if (purchaseAssemblies.ContainsKey(id))
+                    {
+                        purchaseAssemblies[id] = (AssemblyName, int.Parse(textBoxCount.Text), decimal.Parse(textBoxCost.Text));
+                        MessageBox.Show("Привязка id", "Привязка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        purchaseLogic.CreateOrUpdate(new PurchaseBindingModel
+                        {
+                            Id = view.Id,
+                            PurchaseName = view.PurchaseName,
+                            BuyerId = view.BuyerId,
+                            DatePurchase = view.DatePurchase,
+                            TotalCost = view.TotalCost,
+                            Products = view.Products,
+                            Assemblies = purchaseAssemblies,
+                        }); ;
+                        MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        purchaseAssemblies.Add(id, (AssemblyName, int.Parse(textBoxCount.Text), decimal.Parse(textBoxCost.Text)));
+                        MessageBox.Show("Привязка add", "Привязка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        purchaseLogic.CreateOrUpdate(new PurchaseBindingModel
+                        {
+                            Id = view.Id,
+                            PurchaseName = view.PurchaseName,
+                            BuyerId = view.BuyerId,
+                            DatePurchase = view.DatePurchase,
+                            TotalCost = view.TotalCost,
+                            Products = view.Products,
+                            Assemblies = purchaseAssemblies,
+                        }); ;
+                        MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                purchaseAssemblies.Add(id, (AssemblyName, int.Parse(textBoxCount.Text), decimal.Parse(textBoxCost.Text)));
-            }
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }   
         }
 
         private void ButtonCancel_Click(object sender, EventArgs e)
@@ -153,34 +154,27 @@ namespace ComputerEquipmentStoreView
 
         private void comboBoxPurchase_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxPurchase.SelectedValue != null)
-            {
 
-                MessageBox.Show("RRRRRRRRRRRRRRRRRRR" + comboBoxPurchase.SelectedValue.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                try
+
+            MessageBox.Show("При изменении индекса. " + comboBoxPurchase.SelectedValue.ToString(), "Текущий индекс", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                PurchaseViewModel view = purchaseLogic.Read(new PurchaseBindingModel
                 {
-                    PurchaseViewModel view = purchaseLogic.Read(new PurchaseBindingModel
+                    Id = int.Parse(comboBoxPurchase.SelectedValue.ToString())
+                })?[0];
+                if (view != null)
+                {
+                    purchaseAssemblies = view.Assemblies;
+                    if (purchaseAssemblies == null)
                     {
-                        Id = (int)comboBoxPurchase.SelectedValue
-                    })?[0];
-                    if (view != null)
-                    {
-                        purchaseAssemblies = view.Assemblies;
-                        if (purchaseAssemblies == null)
-                        {
-                            MessageBox.Show("RRRRRRRRRRRRRRВСЕ ТАКИ NULL", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        MessageBox.Show("При изменение индекса. purchaseAssemblies == null", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
-            else
+            catch (Exception ex)
             {
-                purchaseAssemblies = new Dictionary<int, (string, int, decimal)>();
-                MessageBox.Show("RRRRRRRRRRRR(int)comboBoxPurchase.SelectedValue == null", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

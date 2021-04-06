@@ -206,6 +206,7 @@ namespace ComputerEquipmentStoreView
                     PurchaseName = textBoxNamePurchase.Text,
                     DatePurchase = Convert.ToDateTime(dateTimePickerDatePurchase.Text),
                     Products = purchaseProducts,
+                    Assemblies = purchaseAssemblies,
 
 
 

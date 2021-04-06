@@ -22,6 +22,8 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             {
                 return context.Purchases.Include(rec => rec.PurchaseProducts)
                     .ThenInclude(rec => rec.Product)
+                    .Include(rec => rec.PurchaseAssemblies)
+                    .ThenInclude(rec => rec.Assembly)
                     .Include(rec => rec.Buyer)
                     .ToList()
                     .Select(rec => new PurchaseViewModel
@@ -31,7 +33,8 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                         BuyerId = rec.BuyerId,
                         TotalCost = rec.TotalCost,
                         DatePurchase = rec.DatePurchase,
-                        Products = rec.PurchaseProducts.ToDictionary(recCSP => recCSP.ProductId, recCSP => (recCSP.Product?.ProductName, recCSP.Count, recCSP.Price))
+                        Products = rec.PurchaseProducts.ToDictionary(recCSP => recCSP.ProductId, recCSP => (recCSP.Product?.ProductName, recCSP.Count, recCSP.Price)),
+                        Assemblies = rec.PurchaseAssemblies.ToDictionary(recCSP => recCSP.AssemblyId, recCSP => (recCSP.Assembly?.AssemblyName, recCSP.Count, recCSP.Cost))
                     }).ToList();
             }
         }
@@ -51,6 +54,8 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             {
                 return context.Purchases.Include(rec => rec.PurchaseProducts)
                     .ThenInclude(rec => rec.Product)
+                    .Include(rec => rec.PurchaseAssemblies)
+                    .ThenInclude(rec => rec.Assembly)
                     .Include(rec => rec.Buyer)
                     .Where(rec => rec.PurchaseName.Contains(model.PurchaseName))
                     .ToList()
@@ -61,7 +66,8 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                         BuyerId = rec.BuyerId,
                         TotalCost = rec.TotalCost,
                         DatePurchase = rec.DatePurchase,
-                        Products = rec.PurchaseProducts.ToDictionary(recCSP => recCSP.ProductId, recCSP => (recCSP.Product?.ProductName, recCSP.Count, recCSP.Price))
+                        Products = rec.PurchaseProducts.ToDictionary(recCSP => recCSP.ProductId, recCSP => (recCSP.Product?.ProductName, recCSP.Count, recCSP.Price)),
+                        Assemblies = rec.PurchaseAssemblies.ToDictionary(recCSP => recCSP.AssemblyId, recCSP => (recCSP.Assembly?.AssemblyName, recCSP.Count, recCSP.Cost))
                     }).ToList();
             }
         }
@@ -79,8 +85,11 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             }
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                var purchase = context.Purchases.Include(rec => rec.PurchaseProducts)
+                var purchase = context.Purchases
+                    .Include(rec => rec.PurchaseProducts)
                     .ThenInclude(rec => rec.Product)
+                    .Include(rec => rec.PurchaseAssemblies)
+                    .ThenInclude(rec => rec.Assembly)
                     .Include(rec => rec.Buyer)
                     .FirstOrDefault(rec => rec.Id == model.Id || rec.PurchaseName == model.PurchaseName);
                 return purchase != null ?
@@ -91,7 +100,8 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                     BuyerId = purchase.BuyerId,
                     TotalCost = purchase.TotalCost,
                     DatePurchase = purchase.DatePurchase,
-                    Products = purchase.PurchaseProducts.ToDictionary(recCSP => recCSP.ProductId, recCSP => (recCSP.Product?.ProductName, recCSP.Count, recCSP.Price))
+                    Products = purchase.PurchaseProducts.ToDictionary(recCSP => recCSP.ProductId, recCSP => (recCSP.Product?.ProductName, recCSP.Count, recCSP.Price)),
+                    Assemblies = purchase.PurchaseAssemblies.ToDictionary(recCSP => recCSP.AssemblyId, recCSP => (recCSP.Assembly?.AssemblyName, recCSP.Count, recCSP.Cost))
                 } :
                 null;
             }
@@ -184,17 +194,20 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             {
                 List<PurchaseProduct> purchaseProducts = context.PurchaseProducts.Where(rec => rec.PurchaseId == model.Id.Value).ToList();
                 // удалили те, которых нет в модели
-                context.PurchaseProducts.RemoveRange(purchaseProducts.Where(rec => !model.Products.ContainsKey(rec.ProductId)).ToList());
-                //обновляем кол-во и цену у записей, которые существуют
-                foreach (var updateProducts in purchaseProducts)
+
+                if (model.Products != null)
                 {
-                    if (model.Products.ContainsKey(updateProducts.ProductId))
+                    context.PurchaseProducts.RemoveRange(purchaseProducts.Where(rec => !model.Products.ContainsKey(rec.ProductId)).ToList());
+
+                    //обновляем кол-во и цену у записей, которые существуют
+                    foreach (var updateProducts in purchaseProducts)
                     {
-                        updateProducts.Count =
-                        model.Products[updateProducts.ProductId].Item2;
-                        updateProducts.Price =
-                        model.Products[updateProducts.ProductId].Item3;
-                        model.Products.Remove(updateProducts.ProductId);
+                        if (model.Products.ContainsKey(updateProducts.ProductId))
+                        {
+                            updateProducts.Count = model.Products[updateProducts.ProductId].Item2;
+                            updateProducts.Price = model.Products[updateProducts.ProductId].Item3;
+                            model.Products.Remove(updateProducts.ProductId);
+                        }
                     }
                 }
 
@@ -230,17 +243,20 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                 context.SaveChanges();
             }
 
-            foreach (KeyValuePair<int, (string, int, decimal)> CSP in model.Assemblies)
-            {
-                context.PurchaseAssemblies.Add(new PurchaseAssembly
-                {
-                    PurchaseId = purchase.Id,
-                    AssemblyId = CSP.Key,
-                    Count = CSP.Value.Item2,
-                    Cost = CSP.Value.Item3
+            if (model.Assemblies != null) {
 
-                });
-                context.SaveChanges();
+                foreach (KeyValuePair<int, (string, int, decimal)> CSP in model.Assemblies)
+                {
+                    context.PurchaseAssemblies.Add(new PurchaseAssembly
+                    {
+                        PurchaseId = purchase.Id,
+                        AssemblyId = CSP.Key,
+                        Count = CSP.Value.Item2,
+                        Cost = CSP.Value.Item3
+
+                    });
+                    context.SaveChanges();
+                }
             }
             return purchase;
         }
