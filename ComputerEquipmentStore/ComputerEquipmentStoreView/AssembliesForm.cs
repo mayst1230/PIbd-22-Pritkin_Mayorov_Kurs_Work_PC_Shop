@@ -35,10 +35,11 @@ namespace ComputerEquipmentStoreView
                 {
                     //посмотреть еще
                     dataGridViewAssemblies.DataSource = list;
-                    dataGridViewAssemblies.Columns[0].Visible = false;
-                    dataGridViewAssemblies.Columns[1].Visible = true;
-                    dataGridViewAssemblies.Columns[2].Visible = true;
-                    dataGridViewAssemblies.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridViewAssemblies.Columns[0].Visible = false;//ID сборки
+                    dataGridViewAssemblies.Columns[1].Visible = true;//ID покупателя
+                    dataGridViewAssemblies.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;//Название сборки
+                    dataGridViewAssemblies.Columns[3].Visible = true;//Стоимость сборки
+                    dataGridViewAssemblies.Columns[4].Visible = false;//Компоненты
                 }
             }
             catch (Exception ex)

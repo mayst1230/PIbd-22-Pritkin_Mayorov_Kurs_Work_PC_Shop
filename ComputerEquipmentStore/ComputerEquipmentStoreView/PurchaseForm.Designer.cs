@@ -34,7 +34,6 @@ namespace ComputerEquipmentStoreView
             this.labelNamePurhase = new System.Windows.Forms.Label();
             this.labelDatePurchase = new System.Windows.Forms.Label();
             this.textBoxNamePurchase = new System.Windows.Forms.TextBox();
-            this.textBoxDatePurchase = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +46,7 @@ namespace ComputerEquipmentStoreView
             this.ButtonAddProduct = new System.Windows.Forms.Button();
             this.ButtonSaveProduct = new System.Windows.Forms.Button();
             this.ButtonCancel = new System.Windows.Forms.Button();
+            this.dateTimePickerDatePurchase = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
             this.SuspendLayout();
@@ -82,14 +82,6 @@ namespace ComputerEquipmentStoreView
             this.textBoxNamePurchase.Name = "textBoxNamePurchase";
             this.textBoxNamePurchase.Size = new System.Drawing.Size(220, 20);
             this.textBoxNamePurchase.TabIndex = 13;
-            // 
-            // textBoxDatePurchase
-            // 
-            this.textBoxDatePurchase.Location = new System.Drawing.Point(657, 11);
-            this.textBoxDatePurchase.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxDatePurchase.Name = "textBoxDatePurchase";
-            this.textBoxDatePurchase.Size = new System.Drawing.Size(220, 20);
-            this.textBoxDatePurchase.TabIndex = 14;
             // 
             // groupBox1
             // 
@@ -243,16 +235,23 @@ namespace ComputerEquipmentStoreView
             this.ButtonCancel.UseVisualStyleBackColor = false;
             this.ButtonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
+            // dateTimePickerDatePurchase
+            // 
+            this.dateTimePickerDatePurchase.Location = new System.Drawing.Point(657, 15);
+            this.dateTimePickerDatePurchase.Name = "dateTimePickerDatePurchase";
+            this.dateTimePickerDatePurchase.Size = new System.Drawing.Size(220, 20);
+            this.dateTimePickerDatePurchase.TabIndex = 23;
+            // 
             // PurchaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(892, 464);
+            this.Controls.Add(this.dateTimePickerDatePurchase);
             this.Controls.Add(this.ButtonCancel);
             this.Controls.Add(this.ButtonSaveProduct);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBoxDatePurchase);
             this.Controls.Add(this.textBoxNamePurchase);
             this.Controls.Add(this.labelDatePurchase);
             this.Controls.Add(this.labelNamePurhase);
@@ -272,7 +271,6 @@ namespace ComputerEquipmentStoreView
         private System.Windows.Forms.Label labelNamePurhase;
         private System.Windows.Forms.Label labelDatePurchase;
         private System.Windows.Forms.TextBox textBoxNamePurchase;
-        private System.Windows.Forms.TextBox textBoxDatePurchase;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button ButtonRefresh;
         private System.Windows.Forms.Button ButtonDelete;
@@ -285,5 +283,6 @@ namespace ComputerEquipmentStoreView
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDatePurchase;
     }
 }

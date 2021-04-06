@@ -9,8 +9,10 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels
     {
         public int Id { get; set; }
 
+        [DisplayName("ID покупателя")]
         public int BuyerId { get; set; }
 
+        [DisplayName("Название покупки")]
         public string PurchaseName { get; set; }
 
         [DisplayName("Общая стоимость")]

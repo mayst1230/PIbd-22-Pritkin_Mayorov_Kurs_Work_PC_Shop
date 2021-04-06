@@ -55,5 +55,24 @@ namespace ComputerEquipmentStoreView
             DialogResult = DialogResult.Cancel;
             Close();
         }
+
+        private void AssemblyForm_Load(object sender, EventArgs e)
+        {
+            if (id.HasValue)
+            {
+                try
+                {
+                    var view = assemblyLogic.Read(new AssemblyBindingModel { Id = id })?[0];
+                    if (view != null)
+                    {
+                        textBoxNameAssembly.Text = view.AssemblyName;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

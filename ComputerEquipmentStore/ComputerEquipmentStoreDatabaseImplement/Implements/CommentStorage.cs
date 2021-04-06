@@ -26,7 +26,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                     Text = rec.Text,
                     DateComment = rec.DateComment,
                     BuyerId = rec.BuyerId,
-                    AssemblyId = rec.AssemblyId
+                    AssemblyId = rec.AssemblyId,
                 })
                 .ToList();
             }

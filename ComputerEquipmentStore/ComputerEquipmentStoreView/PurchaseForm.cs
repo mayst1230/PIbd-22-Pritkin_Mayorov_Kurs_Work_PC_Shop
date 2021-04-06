@@ -44,7 +44,7 @@ namespace ComputerEquipmentStoreView
                     if (view != null)
                     {
                         textBoxNamePurchase.Text = view.PurchaseName;
-                        textBoxDatePurchase.Text = view.DatePurchase.ToString();
+                        dateTimePickerDatePurchase.Text = view.DatePurchase.ToString();
                         purchaseProducts = view.Products;
                         LoadData();
                     }
@@ -161,7 +161,7 @@ namespace ComputerEquipmentStoreView
                 MessageBox.Show("Заполните название", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (string.IsNullOrEmpty(textBoxDatePurchase.Text))
+            if (string.IsNullOrEmpty(dateTimePickerDatePurchase.Text))
             {
                 MessageBox.Show("Заполните дату покупки", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -177,7 +177,7 @@ namespace ComputerEquipmentStoreView
                 {
                     Id = id,
                     PurchaseName = textBoxNamePurchase.Text,
-                    DatePurchase = Convert.ToDateTime(textBoxDatePurchase.Text),
+                    DatePurchase = Convert.ToDateTime(dateTimePickerDatePurchase.Text),
                     Products = purchaseProducts,
                     BuyerId = Program.Buyer.Id
                 });
