@@ -26,15 +26,16 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                          .Include(rec => rec.AssemblyComponents)
                          .ThenInclude(rec => rec.Component)
                          .Include(rec => rec.Buyer)
+                         .ToList()
                          .Select(rec => new AssemblyViewModel
                          {
                              Id = rec.Id,
                              Cost = rec.Cost,
                              AssemblyName = rec.AssemblyName,
                              BuyerId = rec.BuyerId,
-                             //Components = rec.AssemblyComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => (recCSP.Component.ComponentName, recCSP.Count, recCSP.Price))
+                             Components = rec.AssemblyComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => (recCSP.Component.ComponentName, recCSP.Count, recCSP.Price))
                          })
-                     .ToList();
+                        .ToList();
                 } 
                 else
                 {
@@ -43,13 +44,14 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                         .ThenInclude(rec => rec.Component)
                         .Include(rec => rec.Buyer)
                         .Where(rec => rec.BuyerId == BuyerId)
+                        .ToList()
                         .Select(rec => new AssemblyViewModel
                         {
                             Id = rec.Id,
                             Cost = rec.Cost,
                             AssemblyName = rec.AssemblyName,
                             BuyerId = rec.BuyerId,
-                            //Components = rec.AssemblyComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => (recCSP.Component.ComponentName, recCSP.Count, recCSP.Price))
+                            Components = rec.AssemblyComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => (recCSP.Component.ComponentName, recCSP.Count, recCSP.Price))
                         })
                     .ToList();
                 }
@@ -74,13 +76,14 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                     .ThenInclude(rec => rec.Component)
                     .Include(rec => rec.Buyer)
                     .Where(rec => rec.Id.Equals(model.Id))
+                    .ToList()
                     .Select(rec => new AssemblyViewModel
                     {
                         Id = rec.Id,
                         Cost = rec.Cost,
                         AssemblyName = rec.AssemblyName,
                         BuyerId = rec.BuyerId,
-                        //Components = rec.AssemblyComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => (recCSP.Component.ComponentName, recCSP.Count, recCSP.Price)),
+                        Components = rec.AssemblyComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => (recCSP.Component.ComponentName, recCSP.Count, recCSP.Price)),
 
                     })
                     .ToList();
@@ -222,7 +225,6 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                         ComponentId = CSP.Key,
                         Count = CSP.Value.Item2,
                         Price = CSP.Value.Item3
-
                     });
                     context.SaveChanges();
                 }
