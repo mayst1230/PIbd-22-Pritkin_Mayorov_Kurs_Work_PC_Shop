@@ -90,5 +90,11 @@ namespace ComputerEquipmentStoreViewSeller
         {
             LoadData();
         }
+
+        private void buttonAddComponentToAssembly_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<AssemblyComponentForm>();
+            form.ShowDialog();
+        }
     }
 }

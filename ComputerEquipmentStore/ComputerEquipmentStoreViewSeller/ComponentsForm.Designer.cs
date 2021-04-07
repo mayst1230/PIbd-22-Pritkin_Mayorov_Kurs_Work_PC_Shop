@@ -96,6 +96,7 @@
             this.buttonAddComponentToAssembly.TabIndex = 4;
             this.buttonAddComponentToAssembly.Text = "Привязка к сборке";
             this.buttonAddComponentToAssembly.UseVisualStyleBackColor = false;
+            this.buttonAddComponentToAssembly.Click += new System.EventHandler(this.buttonAddComponentToAssembly_Click);
             // 
             // dataGridViewComponents
             // 
