@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerEquipmentStoreDatab
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerEquipmentStoreBusinessLogic", "ComputerEquipmentStoreBusinessLogic\ComputerEquipmentStoreBusinessLogic.csproj", "{26F5131E-3631-43CC-9F60-A93D3C4B37F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerEquipmentStoreView", "ComputerEquipmentStoreView\ComputerEquipmentStoreView.csproj", "{E1C45D65-DDC0-4E25-A8C2-B842F0066544}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerEquipmentStoreViewBuyer", "ComputerEquipmentStoreView\ComputerEquipmentStoreViewBuyer.csproj", "{E1C45D65-DDC0-4E25-A8C2-B842F0066544}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerEquipmentStoreViewSeller", "ComputerEquipmentStoreViewSeller\ComputerEquipmentStoreViewSeller.csproj", "{214D1065-81A9-45C6-9089-449A2FB8DD85}"
 EndProject

@@ -31,10 +31,11 @@ namespace ComputerEquipmentStoreView
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelNamePurhase = new System.Windows.Forms.Label();
             this.labelDatePurchase = new System.Windows.Forms.Label();
             this.textBoxNamePurchase = new System.Windows.Forms.TextBox();
-            this.textBoxDatePurchase = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,8 +48,17 @@ namespace ComputerEquipmentStoreView
             this.ButtonAddProduct = new System.Windows.Forms.Button();
             this.ButtonSaveProduct = new System.Windows.Forms.Button();
             this.ButtonCancel = new System.Windows.Forms.Button();
+            this.dateTimePickerDatePurchase = new System.Windows.Forms.DateTimePicker();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewAssemblies = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAssemblies)).BeginInit();
             this.SuspendLayout();
             // 
             // labelNamePurhase
@@ -83,14 +93,6 @@ namespace ComputerEquipmentStoreView
             this.textBoxNamePurchase.Size = new System.Drawing.Size(220, 20);
             this.textBoxNamePurchase.TabIndex = 13;
             // 
-            // textBoxDatePurchase
-            // 
-            this.textBoxDatePurchase.Location = new System.Drawing.Point(657, 11);
-            this.textBoxDatePurchase.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxDatePurchase.Name = "textBoxDatePurchase";
-            this.textBoxDatePurchase.Size = new System.Drawing.Size(220, 20);
-            this.textBoxDatePurchase.TabIndex = 14;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridViewProducts);
@@ -103,7 +105,7 @@ namespace ComputerEquipmentStoreView
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(873, 343);
+            this.groupBox1.Size = new System.Drawing.Size(873, 174);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Товары";
@@ -125,7 +127,7 @@ namespace ComputerEquipmentStoreView
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             this.dataGridViewProducts.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewProducts.RowTemplate.Height = 28;
-            this.dataGridViewProducts.Size = new System.Drawing.Size(680, 323);
+            this.dataGridViewProducts.Size = new System.Drawing.Size(680, 149);
             this.dataGridViewProducts.TabIndex = 20;
             // 
             // ColumnId
@@ -220,7 +222,7 @@ namespace ComputerEquipmentStoreView
             this.ButtonSaveProduct.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ButtonSaveProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ButtonSaveProduct.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ButtonSaveProduct.Location = new System.Drawing.Point(8, 408);
+            this.ButtonSaveProduct.Location = new System.Drawing.Point(8, 419);
             this.ButtonSaveProduct.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonSaveProduct.Name = "ButtonSaveProduct";
             this.ButtonSaveProduct.Size = new System.Drawing.Size(229, 34);
@@ -234,7 +236,7 @@ namespace ComputerEquipmentStoreView
             this.ButtonCancel.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ButtonCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ButtonCancel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ButtonCancel.Location = new System.Drawing.Point(241, 408);
+            this.ButtonCancel.Location = new System.Drawing.Point(241, 419);
             this.ButtonCancel.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonCancel.Name = "ButtonCancel";
             this.ButtonCancel.Size = new System.Drawing.Size(229, 34);
@@ -243,16 +245,86 @@ namespace ComputerEquipmentStoreView
             this.ButtonCancel.UseVisualStyleBackColor = false;
             this.ButtonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
+            // dateTimePickerDatePurchase
+            // 
+            this.dateTimePickerDatePurchase.Location = new System.Drawing.Point(657, 15);
+            this.dateTimePickerDatePurchase.Name = "dateTimePickerDatePurchase";
+            this.dateTimePickerDatePurchase.Size = new System.Drawing.Size(220, 20);
+            this.dateTimePickerDatePurchase.TabIndex = 23;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.dataGridViewAssemblies);
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.groupBox3.Location = new System.Drawing.Point(8, 240);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(872, 174);
+            this.groupBox3.TabIndex = 24;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Сборки";
+            // 
+            // dataGridViewAssemblies
+            // 
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewAssemblies.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewAssemblies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAssemblies.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.dataGridViewAssemblies.Location = new System.Drawing.Point(5, 18);
+            this.dataGridViewAssemblies.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewAssemblies.Name = "dataGridViewAssemblies";
+            this.dataGridViewAssemblies.RowHeadersWidth = 62;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewAssemblies.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewAssemblies.RowTemplate.Height = 28;
+            this.dataGridViewAssemblies.Size = new System.Drawing.Size(679, 149);
+            this.dataGridViewAssemblies.TabIndex = 21;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.FillWeight = 300F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Название сборки";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Количество";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.FillWeight = 300F;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Цена";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
             // PurchaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(892, 464);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.dateTimePickerDatePurchase);
             this.Controls.Add(this.ButtonCancel);
             this.Controls.Add(this.ButtonSaveProduct);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBoxDatePurchase);
             this.Controls.Add(this.textBoxNamePurchase);
             this.Controls.Add(this.labelDatePurchase);
             this.Controls.Add(this.labelNamePurhase);
@@ -262,6 +334,8 @@ namespace ComputerEquipmentStoreView
             this.Load += new System.EventHandler(this.PurchaseForm_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAssemblies)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,7 +346,6 @@ namespace ComputerEquipmentStoreView
         private System.Windows.Forms.Label labelNamePurhase;
         private System.Windows.Forms.Label labelDatePurchase;
         private System.Windows.Forms.TextBox textBoxNamePurchase;
-        private System.Windows.Forms.TextBox textBoxDatePurchase;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button ButtonRefresh;
         private System.Windows.Forms.Button ButtonDelete;
@@ -285,5 +358,12 @@ namespace ComputerEquipmentStoreView
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDatePurchase;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DataGridView dataGridViewAssemblies;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }

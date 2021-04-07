@@ -22,6 +22,8 @@ namespace ComputerEquipmentStoreView
 
         private Dictionary<int, (string, int, decimal)> purchaseProducts;
 
+        private Dictionary<int, (string, int, decimal)> purchaseAssemblies;
+
 
         public PurchaseForm(PurchaseLogic purchaseLogic)
         {
@@ -44,8 +46,9 @@ namespace ComputerEquipmentStoreView
                     if (view != null)
                     {
                         textBoxNamePurchase.Text = view.PurchaseName;
-                        textBoxDatePurchase.Text = view.DatePurchase.ToString();
+                        dateTimePickerDatePurchase.Text = view.DatePurchase.ToString();
                         purchaseProducts = view.Products;
+                        purchaseAssemblies = view.Assemblies;
                         LoadData();
                     }
                 }
@@ -57,6 +60,7 @@ namespace ComputerEquipmentStoreView
             else
             {
                 purchaseProducts = new Dictionary<int, (string, int, decimal)>();
+                purchaseAssemblies = new Dictionary<int, (string, int, decimal)>();
             }
         }
 
@@ -69,9 +73,18 @@ namespace ComputerEquipmentStoreView
                 if (purchaseProducts != null)
                 {
                     dataGridViewProducts.Rows.Clear();
-                    foreach (var pp in purchaseProducts)
+                    foreach (var product in purchaseProducts)
                     {
-                        dataGridViewProducts.Rows.Add(new object[] { pp.Key, pp.Value.Item1, pp.Value.Item2, pp.Value.Item3 });
+                        dataGridViewProducts.Rows.Add(new object[] { product.Key, product.Value.Item1, product.Value.Item2, product.Value.Item3 });
+                    }
+                }
+
+                if (purchaseAssemblies != null)
+                {
+                    dataGridViewAssemblies.Rows.Clear();
+                    foreach (var assembly in purchaseAssemblies)
+                    {
+                        dataGridViewAssemblies.Rows.Add(new object[] { assembly.Key, assembly.Value.Item1, assembly.Value.Item2, assembly.Value.Item3 });
                     }
                 }
             }
@@ -161,7 +174,7 @@ namespace ComputerEquipmentStoreView
                 MessageBox.Show("Заполните название", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (string.IsNullOrEmpty(textBoxDatePurchase.Text))
+            if (string.IsNullOrEmpty(dateTimePickerDatePurchase.Text))
             {
                 MessageBox.Show("Заполните дату покупки", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -173,14 +186,29 @@ namespace ComputerEquipmentStoreView
             }
             try
             {
+
+                decimal totalCost = 0;
+
+                foreach (var product in purchaseProducts)
+                {
+                    totalCost += product.Value.Item3;
+                }
+
+                foreach (var assembly in purchaseAssemblies)
+                {
+                    totalCost += assembly.Value.Item3;
+                }
+
                 purchaseLogic.CreateOrUpdate(new PurchaseBindingModel
                 {
                     Id = id,
                     PurchaseName = textBoxNamePurchase.Text,
-                    DatePurchase = Convert.ToDateTime(textBoxDatePurchase.Text),
+                    DatePurchase = Convert.ToDateTime(dateTimePickerDatePurchase.Text),
+                    BuyerId = Program.Buyer.Id,
+                    TotalCost = (int) totalCost,
                     Products = purchaseProducts,
-                    BuyerId = Program.Buyer.Id
-                });
+                    Assemblies = purchaseAssemblies
+                }); ;
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
                 Close();

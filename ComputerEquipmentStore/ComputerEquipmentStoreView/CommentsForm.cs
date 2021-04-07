@@ -43,11 +43,11 @@ namespace ComputerEquipmentStoreView
                 if (list != null)
                 {
                     dataGridViewComments.DataSource = list;
-                    dataGridViewComments.Columns[0].Visible = false;
-                    dataGridViewComments.Columns[1].Visible = false;
-                    dataGridViewComments.Columns[2].Visible = false;
-                    dataGridViewComments.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
+                    dataGridViewComments.Columns[0].Visible = false;//ID комментария
+                    dataGridViewComments.Columns[1].Visible = true;//ID сборки
+                    dataGridViewComments.Columns[2].Visible = true;//ID покупателя
+                    dataGridViewComments.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;//Текст комментария
+                    dataGridViewComments.Columns[4].Visible = true;//Дата комментария
                 }
             }
             catch (Exception ex)

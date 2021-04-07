@@ -33,6 +33,15 @@ namespace ComputerEquipmentStoreView
             InitializeComponent();
             this.assemblyLogic = assemblyLogic;
             this.commentLogic = commentLogic;
+
+            List<AssemblyViewModel> list = assemblyLogic.Read(null);
+            if (list != null)
+            {
+                comboBoxAssembly.DisplayMember = "AssemblyName";
+                comboBoxAssembly.ValueMember = "Id";
+                comboBoxAssembly.DataSource = list;
+                comboBoxAssembly.SelectedItem = null;
+            }
         }
 
         private void CommentForm_Load(object sender, EventArgs e)
@@ -65,7 +74,18 @@ namespace ComputerEquipmentStoreView
                         comboBoxAssembly.SelectedValue = list.AssemblyId;
                         textBoxText.Text = list.Text;
                         dateTimePicker.Text = list.DateComment.ToString();
+
+
+                        /*
+                        var assemblylist = assemblyLogic.Read(new AssemblyBindingModel
+                        {
+                            Id = list.AssemblyId
+                        })?[0];
+                        */
+
+
                     }
+                    
                 }
                 catch (Exception ex)
                 {

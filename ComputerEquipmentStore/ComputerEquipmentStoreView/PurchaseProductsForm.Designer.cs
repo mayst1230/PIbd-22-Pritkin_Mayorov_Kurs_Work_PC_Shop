@@ -127,7 +127,7 @@ namespace ComputerEquipmentStoreView
             this.ButtonCancel.UseVisualStyleBackColor = false;
             this.ButtonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
-            // PurchaseProducts
+            // PurchaseProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -141,7 +141,7 @@ namespace ComputerEquipmentStoreView
             this.Controls.Add(this.labelPrice);
             this.Controls.Add(this.labelCount);
             this.Controls.Add(this.labelNameProduct);
-            this.Name = "PurchaseProducts";
+            this.Name = "PurchaseProductsForm";
             this.Text = "PurchaseProducts";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -33,11 +33,14 @@ namespace ComputerEquipmentStoreView
                 if (list != null)
                 {
                     dataGridViewPurchases.DataSource = list;
-                    dataGridViewPurchases.Columns[0].Visible = false;
-                    dataGridViewPurchases.Columns[1].Visible = false;
+                    dataGridViewPurchases.Columns[0].Visible = false;//
+                    dataGridViewPurchases.Columns[1].Visible = true;//
                     dataGridViewPurchases.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dataGridViewPurchases.Columns[3].Visible = false;
-                    dataGridViewPurchases.Columns[4].Visible = false;
+                    dataGridViewPurchases.Columns[3].Visible = true;//
+                    dataGridViewPurchases.Columns[4].Visible = true;//
+                    dataGridViewPurchases.Columns[5].Visible = false;//
+                    dataGridViewPurchases.Columns[6].Visible = false;//
+
                 }
             }
             catch (Exception ex)

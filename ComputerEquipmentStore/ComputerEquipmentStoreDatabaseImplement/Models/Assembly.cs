@@ -14,7 +14,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
 
         //Cтоимость сборки
         [Required]
-        public int Cost { get; set; }
+        public decimal Cost { get; set; }
 
         //Название сборки
         [Required]

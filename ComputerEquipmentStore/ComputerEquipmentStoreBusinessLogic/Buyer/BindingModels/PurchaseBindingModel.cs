@@ -18,7 +18,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
         public string PurchaseName { get; set; }
 
         //Общая стоимость покупки
-        public int TotalCost { get; set; }
+        public decimal TotalCost { get; set; }
 
         //Дата покупки
         public DateTime DatePurchase { get; set; }
