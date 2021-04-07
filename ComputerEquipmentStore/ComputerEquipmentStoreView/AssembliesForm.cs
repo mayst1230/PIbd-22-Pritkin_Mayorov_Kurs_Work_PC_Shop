@@ -33,7 +33,7 @@ namespace ComputerEquipmentStoreView
         {
             try
             {
-                var list = assemblyLogic.Read(null, Program.Buyer.Id, false);
+                var list = assemblyLogic.Read(null);
                 if (list != null)
                 {
                     //посмотреть еще

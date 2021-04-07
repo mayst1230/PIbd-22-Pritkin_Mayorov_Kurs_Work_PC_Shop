@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerEquipmentStoreViewB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerEquipmentStoreViewSeller", "ComputerEquipmentStoreViewSeller\ComputerEquipmentStoreViewSeller.csproj", "{214D1065-81A9-45C6-9089-449A2FB8DD85}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerEquipmentStoreViewSellerWpf", "ComputerEquipmentStoreViewSellerWpf\ComputerEquipmentStoreViewSellerWpf.csproj", "{6871075A-65E0-4BAF-A717-DA87BE6F64C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{214D1065-81A9-45C6-9089-449A2FB8DD85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{214D1065-81A9-45C6-9089-449A2FB8DD85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{214D1065-81A9-45C6-9089-449A2FB8DD85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6871075A-65E0-4BAF-A717-DA87BE6F64C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6871075A-65E0-4BAF-A717-DA87BE6F64C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6871075A-65E0-4BAF-A717-DA87BE6F64C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6871075A-65E0-4BAF-A717-DA87BE6F64C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,42 +1,57 @@
-﻿using System;
+﻿using Unity;
 using ComputerEquipmentStoreBusinessLogic.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
-using System.Windows.Forms;
+using System;
 using System.Collections.Generic;
-using Unity;
+using System.Windows;
+using System.Windows.Forms;
+using MessageBox = System.Windows.Forms.MessageBox;
 
-namespace ComputerEquipmentStoreViewSeller
+namespace ComputerEquipmentStoreViewSellerWpf
 {
-    public partial class ProductForm : Form
+    public class GridProductComponent
+    {
+        public int Id { get; set; }
+        public string ComponentName { get; set; }
+        public int Count { get; set; }
+        public decimal Price { get; set; }
+    }
+
+    /// <summary>
+    /// Логика взаимодействия для ProductWindow.xaml
+    /// </summary>
+    public partial class ProductWindow : Window
     {
         [Dependency]
-        public new IUnityContainer Container { get; set; }
+        public IUnityContainer Container { get; set; }
         public int Id { set { id = value; } }
-        private readonly ProductLogic logic;
+        private readonly ProductLogic logicP;
+        private readonly ComponentLogic logicC;
         private int? id;
         private Dictionary<int, (string, int, decimal)> productComponents;
 
-        public ProductForm(ProductLogic service)
+        public ProductWindow(ProductLogic logicP, ComponentLogic logicC)
         {
             InitializeComponent();
-            this.logic = service;
+            this.logicP = logicP;
+            this.logicC = logicC;
         }
 
-        private void ProductForm_Load(object sender, EventArgs e)
+        private void ProductWindow_Load(object sender, EventArgs e)
         {
             if (id.HasValue)
             {
                 try
                 {
-                    ProductViewModel view = logic.Read(new ProductBindingModel
+                    ProductViewModel view = logicP.Read(new ProductBindingModel
                     {
                         Id = id.Value
                     })?[0];
                     if (view != null)
                     {
                         textBoxProductName.Text = view.ProductName;
-                        textBoxProductPrice.Text = view.Price.ToString();
+                        textBoxPrice.Text = view.Price.ToString();
                         productComponents = view.Components;
                         LoadData();
                     }
@@ -58,10 +73,16 @@ namespace ComputerEquipmentStoreViewSeller
             {
                 if (productComponents != null)
                 {
-                    dataGridViewComponents.Rows.Clear();
+                    dataGridComponents.Items.Clear();
                     foreach (var pc in productComponents)
                     {
-                        dataGridViewComponents.Rows.Add(new object[] { pc.Key, pc.Value.Item1, pc.Value.Item2, pc.Value.Item3});
+                        dataGridComponents.Items.Add(new GridProductComponent
+                        { 
+                            Id = pc.Key,
+                            ComponentName = pc.Value.Item1,
+                            Count = pc.Value.Item2,
+                            Price = pc.Value.Item3
+                        });
                     }
                 }
             }
@@ -71,10 +92,10 @@ namespace ComputerEquipmentStoreViewSeller
             }
         }
 
-        private void ButtonAdd_Click(object sender, EventArgs e)
+        private void buttonAddComponent_Click(object sender, RoutedEventArgs e)
         {
-            var form = Container.Resolve<ProductComponentsForm>();
-            if (form.ShowDialog() == DialogResult.OK)
+            var form = Container.Resolve<ProductComponentsWindow>();
+            if (form.ShowDialog() == true)
             {
                 if (productComponents.ContainsKey(form.Id))
                 {
@@ -87,32 +108,34 @@ namespace ComputerEquipmentStoreViewSeller
                 LoadData();
             }
         }
-        private void ButtonUpd_Click(object sender, EventArgs e)
+
+        private void buttonChangeComponent_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGridViewComponents.SelectedRows.Count == 1)
+            if (dataGridComponents.SelectedItems.Count == 1)
             {
-                var form = Container.Resolve<ProductComponentsForm>();
-                int id = Convert.ToInt32(dataGridViewComponents.SelectedRows[0].Cells[0].Value);
+                var form = Container.Resolve<ProductComponentsWindow>();
+                int id = ((GridProductComponent)dataGridComponents.SelectedItems[0]).Id;
                 form.Id = id;
                 form.Count = productComponents[id].Item2;
                 form.Price = productComponents[id].Item3;
-                if (form.ShowDialog() == DialogResult.OK)
+                if (form.ShowDialog() == true)
                 {
                     productComponents[form.Id] = (form.ComponentName, form.Count, form.Price);
                     LoadData();
                 }
             }
         }
-        private void ButtonDel_Click(object sender, EventArgs e)
+
+        private void buttonDeleteComponent_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGridViewComponents.SelectedRows.Count == 1)
+            if (dataGridComponents.SelectedItems.Count == 1)
             {
-                if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                MessageBoxResult result = (MessageBoxResult)MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == MessageBoxResult.Yes)
                 {
                     try
                     {
-
-                        productComponents.Remove(Convert.ToInt32(dataGridViewComponents.SelectedRows[0].Cells[0].Value));
+                        productComponents.Remove(((GridProductComponent)dataGridComponents.SelectedItems[0]).Id);
                     }
                     catch (Exception ex)
                     {
@@ -122,34 +145,36 @@ namespace ComputerEquipmentStoreViewSeller
                 }
             }
         }
-        private void ButtonRef_Click(object sender, EventArgs e)
+
+        private void buttonUpdateComponents_Click(object sender, RoutedEventArgs e)
         {
             LoadData();
         }
-        private void ButtonSave_Click(object sender, EventArgs e)
+
+        private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxProductName.Text))
             {
                 MessageBox.Show("Заполните название", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (string.IsNullOrEmpty(textBoxProductPrice.Text))
+            if (string.IsNullOrEmpty(textBoxPrice.Text))
             {
                 MessageBox.Show("Заполните цену", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
             {
-                logic.CreateOrUpdate(new ProductBindingModel
+                logicP.CreateOrUpdate(new ProductBindingModel
                 {
                     Id = id,
                     ProductName = textBoxProductName.Text,
-                    Price = Convert.ToDecimal(textBoxProductPrice.Text),
+                    Price = Convert.ToDecimal(textBoxPrice.Text),
                     Components = productComponents,
-                    SellerId = Program.Seller.Id
+                    SellerId = App.Seller.Id
                 });
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
+                DialogResult = true;
                 Close();
             }
             catch (Exception ex)
@@ -157,9 +182,10 @@ namespace ComputerEquipmentStoreViewSeller
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void ButtonCancel_Click(object sender, EventArgs e)
+
+        private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            this.DialogResult = false;
             Close();
         }
     }

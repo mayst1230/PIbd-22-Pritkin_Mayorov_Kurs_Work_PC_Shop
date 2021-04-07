@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics;
+using System.Collections.Generic;
 using Unity;
 
 namespace ComputerEquipmentStoreView
@@ -18,6 +19,8 @@ namespace ComputerEquipmentStoreView
 
         public int Id { set { id = value; } }
 
+        private Dictionary<int, (string, int, decimal)> assemblyComponents;
+
         public AssemblyForm(AssemblyLogic assemblyLogic)
         {
             InitializeComponent();
@@ -31,13 +34,16 @@ namespace ComputerEquipmentStoreView
                 MessageBox.Show("Заполните название", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             try
             {
+
                 assemblyLogic.CreateOrUpdate(new AssemblyBindingModel
                 {
                     Id = id,
                     AssemblyName = textBoxNameAssembly.Text,
-                    Cost = 0,//Создается просто сборка компоненты добавляются потом
+                    Cost = 0,
+                    Components = assemblyComponents,
                     BuyerId = Program.Buyer.Id
                 });
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -63,18 +69,40 @@ namespace ComputerEquipmentStoreView
                 try
                 {
                     var view = assemblyLogic.Read(
-                        new AssemblyBindingModel { Id = id },
-                        Program.Buyer.Id,
-                        false)?[0];
+                        new AssemblyBindingModel { Id = id })?[0];
                     if (view != null)
                     {
                         textBoxNameAssembly.Text = view.AssemblyName;
+                        LoadData();
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            else 
+            {
+                assemblyComponents = new Dictionary<int, (string, int, decimal)>();
+            }
+        }
+
+        private void LoadData()
+        {
+            try
+            {
+                if (assemblyComponents != null)
+                {
+                    dataGridViewComponents.Rows.Clear();
+                    foreach (var pc in assemblyComponents)
+                    {
+                        dataGridViewComponents.Rows.Add(new object[] { pc.Key, pc.Value.Item1, pc.Value.Item2, pc.Value.Item3 });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

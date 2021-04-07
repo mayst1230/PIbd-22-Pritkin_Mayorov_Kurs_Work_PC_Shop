@@ -62,9 +62,7 @@ namespace ComputerEquipmentStoreView
                     AssemblyViewModel assembly = assemblyLogic.Read(new AssemblyBindingModel
                     {
                         Id = id
-                    },
-                    Program.Buyer.Id,
-                    false)?[0];
+                    })?[0];
                     int count = Convert.ToInt32(textBoxCount.Text);
 
                     decimal costOfAssembly = 0;

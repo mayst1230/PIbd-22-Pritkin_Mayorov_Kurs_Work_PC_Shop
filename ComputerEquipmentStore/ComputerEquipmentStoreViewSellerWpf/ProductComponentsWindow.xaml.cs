@@ -1,17 +1,23 @@
-﻿using System;
+﻿using Unity;
+using ComputerEquipmentStoreBusinessLogic.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
-using ComputerEquipmentStoreBusinessLogic.BindingModels;
+using System;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Forms;
-using Unity;
+using MessageBox = System.Windows.Forms.MessageBox;
 
-namespace ComputerEquipmentStoreViewSeller
+namespace ComputerEquipmentStoreViewSellerWpf
 {
-    public partial class ProductComponentsForm : Form
+    /// <summary>
+    /// Логика взаимодействия для ProductComponentsWindow.xaml
+    /// </summary>
+    public partial class ProductComponentsWindow : Window
     {
+
         [Dependency]
-        public new IUnityContainer Container { get; set; }
+        public IUnityContainer Container { get; set; }
 
         private readonly ComponentLogic _logic;
         public int Id
@@ -34,22 +40,22 @@ namespace ComputerEquipmentStoreViewSeller
         public decimal Price
         {
             get { return Convert.ToDecimal(textBoxPrice.Text); }
-            set 
+            set
             {
-                textBoxPrice.Text = value.ToString();    
+                textBoxPrice.Text = value.ToString();
             }
         }
-        public ProductComponentsForm(ComponentLogic logic, ProductLogic logicP)
+
+        public ProductComponentsWindow(ComponentLogic logic)
         {
             InitializeComponent();
-            _logic = logic;
-            
+            this._logic = logic;
+
             List<ComponentViewModel> list = logic.Read(null);
             if (list != null)
             {
-                comboBoxComponent.DisplayMember = "ComponentName";
-                comboBoxComponent.ValueMember = "Id";
-                comboBoxComponent.DataSource = list;
+                comboBoxComponent.ItemsSource = list;
+                comboBoxComponent.DisplayMemberPath = "ComponentName";
                 comboBoxComponent.SelectedItem = null;
             }
         }
@@ -61,7 +67,7 @@ namespace ComputerEquipmentStoreViewSeller
             {
                 try
                 {
-                    int id = Convert.ToInt32(comboBoxComponent.SelectedValue);
+                    int id = (int)comboBoxComponent.SelectedValue;
                     ComponentViewModel component = _logic.Read(new ComponentBindingModel
                     {
                         Id = id
@@ -76,17 +82,7 @@ namespace ComputerEquipmentStoreViewSeller
             }
         }
 
-        private void textBoxCount_TextChanged(object sender, EventArgs e)
-        {
-            CalcSum();
-        }
-
-        private void comboBoxComponent_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CalcSum();
-        }
-
-        private void ButtonSave_Click(object sender, EventArgs e)
+        private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxCount.Text))
             {
@@ -98,13 +94,24 @@ namespace ComputerEquipmentStoreViewSeller
                 MessageBox.Show("Выберите комплектующее", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            DialogResult = DialogResult.OK;
+            DialogResult = true;
             Close();
         }
-        private void ButtonCancel_Click(object sender, EventArgs e)
+
+        private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            DialogResult = false;
             Close();
+        }
+
+        private void textBoxCount_TextChanged(object sender, EventArgs e)
+        {
+            CalcSum();
+        }
+
+        private void comboBoxComponent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CalcSum();
         }
     }
 }

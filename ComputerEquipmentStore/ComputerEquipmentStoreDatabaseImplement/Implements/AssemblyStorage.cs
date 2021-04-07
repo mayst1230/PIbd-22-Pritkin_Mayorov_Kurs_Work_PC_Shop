@@ -1,58 +1,38 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
+﻿using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
 using ComputerEquipmentStoreDatabaseImplement.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ComputerEquipmentStoreDatabaseImplement.Implements
 {
     public class AssemblyStorage : IAssemblyStorage
     {
-       
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public List<AssemblyViewModel> GetFullList(int BuyerId, bool superAccess)
+
+        public List<AssemblyViewModel> GetFullList()
         {
-            using (var context = new ComputerEquipmentStoreDatabase())
+            using (ComputerEquipmentStoreDatabase context = new ComputerEquipmentStoreDatabase())
             {
-                if (superAccess)
-                {
-                    return context.Assemblies
-                         .Include(rec => rec.AssemblyComponents)
-                         .ThenInclude(rec => rec.Component)
-                         .Include(rec => rec.Buyer)
-                         .Select(rec => new AssemblyViewModel
-                         {
-                             Id = rec.Id,
-                             Cost = rec.Cost,
-                             AssemblyName = rec.AssemblyName,
-                             BuyerId = rec.BuyerId,
-                             //Components = rec.AssemblyComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => (recCSP.Component.ComponentName, recCSP.Count, recCSP.Price))
-                         })
-                     .ToList();
-                } 
-                else
-                {
-                    return context.Assemblies
-                        .Include(rec => rec.AssemblyComponents)
-                        .ThenInclude(rec => rec.Component)
-                        .Include(rec => rec.Buyer)
-                        .Where(rec => rec.BuyerId == BuyerId)
-                        .Select(rec => new AssemblyViewModel
-                        {
-                            Id = rec.Id,
-                            Cost = rec.Cost,
-                            AssemblyName = rec.AssemblyName,
-                            BuyerId = rec.BuyerId,
-                            //Components = rec.AssemblyComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => (recCSP.Component.ComponentName, recCSP.Count, recCSP.Price))
-                        })
-                    .ToList();
-                }
+
+                return context.Assemblies
+                     .Include(rec => rec.AssemblyComponents)
+                     .ThenInclude(rec => rec.Component)
+                     .Include(rec => rec.Buyer)
+                     .ToList()
+                     .Select(rec => new AssemblyViewModel
+                     {
+                         Id = rec.Id,
+                         Cost = rec.Cost,
+                         AssemblyName = rec.AssemblyName,
+                         BuyerId = rec.BuyerId,
+                         Components = rec.AssemblyComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => (recCSP.Component?.ComponentName, recCSP.Count, recCSP.Price))
+                     })
+                 .ToList();
+
+
             }
         }
 
@@ -67,20 +47,21 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             {
                 return null;
             }
-            using (var context = new ComputerEquipmentStoreDatabase())
+            using (ComputerEquipmentStoreDatabase context = new ComputerEquipmentStoreDatabase())
             {
                 return context.Assemblies
                     .Include(rec => rec.AssemblyComponents)
                     .ThenInclude(rec => rec.Component)
                     .Include(rec => rec.Buyer)
-                    .Where(rec => rec.Id.Equals(model.Id))
+                    .Where(rec => rec.AssemblyName.Contains(model.AssemblyName))
+                    .ToList()
                     .Select(rec => new AssemblyViewModel
                     {
                         Id = rec.Id,
                         Cost = rec.Cost,
                         AssemblyName = rec.AssemblyName,
                         BuyerId = rec.BuyerId,
-                        //Components = rec.AssemblyComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => (recCSP.Component.ComponentName, recCSP.Count, recCSP.Price)),
+                        Components = rec.AssemblyComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => (recCSP.Component?.ComponentName, recCSP.Count, recCSP.Price)),
 
                     })
                     .ToList();
@@ -98,13 +79,13 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             {
                 return null;
             }
-            using (var context = new ComputerEquipmentStoreDatabase())
+            using (ComputerEquipmentStoreDatabase context = new ComputerEquipmentStoreDatabase())
             {
-                var assembly = context.Assemblies
+                Assembly assembly = context.Assemblies
                     .Include(rec => rec.AssemblyComponents)
                     .ThenInclude(rec => rec.Component)
                     .Include(rec => rec.Buyer)
-                    .FirstOrDefault(rec => rec.Id == model.Id);
+                    .FirstOrDefault(rec => rec.Id == model.Id  || rec.AssemblyName == model.AssemblyName);
                 return assembly != null ?
                 new AssemblyViewModel
                 {
@@ -124,7 +105,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         /// <param name="model"></param>
         public void Insert(AssemblyBindingModel model)
         {
-            using (var context = new ComputerEquipmentStoreDatabase())
+            using (ComputerEquipmentStoreDatabase context = new ComputerEquipmentStoreDatabase())
             {
                 context.Assemblies.Add(CreateModel(model, new Assembly(), context));
                 context.SaveChanges();
@@ -139,13 +120,24 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         {
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                var element = context.Assemblies.FirstOrDefault(rec => rec.Id == model.Id);
-                if (element == null)
+                using (var transaction = context.Database.BeginTransaction())
                 {
-                    throw new Exception("Элемент не найден");
+                    try
+                    {
+                        var element = context.Assemblies.FirstOrDefault(rec => rec.Id == model.Id || rec.AssemblyName == model.AssemblyName);
+                        if (element == null)
+                        {
+                            throw new Exception("Сборка не найдена");
+                        }
+                        CreateModel(model, element, context);
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
                 }
-                CreateModel(model, element, context);
-                context.SaveChanges();
             }
         }
 
@@ -155,9 +147,9 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         /// <param name="model"></param>
         public void Delete(AssemblyBindingModel model)
         {
-            using (var context = new ComputerEquipmentStoreDatabase())
+            using (ComputerEquipmentStoreDatabase context = new ComputerEquipmentStoreDatabase())
             {
-                Assembly element = context.Assemblies.FirstOrDefault(rec => rec.Id == model.Id);
+                Assembly element = context.Assemblies.FirstOrDefault(rec => rec.Id == model.Id || rec.AssemblyName == model.AssemblyName);
                 if (element != null)
                 {
                     context.Assemblies.Remove(element);
@@ -176,15 +168,12 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         /// <param name="model"></param>
         /// <param name="assembly"></param>
         /// <returns></returns>
-        private Assembly CreateModel(AssemblyBindingModel model, Assembly assembly,  ComputerEquipmentStoreDatabase context)
+        private Assembly CreateModel(AssemblyBindingModel model, Assembly assembly, ComputerEquipmentStoreDatabase context)
         {
-            
+
             assembly.AssemblyName = model.AssemblyName;
             assembly.BuyerId = model.BuyerId;
             assembly.Cost = model.Cost;
-
-
-
 
             if (assembly.Id == 0)
             {
@@ -201,12 +190,14 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                     context.AssemblyComponents.RemoveRange(assemblyComponent.Where(rec => !model.Components.ContainsKey(rec.ComponentId)).ToList());
 
                     //обновляем кол-во и цену у записей, которые существуют
-                    foreach (var updateComponent in assemblyComponent)
+                    foreach (AssemblyComponent updateComponent in assemblyComponent)
                     {
                         if (model.Components.ContainsKey(updateComponent.ComponentId))
                         {
-                            updateComponent.Count = model.Components[updateComponent.ComponentId].Item2;
-                            updateComponent.Price = model.Components[updateComponent.ComponentId].Item3;
+                            updateComponent.Count =
+                            model.Components[updateComponent.ComponentId].Item2;
+                            updateComponent.Price =
+                            model.Components[updateComponent.ComponentId].Item3;
                             model.Components.Remove(updateComponent.ComponentId);
                         }
                     }
@@ -222,12 +213,10 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                         ComponentId = CSP.Key,
                         Count = CSP.Value.Item2,
                         Price = CSP.Value.Item3
-
                     });
                     context.SaveChanges();
                 }
             }
-            
             return assembly;
         }
     }

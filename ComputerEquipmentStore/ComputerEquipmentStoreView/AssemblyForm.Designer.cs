@@ -40,8 +40,8 @@ namespace ComputerEquipmentStoreView
             this.ButtonSaveAssembly.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ButtonSaveAssembly.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ButtonSaveAssembly.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ButtonSaveAssembly.Location = new System.Drawing.Point(11, 56);
-            this.ButtonSaveAssembly.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ButtonSaveAssembly.Location = new System.Drawing.Point(11, 99);
+            this.ButtonSaveAssembly.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonSaveAssembly.Name = "ButtonSaveAssembly";
             this.ButtonSaveAssembly.Size = new System.Drawing.Size(181, 34);
             this.ButtonSaveAssembly.TabIndex = 8;
@@ -54,8 +54,8 @@ namespace ComputerEquipmentStoreView
             this.ButtonCancel.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ButtonCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ButtonCancel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ButtonCancel.Location = new System.Drawing.Point(196, 56);
-            this.ButtonCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ButtonCancel.Location = new System.Drawing.Point(197, 99);
+            this.ButtonCancel.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonCancel.Name = "ButtonCancel";
             this.ButtonCancel.Size = new System.Drawing.Size(181, 34);
             this.ButtonCancel.TabIndex = 9;
@@ -71,14 +71,14 @@ namespace ComputerEquipmentStoreView
             this.labelNameAssembly.Location = new System.Drawing.Point(8, 21);
             this.labelNameAssembly.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelNameAssembly.Name = "labelNameAssembly";
-            this.labelNameAssembly.Size = new System.Drawing.Size(219, 29);
+            this.labelNameAssembly.Size = new System.Drawing.Size(143, 20);
             this.labelNameAssembly.TabIndex = 10;
             this.labelNameAssembly.Text = "Название сборки:";
             // 
             // textBoxNameAssembly
             // 
             this.textBoxNameAssembly.Location = new System.Drawing.Point(158, 23);
-            this.textBoxNameAssembly.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxNameAssembly.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxNameAssembly.Name = "textBoxNameAssembly";
             this.textBoxNameAssembly.Size = new System.Drawing.Size(220, 20);
             this.textBoxNameAssembly.TabIndex = 11;
@@ -88,12 +88,12 @@ namespace ComputerEquipmentStoreView
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ClientSize = new System.Drawing.Size(385, 101);
+            this.ClientSize = new System.Drawing.Size(399, 154);
             this.Controls.Add(this.textBoxNameAssembly);
             this.Controls.Add(this.labelNameAssembly);
             this.Controls.Add(this.ButtonCancel);
             this.Controls.Add(this.ButtonSaveAssembly);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AssemblyForm";
             this.Text = "Сборка";
             this.Load += new System.EventHandler(this.AssemblyForm_Load);

@@ -1,0 +1,25 @@
+﻿<Window x:Class="ComputerEquipmentStoreViewSellerWpf.ProductsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ComputerEquipmentStoreViewSellerWpf"
+        mc:Ignorable="d"
+        Title="Товары" Height="450" Width="757.029" Loaded="ProductsWindow_Loaded">
+    <Grid Background="Maroon">
+
+        <Button x:Name="buttonAdd" Content="Добавить" HorizontalAlignment="Left" Margin="627,10,0,0" VerticalAlignment="Top" Width="114" Background="Brown" Foreground="White" Click="buttonAdd_Click"/>
+        <Button x:Name="buttonChange" Content="Изменить" HorizontalAlignment="Left" Margin="627,35,0,0" VerticalAlignment="Top" Width="114" Background="Brown" Foreground="White" Click="buttonChange_Click"/>
+        <Button x:Name="buttonDelete" Content="Удалить" HorizontalAlignment="Left" Margin="627,60,0,0" VerticalAlignment="Top" Width="114" Background="Brown" Foreground="White" Click="buttonDelete_Click"/>
+        <Button x:Name="buttonUpdate" Content="Обновить" HorizontalAlignment="Left" Margin="627,85,0,0" VerticalAlignment="Top" Width="114" Background="Brown" Foreground="White" Click="buttonUpdate_Click"/>
+        <DataGrid x:Name="dataGridProducts" Grid.Column="0" AutoGenerateColumns="False" CanUserAddRows="false" Margin="10,10,127,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Id}"></DataGridTextColumn>
+                <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=SellerId}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Товар" Binding="{Binding Path=ProductName}" Width="0.5*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Path=Price}" Width="0.5*"></DataGridTextColumn>
+                <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Components}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
