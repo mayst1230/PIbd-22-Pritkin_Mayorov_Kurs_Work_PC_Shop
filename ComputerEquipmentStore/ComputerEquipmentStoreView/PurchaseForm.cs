@@ -187,7 +187,6 @@ namespace ComputerEquipmentStoreView
             try
             {
 
-
                 decimal totalCost = 0;
 
                 foreach (var product in purchaseProducts)
@@ -205,17 +204,10 @@ namespace ComputerEquipmentStoreView
                     Id = id,
                     PurchaseName = textBoxNamePurchase.Text,
                     DatePurchase = Convert.ToDateTime(dateTimePickerDatePurchase.Text),
-                    Products = purchaseProducts,
-                    Assemblies = purchaseAssemblies,
-
-
-
-
                     BuyerId = Program.Buyer.Id,
-                    TotalCost = (int) totalCost
-
-                    
-
+                    TotalCost = (int) totalCost,
+                    Products = purchaseProducts,
+                    Assemblies = purchaseAssemblies
                 }); ;
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;

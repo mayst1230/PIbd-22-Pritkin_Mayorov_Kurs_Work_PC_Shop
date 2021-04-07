@@ -210,20 +210,23 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                         }
                     }
                 }
+                context.SaveChanges();
 
-                List<PurchaseAssembly> purchaseAssemblies = context.PurchaseAssemblies.Where(rec => rec.AssemblyId == model.Id.Value).ToList();
+                List<PurchaseAssembly> purchaseAssemblies = context.PurchaseAssemblies.Where(rec => rec.PurchaseId == model.Id.Value).ToList();
                 // удалили те, которых нет в модели
                 context.PurchaseAssemblies.RemoveRange(purchaseAssemblies.Where(rec => !model.Assemblies.ContainsKey(rec.AssemblyId)).ToList());
+                
                 //обновляем кол-во и цену у записей, которые существуют
                 foreach (var updateAssemblies in purchaseAssemblies)
                 {
-                    if (model.Products.ContainsKey(updateAssemblies.AssemblyId))
-                    {
-                        updateAssemblies.Count =
-                        model.Assemblies[updateAssemblies.AssemblyId].Item2;
-                        updateAssemblies.Cost =
-                        model.Products[updateAssemblies.AssemblyId].Item3;
-                        model.Products.Remove(updateAssemblies.AssemblyId);
+
+                    Console.WriteLine(updateAssemblies.AssemblyId);
+                    
+                    if (model.Assemblies.ContainsKey(updateAssemblies.AssemblyId))
+                    { 
+                        updateAssemblies.Count = model.Assemblies[updateAssemblies.AssemblyId].Item2;
+                        updateAssemblies.Cost = model.Assemblies[updateAssemblies.AssemblyId].Item3;
+                        model.Assemblies.Remove(updateAssemblies.AssemblyId);
                     }
                 }
 
@@ -242,10 +245,8 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                 });
                 context.SaveChanges();
             }
-
-            if (model.Assemblies != null) {
-
-                foreach (KeyValuePair<int, (string, int, decimal)> CSP in model.Assemblies)
+            
+            foreach (KeyValuePair<int, (string, int, decimal)> CSP in model.Assemblies)
                 {
                     context.PurchaseAssemblies.Add(new PurchaseAssembly
                     {
@@ -256,8 +257,10 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
 
                     });
                     context.SaveChanges();
-                }
+
+                Console.WriteLine("Добавляем сборку" + CSP.Key);
             }
+            
             return purchase;
         }
     }

@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics;
+using ComputerEquipmentStoreBusinessLogic.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
+using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
+using ComputerEquipmentStoreBusinessLogic.BindingModels;
 
 namespace ComputerEquipmentStoreView
 {
@@ -24,6 +21,8 @@ namespace ComputerEquipmentStoreView
 
         private readonly AssemblyLogic assemblyLogic;
 
+        private readonly ComponentLogic componentLogic;
+
         private Dictionary<int, (string, int, decimal)> purchaseAssemblies;
 
         private int id;
@@ -35,8 +34,7 @@ namespace ComputerEquipmentStoreView
             set { textBoxAssembly.Text = value; }
         }
 
-
-        public LinkAssemblyForm(PurchaseLogic purchaseLogic, AssemblyLogic assemblyLogic)
+        public LinkAssemblyForm(PurchaseLogic purchaseLogic, AssemblyLogic assemblyLogic, ComponentLogic componentLogic)
         {
             InitializeComponent();
             this.purchaseLogic = purchaseLogic;
@@ -65,7 +63,19 @@ namespace ComputerEquipmentStoreView
                         Id = id
                     })?[0];
                     int count = Convert.ToInt32(textBoxCount.Text);
-                    textBoxCost.Text = (count * assembly?.Cost ?? 0).ToString();
+
+                    decimal costOfAssembly = 0;
+                    foreach (var componentId in assembly.Components)
+                    {
+                        ComponentViewModel component = componentLogic.Read(new ComponentBindingModel
+                        {
+                            Id = componentId.Key
+                        })?[0];
+
+                        costOfAssembly += component.Price;
+                    }
+
+                    textBoxCost.Text = (count * costOfAssembly).ToString();
                 }
                 catch (Exception ex)
                 {
@@ -97,6 +107,13 @@ namespace ComputerEquipmentStoreView
                 {
                     Id = int.Parse(comboBoxPurchase.SelectedValue.ToString())
                 })?[0];
+
+                if (view.Assemblies.ContainsKey(id))
+                {
+                    MessageBox.Show("Эта сборка уже привязана к этой покупке", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 if (view != null)
                 {
                     if (purchaseAssemblies.ContainsKey(id))
@@ -141,22 +158,34 @@ namespace ComputerEquipmentStoreView
             }   
         }
 
+        /// <summary>
+        /// При нажатии кнопки отмены
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             Close();
         }
 
+        /// <summary>
+        /// При смене количества сборок в текстовом поле количества сборок
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBoxCount_TextChanged(object sender, EventArgs e)
         {
             CalcSum();
         }
 
+        /// <summary>
+        /// При смене покупки в комбобоксе выбора покупки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboBoxPurchase_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-
-            MessageBox.Show("При изменении индекса. " + comboBoxPurchase.SelectedValue.ToString(), "Текущий индекс", MessageBoxButtons.OK, MessageBoxIcon.Information);
             try
             {
                 PurchaseViewModel view = purchaseLogic.Read(new PurchaseBindingModel
@@ -166,10 +195,6 @@ namespace ComputerEquipmentStoreView
                 if (view != null)
                 {
                     purchaseAssemblies = view.Assemblies;
-                    if (purchaseAssemblies == null)
-                    {
-                        MessageBox.Show("При изменение индекса. purchaseAssemblies == null", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                 }
             }
             catch (Exception ex)
