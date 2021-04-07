@@ -24,7 +24,7 @@ namespace ComputerEquipmentStoreView
         }
 
 
-        public string ProductName { get { return comboBoxProduct.Text; } }
+        public string NameOfProduct { get { return comboBoxProduct.Text; } }
 
 
         public int Count

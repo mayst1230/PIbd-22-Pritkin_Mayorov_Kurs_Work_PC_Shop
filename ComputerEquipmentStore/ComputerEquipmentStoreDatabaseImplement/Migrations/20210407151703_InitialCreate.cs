@@ -42,7 +42,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BuyerId = table.Column<int>(nullable: false),
-                    Cost = table.Column<int>(nullable: false),
+                    Cost = table.Column<decimal>(nullable: false),
                     AssemblyName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -155,7 +155,9 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PurchaseId = table.Column<int>(nullable: false),
-                    AssemblyId = table.Column<int>(nullable: false)
+                    AssemblyId = table.Column<int>(nullable: false),
+                    Cost = table.Column<decimal>(nullable: false),
+                    Count = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -181,7 +183,9 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AssemblyId = table.Column<int>(nullable: false),
-                    ComponentId = table.Column<int>(nullable: false)
+                    ComponentId = table.Column<int>(nullable: false),
+                    Count = table.Column<int>(nullable: false),
+                    Price = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {

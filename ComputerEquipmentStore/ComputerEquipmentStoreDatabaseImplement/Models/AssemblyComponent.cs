@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace ComputerEquipmentStoreDatabaseImplement.Models
 {
     public class AssemblyComponent
@@ -11,6 +8,10 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
         public int AssemblyId { get; set; }
 
         public int ComponentId { get; set; }
+
+        public int Count { get; set; }
+
+        public decimal Price { get; set; }
 
         public virtual Assembly Assembly { get; set; }
 

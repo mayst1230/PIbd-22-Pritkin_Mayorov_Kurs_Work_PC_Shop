@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
 using ComputerEquipmentStoreDatabaseImplement.Models;
-using System.Linq;
 
 namespace ComputerEquipmentStoreDatabaseImplement.Implements
 {

@@ -16,6 +16,6 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels
         [DisplayName("Cтоимость")]
         public decimal Cost { get; set; }
 
-        public Dictionary<int, (string, int)> Components { get; set; }
+        public Dictionary<int, (string, int, decimal)> Components { get; set; }
     }
 }

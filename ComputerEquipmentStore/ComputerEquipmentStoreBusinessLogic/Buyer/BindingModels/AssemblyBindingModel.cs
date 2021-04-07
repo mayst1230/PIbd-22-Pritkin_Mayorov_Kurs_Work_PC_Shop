@@ -20,6 +20,6 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
         public decimal Cost { get; set; }
 
         //Комплектующие находящиеся в этой сборке
-        public Dictionary<int, (string, int)> Components { get; set; }
+        public Dictionary<int, (string, int, decimal)> Components { get; set; }
     }
 }
