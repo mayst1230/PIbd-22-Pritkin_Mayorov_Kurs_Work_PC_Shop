@@ -39,7 +39,7 @@ namespace ComputerEquipmentStoreView
         {
             try
             {
-                var list = commentLogic.Read(null);
+                var list = commentLogic.Read(null, Program.Buyer.Id);
                 if (list != null)
                 {
                     dataGridViewComments.DataSource = list;

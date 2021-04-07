@@ -34,7 +34,7 @@ namespace ComputerEquipmentStoreView
             this.assemblyLogic = assemblyLogic;
             this.commentLogic = commentLogic;
 
-            List<AssemblyViewModel> list = assemblyLogic.Read(null);
+            List<AssemblyViewModel> list = assemblyLogic.Read(null, Program.Buyer.Id);
             if (list != null)
             {
                 comboBoxAssembly.DisplayMember = "AssemblyName";
@@ -48,7 +48,7 @@ namespace ComputerEquipmentStoreView
         {
             try
             {
-                var list = assemblyLogic.Read(null);
+                var list = assemblyLogic.Read(null, Program.Buyer.Id);
                 if (list != null)
                 {
                     comboBoxAssembly.DataSource = list;
@@ -68,7 +68,7 @@ namespace ComputerEquipmentStoreView
                     var list = commentLogic.Read(new CommentBindingModel
                     {
                         Id = id.Value
-                    })?[0];
+                    }, Program.Buyer.Id)?[0];
                     if (list != null)
                     {
                         comboBoxAssembly.SelectedValue = list.AssemblyId;

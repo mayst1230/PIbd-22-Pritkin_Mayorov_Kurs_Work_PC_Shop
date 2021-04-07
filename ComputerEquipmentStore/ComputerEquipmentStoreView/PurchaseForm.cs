@@ -42,7 +42,7 @@ namespace ComputerEquipmentStoreView
                     PurchaseViewModel view = purchaseLogic.Read(new PurchaseBindingModel
                     {
                         Id = id.Value
-                    })?[0];
+                    }, Program.Buyer.Id)?[0];
                     if (view != null)
                     {
                         textBoxNamePurchase.Text = view.PurchaseName;

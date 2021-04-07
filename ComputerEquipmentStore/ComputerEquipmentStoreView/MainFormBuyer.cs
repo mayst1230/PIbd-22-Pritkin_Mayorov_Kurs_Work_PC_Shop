@@ -77,17 +77,6 @@ namespace ComputerEquipmentStoreView
             form.ShowDialog();
         }
 
-        /// <summary>
-        /// Обработчие нажатия на кнопку получения рекомендаций
-        /// </summary>
-        /// <param name="sender"></param> Элемент вызвавший событие
-        /// <param name="e"></param> данные о событии
-        private void ButtonRecomendations_Click(object sender, EventArgs e)
-        {
-            // Ещё не реализовано
-            throw new NotImplementedException();
-        }
-
         private void MainBuyerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();

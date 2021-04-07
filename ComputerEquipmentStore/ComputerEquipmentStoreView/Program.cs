@@ -42,12 +42,17 @@ namespace ComputerEquipmentStoreView
             currentContainer.RegisterType<IAssemblyStorage, AssemblyStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ICommentStorage, CommentStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IProductStorage, ProductStorage>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IComponentStorage, ComponentStorage>(new HierarchicalLifetimeManager());
+
 
             currentContainer.RegisterType<BuyerLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<PurchaseLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<AssemblyLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<CommentLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ProductLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ComponentLogic>(new HierarchicalLifetimeManager());
+
+
 
             return currentContainer;
         }

@@ -62,7 +62,7 @@ namespace ComputerEquipmentStoreView
             {
                 try
                 {
-                    var view = assemblyLogic.Read(new AssemblyBindingModel { Id = id })?[0];
+                    var view = assemblyLogic.Read(new AssemblyBindingModel { Id = id }, Program.Buyer.Id)?[0];
                     if (view != null)
                     {
                         textBoxNameAssembly.Text = view.AssemblyName;

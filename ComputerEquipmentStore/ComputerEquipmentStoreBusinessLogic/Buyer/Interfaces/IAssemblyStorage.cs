@@ -8,7 +8,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces
 {
     public interface IAssemblyStorage
     {
-        List<AssemblyViewModel> GetFullList();
+        List<AssemblyViewModel> GetFullList(int BuyerId);
 
         List<AssemblyViewModel> GetFilteredList(AssemblyBindingModel model);
 

@@ -17,11 +17,11 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             _commentStorage = commentStorage;
         }
 
-        public List<CommentViewModel> Read(CommentBindingModel model)
+        public List<CommentViewModel> Read(CommentBindingModel model, int BuyerId)
         {
             if (model == null)
             {
-                return _commentStorage.GetFullList();
+                return _commentStorage.GetFullList(BuyerId);
             }
             if (model.Id.HasValue)
             {

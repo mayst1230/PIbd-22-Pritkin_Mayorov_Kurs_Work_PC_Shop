@@ -13,11 +13,11 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
         {
             this._assemblyStorage = assemblyStorage;
         }
-        public List<AssemblyViewModel> Read(AssemblyBindingModel model)
+        public List<AssemblyViewModel> Read(AssemblyBindingModel model, int BuyerId)
         {
             if (model == null)
             {
-                return _assemblyStorage.GetFullList();
+                return _assemblyStorage.GetFullList(BuyerId);
             }
             if (model.Id.HasValue)
             {

@@ -13,11 +13,11 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
         {
             this._purchaseStorage = purchaseStorage;
         }
-        public List<PurchaseViewModel> Read(PurchaseBindingModel model)
+        public List<PurchaseViewModel> Read(PurchaseBindingModel model, int BuyerId)
         {
             if (model == null)
             {
-                return _purchaseStorage.GetFullList();
+                return _purchaseStorage.GetFullList(BuyerId);
             }
             if (model.Id.HasValue)
             {

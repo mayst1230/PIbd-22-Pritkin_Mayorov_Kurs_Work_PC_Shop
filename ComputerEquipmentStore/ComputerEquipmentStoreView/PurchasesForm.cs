@@ -29,7 +29,7 @@ namespace ComputerEquipmentStoreView
         {
             try
             {
-                var list = purchaseLogic.Read(null);
+                var list = purchaseLogic.Read(null, Program.Buyer.Id);
                 if (list != null)
                 {
                     dataGridViewPurchases.DataSource = list;

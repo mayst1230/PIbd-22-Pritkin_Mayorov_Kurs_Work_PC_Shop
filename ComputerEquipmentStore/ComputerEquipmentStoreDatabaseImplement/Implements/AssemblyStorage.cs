@@ -16,11 +16,13 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<AssemblyViewModel> GetFullList()
+        public List<AssemblyViewModel> GetFullList(int BuyerId)
         {
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                return context.Assemblies.Select(rec => new AssemblyViewModel
+                return context.Assemblies
+                    .Where(rec => rec.BuyerId == BuyerId)
+                    .Select(rec => new AssemblyViewModel
                 {
                     Id = rec.Id,
                     Cost = rec.Cost,

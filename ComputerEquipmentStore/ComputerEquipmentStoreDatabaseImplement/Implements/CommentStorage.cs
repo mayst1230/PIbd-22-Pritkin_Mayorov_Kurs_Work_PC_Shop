@@ -16,11 +16,13 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<CommentViewModel> GetFullList()
+        public List<CommentViewModel> GetFullList(int BuyerId)
         {
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                return context.Comments.Select(rec => new CommentViewModel
+                return context.Comments
+                    .Where(rec => rec.BuyerId == BuyerId)
+                    .Select(rec => new CommentViewModel
                 {
                     Id = rec.Id,
                     Text = rec.Text,
