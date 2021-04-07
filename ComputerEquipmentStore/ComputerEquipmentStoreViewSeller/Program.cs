@@ -4,7 +4,10 @@ using Unity;
 using Unity.Lifetime;
 using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
 using ComputerStoreEquipmentDatabaseImplement.Implements;
+using ComputerEquipmentStoreDatabaseImplement.Implements;
 using ComputerEquipmentStoreBusinessLogic.BusinessLogics;
+using ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics;
+using ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 
@@ -33,10 +36,12 @@ namespace ComputerEquipmentStoreViewSeller
             currentContainer.RegisterType<IOrderStorage, OrderStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IProductStorage, ProductStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ISellerStorage, SellerStorage>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IAssemblyStorage, AssemblyStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ComponentLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<OrderLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ProductLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<SellerLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<AssemblyLogic>(new HierarchicalLifetimeManager());
             return currentContainer;
         }
     }

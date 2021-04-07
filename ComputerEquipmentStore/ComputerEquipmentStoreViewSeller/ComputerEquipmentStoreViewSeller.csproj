@@ -166,6 +166,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblyComponentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssemblyComponentForm.Designer.cs">
+      <DependentUpon>AssemblyComponentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AuthorizationFormSeller.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +234,9 @@
     <Compile Include="RegistrationFormSeller.Designer.cs">
       <DependentUpon>RegistrationFormSeller.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AssemblyComponentForm.resx">
+      <DependentUpon>AssemblyComponentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AuthorizationFormSeller.resx">
       <DependentUpon>AuthorizationFormSeller.cs</DependentUpon>
     </EmbeddedResource>
