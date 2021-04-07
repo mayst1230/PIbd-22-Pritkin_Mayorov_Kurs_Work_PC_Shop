@@ -43,10 +43,9 @@
             // comboBoxAssembly
             // 
             this.comboBoxAssembly.FormattingEnabled = true;
-            this.comboBoxAssembly.Location = new System.Drawing.Point(124, 11);
-            this.comboBoxAssembly.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboBoxAssembly.Location = new System.Drawing.Point(83, 7);
             this.comboBoxAssembly.Name = "comboBoxAssembly";
-            this.comboBoxAssembly.Size = new System.Drawing.Size(415, 28);
+            this.comboBoxAssembly.Size = new System.Drawing.Size(278, 21);
             this.comboBoxAssembly.TabIndex = 1;
             this.comboBoxAssembly.SelectedIndexChanged += new System.EventHandler(this.comboBoxAssembly_SelectedIndexChanged);
             // 
@@ -54,10 +53,9 @@
             // 
             this.labelAssembly.AutoSize = true;
             this.labelAssembly.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelAssembly.Location = new System.Drawing.Point(54, 14);
-            this.labelAssembly.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelAssembly.Location = new System.Drawing.Point(36, 9);
             this.labelAssembly.Name = "labelAssembly";
-            this.labelAssembly.Size = new System.Drawing.Size(68, 20);
+            this.labelAssembly.Size = new System.Drawing.Size(47, 13);
             this.labelAssembly.TabIndex = 2;
             this.labelAssembly.Text = "Сборка:";
             // 
@@ -66,10 +64,9 @@
             this.buttonLinkComponent.BackColor = System.Drawing.Color.Brown;
             this.buttonLinkComponent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLinkComponent.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonLinkComponent.Location = new System.Drawing.Point(13, 157);
-            this.buttonLinkComponent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonLinkComponent.Location = new System.Drawing.Point(9, 102);
             this.buttonLinkComponent.Name = "buttonLinkComponent";
-            this.buttonLinkComponent.Size = new System.Drawing.Size(194, 40);
+            this.buttonLinkComponent.Size = new System.Drawing.Size(129, 26);
             this.buttonLinkComponent.TabIndex = 4;
             this.buttonLinkComponent.Text = "Сохранить";
             this.buttonLinkComponent.UseVisualStyleBackColor = false;
@@ -80,10 +77,9 @@
             this.buttonCancel.BackColor = System.Drawing.Color.Brown;
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCancel.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonCancel.Location = new System.Drawing.Point(215, 157);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonCancel.Location = new System.Drawing.Point(143, 102);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(194, 40);
+            this.buttonCancel.Size = new System.Drawing.Size(129, 26);
             this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = false;
@@ -91,39 +87,34 @@
             // 
             // textBoxComponent
             // 
-            this.textBoxComponent.Location = new System.Drawing.Point(124, 49);
-            this.textBoxComponent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxComponent.Location = new System.Drawing.Point(83, 32);
             this.textBoxComponent.Name = "textBoxComponent";
-            this.textBoxComponent.ReadOnly = true;
-            this.textBoxComponent.Size = new System.Drawing.Size(415, 26);
+            this.textBoxComponent.Size = new System.Drawing.Size(278, 20);
             this.textBoxComponent.TabIndex = 29;
             // 
             // textBoxCount
             // 
-            this.textBoxCount.Location = new System.Drawing.Point(124, 85);
-            this.textBoxCount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxCount.Location = new System.Drawing.Point(83, 55);
             this.textBoxCount.Name = "textBoxCount";
-            this.textBoxCount.Size = new System.Drawing.Size(415, 26);
+            this.textBoxCount.Size = new System.Drawing.Size(278, 20);
             this.textBoxCount.TabIndex = 32;
             this.textBoxCount.TextChanged += new System.EventHandler(this.textBoxCount_TextChanged);
             // 
             // textBoxCost
             // 
-            this.textBoxCost.Location = new System.Drawing.Point(124, 121);
-            this.textBoxCost.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxCost.Location = new System.Drawing.Point(83, 79);
             this.textBoxCost.Name = "textBoxCost";
             this.textBoxCost.ReadOnly = true;
-            this.textBoxCost.Size = new System.Drawing.Size(415, 26);
+            this.textBoxCost.Size = new System.Drawing.Size(278, 20);
             this.textBoxCost.TabIndex = 33;
             // 
             // labelComponent
             // 
             this.labelComponent.AutoSize = true;
             this.labelComponent.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelComponent.Location = new System.Drawing.Point(25, 52);
-            this.labelComponent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelComponent.Location = new System.Drawing.Point(17, 34);
             this.labelComponent.Name = "labelComponent";
-            this.labelComponent.Size = new System.Drawing.Size(97, 20);
+            this.labelComponent.Size = new System.Drawing.Size(66, 13);
             this.labelComponent.TabIndex = 34;
             this.labelComponent.Text = "Компонент:";
             // 
@@ -131,10 +122,9 @@
             // 
             this.labelCount.AutoSize = true;
             this.labelCount.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelCount.Location = new System.Drawing.Point(18, 88);
-            this.labelCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCount.Location = new System.Drawing.Point(12, 57);
             this.labelCount.Name = "labelCount";
-            this.labelCount.Size = new System.Drawing.Size(104, 20);
+            this.labelCount.Size = new System.Drawing.Size(69, 13);
             this.labelCount.TabIndex = 35;
             this.labelCount.Text = "Количество:";
             // 
@@ -142,19 +132,18 @@
             // 
             this.labelCost.AutoSize = true;
             this.labelCost.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelCost.Location = new System.Drawing.Point(25, 124);
-            this.labelCost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCost.Location = new System.Drawing.Point(17, 81);
             this.labelCost.Name = "labelCost";
-            this.labelCost.Size = new System.Drawing.Size(97, 20);
+            this.labelCost.Size = new System.Drawing.Size(65, 13);
             this.labelCost.TabIndex = 36;
             this.labelCost.Text = "Стоимость:";
             // 
             // LinkComponentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
-            this.ClientSize = new System.Drawing.Size(552, 218);
+            this.ClientSize = new System.Drawing.Size(368, 142);
             this.Controls.Add(this.labelCost);
             this.Controls.Add(this.labelCount);
             this.Controls.Add(this.labelComponent);
@@ -165,7 +154,6 @@
             this.Controls.Add(this.buttonLinkComponent);
             this.Controls.Add(this.labelAssembly);
             this.Controls.Add(this.comboBoxAssembly);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "LinkComponentForm";
             this.Text = "Привязка комлпектующих к сборкам";
             this.ResumeLayout(false);

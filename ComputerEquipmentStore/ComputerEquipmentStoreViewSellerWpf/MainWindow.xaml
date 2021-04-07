@@ -1,0 +1,30 @@
+﻿<Window x:Class="ComputerEquipmentStoreViewSellerWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ComputerEquipmentStoreViewSellerWpf"
+        mc:Ignorable="d"
+        Title="Магазин компьютерной техники (Продавец)" Height="450" Width="800">
+    <Grid Background="Maroon">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="384*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="buttonComponents" Content="Комплектующие" HorizontalAlignment="Left" VerticalAlignment="Top" Width="168" Height="35" Background="Brown" Foreground="White" Click="buttonComponents_Click"/>
+        <Button x:Name="buttonProducts" Content="Товары" Grid.Column="1" HorizontalAlignment="Left"  Width="168" RenderTransformOrigin="0.208,0.299" Background="Brown" Foreground="White" Click="buttonProducts_Click"/>
+        <Button x:Name="buttonOrders" Content="Заказы на товары" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="168" Height="35" Background="Brown" Foreground="White"/>
+        <Button x:Name="buttonReports" Content="Отчеты" Grid.Column="3" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="168" Height="35" Background="Brown" Foreground="White"/>
+        <Button x:Name="buttonExit" Content="Выход" Grid.Column="4" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120" Height="35" Background="Brown" Foreground="White"/>
+        <Canvas Grid.Column="1" HorizontalAlignment="Left" Height="384" Grid.Row="1" VerticalAlignment="Top" Width="504" Grid.ColumnSpan="3">
+            <Image x:Name="image" Height="233" Canvas.Left="131" Canvas.Top="80" Width="217" Source="Images/LogoRed.png" Stretch="None"/>
+        </Canvas>
+    </Grid>
+</Window>

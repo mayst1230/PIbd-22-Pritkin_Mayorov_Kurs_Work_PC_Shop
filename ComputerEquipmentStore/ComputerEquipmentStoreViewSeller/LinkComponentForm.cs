@@ -39,7 +39,7 @@ namespace ComputerEquipmentStoreViewSeller
             this.assemblyLogic = assemblyLogic;
 
             
-            var listAssemblies = assemblyLogic.Read(null, 0, true);
+            var listAssemblies = assemblyLogic.Read(null);
             if (listAssemblies != null)
             {
                 comboBoxAssembly.DisplayMember = "AssemblyName";
@@ -78,9 +78,7 @@ namespace ComputerEquipmentStoreViewSeller
                         AssemblyViewModel assembly = assemblyLogic.Read(new AssemblyBindingModel
                         {
                             Id = int.Parse(comboBoxAssembly.SelectedValue.ToString())
-                        },
-                        0,
-                        false)?[0];
+                        })?[0];
                         int count = Convert.ToInt32(textBoxCount.Text);
 
                         decimal costOfAssembly = 0;
@@ -134,9 +132,7 @@ namespace ComputerEquipmentStoreViewSeller
                 AssemblyViewModel view = assemblyLogic.Read(new AssemblyBindingModel
                 {
                     Id = int.Parse(comboBoxAssembly.SelectedValue.ToString())
-                },
-                0,
-                true)?[0];
+                })?[0];
 
                 
 
@@ -202,9 +198,7 @@ namespace ComputerEquipmentStoreViewSeller
                 AssemblyViewModel view = assemblyLogic.Read(new AssemblyBindingModel
                 {
                     Id = int.Parse(comboBoxAssembly.SelectedValue.ToString())
-                },
-                0,
-                true)?[0];
+                })?[0];
                 if (view != null)
                 {
                     assemblyComponents = view.Components;
@@ -222,16 +216,25 @@ namespace ComputerEquipmentStoreViewSeller
         }
 
         private void CalcSum()
-        { 
-            ComponentViewModel component = componentLogic.Read(new ComponentBindingModel
+        {
+            if (comboBoxAssembly.SelectedValue != null &&
+           !string.IsNullOrEmpty(textBoxCount.Text))
             {
-                Id = id
-            })?[0];
-
-            int count = Convert.ToInt32(textBoxCount.Text);
-            decimal costOfComponent = component.Price;
-
-            textBoxCost.Text = (count * costOfComponent).ToString();
+                try
+                {
+                    int id = Convert.ToInt32(comboBoxAssembly.SelectedValue);
+                    ComponentViewModel component = componentLogic.Read(new ComponentBindingModel
+                    {
+                        Id = id
+                    })?[0];
+                    int count = Convert.ToInt32(textBoxCount.Text);
+                    textBoxCost.Text = (count * component?.Price ?? 0).ToString();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
