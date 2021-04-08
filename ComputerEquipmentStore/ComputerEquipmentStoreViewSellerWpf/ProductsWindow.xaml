@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreViewSellerWpf"
         mc:Ignorable="d"
-        Title="Товары" Height="450" Width="757.029" Loaded="ProductsWindow_Loaded">
+        Title="Товары" Height="450" Width="792.66" Loaded="ProductsWindow_Loaded" Icon="Images/ico.ico" ResizeMode="NoResize">
     <Grid Background="Maroon">
 
-        <Button x:Name="buttonAdd" Content="Добавить" HorizontalAlignment="Left" Margin="627,10,0,0" VerticalAlignment="Top" Width="114" Background="Brown" Foreground="White" Click="buttonAdd_Click"/>
-        <Button x:Name="buttonChange" Content="Изменить" HorizontalAlignment="Left" Margin="627,35,0,0" VerticalAlignment="Top" Width="114" Background="Brown" Foreground="White" Click="buttonChange_Click"/>
-        <Button x:Name="buttonDelete" Content="Удалить" HorizontalAlignment="Left" Margin="627,60,0,0" VerticalAlignment="Top" Width="114" Background="Brown" Foreground="White" Click="buttonDelete_Click"/>
-        <Button x:Name="buttonUpdate" Content="Обновить" HorizontalAlignment="Left" Margin="627,85,0,0" VerticalAlignment="Top" Width="114" Background="Brown" Foreground="White" Click="buttonUpdate_Click"/>
-        <DataGrid x:Name="dataGridProducts" Grid.Column="0" AutoGenerateColumns="False" CanUserAddRows="false" Margin="10,10,127,10">
+        <Button x:Name="buttonAdd" Content="Добавить" Margin="0,10,13,0" VerticalAlignment="Top" Background="Brown" Foreground="White" Click="buttonAdd_Click" HorizontalAlignment="Right" Width="114"/>
+        <Button x:Name="buttonChange" Content="Изменить" Margin="0,35,13,0" VerticalAlignment="Top" Background="Brown" Foreground="White" Click="buttonChange_Click" HorizontalAlignment="Right" Width="114"/>
+        <Button x:Name="buttonDelete" Content="Удалить" Margin="0,60,13,0" VerticalAlignment="Top" Background="Brown" Foreground="White" Click="buttonDelete_Click" HorizontalAlignment="Right" Width="114"/>
+        <Button x:Name="buttonUpdate" Content="Обновить" Margin="0,85,13,0" VerticalAlignment="Top" Background="Brown" Foreground="White" Click="buttonUpdate_Click" HorizontalAlignment="Right" Width="114"/>
+        <DataGrid x:Name="dataGridProducts" Grid.Column="0" AutoGenerateColumns="False" CanUserAddRows="false" Margin="0,0,137,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Id}"></DataGridTextColumn>
                 <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=SellerId}"></DataGridTextColumn>

@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Unity;
+using ComputerEquipmentStoreBusinessLogic.BindingModels;
+using ComputerEquipmentStoreBusinessLogic.BusinessLogics;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Windows.Forms;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace ComputerEquipmentStoreViewSellerWpf
 {
@@ -19,9 +13,109 @@ namespace ComputerEquipmentStoreViewSellerWpf
     /// </summary>
     public partial class OrderCreateWindow : Window
     {
-        public OrderCreateWindow()
+        [Dependency]
+        public IUnityContainer Container { get; set; }
+        private readonly ProductLogic _logicP;
+        private readonly OrderLogic _logicO;
+        public int Id { set { id = value; } }
+        private int? id;
+
+        public string OrderName
+        {
+            get { return textBoxOrderName.Text; }
+            set { textBoxOrderName.Text = value.ToString(); }
+        }
+
+        public int Count
+        {
+            get { return Convert.ToInt32(textBoxCount.Text); }
+            set
+            {
+                textBoxCount.Text = value.ToString();
+            }
+        }
+
+        public OrderCreateWindow(ProductLogic logicP, OrderLogic logicO)
         {
             InitializeComponent();
+            _logicP = logicP;
+            _logicO = logicO;
+        }
+
+        private void OrderCreateWindow_Loaded(object sender, EventArgs e)
+        {
+            try
+            {
+                var list = _logicP.Read(null);
+                if (list != null)
+                {
+                    comboBoxProduct.ItemsSource = list;
+                    comboBoxProduct.DisplayMemberPath = "ProductName";
+                    comboBoxProduct.SelectedItem = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (id.HasValue)
+            {
+                try
+                {
+                    var list = _logicO.Read(new OrderBindingModel
+                    {
+                        Id = id.Value
+                    })?[0];
+                    if (list != null)
+                    {
+                        comboBoxProduct.SelectedValue = list.ProductId;
+                        textBoxCount.Text = list.Count.ToString();
+                        textBoxOrderName.Text = list.OrderName;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void buttonSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxCount.Text))
+            {
+                MessageBox.Show("Заполните поле Количество", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (comboBoxProduct.SelectedValue == null)
+            {
+                MessageBox.Show("Выберите товар", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                _logicO.CreateOrUpdate(new OrderBindingModel
+                {
+                    Id = id,
+                    ProductId = Convert.ToInt32(comboBoxProduct.SelectedValue),
+                    SellerId = App.Seller.Id,
+                    OrderName = textBoxOrderName.Text,
+                    Count = Convert.ToInt32(textBoxCount.Text)
+                });
+                MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult = true;
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            Close();
         }
     }
 }

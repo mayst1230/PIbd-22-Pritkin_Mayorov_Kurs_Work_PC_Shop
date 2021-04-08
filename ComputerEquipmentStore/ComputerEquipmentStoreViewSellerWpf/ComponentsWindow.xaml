@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreViewSellerWpf"
         mc:Ignorable="d"
-        Title="Комплектующие" Height="434.483" Width="801.194" Loaded="ComponentsWindow_Load">
-    <Grid Background="Maroon">
+        Title="Комплектующие" Height="434.483" Width="777.894" Loaded="ComponentsWindow_Load" Icon="Images/ico.ico" ResizeMode="NoResize">
+    <Grid Background="Maroon" Margin="0,0,2,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="34*"/>
             <RowDefinition Height="27*"/>
@@ -22,12 +22,12 @@
             <ColumnDefinition Width="128*"/>
             <ColumnDefinition Width="15*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="buttonAdd" Content="Добавить" Grid.Column="1" Background="Brown" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="128" Height="27" Click="buttonAdd_Click"/>
-        <Button x:Name="buttonChange" Content="Изменить" Grid.Column="1" Background="Brown" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="128" Height="23" Click="buttonChange_Click" Margin="0,27,0,0" Grid.RowSpan="2"/>
-        <Button x:Name="buttonDelete" Content="Удалить" Grid.Column="1" Background="Brown" Foreground="White" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="128" Height="23" Click="buttonDelete_Click" Margin="0,17,0,0" Grid.RowSpan="2"/>
-        <Button x:Name="buttonUpdate" Content="Обновить" Grid.Column="1" Background="Brown" Foreground="White" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Width="128" Height="25" Click="buttonUpdate_Click" Margin="0,13,0,0" Grid.RowSpan="2"/>
-        <Button x:Name="buttonAssemblyComponent" Content="Привязка к сборкам" Grid.Column="1" Background="Brown" Foreground="White" HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Top" Width="128" Height="22"/>
-        <DataGrid x:Name="dataGridComponents" Grid.Column="0" AutoGenerateColumns="False" CanUserAddRows="false" Grid.RowSpan="7">
+        <Button x:Name="buttonAdd" Content="Добавить" Grid.Column="1" Background="Brown" Foreground="White" VerticalAlignment="Top" Height="27" Click="buttonAdd_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="buttonChange" Content="Изменить" Grid.Column="1" Background="Brown" Foreground="White" VerticalAlignment="Top" Height="23" Click="buttonChange_Click" Margin="0,27,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <Button x:Name="buttonDelete" Content="Удалить" Grid.Column="1" Background="Brown" Foreground="White" Grid.Row="1" VerticalAlignment="Top" Height="23" Click="buttonDelete_Click" Margin="0,17,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <Button x:Name="buttonUpdate" Content="Обновить" Grid.Column="1" Background="Brown" Foreground="White" Grid.Row="2" VerticalAlignment="Top" Height="25" Click="buttonUpdate_Click" Margin="0,13,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <Button x:Name="buttonAssemblyComponent" Content="Привязка к сборкам" Grid.Column="1" Background="Brown" Foreground="White" Grid.Row="5" VerticalAlignment="Top" Height="22" Grid.ColumnSpan="2" Click="buttonAssemblyComponent_Click"/>
+        <DataGrid x:Name="dataGridComponents" Grid.Column="0" AutoGenerateColumns="False" CanUserAddRows="false" Grid.RowSpan="8">
             <DataGrid.Columns>
                 <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=SellerId}"></DataGridTextColumn>
                 <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Id}"></DataGridTextColumn>

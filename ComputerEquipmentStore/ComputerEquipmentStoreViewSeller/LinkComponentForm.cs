@@ -49,14 +49,6 @@ namespace ComputerEquipmentStoreViewSeller
             
         }
 
-
-
-
-
-
-
-
-
         /// <summary>
         /// Подсчитать стоимость комплектующих конкретного типа в сборке
         /// </summary>
@@ -126,8 +118,6 @@ namespace ComputerEquipmentStoreViewSeller
                 {
                     Id = int.Parse(comboBoxAssembly.SelectedValue.ToString())
                 })?[0];
-
-                
 
                 if (view != null)
                 {

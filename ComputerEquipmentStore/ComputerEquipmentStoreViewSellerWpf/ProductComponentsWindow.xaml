@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreViewSellerWpf"
         mc:Ignorable="d"
-        Title="Формирование товара" Height="300.795" Width="303.447">
+        Title="Формирование товара" Height="300.795" Width="335.202" Icon="Images/ico.ico" ResizeMode="NoResize">
     <Grid Background="Maroon" Margin="0,0,2,0">
-        <Label x:Name="labelComponent" Content="Комплектующее:" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="comboBoxComponent" HorizontalAlignment="Left" SelectedValuePath="Id" Margin="10,36,0,0" VerticalAlignment="Top" Width="262" SelectionChanged="comboBoxComponent_SelectedIndexChanged"/>
-        <Label x:Name="labelCount" Content="Количество" Foreground="White" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="23" Margin="10,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="262" TextChanged="textBoxCount_TextChanged"/>
-        <Label x:Name="labelPrice" Content="Сумма" Foreground="White" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxPrice" HorizontalAlignment="Left" Height="23" Margin="10,178,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="262"/>
-        <Button x:Name="buttonSave" Content="Сохранить" Background="Brown" Foreground="White" HorizontalAlignment="Left" Margin="85,240,0,0" VerticalAlignment="Top" Width="75" Click="buttonSave_Click"/>
-        <Button x:Name="buttonCancel" Content="Отмена" Background="Brown" Foreground="White" HorizontalAlignment="Left" Margin="197,240,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancel_Click"/>
+        <Label x:Name="labelComponent" Content="Комплектующее:" Foreground="White" Margin="10,10,180,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxComponent" SelectedValuePath="Id" Margin="10,36,21,0" VerticalAlignment="Top" SelectionChanged="comboBoxComponent_SelectedIndexChanged"/>
+        <Label x:Name="labelCount" Content="Количество" Foreground="White" Margin="10,78,209,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxCount" Height="23" Margin="10,104,21,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="textBoxCount_TextChanged"/>
+        <Label x:Name="labelPrice" Content="Сумма" Foreground="White" Margin="10,152,237,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxPrice" Height="23" Margin="10,178,21,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
+        <Button x:Name="buttonSave" Content="Сохранить" Background="Brown" Foreground="White" Margin="0,240,133,0" VerticalAlignment="Top" Click="buttonSave_Click" HorizontalAlignment="Right" Width="94"/>
+        <Button x:Name="buttonCancel" Content="Отмена" Background="Brown" Foreground="White" Margin="0,240,21,0" VerticalAlignment="Top" Click="buttonCancel_Click" HorizontalAlignment="Right" Width="94"/>
     </Grid>
 </Window>

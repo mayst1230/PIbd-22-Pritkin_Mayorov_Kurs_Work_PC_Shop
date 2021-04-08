@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreViewSellerWpf"
         mc:Ignorable="d"
-        Title="OrderWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Заказы на товары" Height="450" Width="767.009" Loaded="OrderWindow_Load" Icon="Images/ico.ico" ResizeMode="NoResize">
+    <Grid Background="Maroon" Margin="0,0,2,0">
+        <Button x:Name="buttonAdd" Content="Добавить" Background="Brown" Foreground="White" Margin="0,32,6,0" VerticalAlignment="Top" Height="23" Click="buttonAdd_Click" HorizontalAlignment="Right" Width="103"/>
+        <Button x:Name="buttonChange" Content="Изменить" Background="Brown" Foreground="White" Margin="0,60,6,0" VerticalAlignment="Top" Click="buttonChange_Click" HorizontalAlignment="Right" Width="103"/>
+        <Button x:Name="buttonDelete" Content="Удалить" Background="Brown" Foreground="White" Margin="0,85,6,0" VerticalAlignment="Top" Click="buttonDelete_Click" HorizontalAlignment="Right" Width="103"/>
+        <DataGrid x:Name="dataGridOrders" Grid.Column="0" AutoGenerateColumns="False" CanUserAddRows="false" Margin="0,0,119,0" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Id}"></DataGridTextColumn>
+                <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=SellerId}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Название заказа" Binding="{Binding Path=OrderName}" Width="0.3*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Path=Count}" Width="0.1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Path=Status}" Width="0.1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата" Binding="{Binding Path=DateOrder}" Width="0.2*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Window>

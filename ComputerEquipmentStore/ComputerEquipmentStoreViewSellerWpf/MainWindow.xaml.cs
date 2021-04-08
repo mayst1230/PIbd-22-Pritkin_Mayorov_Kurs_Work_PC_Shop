@@ -27,5 +27,18 @@ namespace ComputerEquipmentStoreViewSellerWpf
             var form = Container.Resolve<ProductsWindow>();
             form.ShowDialog();
         }
+
+        private void buttonOrders_Click(object sender, RoutedEventArgs e)
+        {
+            var form = Container.Resolve<OrderWindow>();
+            form.ShowDialog();
+        }
+
+        private void buttonExit_Click(object sender, RoutedEventArgs e)
+        {
+            var form = Container.Resolve<AuthorizationWindow>();
+            form.ShowDialog();
+            Hide();
+        }
     }
 }

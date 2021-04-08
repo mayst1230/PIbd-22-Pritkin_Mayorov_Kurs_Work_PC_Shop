@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreViewSellerWpf"
         mc:Ignorable="d"
-        Title="Создание комплектующего" Height="196.949" Width="311.804" Loaded="ComponentWindow_Load">
+        Title="Создание комплектующего" Height="196.949" Width="293.901" Loaded="ComponentWindow_Load" Icon="Images/ico.ico" ResizeMode="NoResize">
     <Grid Background="Maroon" Margin="0,0,0,-1">
-        <Label x:Name="labelName" Content="Название:" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelPrice" Content="Цена:" Foreground="White" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxComponentName" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230"/>
-        <TextBox x:Name="textBoxComponentPrice" HorizontalAlignment="Left" Height="23" Margin="10,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230"/>
-        <Button x:Name="buttonSave" Content="Сохранить" Background="Brown" Foreground="White" HorizontalAlignment="Left" Margin="10,137,0,0" VerticalAlignment="Top" Width="100" Click="buttonSave_Click"/>
-        <Button x:Name="buttonCancel" Content="Отмена" Background="Brown" Foreground="White" HorizontalAlignment="Left" Margin="140,137,0,0" VerticalAlignment="Top" Width="100" Click="buttonCancel_Click"/>
+        <Label x:Name="labelName" Content="Название:" Foreground="White" Margin="10,10,185,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelPrice" Content="Цена:" Foreground="White" Margin="10,64,209,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxComponentName" Height="23" Margin="15,36,15,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxComponentPrice" Height="23" Margin="15,90,15,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="buttonSave" Content="Сохранить" Background="Brown" Foreground="White" HorizontalAlignment="Right" Margin="0,131,171,0" VerticalAlignment="Top" Width="100" Click="buttonSave_Click"/>
+        <Button x:Name="buttonCancel" Content="Отмена" Background="Brown" Foreground="White" Margin="0,131,15,0" VerticalAlignment="Top" Click="buttonCancel_Click" HorizontalAlignment="Right" Width="100"/>
     </Grid>
 </Window>
