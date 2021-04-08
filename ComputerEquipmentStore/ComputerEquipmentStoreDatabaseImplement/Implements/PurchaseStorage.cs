@@ -16,7 +16,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<PurchaseViewModel> GetFullList(int BuyerId)
+        public List<PurchaseViewModel> GetFullList()
         {
             using (var context = new ComputerEquipmentStoreDatabase())
             {
@@ -25,7 +25,6 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                     .Include(rec => rec.PurchaseAssemblies)
                     .ThenInclude(rec => rec.Assembly)
                     .Include(rec => rec.Buyer)
-                    .Where(rec => rec.BuyerId == BuyerId)
                     .ToList()
                     .Select(rec => new PurchaseViewModel
                     {

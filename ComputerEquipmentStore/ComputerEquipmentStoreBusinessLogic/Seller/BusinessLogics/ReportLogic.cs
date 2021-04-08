@@ -1,4 +1,4 @@
-﻿/*using ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces;
+﻿using ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.BindingModels;
@@ -29,14 +29,14 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
             Dictionary<int, ReportAssemblyProductViewModel> record = new Dictionary<int, ReportAssemblyProductViewModel>();
             foreach (PurchaseViewModel p in purchase)
             {
-                foreach (KeyValuePair<int, (string, int)> assembly in p.Assemblies)
+                foreach (KeyValuePair<int, (string, int, decimal)> assembly in p.Assemblies)
                 {
                     if (!record.ContainsKey(assembly.Key))
                     {
                         record.Add(assembly.Key, new ReportAssemblyProductViewModel
                         {
                             AssemblyName = assembly.Value.Item1,
-                            Products = new Dictionary<int, (string, decimal)>()
+                            Products = new Dictionary<int, (string, int, decimal)>()
                         });
                     }
                     foreach (var product in p.Products)
@@ -51,7 +51,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
                                     {
                                         Id = product.Key
                                     });
-                                    record[assembly.Key].Products.Add(product.Key, (product.Value.Item1, productModel != null ? productModel.Price : 0));
+                                    record[assembly.Key].Products.Add(product.Key, (product.Value.Item1, product.Value.Item2, productModel != null ? productModel.Price : 0));
                                 }
                             }
                         }
@@ -68,7 +68,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
             foreach (PurchaseViewModel p in purchases)
             {
                 bool purchaseIsNeeded = false;
-                foreach (KeyValuePair<int, (string, int)> product in p.Products)
+                foreach (KeyValuePair<int, (string, int, decimal)> product in p.Products)
                 {
                     if (purchaseIsNeeded)
                     {
@@ -93,13 +93,14 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
             }
             return neededPurchase;
         }
-
+        //Получение списка комплектующих с указанием товаров и сборок за определенный период
         // Получение списка запчастей с указанием работ и машин за определенный период
-        public List<ReportComponentsViewModel> GetSparePartWorkCar(ReportBindingModel model)
+        /*public List<ReportComponentsViewModel> GetSparePartWorkCar(ReportBindingModel model)
         {
             var purchase = _purchaseStorage.GetFilteredList(new PurchaseBindingModel
             {
-                DatePurchase = model.DatePurchase
+                DateFrom = model.DateFrom,
+                DateTo = model.DateTo
             });
 
             var componentsProductAssembly = new List<ReportComponentsViewModel>();
@@ -128,7 +129,6 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
                 }
             }
             return componentsProductAssembly;
-        }
+        }*/
     }
 }
-*/

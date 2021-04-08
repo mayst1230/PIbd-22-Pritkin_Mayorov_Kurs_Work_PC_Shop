@@ -8,7 +8,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces
 {
     public interface IPurchaseStorage
     {
-        List<PurchaseViewModel> GetFullList(int BuyerId);
+        List<PurchaseViewModel> GetFullList();
 
         List<PurchaseViewModel> GetFilteredList(PurchaseBindingModel model);
 

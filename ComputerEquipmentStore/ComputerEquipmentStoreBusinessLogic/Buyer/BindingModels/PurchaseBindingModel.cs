@@ -22,6 +22,8 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
 
         //Дата покупки
         public DateTime DatePurchase { get; set; }
+        public DateTime? DateFrom { get; set; }
+        public DateTime? DateTo { get; set; }
 
         //Сборки находящиеся в этой покупке
         public Dictionary<int, (string, int, decimal)> Assemblies { get; set; }

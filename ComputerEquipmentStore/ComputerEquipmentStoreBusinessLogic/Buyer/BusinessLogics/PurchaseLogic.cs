@@ -17,7 +17,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
         {
             if (model == null)
             {
-                return _purchaseStorage.GetFullList(BuyerId);
+                return _purchaseStorage.GetFullList();
             }
             if (model.Id.HasValue)
             {
