@@ -1,0 +1,25 @@
+﻿<Window x:Class="ComputerEquipmentStoreBuyerWpf.AssemblyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
+        mc:Ignorable="d"
+        Title="Сборка" Height="485.245" Width="800" Loaded="AssemblyWindow_Load">
+    <Grid Background="Blue" Margin="0,0,0.333,8">
+        <GroupBox x:Name="groupBoxComponents" Header="Комплектующие" Foreground="White" Height="352" Margin="10,64,152,0" VerticalAlignment="Top">
+            <DataGrid x:Name="dataGridComponents" Height="314" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="598">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Id}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Комплектующее" Binding="{Binding Path=ComponentName}" Width="0.40*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Количество" Binding="{Binding Path=Count}" Width="0.25*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Цена" Binding="{Binding Path=Cost}" Width="0.35*"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+        <Button x:Name="buttonSave" Content="Сохранить" HorizontalAlignment="Left" Margin="597,421,0,0" Background="DarkBlue" Foreground="White" VerticalAlignment="Top" Width="88" Click="buttonSave_Click" Height="21"/>
+        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="690,421,0,0"  Background="DarkBlue" Foreground="White" VerticalAlignment="Top" Width="92" Click="buttonCancel_Click"/>
+        <Label x:Name="labelAssemblyName" Content="Название сборки" HorizontalAlignment="Left" Foreground="White" Margin="115,5,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxAssemblyName" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
+    </Grid>
+</Window>

@@ -1,0 +1,30 @@
+﻿<Window x:Class="ComputerEquipmentStoreBuyerWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
+        mc:Ignorable="d"
+        Title="Магазин компьютерной техники (покупатель)" Height="450" Width="800">
+    <Grid Background="Blue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="384*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="buttonPurchases" Content="Покупки" HorizontalAlignment="Left" VerticalAlignment="Top" Width="168" Height="35" Background="DarkBlue" Foreground="White" Click="buttonPurchases_Click"/>
+        <Button x:Name="buttonAssemblies" Content="Сборки" Grid.Column="1" HorizontalAlignment="Left"  Width="168" RenderTransformOrigin="0.208,0.299" Background="DarkBlue" Foreground="White" Click="buttonAssemblies_Click"/>
+        <Button x:Name="buttonComments" Content="Комметарии к сборкам" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="168" Height="35" Background="DarkBlue" Foreground="White" Click="buttonComments_Click"/>
+        <Button x:Name="buttonGetList" Content="Получить список" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="168" Height="35" Background="DarkBlue" Foreground="White" Grid.ColumnSpan="2" Margin="167.667,0,0,0.333" Click="buttonGetList_Click"/>
+        <Button x:Name="buttonGerReport" Content="Получить отчет" Grid.Column="3" HorizontalAlignment="Left" Width="120" Background="DarkBlue" Foreground="White" Grid.ColumnSpan="2" Margin="167.667,0,0,0.333" Click="buttonGetReport_Click"/>
+        <Canvas Grid.Column="1" HorizontalAlignment="Left" Height="384" Grid.Row="1" VerticalAlignment="Top" Width="504" Grid.ColumnSpan="3">
+            <Image x:Name="image" Height="233" Canvas.Left="131" Canvas.Top="80" Width="217" Source="Images/LogoBlue.png" Stretch="None"/>
+        </Canvas>
+    </Grid>
+</Window>

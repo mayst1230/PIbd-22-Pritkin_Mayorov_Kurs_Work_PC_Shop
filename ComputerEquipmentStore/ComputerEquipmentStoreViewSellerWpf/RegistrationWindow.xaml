@@ -34,7 +34,7 @@
         <PasswordBox x:Name="passwordBox" Margin="1,0,86,1" Grid.Row="4" Height="25" VerticalAlignment="Bottom" Grid.Column="1" Grid.RowSpan="2"/>
         <Label x:Name="labelLogin" Content="Логин:" HorizontalAlignment="Left" Margin="1,0,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="15" Foreground="White" Height="27" Width="238" Grid.Column="1"/>
         <Label x:Name="labelPassword" Content="Пароль:" HorizontalAlignment="Left" Margin="0,25,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="15" Foreground="White" Height="30" Width="238" Grid.Column="1" Grid.RowSpan="2"/>
-        <Button x:Name="buttonRegistration" Content="Зарегистрироваться" HorizontalAlignment="Left" FontSize="15" Grid.Row="9" VerticalAlignment="Top" Width="202" Foreground="White" Background="Brown" Height="37" Grid.Column="1" Margin="1,0,0,0" Click="buttonRegistration_Click"/>
+        <Button x:Name="buttonRegistration" Content="Зарегистрироваться" HorizontalAlignment="Left" FontSize="15" Grid.Row="9" Width="202" Foreground="White" Background="Brown" Grid.Column="1" Margin="0.667,0.333,0,0.667" Click="buttonRegistration_Click"/>
         <Rectangle Fill="DarkRed" HorizontalAlignment="Left" Height="8" Margin="1,25,0,0" Grid.Row="1" Stroke="White" VerticalAlignment="Top" Width="201" Grid.Column="1"/>
         <Label x:Name="labelRetypePassword" Content="Повторите пароль: " Grid.Column="1" FontSize="15" Foreground="White" HorizontalAlignment="Left" Margin="0,23,0,0" Grid.Row="5" VerticalAlignment="Top" Height="31" Width="202" Grid.RowSpan="2"/>
         <PasswordBox x:Name="passwordBoxRepeat" Grid.Column="1" HorizontalAlignment="Left" Margin="1,0,0,0" Grid.Row="7" VerticalAlignment="Top" Height="24" Width="201"/>
