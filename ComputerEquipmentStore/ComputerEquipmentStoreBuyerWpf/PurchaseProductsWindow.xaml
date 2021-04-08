@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="PurchaseProductsWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="PurchaseProductsWindow" Height="174.666" Width="349.333">
+    <Grid Background="Blue">
+        <Label x:Name="labelProductName" Content="Название товара:" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelCount" Content="Количество:" HorizontalAlignment="Left" Foreground="White" Margin="39,41,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelCost" Content="Цена:" HorizontalAlignment="Left" Foreground="White" Margin="75,72,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxProducts" HorizontalAlignment="Left"  DisplayMemberPath="ProductName" SelectedValuePath="Id" Margin="121,14,0,0" VerticalAlignment="Top" Width="211" SelectionChanged="comboBoxProducts_SelectionChanged"/>
+        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="23" Margin="122,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="211" TextChanged="textBoxCount_TextChanged"/>
+        <TextBox x:Name="textBoxCost" HorizontalAlignment="Left" Height="23" Margin="121,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="211"/>
+        <Button x:Name="buttonSave" Content="Сохранить" HorizontalAlignment="Left" Background="DarkBlue" Foreground="White"  Margin="17,103,0,0" VerticalAlignment="Top" Width="155" Height="28" Click="buttonSave_Click"/>
+        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Background="DarkBlue" Foreground="White"  Margin="177,103,0,0" VerticalAlignment="Top" Width="155" Height="28" Click="buttonCancel_Click"/>
+
     </Grid>
 </Window>

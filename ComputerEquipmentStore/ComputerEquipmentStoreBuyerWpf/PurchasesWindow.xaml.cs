@@ -48,27 +48,23 @@ namespace ComputerEquipmentStoreBuyerWpf
 
         private void buttonCreate_Click(object sender, RoutedEventArgs e)
         {
-            /*
             var form = Container.Resolve<PurchaseWindow>();
             if (form.ShowDialog() == true)
             {
                 LoadData();
             }
-            */
         }
 
         private void buttonUpdate_Click(object sender, RoutedEventArgs e)
         {
             if (dataGridPurchases.SelectedItems.Count == 1)
             {
-                /*
                 var form = Container.Resolve<PurchaseWindow>();
                 form.Id = ((PurchaseViewModel)dataGridPurchases.SelectedItems[0]).Id;
                 if (form.ShowDialog() == true)
                 {
                     LoadData();
                 }
-                */
             }
         }
 

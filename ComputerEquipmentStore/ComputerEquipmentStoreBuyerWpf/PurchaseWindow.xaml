@@ -1,12 +1,46 @@
-﻿<Window x:Class="ComputerEquipmentStoreBuyerWpf.PurchaseWindowBuyer"
+﻿<Window x:Class="ComputerEquipmentStoreBuyerWpf.PurchaseWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="PurchaseWindowBuyer" Height="450" Width="800">
-    <Grid>
-        
+        Title="Покупка" Height="585.686" Width="800" Loaded="PurchaseWindow_Load">
+    <Grid Background="Blue">
+        <Label x:Name="labelNamePurchase" Content="Название покупки:" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelDatePurchase" Content="Дата покупки" Foreground="White" HorizontalAlignment="Left" Margin="345,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxNamePurchase" HorizontalAlignment="Left" Height="24" Margin="129,12,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="211"/>
+        <DatePicker x:Name="datePickerPurchaseDate" HorizontalAlignment="Left" Margin="435,11,0,0" VerticalAlignment="Top" Width="348"/>
+        <Button x:Name="buttonCreate" Content="Добавить" HorizontalAlignment="Left" Background="DarkBlue" Foreground="White" Height="40" Margin="596,52,0,0" VerticalAlignment="Top" Width="187" Click="buttonCreate_Click"/>
+        <Button x:Name="buttonUpdate" Content="Изменить" HorizontalAlignment="Left" Background="DarkBlue" Foreground="White"  Height="40" Margin="596,97,0,0" VerticalAlignment="Top" Width="187" Click="buttonUpdate_Click"/>
+        <Button x:Name="buttonDelete" Content="Удалить" HorizontalAlignment="Left" Background="DarkBlue" Foreground="White" Height="40" Margin="596,142,0,0" VerticalAlignment="Top" Width="187" Click="buttonDelete_Click"/>
+        <Button x:Name="buttonRefresh" Content="Обновить" HorizontalAlignment="Left" Background="DarkBlue" Foreground="White" Height="40" Margin="596,187,0,0" VerticalAlignment="Top" Width="187" Click="buttonRefresh_Click"/>
+
+
+
+
+        <Button x:Name="buttonSave" Content="Сохранить" HorizontalAlignment="Left" Background="DarkBlue" Foreground="White" Height="44" Margin="10,503,0,0" VerticalAlignment="Top" Width="203" Click="buttonSave_Click"/>
+        <Button x:Name="buttonCancel" Content="Отменить" HorizontalAlignment="Left" Background="DarkBlue" Foreground="White" Height="43" Margin="227,504,0,0" VerticalAlignment="Top" Width="203" Click="buttonCancel_Click"/>
+        <GroupBox x:Name="groupBoxAssemblies" Header="Сборки" HorizontalAlignment="Left" Height="239" Margin="10,259,0,0" Foreground="White" VerticalAlignment="Top" Width="581">
+            <DataGrid x:Name="dataGridAssemblies" HorizontalAlignment="Left" Height="200" Margin="10,10,0,0" VerticalAlignment="Top" Width="550">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Id}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Комплектующее" Binding="{Binding Path=AssemblyName}" Width="0.40*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Количество" Binding="{Binding Path=Count}" Width="0.25*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Цена" Binding="{Binding Path=Cost}" Width="0.35*"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+        <GroupBox x:Name="groupBoxProducts" Header="Товары" Foreground="White"  HorizontalAlignment="Left" Height="202" Margin="10,52,0,0" VerticalAlignment="Top" Width="581">
+            <DataGrid x:Name="dataGridProducts" HorizontalAlignment="Left" Height="163" Margin="10,10,0,0" VerticalAlignment="Top" Width="549">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Id}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Продукт" Binding="{Binding Path=ProductName}" Width="0.40*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Количество" Binding="{Binding Path=Count}" Width="0.25*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Цена" Binding="{Binding Path=Cost}" Width="0.35*"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </GroupBox>
     </Grid>
 </Window>

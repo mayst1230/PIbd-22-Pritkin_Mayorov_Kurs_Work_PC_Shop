@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="LinkAssemblyWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Привязка сборки" Height="206.223" Width="288.445">
+    <Grid Background="Blue">
+        <Label x:Name="labelPurchase" Foreground="White" Content="Покупка:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelAssembly" Foreground="White" Content="Сборка:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelCount" Foreground="White" Content="Количество:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelCost" Foreground="White" Content="Стоимость:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxPurchase" DisplayMemberPath="PurchaseName" SelectedValuePath="Id" HorizontalAlignment="Left" Margin="107,14,0,0" VerticalAlignment="Top" Width="164" SelectionChanged="comboBoxPurchase_SelectionChanged"/>
+        <TextBox x:Name="textBoxAssembly" HorizontalAlignment="Left" Height="23" Margin="107,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164"/>
+        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="23" Margin="107,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" TextChanged="textBoxCount_TextChanged"/>
+        <TextBox x:Name="textBoxCost" HorizontalAlignment="Left" Height="23" Margin="107,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164"/>
+        <Button x:Name="buttonLink" Content="Привязать" Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="12,141,0,0" VerticalAlignment="Top" Width="126" Height="26" Click="buttonLink_Click"/>
+        <Button x:Name="buttonCancel" Content="Отмена" Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="143,141,0,0" VerticalAlignment="Top" Width="126" Height="26" Click="buttonCancel_Click"/>
+
     </Grid>
 </Window>

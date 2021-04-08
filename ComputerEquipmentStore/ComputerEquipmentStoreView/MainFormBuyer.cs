@@ -62,7 +62,7 @@ namespace ComputerEquipmentStoreView
         /// <param name="e"></param> данные о событии
         private void ButtonGetList_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<AssembliesForm>();
+            var form = Container.Resolve<ListPurchaseComponentForm>();
             form.ShowDialog();
         }
 

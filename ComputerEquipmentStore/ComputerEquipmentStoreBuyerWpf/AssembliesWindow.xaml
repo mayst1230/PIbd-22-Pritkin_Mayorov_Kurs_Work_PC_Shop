@@ -21,5 +21,6 @@
                 <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Components}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="buttonLink" Content="Привязать к покупке"  Background="DarkBlue" Foreground="White"  HorizontalAlignment="Left" Margin="669,357,0,0" VerticalAlignment="Top" Width="114" Height="54" Click="buttonLink_Click"/>
     </Grid>
 </Window>

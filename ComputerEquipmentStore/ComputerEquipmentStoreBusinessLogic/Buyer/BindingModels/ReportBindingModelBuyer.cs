@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
 {
-    class ReportBindingModelBuyer
+    public class ReportBindingModelBuyer
     {
         public string FileName { get; set; }
 

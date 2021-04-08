@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.12.3.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.12.3\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -145,6 +148,7 @@
     <Reference Include="Unity.Container, Version=5.11.11.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.11.10\lib\net47\Unity.Container.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssembliesForm.cs">
@@ -182,6 +186,12 @@
     </Compile>
     <Compile Include="LinkAssemblyForm.Designer.cs">
       <DependentUpon>LinkAssemblyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListPurchaseComponentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListPurchaseComponentForm.Designer.cs">
+      <DependentUpon>ListPurchaseComponentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainFormBuyer.cs">
       <SubType>Form</SubType>
@@ -232,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LinkAssemblyForm.resx">
       <DependentUpon>LinkAssemblyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListPurchaseComponentForm.resx">
+      <DependentUpon>ListPurchaseComponentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainFormBuyer.resx">
       <DependentUpon>MainFormBuyer.cs</DependentUpon>

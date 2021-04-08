@@ -51,8 +51,7 @@ namespace ComputerEquipmentStoreView
             currentContainer.RegisterType<CommentLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ProductLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ComponentLogic>(new HierarchicalLifetimeManager());
-
-
+            currentContainer.RegisterType<ReportLogicBuyer>(new HierarchicalLifetimeManager());
 
             return currentContainer;
         }

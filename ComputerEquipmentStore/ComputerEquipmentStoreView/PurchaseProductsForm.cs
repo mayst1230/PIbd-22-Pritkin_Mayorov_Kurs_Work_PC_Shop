@@ -91,6 +91,8 @@ namespace ComputerEquipmentStoreView
 
         
 
+
+
         private void comboBoxProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
             CalcSum();

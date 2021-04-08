@@ -36,7 +36,7 @@ namespace ComputerEquipmentStoreBuyerWpf
 
         private void buttonGetList_Click(object sender, RoutedEventArgs e)
         {
-            var form = Container.Resolve<AssembliesWindow>();
+            var form = Container.Resolve<ListPurchaseComponentWindow>();
             form.ShowDialog();
         }
 

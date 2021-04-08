@@ -95,5 +95,21 @@ namespace ComputerEquipmentStoreBuyerWpf
         {
             LoadData();
         }
+
+        private void buttonLink_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGridAssemblies.SelectedItems.Count == 1)
+            {
+                var form = Container.Resolve<LinkAssemblyWindow>();
+                int id = ((AssemblyViewModel)dataGridAssemblies.SelectedItems[0]).Id;
+                form.Id = id;
+                form.AssemblyName = (string) ((AssemblyViewModel)dataGridAssemblies.SelectedItems[0]).AssemblyName;
+
+                if (form.ShowDialog() == true)
+                {
+                    LoadData();
+                }
+            }
+        }
     }
 }

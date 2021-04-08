@@ -46,6 +46,7 @@ namespace ComputerEquipmentStoreBuyerWpf
             currentContainer.RegisterType<PurchaseLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<CommentLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<BuyerLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ReportLogicBuyer>(new HierarchicalLifetimeManager());
             return currentContainer;
         }
     }
