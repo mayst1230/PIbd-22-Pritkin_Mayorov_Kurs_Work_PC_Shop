@@ -1,10 +1,10 @@
 ﻿using ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces;
-using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
-using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
-using ComputerEquipmentStoreBusinessLogic.BindingModels;
-using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
+using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
+using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
+using ComputerEquipmentStoreBusinessLogic.HelperModels;
+using ComputerEquipmentStoreBusinessLogic.BindingModels;
 using System.Collections.Generic;
 
 
@@ -15,120 +15,118 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
         private readonly IPurchaseStorage _purchaseStorage;
         private readonly IProductStorage _productStorage;
         private readonly IAssemblyStorage _assemblyStorage;
+        private readonly IComponentStorage _componentStorage;
 
-        public ReportLogic(IPurchaseStorage purchaseStorage, IProductStorage productStorage, IAssemblyStorage assemblyStorage)
+        public ReportLogic(IPurchaseStorage purchaseStorage, IProductStorage productStorage, IAssemblyStorage assemblyStorage, IComponentStorage componentStorage)
         {
             _productStorage = productStorage;
             _purchaseStorage = purchaseStorage;
             _assemblyStorage = assemblyStorage;
+            _componentStorage = componentStorage;
         }
 
-        private Dictionary<int, ReportAssemblyProductViewModel> GetAssemblyProduct(List<ProductViewModel> selectedProducts)
+        private List<ReportAssemblyProductViewModel> GetAssemblyProduct(List<ProductViewModel> selectedProducts)
         {
-            List<PurchaseViewModel> purchase = GetPurchaseByProducts(selectedProducts);
-            Dictionary<int, ReportAssemblyProductViewModel> record = new Dictionary<int, ReportAssemblyProductViewModel>();
-            foreach (PurchaseViewModel p in purchase)
+            List<ReportAssemblyProductViewModel> record = new List<ReportAssemblyProductViewModel>();
+            var listAssembly = _assemblyStorage.GetFullList();
+            foreach (var assembly in listAssembly)
             {
-                foreach (KeyValuePair<int, (string, int, decimal)> assembly in p.Assemblies)
+                Dictionary<int, (string, decimal)> neededProducts = new Dictionary<int, (string, decimal)>();
+                foreach (var product in selectedProducts)
                 {
-                    if (!record.ContainsKey(assembly.Key))
+                    bool needed = true;
+                    foreach (var component in product.Components)
                     {
-                        record.Add(assembly.Key, new ReportAssemblyProductViewModel
+                        if (!assembly.Components.ContainsKey(component.Key))
                         {
-                            AssemblyName = assembly.Value.Item1,
-                            Products = new Dictionary<int, (string, int, decimal)>()
-                        });
-                    }
-                    foreach (var product in p.Products)
-                    {
-                        foreach (var selectedProduct in selectedProducts)
-                        {
-                            if (product.Key == selectedProduct.Id)
-                            {
-                                if (!record[assembly.Key].Products.ContainsKey(product.Key))
-                                {
-                                    var productModel = _productStorage.GetElement(new ProductBindingModel
-                                    {
-                                        Id = product.Key
-                                    });
-                                    record[assembly.Key].Products.Add(product.Key, (product.Value.Item1, product.Value.Item2, productModel != null ? productModel.Price : 0));
-                                }
-                            }
+                            needed = false;
                         }
                     }
+                    if (needed)
+                    {
+                        neededProducts.Add(product.Id, (product.ProductName, product.Price));
+                    }
+                }
+                if (neededProducts.Count > 0)
+                {
+                    record.Add(new ReportAssemblyProductViewModel
+                    {
+                        AssemblyName = assembly.AssemblyName,
+                        Products = neededProducts
+                    });    
                 }
             }
             return record;
         }
 
-        private List<PurchaseViewModel> GetPurchaseByProducts(List<ProductViewModel> selectedProducts)
-        {
-            List<PurchaseViewModel> purchases = _purchaseStorage.GetFullList();
-            List<PurchaseViewModel> neededPurchase = new List<PurchaseViewModel>();
-            foreach (PurchaseViewModel p in purchases)
-            {
-                bool purchaseIsNeeded = false;
-                foreach (KeyValuePair<int, (string, int, decimal)> product in p.Products)
-                {
-                    if (purchaseIsNeeded)
-                    {
-                        break;
-                    }
-                    foreach (ProductViewModel selectedProduct in selectedProducts)
-                    {
-                        if (product.Key == selectedProduct.Id)
-                        {
-                            purchaseIsNeeded = true;
-                            break;
-                        }
-                    }
-                }
-                if (purchaseIsNeeded)
-                {
-                    if (!neededPurchase.Contains(p))
-                    {
-                        neededPurchase.Add(p);
-                    }
-                }
-            }
-            return neededPurchase;
-        }
         //Получение списка комплектующих с указанием товаров и сборок за определенный период
-        // Получение списка запчастей с указанием работ и машин за определенный период
-        /*public List<ReportComponentsViewModel> GetSparePartWorkCar(ReportBindingModel model)
+        public List<ReportComponentsViewModel> GetComponentProductAssembly(ReportBindingModel model)
         {
-            var purchase = _purchaseStorage.GetFilteredList(new PurchaseBindingModel
+            var purchases = _purchaseStorage.GetFilteredList(new PurchaseBindingModel
             {
                 DateFrom = model.DateFrom,
                 DateTo = model.DateTo
             });
 
             var componentsProductAssembly = new List<ReportComponentsViewModel>();
-            foreach (var purchases in purchase)
+            foreach (var purchase in purchases)
             {
-                var product = _productStorage.GetElement(new ProductBindingModel
+                foreach (var product in purchase.Products)
+                
                 {
-                    Id = 
-                });
-                foreach (var purchaseAssembly in purchase.)
-                {
-                    var poroduct = _productStorage.GetElement(new ProductBindingModel
-                    {
-                        Id = purchaseAssembly.Key
+                    var view = _productStorage.GetElement(new ProductBindingModel {
+                        Id = product.Key
                     });
-                    foreach (var sparePart in poroduct.WorkSpareParts)
+                    foreach (var component in view.Components)
                     {
-                        componentsProductAssembly.Add(new ReportSparePartsViewModel
+                        componentsProductAssembly.Add(new ReportComponentsViewModel
                         {
-                            CarName = product.CarName,
-                            DatePassed = product.DatePassed,
-                            WorkName = poroduct.WorkName,
-                            SparePart = sparePart.Value.Item1
+                            Component = component.Value.Item1,
+                            DataSale = purchase.DatePurchase,
+                            AssemblyProduct = view.ProductName
+                        });
+                    }
+                }
+                foreach (var assembly in purchase.Assemblies)
+                {
+                    var view = _assemblyStorage.GetElement(new AssemblyBindingModel
+                    {
+                        Id = assembly.Key
+                    });
+                    foreach (var component in view.Components)
+                    {
+                        componentsProductAssembly.Add(new ReportComponentsViewModel
+                        {
+                            Component = component.Value.Item1,
+                            DataSale = purchase.DatePurchase,
+                            AssemblyProduct = view.AssemblyName
                         });
                     }
                 }
             }
             return componentsProductAssembly;
-        }*/
+        }
+
+        /// Сохранение сборок по указанным товарам в файл-Word
+        public void SaveProductAssembliesToWordFile(ReportBindingModel model)
+        {
+            SaveToWord.CreateDoc(new ListAssemblyInfoStorekeeper
+            {
+                FileName = model.FileName,
+                Title = "Список сборок по указанным товарам",
+                AssemblyProduct = GetAssemblyProduct(model.Products)
+            });
+        }
+
+        /// Сохранение сборок по указанным товарам в файл-Excel
+        public void SaveProductAssembliesToExcelFile(ReportBindingModel model)
+        {
+            SaveToExcel.CreateDoc(new ListAssemblyInfoStorekeeper
+            {
+                FileName = model.FileName,
+                Title = "Список сборок по указанным товарам",
+                AssemblyProduct = GetAssemblyProduct(model.Products)
+            });
+        }
     }
 }

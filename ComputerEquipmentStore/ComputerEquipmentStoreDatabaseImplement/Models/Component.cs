@@ -17,6 +17,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
 
         [Required]
         public string ComponentName { get; set; }
+
         public Seller Seller { get; set; }
 
         [ForeignKey("ComponentId")]

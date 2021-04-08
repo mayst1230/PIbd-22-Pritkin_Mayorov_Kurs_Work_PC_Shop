@@ -21,8 +21,8 @@
         <Button x:Name="buttonComponents" Content="Комплектующие" HorizontalAlignment="Left" VerticalAlignment="Top" Width="168" Height="35" Background="Brown" Foreground="White" Click="buttonComponents_Click"/>
         <Button x:Name="buttonProducts" Content="Товары" Grid.Column="1" HorizontalAlignment="Left"  Width="168" RenderTransformOrigin="0.208,0.299" Background="Brown" Foreground="White" Click="buttonProducts_Click"/>
         <Button x:Name="buttonOrders" Content="Заказы на товары" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="168" Height="35" Background="Brown" Foreground="White" Click="buttonOrders_Click"/>
-        <Button x:Name="buttonReports" Content="Отчеты" Grid.Column="3" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="168" Height="35" Background="Brown" Foreground="White"/>
-        <Button x:Name="buttonExit" Content="Выход" Grid.Column="4" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120" Height="35" Background="Brown" Foreground="White" Click="buttonExit_Click"/>
+        <Button x:Name="buttonReports" Content="Отчеты" Grid.Column="3" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="168" Height="35" Background="Brown" Foreground="White" Click="buttonReports_Click"/>
+        <Button x:Name="buttonExit" Content="Список" Grid.Column="4" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120" Height="35" Background="Brown" Foreground="White" Click="buttonExit_Click"/>
         <Canvas Grid.Column="1" HorizontalAlignment="Left" Height="384" Grid.Row="1" VerticalAlignment="Top" Width="504" Grid.ColumnSpan="3">
             <Image x:Name="image" Height="233" Canvas.Left="131" Canvas.Top="80" Width="217" Source="Images/LogoRed.png" Stretch="None"/>
         </Canvas>

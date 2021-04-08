@@ -1,11 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
+﻿using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
 using ComputerEquipmentStoreDatabaseImplement.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ComputerEquipmentStoreDatabaseImplement.Implements
 {
@@ -83,7 +83,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                     .Include(rec => rec.AssemblyComponents)
                     .ThenInclude(rec => rec.Component)
                     .Include(rec => rec.Buyer)
-                    .FirstOrDefault(rec => rec.Id == model.Id  || rec.AssemblyName == model.AssemblyName);
+                    .FirstOrDefault(rec => rec.Id == model.Id || rec.AssemblyName == model.AssemblyName);
                 return assembly != null ?
                 new AssemblyViewModel
                 {
@@ -116,13 +116,13 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         /// <param name="model"></param>
         public void Update(AssemblyBindingModel model)
         {
-            using (var context = new ComputerEquipmentStoreDatabase())
+            using (ComputerEquipmentStoreDatabase context = new ComputerEquipmentStoreDatabase())
             {
-                using (var transaction = context.Database.BeginTransaction())
+                using (Microsoft.EntityFrameworkCore.Storage.IDbContextTransaction transaction = context.Database.BeginTransaction())
                 {
                     try
                     {
-                        var element = context.Assemblies.FirstOrDefault(rec => rec.Id == model.Id || rec.AssemblyName == model.AssemblyName);
+                        Assembly element = context.Assemblies.FirstOrDefault(rec => rec.Id == model.Id || rec.AssemblyName == model.AssemblyName);
                         if (element == null)
                         {
                             throw new Exception("Сборка не найдена");
@@ -182,11 +182,9 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             {
                 List<AssemblyComponent> assemblyComponent = context.AssemblyComponents.Where(rec => rec.AssemblyId == model.Id.Value).ToList();
                 // удалили те, которых нет в модели
-
                 if (model.Components != null)
                 {
                     context.AssemblyComponents.RemoveRange(assemblyComponent.Where(rec => !model.Components.ContainsKey(rec.ComponentId)).ToList());
-
                     //обновляем кол-во и цену у записей, которые существуют
                     foreach (AssemblyComponent updateComponent in assemblyComponent)
                     {
@@ -199,20 +197,20 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                             model.Components.Remove(updateComponent.ComponentId);
                         }
                     }
-                }
-                context.SaveChanges();
 
-                // добавили новые
-                foreach (KeyValuePair<int, (string, int, decimal)> CSP in model.Components)
-                {
-                    context.AssemblyComponents.Add(new AssemblyComponent
-                    {
-                        AssemblyId = assembly.Id,
-                        ComponentId = CSP.Key,
-                        Count = CSP.Value.Item2,
-                        Price = CSP.Value.Item3
-                    });
                     context.SaveChanges();
+                    // добавили новые
+                    foreach (KeyValuePair<int, (string, int, decimal)> CSP in model.Components)
+                    {
+                        context.AssemblyComponents.Add(new AssemblyComponent
+                        {
+                            AssemblyId = assembly.Id,
+                            ComponentId = CSP.Key,
+                            Count = CSP.Value.Item2,
+                            Price = CSP.Value.Item3
+                        });
+                        context.SaveChanges();
+                    }
                 }
             }
             return assembly;

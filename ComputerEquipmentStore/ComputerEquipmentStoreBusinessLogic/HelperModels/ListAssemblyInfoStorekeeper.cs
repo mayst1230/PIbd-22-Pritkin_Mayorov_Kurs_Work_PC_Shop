@@ -3,10 +3,10 @@ using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 
 namespace ComputerEquipmentStoreBusinessLogic.HelperModels
 {
-    class ListAssemblyInfoStorekeeper
+    public class ListAssemblyInfoStorekeeper
     {
         public string FileName { get; set; }
         public string Title { get; set; }
-        public Dictionary<int, ReportAssemblyProductViewModel> AssemblyProduct{ get; set; }
+        public List<ReportAssemblyProductViewModel> AssemblyProduct{ get; set; }
     }
 }
