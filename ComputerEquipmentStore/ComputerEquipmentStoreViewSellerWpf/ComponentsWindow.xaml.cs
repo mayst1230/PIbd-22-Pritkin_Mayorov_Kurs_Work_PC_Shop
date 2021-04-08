@@ -93,5 +93,14 @@ namespace ComputerEquipmentStoreViewSellerWpf
         {
             LoadData();
         }
+
+        private void buttonAssemblyComponent_Click(object sender, RoutedEventArgs e)
+        {
+            var form = Container.Resolve<AssemblyComponentWindow>();
+            int id = ((ComponentViewModel)dataGridComponents.SelectedItems[0]).Id;
+            form.Id = id;
+            form.ComponentName = ((ComponentViewModel)dataGridComponents.SelectedItems[0]).ComponentName;
+            form.ShowDialog();
+        }
     }
 }

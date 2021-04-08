@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreViewSellerWpf"
         mc:Ignorable="d"
-        Title="OrderCreateWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Создание заказа" Height="277.126" Width="315.689" Loaded="OrderCreateWindow_Loaded" Icon="Images/ico.ico" ResizeMode="NoResize">
+    <Grid Background="Maroon">
+        <ComboBox x:Name="comboBoxProduct" HorizontalAlignment="Left" SelectedValuePath="Id" Margin="29,55,0,0" VerticalAlignment="Top" Width="245"/>
+        <Label x:Name="labelProduct" Content="Товар:" Foreground="White" HorizontalAlignment="Left" Margin="29,29,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelCount" Content="Количество:" Foreground="White" HorizontalAlignment="Left" Margin="29,82,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="23" Margin="29,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245"/>
+        <Label x:Name="labelOrderName" Content="Название заказа:" Foreground="White" HorizontalAlignment="Left" Margin="29,136,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxOrderName" HorizontalAlignment="Left" Height="23" Margin="29,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245"/>
+        <Button x:Name="buttonSave" Content="Сохранить" HorizontalAlignment="Left" Background="Brown" Foreground="White" Margin="104,213,0,0" VerticalAlignment="Top" Width="75" Click="buttonSave_Click"/>
+        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="199,213,0,0" Background="Brown" Foreground="White" VerticalAlignment="Top" Width="75" Click="buttonCancel_Click"/>
+
     </Grid>
 </Window>

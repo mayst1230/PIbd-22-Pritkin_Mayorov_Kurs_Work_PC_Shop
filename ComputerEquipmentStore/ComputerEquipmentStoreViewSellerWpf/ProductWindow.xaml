@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreViewSellerWpf"
         mc:Ignorable="d"
-        Title="Создание товара" Height="482.228" Width="800" Loaded="ProductWindow_Load">
+        Title="Создание товара" Height="458.187" Width="843.839" Loaded="ProductWindow_Load" Icon="Images/ico.ico" ResizeMode="NoResize">
     <Grid Background="Maroon">
         <GroupBox x:Name="groupBoxComponents" Header="Комплектующие" Foreground="White" Height="352" Margin="10,64,152,0" VerticalAlignment="Top">
-            <DataGrid x:Name="dataGridComponents" Height="314" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="598">
+            <DataGrid x:Name="dataGridComponents" Height="329" Margin="0,0,-2,0" VerticalAlignment="Top">
                 <DataGrid.Columns>
                     <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Id}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Комплектующее" Binding="{Binding Path=ComponentName}" Width="0.40*"></DataGridTextColumn>
@@ -17,16 +17,16 @@
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>
-        <Button x:Name="buttonSave" Content="Сохранить" HorizontalAlignment="Left" Margin="597,421,0,0" Background="Brown" Foreground="White" VerticalAlignment="Top" Width="88" Click="buttonSave_Click"/>
-        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="690,421,0,0"  Background="Brown" Foreground="White" VerticalAlignment="Top" Width="92" Click="buttonCancel_Click"/>
-        <Label x:Name="labelProductName" Content="Название" HorizontalAlignment="Left" Foreground="White" Margin="115,5,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxProductName" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
-        <Label x:Name="labelPrice" Content="Цена" HorizontalAlignment="Left" Foreground="White" Margin="622,5,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxPrice" HorizontalAlignment="Left" Height="23" Margin="495,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
-        <Button x:Name="buttonAddComponent" Content="Добавить" HorizontalAlignment="Left" Background="Brown" Foreground="White" Margin="645,94,0,0" VerticalAlignment="Top" Width="137" Click="buttonAddComponent_Click"/>
-        <Button x:Name="buttonChangeComponent" Content="Изменить" HorizontalAlignment="Left" Background="Brown" Foreground="White" Margin="645,119,0,0" VerticalAlignment="Top" Width="137" Click="buttonChangeComponent_Click"/>
-        <Button x:Name="buttonDeleteComponent" Content="Удалить" HorizontalAlignment="Left" Background="Brown" Foreground="White" Margin="645,144,0,0" VerticalAlignment="Top" Width="137" Click="buttonDeleteComponent_Click"/>
-        <Button x:Name="buttonUpdateComponents" Content="Обновить" HorizontalAlignment="Left" Background="Brown" Foreground="White" Margin="645,169,0,0" VerticalAlignment="Top" Width="137" Click="buttonUpdateComponents_Click"/>
+        <Button x:Name="buttonSave" Content="Сохранить" Margin="0,367,10,0" Background="Brown" Foreground="White" VerticalAlignment="Top" Click="buttonSave_Click" HorizontalAlignment="Right" Width="134"/>
+        <Button x:Name="buttonCancel" Content="Отмена" Margin="0,392,10,0"  Background="Brown" Foreground="White" VerticalAlignment="Top" Click="buttonCancel_Click" HorizontalAlignment="Right" Width="134"/>
+        <Label x:Name="labelProductName" Content="Название" Foreground="White" Margin="0,5,588,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="73"/>
+        <TextBox x:Name="textBoxProductName" Height="23" Margin="0,36,482,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="284"/>
+        <Label x:Name="labelPrice" Content="Цена" Foreground="White" Margin="0,5,116,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="46"/>
+        <TextBox x:Name="textBoxPrice" Height="23" Margin="0,36,10,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="284"/>
+        <Button x:Name="buttonAddComponent" Content="Добавить" Background="Brown" Foreground="White" Margin="0,94,10,0" VerticalAlignment="Top" Click="buttonAddComponent_Click" HorizontalAlignment="Right" Width="134"/>
+        <Button x:Name="buttonChangeComponent" Content="Изменить" Background="Brown" Foreground="White" Margin="0,119,10,0" VerticalAlignment="Top" Click="buttonChangeComponent_Click" HorizontalAlignment="Right" Width="134"/>
+        <Button x:Name="buttonDeleteComponent" Content="Удалить" Background="Brown" Foreground="White" Margin="0,144,10,0" VerticalAlignment="Top" Click="buttonDeleteComponent_Click" HorizontalAlignment="Right" Width="134"/>
+        <Button x:Name="buttonUpdateComponents" Content="Обновить" Background="Brown" Foreground="White" Margin="0,169,10,0" VerticalAlignment="Top" Click="buttonUpdateComponents_Click" HorizontalAlignment="Right" Width="134"/>
 
     </Grid>
 </Window>

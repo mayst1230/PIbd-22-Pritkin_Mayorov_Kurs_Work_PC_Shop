@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreViewSellerWpf"
         mc:Ignorable="d"
-        Title="AssemblyComponentWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Формирование сборки" Height="327.273" Width="293.255" Icon="Images/ico.ico" ResizeMode="NoResize">
+    <Grid Background="Maroon">
+        <ComboBox x:Name="comboBoxAssembly" Margin="12,35,0,0" SelectedValuePath="Id" VerticalAlignment="Top" HorizontalAlignment="Left" Width="255" SelectionChanged="comboBoxAssembly_SelectedChanged"/>
+        <Label x:Name="labelAssembly" Content="Сборка:" Foreground="White" Margin="12,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="255"/>
+        <Label x:Name="labelComponent" Content="Комплектующее:" Foreground="White"  Margin="12,62,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="255"/>
+        <TextBox x:Name="textBoxComponent" Height="23" Margin="12,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="255"/>
+        <Label x:Name="labelCount" Content="Количество:" Foreground="White"  Margin="12,121,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="255"/>
+        <TextBox x:Name="textBoxCount" Height="23" Margin="12,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="255" TextChanged="textBoxCount_TextChange"/>
+        <Label x:Name="labelPrice" Content="Стоимость:" Foreground="White"  Margin="12,180,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="255"/>
+        <TextBox x:Name="textBoxPrice" Height="23" Margin="12,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="255"/>
+        <Button x:Name="buttonSave" Content="Сохранить" Background="Brown" Foreground="White" HorizontalAlignment="Left" Margin="95,262,0,0" VerticalAlignment="Top" Width="75" Height="27" Click="buttonSave_Click"/>
+        <Button x:Name="buttonCancel" Content="Отмена" Background="Brown" Foreground="White" HorizontalAlignment="Left" Margin="192,262,0,0" VerticalAlignment="Top" Width="75" Height="27" Click="buttonCancel_Click"/>
     </Grid>
 </Window>
