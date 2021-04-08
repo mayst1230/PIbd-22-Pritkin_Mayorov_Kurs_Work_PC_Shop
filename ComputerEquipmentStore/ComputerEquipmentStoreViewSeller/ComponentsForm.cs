@@ -92,12 +92,12 @@ namespace ComputerEquipmentStoreViewSeller
         }
 
         private void buttonAddComponentToAssembly_Click(object sender, EventArgs e)
-        {
-            var form = Container.Resolve<LinkComponentForm>();
-            int id = Convert.ToInt32(dataGridViewComponents.SelectedRows[0].Cells[0].Value);
-            form.Id = id;
-            form.ComponentName = dataGridViewComponents.SelectedRows[0].Cells[2].Value.ToString();
-            form.ShowDialog();   
+        {            
+                var form = Container.Resolve<LinkComponentForm>();
+                int id = Convert.ToInt32(dataGridViewComponents.SelectedRows[0].Cells[0].Value);
+                form.Id = id;
+                form.ComponentName = dataGridViewComponents.SelectedRows[0].Cells[2].Value.ToString();
+                form.ShowDialog();            
         }
     }
 }

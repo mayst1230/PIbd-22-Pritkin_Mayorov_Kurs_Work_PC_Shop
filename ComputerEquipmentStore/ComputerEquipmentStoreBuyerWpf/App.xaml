@@ -1,8 +1,8 @@
-﻿<Application x:Class="ComputerEquipmentStoreViewSellerWpf.App"
+﻿<Application x:Class="ComputerEquipmentStoreBuyerWpf.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:ComputerEquipmentStoreViewSellerWpf">
+             xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf">
     <Application.Resources>
-
+         
     </Application.Resources>
 </Application>

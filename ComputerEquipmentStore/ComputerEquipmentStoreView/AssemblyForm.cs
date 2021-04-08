@@ -91,14 +91,17 @@ namespace ComputerEquipmentStoreView
         {
             try
             {
-                /*if (assemblyComponents != null)
+                if (assemblyComponents != null)
                 {
+                    /*
                     dataGridViewComponents.Rows.Clear();
                     foreach (var pc in assemblyComponents)
                     {
                         dataGridViewComponents.Rows.Add(new object[] { pc.Key, pc.Value.Item1, pc.Value.Item2, pc.Value.Item3 });
-                    }
-                }*/
+                    
+                    */
+                
+                }
             }
             catch (Exception ex)
             {

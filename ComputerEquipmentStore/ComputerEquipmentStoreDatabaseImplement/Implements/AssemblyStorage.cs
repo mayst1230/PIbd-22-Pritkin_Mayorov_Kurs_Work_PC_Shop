@@ -1,11 +1,11 @@
-﻿using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
 using ComputerEquipmentStoreDatabaseImplement.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace ComputerEquipmentStoreDatabaseImplement.Implements
 {
@@ -31,8 +31,6 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                          Components = rec.AssemblyComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => (recCSP.Component?.ComponentName, recCSP.Count, recCSP.Price))
                      })
                  .ToList();
-
-
             }
         }
 

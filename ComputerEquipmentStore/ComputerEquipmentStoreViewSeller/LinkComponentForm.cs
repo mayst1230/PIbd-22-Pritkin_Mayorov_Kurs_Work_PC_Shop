@@ -60,6 +60,13 @@ namespace ComputerEquipmentStoreViewSeller
                 {
                     if (comboBoxAssembly.SelectedValue != null)
                     {
+
+
+                        
+
+
+
+
                         AssemblyViewModel assembly = assemblyLogic.Read(new AssemblyBindingModel
                         {
                             Id = int.Parse(comboBoxAssembly.SelectedValue.ToString())
