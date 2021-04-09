@@ -155,14 +155,5 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
                 PurchaseComponents = GetPurchaseComponents(purchases)
             });
         }
-
-
-
-
-
-
-
-
-
     }
 }

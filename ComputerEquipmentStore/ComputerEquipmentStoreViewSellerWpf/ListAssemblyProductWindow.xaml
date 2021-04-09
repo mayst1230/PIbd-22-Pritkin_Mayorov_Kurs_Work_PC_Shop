@@ -7,9 +7,7 @@
         mc:Ignorable="d"
         Title="Список сборок" Height="450" Width="533" Icon="Images/ico.ico" ResizeMode="NoResize" Loaded="ListAssemblyProductWindow_Loaded">
     <Grid Background="Maroon">
-        <ComboBox x:Name="comboBoxAssembly" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="507"/>
-        <Label x:Name="labelAssembly" Content="Сборка:" Foreground="White" HorizontalAlignment="Left" Margin="235,4,0,0" VerticalAlignment="Top"/>
-        <DataGrid x:Name="dataGridProducts" HorizontalAlignment="Left" Height="326" Margin="10,57,0,0" AutoGenerateColumns="False" CanUserAddRows="false" VerticalAlignment="Top" Width="507">
+        <DataGrid x:Name="dataGridProducts" HorizontalAlignment="Left" Height="383" AutoGenerateColumns="False" CanUserAddRows="false" VerticalAlignment="Top" Width="527">
             <DataGrid.Columns>
                 <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Товар" Binding="{Binding Path=ProductName}" Width="0.5*"></DataGridTextColumn>

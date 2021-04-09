@@ -25,6 +25,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
             _componentStorage = componentStorage;
         }
 
+        //получение списка сборок по товарам
         private List<ReportAssemblyProductViewModel> GetAssemblyProduct(List<ProductViewModel> selectedProducts)
         {
             List<ReportAssemblyProductViewModel> record = new List<ReportAssemblyProductViewModel>();
@@ -126,6 +127,19 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
                 FileName = model.FileName,
                 Title = "Список сборок по указанным товарам",
                 AssemblyProduct = GetAssemblyProduct(model.Products)
+            });
+        }
+
+        /// Сохранение отчета продаж комплектующих в файл-Pdf
+        public void SaveComponentsToPdfFile(ReportBindingModel model)
+        {
+            SaveToPdf.CreateDoc(new PdfInfoStorekeeper
+            {
+                FileName = model.FileName,
+                Title = "Список использованных комплектующих",
+                DateFrom = model.DateFrom.Value,
+                DateTo = model.DateTo.Value,
+                ComponentProductAssembly = GetComponentProductAssembly(model)
             });
         }
     }

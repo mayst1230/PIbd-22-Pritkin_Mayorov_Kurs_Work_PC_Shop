@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
+using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Windows.Forms;
+using Unity;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace ComputerEquipmentStoreViewSellerWpf
 {
@@ -19,9 +13,42 @@ namespace ComputerEquipmentStoreViewSellerWpf
     /// </summary>
     public partial class ReportComponentProductAssemblyWindow : Window
     {
-        public ReportComponentProductAssemblyWindow()
+        [Dependency]
+        public IUnityContainer Container { get; set; }
+        private readonly ReportLogic logic;
+
+        public ReportComponentProductAssemblyWindow(ReportLogic logicR)
         {
             InitializeComponent();
+            this.logic = logicR;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (DatePikerFrom.SelectedDate >= DatePikerTo.SelectedDate)
+            {
+                MessageBox.Show("Дата начала должна быть меньше даты окончания",
+               "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            using (SaveFileDialog dialog = new SaveFileDialog { Filter = "pdf|*.pdf" })
+            {
+                try
+                {
+                    logic.SaveComponentsToPdfFile(new ReportBindingModel
+                    {
+                        FileName = dialog.FileName,
+                        DateFrom = DatePikerFrom.SelectedDate,
+                        DateTo = DatePikerTo.SelectedDate,
+                    });
+                    MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
