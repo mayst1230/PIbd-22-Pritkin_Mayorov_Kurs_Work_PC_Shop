@@ -197,7 +197,6 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                             model.Components.Remove(updateComponent.ComponentId);
                         }
                     }
-
                     context.SaveChanges();
                     // добавили новые
                     foreach (KeyValuePair<int, (string, int, decimal)> CSP in model.Components)

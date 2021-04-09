@@ -22,7 +22,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
             paragraph.Format.Alignment = ParagraphAlignment.Center;
             paragraph.Style = "Normal";
             var table = document.LastSection.AddTable();
-            List<string> columns = new List<string> { "4cm", "3cm", "5cm", "5cm" };
+            List<string> columns = new List<string> { "4cm", "3cm", "5cm"};
             foreach (var elem in columns)
             {
                 table.AddColumn(elem);
@@ -30,7 +30,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
             CreateRow(new PdfRowParameters
             {
                 Table = table,
-                Texts = new List<string> { "Запчасть", "Дата применения", "Работа", "Машина" },
+                Texts = new List<string> { "Комплектующее", "Дата продажи", "Сборка/Товар"},
                 Style = "NormalTitle",
                 ParagraphAlignment = ParagraphAlignment.Center
             });

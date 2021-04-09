@@ -85,6 +85,16 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
                             Text = product.Value.Item1,
                             StyleIndex = 1U
                         });
+                        InsertCellInWorksheet(new ExcelCellParameters
+                        {
+                            Worksheet = worksheetPart.Worksheet,
+                            ShareStringPart = shareStringPart,
+                            ColumnName = "C",
+                            RowIndex = rowIndex,
+                            Text = product.Value.Item2.ToString(),
+                            StyleIndex = 1U
+                        });
+                        rowIndex++;
                     }
                     rowIndex++;
                 }
