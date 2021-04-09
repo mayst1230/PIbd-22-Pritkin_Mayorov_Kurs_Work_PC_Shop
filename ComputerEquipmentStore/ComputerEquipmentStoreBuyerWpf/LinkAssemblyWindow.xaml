@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="Привязка сборки" Height="206.223" Width="288.445">
+        Title="Привязка сборки" Height="206.223" Width="288.445" ResizeMode="NoResize" Icon="Images/blueico.ico">
     <Grid Background="Blue">
         <Label x:Name="labelPurchase" Foreground="White" Content="Покупка:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelAssembly" Foreground="White" Content="Сборка:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="Покупка" Height="596.666" Width="811.765" Loaded="PurchaseWindow_Load">
+        Title="Покупка" Height="596.666" Width="811.765" Loaded="PurchaseWindow_Load" ResizeMode="NoResize" Icon="Images/blueico.ico">
     <Grid Background="Blue">
         <Label x:Name="labelNamePurchase" Content="Название покупки:" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelDatePurchase" Content="Дата покупки" Foreground="White" HorizontalAlignment="Left" Margin="345,10,0,0" VerticalAlignment="Top"/>

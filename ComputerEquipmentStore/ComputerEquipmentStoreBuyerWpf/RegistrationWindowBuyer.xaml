@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="Регистрация покупателя" Height="215.333" Width="440">
+        Title="Регистрация покупателя" Height="215.333" Width="440" ResizeMode="NoResize" Icon="Images/blueico.ico">
     <Grid Background="Blue">
         <Label x:Name="labelRegistration" Content="Регистрация" Foreground="White" FontSize="30" HorizontalAlignment="Left" Margin="137,0,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelLogin" Content="Логин:" Foreground="White" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top"/>

@@ -42,7 +42,9 @@ namespace ComputerStoreEquipmentDatabaseImplement.Implements
             }
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                return context.Components.Include(rec => rec.Seller).Where(rec => rec.ComponentName.Contains(model.ComponentName)).Select(rec => new ComponentViewModel
+                return context.Components.Include(rec => rec.Seller)
+                    .Where(rec => rec.ComponentName.Contains(model.ComponentName))
+                    .Select(rec => new ComponentViewModel
                 {
                     Id = rec.Id,
                     ComponentName = rec.ComponentName,

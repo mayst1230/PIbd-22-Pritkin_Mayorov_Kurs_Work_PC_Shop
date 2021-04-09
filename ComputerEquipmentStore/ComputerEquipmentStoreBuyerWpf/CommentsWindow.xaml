@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="Комментарии к сборкам" Height="450" Width="800" Loaded="CommentsWindows_Load">
+        Title="Комментарии к сборкам" Height="450" Width="800" Loaded="CommentsWindows_Load" ResizeMode="NoResize" Icon="Images/blueico.ico">
     <Grid Background="Blue">
 
         <Grid.RowDefinitions>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="Авторизация покупателя" Height="207.333" Width="430.667">
+        Title="Авторизация покупателя" Height="207.333" Width="430.667" ResizeMode="NoResize" Icon="Images/blueico.ico">
     <Grid Background= "Blue">
         <Label x:Name="labelAuthorization" Content="Авторизация" HorizontalAlignment="Left" Margin="89,0,0,0" VerticalAlignment="Top" FontSize="30" Foreground="White"/>
         <Label x:Name="labelLogin" Foreground="White" Content="Логин:" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top"/>
