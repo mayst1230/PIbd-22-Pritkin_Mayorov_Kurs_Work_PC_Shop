@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="ListPurchaseComponentWindow" Height="80.667" Width="240">
+        Title="Получить список комплектующих по выбранным покупкам" Height="321.334" Width="432">
     <Grid Background="Blue">
-        <Button x:Name="buttonToExcwl" Content="В Excel" Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="103" Height="29" Click="buttonToExcwl_Click"/>
-        <Button x:Name="buttonToWord" Content="В Word" Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="118,10,0,0" VerticalAlignment="Top" Width="103" Height="29" Click="buttonToWord_Click"/>
+        <Button x:Name="buttonToExcwl" Content="В Excel" Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="190" Height="29" Click="buttonToExcel_Click"/>
+        <Button x:Name="buttonToWord" Content="В Word" Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="216,10,0,0" VerticalAlignment="Top" Width="199" Height="29" Click="buttonToWord_Click"/>
+        <ListBox x:Name="listBoxPurchases" HorizontalAlignment="Left" Height="154" Margin="10,54,0,0" VerticalAlignment="Top" Width="405"/>
+        <ComboBox x:Name="comboBoxPurchases" DisplayMemberPath="PurchaseName" SelectedValuePath="Id" HorizontalAlignment="Left" Margin="80,219,0,0" VerticalAlignment="Top" Width="335"/>
+        <Label x:Name="label" Content="Покупка:" Foreground="White" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="buttonAddPurchase" Content="Добавить покупку"  Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="10,246,0,0" VerticalAlignment="Top" Width="190" Height="34" Click="buttonAddPurchase_Click"/>
+        <Button x:Name="buttonRemovePurchase" Content="Убрать покупку"  Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="216,246,0,0" VerticalAlignment="Top" Width="199" Height="34" Click="buttonRemovePurchase_Click"/>
     </Grid>
 </Window>

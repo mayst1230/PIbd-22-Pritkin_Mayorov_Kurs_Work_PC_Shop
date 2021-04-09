@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Unity;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
+using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
 using System.Windows.Forms;
 using MessageBox = System.Windows.Forms.MessageBox;
 using SWF = System.Windows.Forms;
@@ -26,24 +27,31 @@ namespace ComputerEquipmentStoreBuyerWpf
     public partial class ListPurchaseComponentWindow : Window
     {
         [Dependency]
-        public new IUnityContainer Container { get; set; }
+        public IUnityContainer Container { get; set; }
 
         private readonly ReportLogicBuyer reportLogic;
 
-        public ListPurchaseComponentWindow(ReportLogicBuyer reportLogic)
+        private readonly PurchaseLogic purchaseLogic;
+
+        private List<PurchaseViewModel> purchases = new List<PurchaseViewModel>();
+
+        public ListPurchaseComponentWindow(PurchaseLogic purchaseLogic, ReportLogicBuyer reportLogic)
         {
             InitializeComponent();
             this.reportLogic = reportLogic;
+            this.purchaseLogic = purchaseLogic;
+
+            var list = purchaseLogic.Read(null, App.Buyer.Id);
+            if (list != null)
+            {
+                comboBoxPurchases.ItemsSource = list;
+            }
         }
 
-        private void buttonToExcwl_Click(object sender, RoutedEventArgs e)
+        private void buttonToExcel_Click(object sender, RoutedEventArgs e)
         {
             using (SWF.SaveFileDialog dialog = new SaveFileDialog { Filter = "xlsx|*.xlsx" })
             {
-
-                
-
-                
                 if (dialog.ShowDialog() == SWF.DialogResult.OK)
                 {
                     try
@@ -51,15 +59,15 @@ namespace ComputerEquipmentStoreBuyerWpf
                         reportLogic.SavePurchaseComponentToExcelFile(new ReportBindingModelBuyer
                         {
                             FileName = dialog.FileName
-                        });
+                        },
+                        purchases);
                         MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
-                
+                }     
             }
         }
 
@@ -74,9 +82,89 @@ namespace ComputerEquipmentStoreBuyerWpf
                     reportLogic.SavePurchaseComponentToWordFile(new ReportBindingModelBuyer
                     {
                         FileName = dialog.FileName
-                    });
+                    },
+                    purchases);
                     MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 } 
+            }
+        }
+
+        private void buttonAddPurchase_Click(object sender, RoutedEventArgs e)
+        {
+            if (comboBoxPurchases.SelectedValue == null)
+            {
+                MessageBox.Show("Выберите покупку", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                PurchaseViewModel view = purchaseLogic.Read(new PurchaseBindingModel
+                {
+                    Id = int.Parse(comboBoxPurchases.SelectedValue.ToString())
+                }, App.Buyer.Id)?[0];
+
+
+                if (purchases != null) {
+
+                    foreach (var purchase in purchases)
+                    {
+                        if (purchase.Id == view.Id)
+                        {
+                            MessageBox.Show("Эта покупка уже есть", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+
+                    purchases.Add(view);
+                    LoadData();
+                }
+                else
+                {
+                    purchases.Add(view);
+                    LoadData();
+                }
+            }
+        }
+
+        private void buttonRemovePurchase_Click(object sender, RoutedEventArgs e)
+        {
+            if (comboBoxPurchases.SelectedValue == null)
+            {
+                MessageBox.Show("Выберите покупку", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                PurchaseViewModel view = purchaseLogic.Read(new PurchaseBindingModel
+                {
+                    Id = int.Parse(comboBoxPurchases.SelectedValue.ToString())
+                }, App.Buyer.Id)?[0];
+
+
+                if (purchases != null)
+                {
+                    foreach (var purchase in purchases)
+                    {
+                        if (purchase.Id == view.Id)
+                        {
+                            purchases.Remove(purchase);
+                            LoadData();
+                            return;
+                        }
+                    }
+                }
+
+                MessageBox.Show("Эта покупки нет в списке", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void LoadData()
+        {
+            listBoxPurchases.Items.Clear();
+            foreach (var purchase in purchases)
+            {
+                listBoxPurchases.Items.Add(purchase.PurchaseName);
             }
         }
     }

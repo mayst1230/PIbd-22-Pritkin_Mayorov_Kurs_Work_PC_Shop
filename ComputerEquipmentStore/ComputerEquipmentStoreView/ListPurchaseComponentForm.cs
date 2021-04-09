@@ -13,9 +13,12 @@ namespace ComputerEquipmentStoreView
 
         private readonly ReportLogicBuyer reportLogic;
 
-        public ListPurchaseComponentForm(ReportLogicBuyer reportLogic)
+        private readonly PurchaseLogic purchaseLogic;
+
+        public ListPurchaseComponentForm(PurchaseLogic purchaseLogic, ReportLogicBuyer reportLogic)
         {
             InitializeComponent();
+            this.purchaseLogic = purchaseLogic;
             this.reportLogic = reportLogic;
         }
 
@@ -30,7 +33,8 @@ namespace ComputerEquipmentStoreView
                         reportLogic.SavePurchaseComponentToExcelFile(new ReportBindingModelBuyer
                         {
                             FileName = dialog.FileName
-                        });
+                        },
+                        purchaseLogic.Read(null, Program.Buyer.Id));
                         MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
@@ -47,12 +51,13 @@ namespace ComputerEquipmentStoreView
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
+
                     reportLogic.SavePurchaseComponentToWordFile(new ReportBindingModelBuyer
                     {
                         FileName = dialog.FileName
-                    });
-                    MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
-                   MessageBoxIcon.Information);
+                    },
+                    purchaseLogic.Read(null, Program.Buyer.Id));
+                    MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

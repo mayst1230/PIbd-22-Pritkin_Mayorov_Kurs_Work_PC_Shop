@@ -1,0 +1,22 @@
+﻿<Window x:Class="ComputerEquipmentStoreViewSellerWpf.ListAssemblyProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ComputerEquipmentStoreViewSellerWpf"
+        mc:Ignorable="d"
+        Title="Список сборок" Height="450" Width="533" Icon="Images/ico.ico" ResizeMode="NoResize" Loaded="ListAssemblyProductWindow_Loaded">
+    <Grid Background="Maroon">
+        <ComboBox x:Name="comboBoxAssembly" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="507"/>
+        <Label x:Name="labelAssembly" Content="Сборка:" Foreground="White" HorizontalAlignment="Left" Margin="235,4,0,0" VerticalAlignment="Top"/>
+        <DataGrid x:Name="dataGridProducts" HorizontalAlignment="Left" Height="326" Margin="10,57,0,0" AutoGenerateColumns="False" CanUserAddRows="false" VerticalAlignment="Top" Width="507">
+            <DataGrid.Columns>
+                <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Товар" Binding="{Binding Path=ProductName}" Width="0.5*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Path=Price}" Width="0.5*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="buttonSaveToWord" Content="Word" Foreground="White" Background="Brown" HorizontalAlignment="Left" Margin="160,391,0,0" VerticalAlignment="Top" Width="75" Click="buttonSaveToWord_Click"/>
+        <Button x:Name="buttonSaveToExcel" Content="Excel" Foreground="White" Background="Brown" HorizontalAlignment="Left" Margin="288,391,0,0" VerticalAlignment="Top" Width="75" Click="buttonSaveToExcel_Click"/>
+    </Grid>
+</Window>

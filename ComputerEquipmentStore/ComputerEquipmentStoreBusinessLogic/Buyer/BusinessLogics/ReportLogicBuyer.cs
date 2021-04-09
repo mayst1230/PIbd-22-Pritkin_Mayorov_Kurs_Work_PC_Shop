@@ -136,23 +136,23 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
         /// Сохранение компонент с указаеним продуктов в файл-Excel
         /// </summary>
         /// <param name="model"></param>
-        public void SavePurchaseComponentToExcelFile(ReportBindingModelBuyer model)
+        public void SavePurchaseComponentToExcelFile(ReportBindingModelBuyer model, List<PurchaseViewModel> purchases)
         {
             SaveToExcel.CreateDoc(new ExcelInfoBuyer
             {
                 FileName = model.FileName,
                 Title = "Список компонентов",
-                PurchaseComponents = GetPurchaseComponents(purchaseStorage.GetFullList())
+                PurchaseComponents = GetPurchaseComponents(purchases)
             });
         }
 
-        public void SavePurchaseComponentToWordFile(ReportBindingModelBuyer model)
+        public void SavePurchaseComponentToWordFile(ReportBindingModelBuyer model, List<PurchaseViewModel> purchases)
         {
             SaveToWord.CreateDoc(new WordInfoBuyer
             {
                 FileName = model.FileName,
                 Title = "Список компонентов",
-                PurchaseComponents = GetPurchaseComponents(purchaseStorage.GetFullList())
+                PurchaseComponents = GetPurchaseComponents(purchases)
             });
         }
 

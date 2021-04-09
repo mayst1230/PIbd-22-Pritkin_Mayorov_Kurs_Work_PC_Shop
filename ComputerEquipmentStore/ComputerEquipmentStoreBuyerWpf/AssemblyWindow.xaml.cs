@@ -101,12 +101,6 @@ namespace ComputerEquipmentStoreBuyerWpf
             }
         }
 
-
-
-
-
-
-
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxAssemblyName.Text))
