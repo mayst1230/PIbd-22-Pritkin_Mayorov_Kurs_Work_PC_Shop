@@ -22,7 +22,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             paragraph.Format.Alignment = ParagraphAlignment.Center;
             paragraph.Style = "Normal";
             var table = document.LastSection.AddTable();
-            List<string> columns = new List<string> { "3cm", "6cm", "3cm", "2cm", "3cm" };
+            List<string> columns = new List<string> { "3cm", "3cm", "3cm", "2cm", "3cm", "2cm" };
             foreach (var elem in columns)
             {
                 table.AddColumn(elem);
@@ -30,23 +30,45 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             CreateRow(new PdfRowParameters
             {
                 Table = table,
-                Texts = new List<string> { "Дата заказа", "Изделие", "Количество", "Сумма", "Статус" },
+                Texts = new List<string> { "Название покупки", "Дата покупки", "Компле- ктующее", "Коли- чество", "Комментарий", "Дата " },
                 Style = "NormalTitle",
                 ParagraphAlignment = ParagraphAlignment.Center
             });
 
-            /*
-            foreach (var order in info.Orders)
+            
+            foreach (var purchaseInfo in info.InfoAboutPurchases)
             {
                 CreateRow(new PdfRowParameters
                 {
                     Table = table,
-                    Texts = new List<string> { order.DateCreate.ToShortDateString(), order.PlaneName, order.Count.ToString(), order.Sum.ToString(), order.Status.ToString() },
+                    Texts = new List<string> { purchaseInfo.PurchaseName, purchaseInfo.DatePurchase.ToShortDateString(),"", "", "", "" },
                     Style = "Normal",
                     ParagraphAlignment = ParagraphAlignment.Left
                 });
+
+                foreach(var component in purchaseInfo.Components)
+                {
+                    CreateRow(new PdfRowParameters
+                    {
+                        Table = table,
+                        Texts = new List<string> { "", "", component.Item1, component.Item2.ToString(), "", "" },
+                        Style = "Normal",
+                        ParagraphAlignment = ParagraphAlignment.Left
+                    });
+                }
+
+                foreach (var comment in purchaseInfo.Comments)
+                {
+                    CreateRow(new PdfRowParameters
+                    {
+                        Table = table,
+                        Texts = new List<string> { "", "", "", "", comment.Item1, comment.Item2.ToShortDateString() },
+                        Style = "Normal",
+                        ParagraphAlignment = ParagraphAlignment.Left
+                    });
+                }
             }
-            */
+            
 
             PdfDocumentRenderer renderer = new PdfDocumentRenderer(true, PdfSharp.Pdf.PdfFontEmbedding.Always)
             {

@@ -8,7 +8,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces
 {
     public interface ICommentStorage
     {
-        List<CommentViewModel> GetFullList(int BuyerId);
+        List<CommentViewModel> GetFullList(int BuyerId, bool superAccess);
 
         List<CommentViewModel> GetFilteredList(CommentBindingModel model);
 
