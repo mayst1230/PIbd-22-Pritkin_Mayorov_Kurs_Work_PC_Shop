@@ -190,10 +190,8 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                     {
                         if (model.Components.ContainsKey(updateComponent.ComponentId))
                         {
-                            updateComponent.Count =
-                            model.Components[updateComponent.ComponentId].Item2;
-                            updateComponent.Price =
-                            model.Components[updateComponent.ComponentId].Item3;
+                            updateComponent.Count = model.Components[updateComponent.ComponentId].Item2;
+                            updateComponent.Price = model.Components[updateComponent.ComponentId].Item3;
                             model.Components.Remove(updateComponent.ComponentId);
                         }
                     }

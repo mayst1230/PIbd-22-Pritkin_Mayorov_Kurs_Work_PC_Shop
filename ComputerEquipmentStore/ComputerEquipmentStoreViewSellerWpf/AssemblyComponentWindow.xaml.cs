@@ -154,7 +154,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                             Id = view.Id,
                             AssemblyName = view.AssemblyName,
                             BuyerId = view.BuyerId,
-                            Cost = view.Cost,
+                            Cost = CalculateTotalCostAssembly(),
                             Components = assemblyComponents,
                         }); ;
                         MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -190,12 +190,11 @@ namespace ComputerEquipmentStoreViewSellerWpf
 
         private void CalcSum()
         {
-            if (comboBoxAssembly.SelectedValue != null &&
-           !string.IsNullOrEmpty(textBoxCount.Text))
+            if (comboBoxAssembly.SelectedValue != null && !string.IsNullOrEmpty(textBoxCount.Text))
             {
                 try
                 {
-                    int id = (int)comboBoxAssembly.SelectedValue;
+                    //int id = (int)comboBoxAssembly.SelectedValue;
                     ComponentViewModel component = componentLogic.Read(new ComponentBindingModel
                     {
                         Id = id

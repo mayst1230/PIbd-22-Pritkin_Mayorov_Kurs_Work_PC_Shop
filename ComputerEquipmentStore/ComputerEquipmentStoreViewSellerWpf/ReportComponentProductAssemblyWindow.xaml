@@ -15,7 +15,7 @@
             <DatePicker x:Name="DatePikerTo" Height="25" Width="120">
             </DatePicker>
             <Button Content="Сформировать" Background="Brown" Foreground="White" Width="100" Margin="20" ></Button>
-            <Button Content="в PDF" Background="Brown" Foreground="White" Width="100"  Margin="20" ></Button>
+            <Button Content="в PDF" Background="Brown" Foreground="White" Width="100"  Margin="20" Click="Button_Click" ></Button>
             <Button Content="На почту" Background="Brown" Foreground="White" Width="100" Margin="20"></Button>
         </StackPanel>
         <DataGrid x:Name="dataGrid" Height="360">
