@@ -43,13 +43,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
                                 Bold = true,
                                 Size = "24",
                             }),
-                            (product.Value.Item1 + " | ",
-                            new WordTextProperties
-                            {
-                                Bold = false,
-                                Size = "24",
-                            }),
-                            (product.Value.Item2.ToString() + " Р",
+                            (product.Value.Item1,
                             new WordTextProperties
                             {
                                 Bold = false,

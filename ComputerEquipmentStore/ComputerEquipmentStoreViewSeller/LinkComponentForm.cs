@@ -49,59 +49,6 @@ namespace ComputerEquipmentStoreViewSeller
             
         }
 
-        /// <summary>
-        /// Подсчитать стоимость комплектующих конкретного типа в сборке
-        /// </summary>
-        private decimal CalculateTotalCostAssembly()
-        {
-            if (!string.IsNullOrEmpty(textBoxCount.Text))
-            {
-                try
-                {
-                    if (comboBoxAssembly.SelectedValue != null)
-                    {
-
-
-                        
-
-
-
-
-                        AssemblyViewModel assembly = assemblyLogic.Read(new AssemblyBindingModel
-                        {
-                            Id = int.Parse(comboBoxAssembly.SelectedValue.ToString())
-                        })?[0];
-                        int count = Convert.ToInt32(textBoxCount.Text);
-
-                        decimal costOfAssembly = 0;
-                        if (assembly.Components != null)
-                        {
-                            foreach (var componentId in assembly.Components)
-                            {
-                                ComponentViewModel component = componentLogic.Read(new ComponentBindingModel
-                                {
-                                    Id = componentId.Key
-                                })?[0];
-
-                                costOfAssembly += component.Price;
-                            }
-                        }
-
-                        return count * costOfAssembly;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);                
-                }
-                return 0;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-
         private void buttonLinkComponent_Click(object sender, EventArgs e)
         {
             if (comboBoxAssembly.SelectedValue == null)
@@ -162,7 +109,7 @@ namespace ComputerEquipmentStoreViewSeller
                             Id = view.Id,
                             AssemblyName = view.AssemblyName,
                             BuyerId = view.BuyerId,
-                            Cost = CalculateTotalCostAssembly(),
+                            Cost = view.Cost,
                             Components = assemblyComponents
                         });
                         MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);

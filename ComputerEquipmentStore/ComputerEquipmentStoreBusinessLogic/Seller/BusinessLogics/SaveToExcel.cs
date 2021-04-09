@@ -93,7 +93,8 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
                             RowIndex = rowIndex,
                             Text = product.Value.Item2.ToString(),
                             StyleIndex = 1U
-                        }); rowIndex++;
+                        });
+                        rowIndex++;
                     }
                     rowIndex++;
                 }

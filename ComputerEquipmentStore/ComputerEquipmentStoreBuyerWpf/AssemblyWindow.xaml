@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="Сборка" Height="485.245" Width="684" Loaded="AssemblyWindow_Load">
-    <Grid Background="Blue" Margin="0,0,0.333,8">
-        <GroupBox x:Name="groupBoxComponents" Header="Комплектующие" Foreground="White" Height="352" Margin="10,38,29,0" VerticalAlignment="Top">
+        Title="Сборка" Height="528.224" Width="684" Loaded="AssemblyWindow_Load">
+    <Grid Background="Blue" Margin="0,0,0,-2">
+        <GroupBox x:Name="groupBoxComponents" Header="Комплектующие" Foreground="White" Height="352" Margin="10,95,29,0" VerticalAlignment="Top">
             <DataGrid x:Name="dataGridComponents" Height="314" Margin="10,10,-1.333,0" VerticalAlignment="Top">
                 <DataGrid.Columns>
                     <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Id}"></DataGridTextColumn>
@@ -17,9 +17,11 @@
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>
-        <Button x:Name="buttonSave" Content="Сохранить" HorizontalAlignment="Left" Margin="10,395,0,0" Background="DarkBlue" Foreground="White" VerticalAlignment="Top" Width="150" Click="buttonSave_Click" Height="34"/>
-        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="165,395,0,0"  Background="DarkBlue" Foreground="White" VerticalAlignment="Top" Width="150" Click="buttonCancel_Click" Height="34"/>
+        <Button x:Name="buttonSave" Content="Сохранить" HorizontalAlignment="Left" Margin="10,452,0,0" Background="DarkBlue" Foreground="White" VerticalAlignment="Top" Width="150" Click="buttonSave_Click" Height="34"/>
+        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="165,452,0,0"  Background="DarkBlue" Foreground="White" VerticalAlignment="Top" Width="150" Click="buttonCancel_Click" Height="34"/>
         <Label x:Name="labelAssemblyName" Content="Название сборки:" HorizontalAlignment="Left" Foreground="White" Margin="10,7,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="textBoxAssemblyName" HorizontalAlignment="Left" Height="23" Margin="123,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
+        <Label x:Name="labelCost" Foreground="White" Content="Стоимость:" HorizontalAlignment="Left" Margin="45,52,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxCost" HorizontalAlignment="Left" Height="23" Margin="123,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
     </Grid>
 </Window>

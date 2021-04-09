@@ -61,6 +61,7 @@ namespace ComputerEquipmentStoreBuyerWpf
                     if (view != null)
                     {
                         textBoxAssemblyName.Text = view.AssemblyName;
+                        textBoxCost.Text = view.Cost.ToString();
                         assemblyComponents = view.Components;
                         LoadData();
                     }
@@ -108,13 +109,18 @@ namespace ComputerEquipmentStoreBuyerWpf
                 MessageBox.Show("Заполните название", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (string.IsNullOrEmpty(textBoxCost.Text))
+            {
+                MessageBox.Show("Заполните стоимость", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 assemblyLogic.CreateOrUpdate(new AssemblyBindingModel
                 {
                     Id = id,
                     AssemblyName = textBoxAssemblyName.Text,
-                    Cost = 0,
+                    Cost = Convert.ToDecimal(textBoxCost.Text),
                     Components = assemblyComponents,
                     BuyerId = App.Buyer.Id
                 });
