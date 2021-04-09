@@ -74,11 +74,9 @@ namespace ComputerEquipmentStoreBuyerWpf
         private void buttonToWord_Click(object sender, RoutedEventArgs e)
         {
             using (SWF.SaveFileDialog dialog = new SaveFileDialog { Filter = "docx|*.docx" })
-            {
-                
+            {          
                 if (dialog.ShowDialog() == SWF.DialogResult.OK)
                 {
-
                     reportLogic.SavePurchaseComponentToWordFile(new ReportBindingModelBuyer
                     {
                         FileName = dialog.FileName
@@ -102,7 +100,6 @@ namespace ComputerEquipmentStoreBuyerWpf
                 {
                     Id = int.Parse(comboBoxPurchases.SelectedValue.ToString())
                 }, App.Buyer.Id)?[0];
-
 
                 if (purchases != null) {
 

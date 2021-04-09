@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="Сборка" Height="485.245" Width="800" Loaded="AssemblyWindow_Load">
+        Title="Сборка" Height="485.245" Width="684" Loaded="AssemblyWindow_Load">
     <Grid Background="Blue" Margin="0,0,0.333,8">
-        <GroupBox x:Name="groupBoxComponents" Header="Комплектующие" Foreground="White" Height="352" Margin="10,64,152,0" VerticalAlignment="Top">
-            <DataGrid x:Name="dataGridComponents" Height="314" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="598">
+        <GroupBox x:Name="groupBoxComponents" Header="Комплектующие" Foreground="White" Height="352" Margin="10,38,29,0" VerticalAlignment="Top">
+            <DataGrid x:Name="dataGridComponents" Height="314" Margin="10,10,-1.333,0" VerticalAlignment="Top">
                 <DataGrid.Columns>
                     <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Id}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Комплектующее" Binding="{Binding Path=ComponentName}" Width="0.40*"></DataGridTextColumn>
@@ -17,9 +17,9 @@
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>
-        <Button x:Name="buttonSave" Content="Сохранить" HorizontalAlignment="Left" Margin="597,421,0,0" Background="DarkBlue" Foreground="White" VerticalAlignment="Top" Width="88" Click="buttonSave_Click" Height="21"/>
-        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="690,421,0,0"  Background="DarkBlue" Foreground="White" VerticalAlignment="Top" Width="92" Click="buttonCancel_Click"/>
-        <Label x:Name="labelAssemblyName" Content="Название сборки" HorizontalAlignment="Left" Foreground="White" Margin="115,5,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxAssemblyName" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
+        <Button x:Name="buttonSave" Content="Сохранить" HorizontalAlignment="Left" Margin="10,395,0,0" Background="DarkBlue" Foreground="White" VerticalAlignment="Top" Width="150" Click="buttonSave_Click" Height="34"/>
+        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="165,395,0,0"  Background="DarkBlue" Foreground="White" VerticalAlignment="Top" Width="150" Click="buttonCancel_Click" Height="34"/>
+        <Label x:Name="labelAssemblyName" Content="Название сборки:" HorizontalAlignment="Left" Foreground="White" Margin="10,7,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxAssemblyName" HorizontalAlignment="Left" Height="23" Margin="123,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
     </Grid>
 </Window>

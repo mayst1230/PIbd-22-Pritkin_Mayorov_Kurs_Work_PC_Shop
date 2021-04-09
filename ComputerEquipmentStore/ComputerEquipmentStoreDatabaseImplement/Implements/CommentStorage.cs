@@ -16,22 +16,42 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<CommentViewModel> GetFullList(int BuyerId)
+        public List<CommentViewModel> GetFullList(int BuyerId, bool superAcces)
         {
-            using (var context = new ComputerEquipmentStoreDatabase())
+            if (superAcces)
             {
-                return context.Comments
-                    .Where(rec => rec.BuyerId == BuyerId)
-                    .Select(rec => new CommentViewModel
+                using (var context = new ComputerEquipmentStoreDatabase())
                 {
-                    Id = rec.Id,
-                    Text = rec.Text,
-                    DateComment = rec.DateComment,
-                    BuyerId = rec.BuyerId,
-                    AssemblyId = rec.AssemblyId,
-                })
-                .ToList();
+                    return context.Comments
+                        .Select(rec => new CommentViewModel
+                        {
+                            Id = rec.Id,
+                            Text = rec.Text,
+                            DateComment = rec.DateComment,
+                            BuyerId = rec.BuyerId,
+                            AssemblyId = rec.AssemblyId,
+                        })
+                    .ToList();
+                }
             }
+            else
+            {
+                using (var context = new ComputerEquipmentStoreDatabase())
+                {
+                    return context.Comments
+                        .Where(rec => rec.BuyerId == BuyerId)
+                        .Select(rec => new CommentViewModel
+                        {
+                            Id = rec.Id,
+                            Text = rec.Text,
+                            DateComment = rec.DateComment,
+                            BuyerId = rec.BuyerId,
+                            AssemblyId = rec.AssemblyId,
+                        })
+                    .ToList();
+                }
+            }
+            
         }
         
         /// <summary>

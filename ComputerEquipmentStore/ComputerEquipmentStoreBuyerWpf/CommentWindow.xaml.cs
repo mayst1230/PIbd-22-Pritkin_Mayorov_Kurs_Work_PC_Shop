@@ -49,7 +49,9 @@ namespace ComputerEquipmentStoreBuyerWpf
                     var list = commentLogic.Read(new CommentBindingModel
                     {
                         Id = id.Value
-                    }, App.Buyer.Id)?[0];
+                    },
+                    App.Buyer.Id,
+                    false)?[0];
                     if (list != null)
                     {
                         comboBoxAssembly.SelectedValue = list.AssemblyId;

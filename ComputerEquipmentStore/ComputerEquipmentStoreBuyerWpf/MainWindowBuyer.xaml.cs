@@ -42,7 +42,7 @@ namespace ComputerEquipmentStoreBuyerWpf
 
         private void buttonGetReport_Click(object sender, RoutedEventArgs e)
         {
-            var form = Container.Resolve<AssembliesWindow>();
+            var form = Container.Resolve<ReportPurchaseComponentCommentWindow>();
             form.ShowDialog();
         }
     }

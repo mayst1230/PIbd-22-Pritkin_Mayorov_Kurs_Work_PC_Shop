@@ -18,11 +18,11 @@
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="buttonPurchases" Content="Покупки" HorizontalAlignment="Left" VerticalAlignment="Top" Width="168" Height="35" Background="DarkBlue" Foreground="White" Click="buttonPurchases_Click"/>
-        <Button x:Name="buttonAssemblies" Content="Сборки" Grid.Column="1" HorizontalAlignment="Left"  Width="168" RenderTransformOrigin="0.208,0.299" Background="DarkBlue" Foreground="White" Click="buttonAssemblies_Click"/>
+        <Button x:Name="buttonPurchases" Content="Покупки" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="168" Height="35" Background="DarkBlue" Foreground="White" Click="buttonPurchases_Click"/>
+        <Button x:Name="buttonAssemblies" Content="Сборки" Grid.Column="1" HorizontalAlignment="Left"  Width="168" Background="DarkBlue" Foreground="White" Click="buttonAssemblies_Click"/>
         <Button x:Name="buttonComments" Content="Комметарии к сборкам" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="168" Height="35" Background="DarkBlue" Foreground="White" Click="buttonComments_Click"/>
-        <Button x:Name="buttonGetList" Content="Получить список" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="168" Height="35" Background="DarkBlue" Foreground="White" Grid.ColumnSpan="2" Margin="167.667,0,0,0.333" Click="buttonGetList_Click"/>
-        <Button x:Name="buttonGerReport" Content="Получить отчет" Grid.Column="3" HorizontalAlignment="Left" Width="120" Background="DarkBlue" Foreground="White" Grid.ColumnSpan="2" Margin="167.667,0,0,0.333" Click="buttonGetReport_Click"/>
+        <Button x:Name="buttonGetList" Content="Получить список" Grid.Column="3" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="168" Height="35" Background="DarkBlue" Foreground="White" Grid.ColumnSpan="2" Click="buttonGetList_Click"/>
+        <Button x:Name="buttonGerReport" Content="Получить отчет" Grid.Column="4" HorizontalAlignment="Left" Width="120" Background="DarkBlue" Foreground="White" Click="buttonGetReport_Click"/>
         <Canvas Grid.Column="1" HorizontalAlignment="Left" Height="384" Grid.Row="1" VerticalAlignment="Top" Width="504" Grid.ColumnSpan="3">
             <Image x:Name="image" Height="233" Canvas.Left="131" Canvas.Top="80" Width="217" Source="Images/LogoBlue.png" Stretch="None"/>
         </Canvas>

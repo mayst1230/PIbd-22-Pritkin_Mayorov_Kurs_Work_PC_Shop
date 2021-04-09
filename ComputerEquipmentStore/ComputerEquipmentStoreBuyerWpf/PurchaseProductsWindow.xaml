@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="PurchaseProductsWindow" Height="174.666" Width="349.333">
+        Title="Выбор товара для покупки" Height="180.666" Width="360.666">
     <Grid Background="Blue">
         <Label x:Name="labelProductName" Content="Название товара:" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelCount" Content="Количество:" HorizontalAlignment="Left" Foreground="White" Margin="39,41,0,0" VerticalAlignment="Top"/>

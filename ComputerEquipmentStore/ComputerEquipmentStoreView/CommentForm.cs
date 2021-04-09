@@ -68,7 +68,7 @@ namespace ComputerEquipmentStoreView
                     var list = commentLogic.Read(new CommentBindingModel
                     {
                         Id = id.Value
-                    }, Program.Buyer.Id)?[0];
+                    }, Program.Buyer.Id, false)?[0];
                     if (list != null)
                     {
                         comboBoxAssembly.SelectedValue = list.AssemblyId;
