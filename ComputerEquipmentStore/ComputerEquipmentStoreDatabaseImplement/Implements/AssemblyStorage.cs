@@ -105,8 +105,15 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         {
             using (ComputerEquipmentStoreDatabase context = new ComputerEquipmentStoreDatabase())
             {
-                context.Assemblies.Add(CreateModel(model, new Assembly(), context));
-                context.SaveChanges();
+                try
+                {
+                    context.Assemblies.Add(CreateModel(model, new Assembly(), context));
+                    context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.InnerException.Message);
+                }       
             }
         }
 
@@ -169,6 +176,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         private Assembly CreateModel(AssemblyBindingModel model, Assembly assembly, ComputerEquipmentStoreDatabase context)
         {
 
+
             assembly.AssemblyName = model.AssemblyName;
             assembly.BuyerId = model.BuyerId;
             assembly.Cost = model.Cost;
@@ -182,6 +190,9 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             {
                 List<AssemblyComponent> assemblyComponent = context.AssemblyComponents.Where(rec => rec.AssemblyId == model.Id.Value).ToList();
                 // удалили те, которых нет в модели
+
+
+
                 if (model.Components != null)
                 {
                     context.AssemblyComponents.RemoveRange(assemblyComponent.Where(rec => !model.Components.ContainsKey(rec.ComponentId)).ToList());

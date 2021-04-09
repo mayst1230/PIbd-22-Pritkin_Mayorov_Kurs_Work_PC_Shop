@@ -1,17 +1,13 @@
 ﻿using ComputerEquipmentStoreBusinessLogic.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
-using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.HelperModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
-using ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics;
-using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.BusinessLogics;
 using System.Collections.Generic;
 using System;
-using System.Linq;
 
 namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
 {

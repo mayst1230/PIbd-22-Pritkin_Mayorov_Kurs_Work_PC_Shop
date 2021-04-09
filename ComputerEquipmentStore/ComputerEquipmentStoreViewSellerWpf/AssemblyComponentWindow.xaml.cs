@@ -23,7 +23,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
         private readonly ComponentLogic componentLogic;
         private readonly AssemblyLogic assemblyLogic;
         private Dictionary<int, (string, int, decimal)> assemblyComponents;
-        private int? id;//id компонента
+        private int id;//id компонента
 
         public int Id { set { id = value; } }
 
@@ -66,48 +66,6 @@ namespace ComputerEquipmentStoreViewSellerWpf
             }
         }
 
-        private decimal CalculateTotalCostAssembly()
-        {
-            if (!string.IsNullOrEmpty(textBoxCount.Text))
-            {
-                try
-                {
-                    if (comboBoxAssembly.SelectedValue != null)
-                    {
-                        int id = (int)comboBoxAssembly.SelectedValue;
-                        AssemblyViewModel assembly = assemblyLogic.Read(new AssemblyBindingModel
-                        {
-                            Id = id
-                        })?[0];
-                        int count = Convert.ToInt32(textBoxCount.Text);
-
-                        decimal costOfAssembly = 0;
-                        if (assembly.Components != null)
-                        {
-                            foreach (var componentId in assembly.Components)
-                            {
-                                ComponentViewModel component = componentLogic.Read(new ComponentBindingModel
-                                {
-                                    Id = componentId.Key
-                                })?[0];
-                                costOfAssembly += component.Price;
-                            }
-                        }
-                        return count * costOfAssembly;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                return 0;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
             if (comboBoxAssembly.SelectedValue == null)
@@ -127,11 +85,11 @@ namespace ComputerEquipmentStoreViewSellerWpf
             }
             try
             {
-                int id = (int)comboBoxAssembly.SelectedValue;
+                
                 AssemblyViewModel view = assemblyLogic.Read(new AssemblyBindingModel
                 {
-                    Id = id
-                })?[0];
+                    Id = (int)comboBoxAssembly.SelectedValue
+            })?[0];
 
                 if (view != null)
                 {
@@ -139,7 +97,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                     {
                         if (view.Components.ContainsKey(id))
                         {
-                            MessageBox.Show("Это комплектующее уже привязаоно к этой сборке", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Это комплектующее уже привязано к этой сборке", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                     }
@@ -169,7 +127,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                             Id = view.Id,
                             AssemblyName = view.AssemblyName,
                             BuyerId = view.BuyerId,
-                            Cost = CalculateTotalCostAssembly(),
+                            Cost = view.Cost,
                             Components = assemblyComponents
                         });
                         MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -194,7 +152,10 @@ namespace ComputerEquipmentStoreViewSellerWpf
             {
                 try
                 {
+<<<<<<< HEAD
                     //int id = (int)comboBoxAssembly.SelectedValue;
+=======
+>>>>>>> 981f7cacbc54182d449e792b5d4d8ff8de51bb0a
                     ComponentViewModel component = componentLogic.Read(new ComponentBindingModel
                     {
                         Id = id

@@ -325,7 +325,9 @@
       <Name>ComputerEquipmentStoreDatabaseImplement</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\blueico.ico" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\LogoBlue.png" />
   </ItemGroup>

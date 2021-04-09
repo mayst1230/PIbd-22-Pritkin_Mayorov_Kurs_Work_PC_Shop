@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="Сборки" Height="456" Width="808" Loaded="AssembliesWindow_Loaded">
+        Title="Сборки" Height="456" Width="808" Loaded="AssembliesWindow_Loaded" ResizeMode="NoResize" Icon="Images/blueico.ico">
     <Grid Background="Blue">
 
         <Button x:Name="buttonCreate" Content="Добавить" HorizontalAlignment="Left" Margin="646,13,0,0" VerticalAlignment="Top" Width="137" Background="DarkBlue" Foreground="White" Click="buttonCreate_Click" Height="27"/>

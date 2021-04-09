@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 
 namespace ComputerEquipmentStoreBusinessLogic.Seller.ViewModels
 {
@@ -17,7 +16,6 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.ViewModels
         [DisplayName("Цена")]
         public decimal Price { get; set; }
 
-        [DataMember]
         public Dictionary<int, (string, int, decimal)> Components { get; set; }
     }
 }

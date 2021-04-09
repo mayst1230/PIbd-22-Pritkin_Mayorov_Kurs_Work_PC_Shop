@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="Получить список комплектующих по выбранным покупкам" Height="329.334" Width="444.667">
+        Title="Получить список комплектующих по выбранным покупкам" Height="329.334" Width="444.667" ResizeMode="NoResize" Icon="Images/blueico.ico">
     <Grid Background="Blue">
         <Button x:Name="buttonToExcwl" Content="В Excel" Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="190" Height="29" Click="buttonToExcel_Click"/>
         <Button x:Name="buttonToWord" Content="В Word" Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="216,10,0,0" VerticalAlignment="Top" Width="199" Height="29" Click="buttonToWord_Click"/>

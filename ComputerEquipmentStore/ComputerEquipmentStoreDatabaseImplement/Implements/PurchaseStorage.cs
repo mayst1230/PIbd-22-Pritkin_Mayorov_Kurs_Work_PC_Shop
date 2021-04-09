@@ -57,7 +57,6 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                     .Include(rec => rec.PurchaseAssemblies)
                     .ThenInclude(rec => rec.Assembly)
                     .Include(rec => rec.Buyer)
-                    //.Where(rec => rec.PurchaseName.Contains(model.PurchaseName))
                     .Where(rec => rec.DatePurchase >= model.DateFrom && rec.DatePurchase <= model.DateTo)
                     .ToList()
                     .Select(rec => new PurchaseViewModel

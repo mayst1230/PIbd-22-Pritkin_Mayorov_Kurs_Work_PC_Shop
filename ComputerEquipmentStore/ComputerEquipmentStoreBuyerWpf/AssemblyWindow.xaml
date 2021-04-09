@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="Сборка" Height="528.224" Width="684" Loaded="AssemblyWindow_Load">
+        Title="Сборка" Height="528.224" Width="684" Loaded="AssemblyWindow_Load" ResizeMode="NoResize" Icon="Images/blueico.ico">
     <Grid Background="Blue" Margin="0,0,0,-2">
         <GroupBox x:Name="groupBoxComponents" Header="Комплектующие" Foreground="White" Height="352" Margin="10,95,29,0" VerticalAlignment="Top">
             <DataGrid x:Name="dataGridComponents" Height="314" Margin="10,10,-1.333,0" VerticalAlignment="Top">
