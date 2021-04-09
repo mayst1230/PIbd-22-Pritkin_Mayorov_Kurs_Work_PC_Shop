@@ -5,37 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="Регистрация покупателя" Height="450" Width="800">
+        Title="Регистрация покупателя" Height="215.333" Width="440">
     <Grid Background="Blue">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="73*"/>
-            <RowDefinition Height="41*"/>
-            <RowDefinition Height="52*"/>
-            <RowDefinition Height="26*"/>
-            <RowDefinition Height="31*"/>
-            <RowDefinition Height="24*"/>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="24*"/>
-            <RowDefinition Height="23*"/>
-            <RowDefinition Height="38*"/>
-            <RowDefinition Height="30*"/>
-
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="71*"/>
-            <ColumnDefinition Width="288*"/>
-            <ColumnDefinition Width="433*"/>
-        </Grid.ColumnDefinitions>
-        <Canvas Grid.Column="2" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="396" Grid.RowSpan="12">
-            <Image x:Name="image" Height="205" Canvas.Left="88" Canvas.Top="101" Width="221" Source="Images/LogoBlue.png"/>
-        </Canvas>
-        <Label x:Name="labelRegistation" Content="Регистрация" HorizontalContentAlignment="Center" FontSize="30" Foreground="White" Margin="0,0,37,0.333" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="textBoxEmail" Height="24" TextWrapping="NoWrap" Margin="0.667,1.333,86,0.667" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1"/>
-        <PasswordBox x:Name="passwordBox" Margin="0.667,0,86,1" Grid.Row="4" Height="25" VerticalAlignment="Bottom" Grid.Column="1" Grid.RowSpan="2"/>
-        <Label x:Name="labelLogin" Content="Логин:" HorizontalAlignment="Left" Margin="0.667,6.333,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="15" Foreground="White" Height="27" Width="238" Grid.Column="1"/>
-        <Label x:Name="labelPassword" Content="Пароль:" HorizontalAlignment="Left" Margin="71,25.333,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="15" Foreground="White" Height="30" Width="238" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-        <Button x:Name="buttonRegistration" Content="Зарегистрироваться" HorizontalAlignment="Left" FontSize="15" Grid.Row="8" VerticalAlignment="Top" Width="202" Foreground="White" Background="DarkBlue" Height="37" Grid.Column="1" Margin="0.667,23,0,0" Click="buttonRegistration_Click" Grid.RowSpan="2"/>
-        <Label x:Name="labelRetypePassword" Content="Повторите пароль: " FontSize="15" Foreground="White" HorizontalAlignment="Left" Margin="71,23,0,0" Grid.Row="5" VerticalAlignment="Top" Height="31" Width="202" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-        <PasswordBox x:Name="passwordBoxRepeat" Grid.Column="1" HorizontalAlignment="Left" Margin="0.667,0,0,0" Grid.Row="7" VerticalAlignment="Top" Height="24" Width="201"/>
+        <Label x:Name="labelRegistration" Content="Регистрация" Foreground="White" FontSize="30" HorizontalAlignment="Left" Margin="137,0,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelLogin" Content="Логин:" Foreground="White" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelPassword" Content="Пароль:" Foreground="White" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelrepeatPassword" Content="Повторите пароль:" Foreground="White" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxEmail" HorizontalAlignment="Left" Height="19" Margin="137,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146"/>
+        <PasswordBox x:Name="passwordBox" Width="146" HorizontalAlignment="Left" Margin="137,96,0,0" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="passwordBoxRepeat" Width="146" HorizontalAlignment="Left" Margin="137,126,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="buttonRegistration" Content="Зарегистрироваться" Foreground="White" Background="DarkBlue" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Width="147" Click="buttonRegistration_Click" Height="27"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Source="Images/LogoBlue.png" Height="100" Margin="317,55,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>

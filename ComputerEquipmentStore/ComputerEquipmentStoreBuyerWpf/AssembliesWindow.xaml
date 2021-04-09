@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="AssembliesWindow" Height="450" Width="800" Loaded="AssembliesWindow_Loaded">
+        Title="Сборки" Height="456" Width="808" Loaded="AssembliesWindow_Loaded">
     <Grid Background="Blue">
 
-        <Button x:Name="buttonCreate" Content="Добавить" HorizontalAlignment="Left" Margin="669,13,0,0" VerticalAlignment="Top" Width="114" Background="DarkBlue" Foreground="White" Click="buttonCreate_Click"/>
-        <Button x:Name="buttonUpdate" Content="Изменить" HorizontalAlignment="Left" Margin="669,39,0,0" VerticalAlignment="Top" Width="114" Background="DarkBlue" Foreground="White" Click="buttonUpdate_Click"/>
-        <Button x:Name="buttonDelete" Content="Удалить" HorizontalAlignment="Left" Margin="669,65,0,0" VerticalAlignment="Top" Width="114" Background="DarkBlue" Foreground="White" Click="buttonDelete_Click"/>
-        <Button x:Name="buttonRefresh" Content="Обновить" HorizontalAlignment="Left" Margin="669,91,0,0" VerticalAlignment="Top" Width="114" Background="DarkBlue" Foreground="White" Click="buttonRefresh_Click"/>
-        <DataGrid x:Name="dataGridAssemblies" Grid.Column="0" AutoGenerateColumns="False" CanUserAddRows="false" Margin="10,10,129.333,9.667">
+        <Button x:Name="buttonCreate" Content="Добавить" HorizontalAlignment="Left" Margin="646,13,0,0" VerticalAlignment="Top" Width="137" Background="DarkBlue" Foreground="White" Click="buttonCreate_Click" Height="27"/>
+        <Button x:Name="buttonUpdate" Content="Изменить" HorizontalAlignment="Left" Margin="646,45,0,0" VerticalAlignment="Top" Width="137" Background="DarkBlue" Foreground="White" Click="buttonUpdate_Click" Height="27"/>
+        <Button x:Name="buttonDelete" Content="Удалить" HorizontalAlignment="Left" Margin="646,77,0,0" VerticalAlignment="Top" Width="137" Background="DarkBlue" Foreground="White" Click="buttonDelete_Click" Height="27"/>
+        <Button x:Name="buttonRefresh" Content="Обновить" HorizontalAlignment="Left" Margin="646,109,0,0" VerticalAlignment="Top" Width="137" Background="DarkBlue" Foreground="White" Click="buttonRefresh_Click" Height="27"/>
+        <DataGrid x:Name="dataGridAssemblies" Grid.Column="0" AutoGenerateColumns="False" CanUserAddRows="false" Margin="10,10,160.333,15.667">
             <DataGrid.Columns>
                 <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Id}"></DataGridTextColumn>
                 <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=BuyerId}"></DataGridTextColumn>
@@ -21,6 +21,6 @@
                 <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Components}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="buttonLink" Content="Привязать к покупке"  Background="DarkBlue" Foreground="White"  HorizontalAlignment="Left" Margin="669,357,0,0" VerticalAlignment="Top" Width="114" Height="54" Click="buttonLink_Click"/>
+        <Button x:Name="buttonLink" Content="Привязать к покупке"  Background="DarkBlue" Foreground="White"  HorizontalAlignment="Left" Margin="646,368,0,0" VerticalAlignment="Top" Width="137" Height="43" Click="buttonLink_Click"/>
     </Grid>
 </Window>

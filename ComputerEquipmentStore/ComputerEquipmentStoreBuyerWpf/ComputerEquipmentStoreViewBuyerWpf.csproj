@@ -191,6 +191,9 @@
     <Compile Include="RegistrationWindowBuyer.xaml.cs">
       <DependentUpon>RegistrationWindowBuyer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ReportPurchaseComponentCommentWindow.xaml.cs">
+      <DependentUpon>ReportPurchaseComponentCommentWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="AssembliesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -247,6 +250,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RegistrationWindowBuyer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReportPurchaseComponentCommentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -11,6 +11,7 @@ using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.BusinessLogics;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
 {
@@ -132,6 +133,34 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             return list;
         }
 
+
+
+
+
+        /*
+         * 
+         * 
+        public List<ReportOrdersViewModel> GetPurchases(ReportBindingModelBuyer model)
+        {
+            return purchaseStorage.GetFilteredList(new PurchaseBindingModel
+            {
+                DateFrom = model.DateFrom,
+                DateTo = model.DateTo
+            })
+            .Select(x => new ReportOrdersViewModel
+            {
+
+
+                
+            })
+            .ToList();
+        }*/
+
+
+
+
+
+
         /// <summary>
         /// Сохранение компонент с указаеним продуктов в файл-Excel
         /// </summary>
@@ -156,13 +185,16 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             });
         }
 
-
-
-
-
-
-
-
-
+        public void SaveToPdfFile(ReportBindingModelBuyer model)
+        {
+            SaveToPdf.CreateDoc(new PdfInfoBuyer
+            {
+                FileName = model.FileName,
+                Title = "Список заказов",
+                DateFrom = model.DateFrom.Value,
+                DateTo = model.DateTo.Value,
+                //Purchases = GetPurchases(model)
+            });
+        }
     }
 }
