@@ -7,19 +7,29 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
     /// </summary>
     public class CommentBindingModel
     {
-        //ID комментария
+        /// <summary>
+        /// ID комментария
+        /// </summary>
         public int? Id { get; set; }
 
-        //ID сборки
+        /// <summary>
+        /// ID сборки
+        /// </summary>
         public int AssemblyId { get; set; }
 
-        //ID покупателя
+        /// <summary>
+        /// ID покупателя
+        /// </summary>
         public int BuyerId { get; set; }
 
-        //Текст комментария
+        /// <summary>
+        /// Текст комментария
+        /// </summary>
         public string Text { get; set; }
 
-        //Дата комментария
+        /// <summary>
+        /// Дата комментария
+        /// </summary>
         public DateTime DateComment { get; set; }
     }
 }

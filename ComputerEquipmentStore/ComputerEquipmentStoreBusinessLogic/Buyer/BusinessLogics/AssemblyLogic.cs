@@ -11,16 +11,22 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
     /// </summary>
     public class AssemblyLogic
     {
-        //Хранилище сборок
+        /// <summary>
+        /// Хранилище сборок
+        /// </summary>
         private readonly IAssemblyStorage assemblyStorage;
 
+        /// <summary>
+        /// Конструктор логики сборки
+        /// </summary>
+        /// <param name="assemblyStorage"> Хранилище сборок </param>
         public AssemblyLogic(IAssemblyStorage assemblyStorage)
         {
             this.assemblyStorage = assemblyStorage;
         }
 
         /// <summary>
-        /// Получить список с сборок (либо одну сборку)
+        /// Получить список сборок (либо одну сборку)
         /// </summary>
         /// <param name="model"> Модель сборки </param>
         /// <returns> Список сборок (либо одна сборка) </returns>

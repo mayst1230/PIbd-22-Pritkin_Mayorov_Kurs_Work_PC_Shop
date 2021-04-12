@@ -6,28 +6,50 @@ using System.Collections.Generic;
 
 namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
 {
+    /// <summary>
+    /// Логика покупателя
+    /// </summary>
     public class BuyerLogic
     {
-        private readonly IBuyerStorage _buyerStorage;
+        /// <summary>
+        /// Хранилище покупателей
+        /// </summary>
+        private readonly IBuyerStorage buyerStorage;
+
+        /// <summary>
+        /// Конструктор логики покупателей
+        /// </summary>
+        /// <param name="buyerStorage"> Хранилище покупателей </param>
         public BuyerLogic(IBuyerStorage buyerStorage)
         {
-            _buyerStorage = buyerStorage;
+            this.buyerStorage = buyerStorage;
         }
+
+        /// <summary>
+        /// Получить список покупателей (либо одного покупателя)
+        /// </summary>
+        /// <param name="model"> Модель покупателя </param>
+        /// <returns> Список с покупателей (либо один покупатель) </returns>
         public List<BuyerViewModel> Read(BuyerBindingModel model) 
         {
             if (model == null)
             {
-                return _buyerStorage.GetFullList();
+                return buyerStorage.GetFullList();
             }
             if (model.Id.HasValue)
             {
-                return new List<BuyerViewModel> { _buyerStorage.GetElement(model) };
+                return new List<BuyerViewModel> { buyerStorage.GetElement(model) };
             }
-            return _buyerStorage.GetFilteredList(model);
+            return buyerStorage.GetFilteredList(model);
         }
+
+        /// <summary>
+        /// Создать или обновить покупателя
+        /// </summary>
+        /// <param name="model"> Модель покупателя </param>
         public void CreateOrUpdate(BuyerBindingModel model)
         {
-            var element = _buyerStorage.GetElement(new BuyerBindingModel
+            var element = buyerStorage.GetElement(new BuyerBindingModel
             {
                 Login = model.Login
             });
@@ -37,16 +59,21 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             }
             if (model.Id.HasValue)
             {
-                _buyerStorage.Update(model);
+                buyerStorage.Update(model);
             }
             else
             {
-                _buyerStorage.Insert(model);
+                buyerStorage.Insert(model);
             }
         }
+
+        /// <summary>
+        /// Удалить покупателя
+        /// </summary>
+        /// <param name="model"></param>
         public void Delete(BuyerBindingModel model)
         {
-            var element = _buyerStorage.GetElement(new BuyerBindingModel
+            var element = buyerStorage.GetElement(new BuyerBindingModel
             {
                 Id = model.Id
             });
@@ -54,7 +81,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             {
                 throw new Exception("Покупатель не найден");
             }
-            _buyerStorage.Delete(model);
+            buyerStorage.Delete(model);
         }
     }
 }

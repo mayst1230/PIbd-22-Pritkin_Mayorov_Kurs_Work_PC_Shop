@@ -6,9 +6,11 @@ using System.Collections.Generic;
 
 namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
 {
+    /// <summary>
+    /// Класс с логикой для сохранения отчета в Word
+    /// </summary>
     static class SaveToWord
     {
-
         /// <summary>
         /// Создание документа
         /// </summary>
@@ -67,6 +69,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
                 wordDocument.MainDocumentPart.Document.Save();
             }
         }
+
         /// <summary>
         /// Настройки страницы
         /// </summary>
@@ -81,6 +84,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             properties.AppendChild(pageSize);
             return properties;
         }
+
         /// <summary>
         /// Создание абзаца с текстом
         /// </summary>
@@ -109,6 +113,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             }
             return null;
         }
+
         /// <summary>
         /// Задание форматирования для абзаца
         /// </summary>
@@ -138,6 +143,5 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             }
             return null;
         }
-
     }
 }

@@ -7,19 +7,29 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
     /// </summary>
     public class AssemblyBindingModel
     {
-        //ID сборки
+        /// <summary>
+        /// ID сборки
+        /// </summary>
         public int? Id { get; set; }
 
-        //ID покупателя
+        /// <summary>
+        /// ID покупателя
+        /// </summary>
         public int BuyerId { get; set; }
 
-        //Название сборки
+        /// <summary>
+        /// Название сборки
+        /// </summary>
         public string AssemblyName { get; set; }
 
-        //Стоимость сборки
+        /// <summary>
+        /// Стоимость сборки
+        /// </summary>
         public decimal Cost { get; set; }
 
-        //Комплектующие находящиеся в этой сборке <ID компонента (Название компонента, количество, цена)>
-        public Dictionary<int, (string, int, decimal)> Components { get; set; }
+        /// <summary>
+        /// Комплектующие находящиеся в этой сборке <ID \компонента (Название компонента, количество, цена)>
+        /// </summary>
+        public Dictionary<int, (string, int, decimal)> Components { get; set; }      
     }
 }

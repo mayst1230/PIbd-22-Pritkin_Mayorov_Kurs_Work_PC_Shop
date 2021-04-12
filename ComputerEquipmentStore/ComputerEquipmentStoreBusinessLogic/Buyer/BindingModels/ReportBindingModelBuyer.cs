@@ -9,16 +9,24 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
     /// </summary>
     public class ReportBindingModelBuyer
     {
-        //Название отчета
+        /// <summary>
+        /// Название отчета
+        /// </summary>
         public string FileName { get; set; }
 
-        //Начальная дата периода
+        /// <summary>
+        /// Начальная дата периода
+        /// </summary>
         public DateTime? DateFrom { get; set; }
 
-        //Конечная дата периода
+        /// <summary>
+        /// Конечная дата периода
+        /// </summary>
         public DateTime? DateTo { get; set; }
 
-        //Покупки по которым будет производиться отчет
+        /// <summary>
+        /// Покупки по которым будет производиться отчет
+        /// </summary>
         public List<PurchaseViewModel> Purchases { get; set; }
     }
 }

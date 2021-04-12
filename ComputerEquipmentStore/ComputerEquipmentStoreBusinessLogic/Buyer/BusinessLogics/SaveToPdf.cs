@@ -6,9 +6,12 @@ using System.Collections.Generic;
 
 namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
 {
+    /// <summary>
+    /// Класс с логикой для сохранения отчета в PDF
+    /// </summary>
     class SaveToPdf
     {
-
+        [System.Obsolete]
         public static void CreateDoc(PdfInfoBuyer info)
         {
             Document document = new Document();

@@ -8,8 +8,15 @@ using System.Linq;
 
 namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
 {
+    /// <summary>
+    /// Класс с логикой для сохранения отчета в Excel
+    /// </summary>
     static class SaveToExcel
     {
+        /// <summary>
+        /// Создание документа в Excel
+        /// </summary>
+        /// <param name="info"></param>
         public static void CreateDoc(ExcelInfoBuyer info)
         {
             using (SpreadsheetDocument spreadsheetDocument = SpreadsheetDocument.Create(info.FileName, SpreadsheetDocumentType.Workbook))
@@ -55,8 +62,6 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
                     CellToName = "C1"
                 });
                 uint rowIndex = 2;
-
-                
 
                 foreach (var pc in info.PurchaseComponents)
                 {
@@ -111,11 +116,8 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
                         StyleIndex = 0U
                     });
                     rowIndex++;
-
-                    }
-                workbookpart.Workbook.Save();
-
-                
+                }
+                workbookpart.Workbook.Save();     
             }
         }
         
@@ -210,6 +212,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             sp.Stylesheet.Append(tableStyles);
             sp.Stylesheet.Append(stylesheetExtensionList);
         }
+
         /// <summary>
         /// Добавляем новую ячейку в лист
         /// </summary>
@@ -258,6 +261,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             cell.DataType = new EnumValue<CellValues>(CellValues.SharedString);
             cell.StyleIndex = cellParameters.StyleIndex;
         }
+
         /// <summary>
         /// Объединение ячеек
         /// </summary>

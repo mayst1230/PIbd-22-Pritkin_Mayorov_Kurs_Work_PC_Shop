@@ -3,15 +3,24 @@ using System.Collections.Generic;
 
 namespace ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels
 {
+    /// <summary>
+    /// отчет по комплектующим по выбранным покупкам
+    /// </summary>
     public class ReportPurchaseComponentsViewModel
     {
-        //Название покупки
+        /// <summary>
+        /// Название покупки
+        /// </summary>
         public string PurchaseName { get; set; }
        
-        //Общая стоимость
+        /// <summary>
+        /// Общая стоимость
+        /// </summary>
         public int TotalCount { get; set; }
 
-        //Список компонентов
+        /// <summary>
+        /// Список компонентов
+        /// </summary>
         public List<Tuple<string, int>> Components { get; set; }
     }
 }

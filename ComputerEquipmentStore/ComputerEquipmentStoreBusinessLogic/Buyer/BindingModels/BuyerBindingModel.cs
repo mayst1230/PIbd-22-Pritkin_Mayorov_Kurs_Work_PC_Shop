@@ -1,18 +1,23 @@
-﻿
-namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
+﻿namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
 {
     /// <summary>
     /// Покупатель
     /// </summary>
     public class BuyerBindingModel
     {
-        //ID покупателя
+        /// <summary>
+        /// ID покупателя
+        /// </summary>
         public int? Id { get; set; }
 
-        //Логин покупателя
+        /// <summary>
+        /// Логин покупателя
+        /// </summary>
         public string Login { get; set; }
 
-        //Пароль покупателя
+        /// <summary>
+        /// Пароль покупателя
+        /// </summary>
         public string Password { get; set; }
     }
 }

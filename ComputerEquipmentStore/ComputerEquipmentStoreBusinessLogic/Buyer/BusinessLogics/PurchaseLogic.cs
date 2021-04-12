@@ -6,31 +6,54 @@ using System.Collections.Generic;
 
 namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
 {
+    /// <summary>
+    /// Логика покупки
+    /// </summary>
     public class PurchaseLogic
     {
-        private readonly IPurchaseStorage _purchaseStorage;
+        /// <summary>
+        /// Хранилище покупок
+        /// </summary>
+        private readonly IPurchaseStorage purchaseStorage;
+
+        /// <summary>
+        /// Конструктор логики покупки
+        /// </summary>
+        /// <param name="purchaseStorage"></param>
         public PurchaseLogic(IPurchaseStorage purchaseStorage)
         {
-            this._purchaseStorage = purchaseStorage;
+            this.purchaseStorage = purchaseStorage;
         }
+
+        /// <summary>
+        /// Получить список покупок (либо одной покупки)
+        /// </summary>
+        /// <param name="model"> Модель покупки </param>
+        /// <param name="BuyerId"> ID покупателя </param>
+        /// <returns> Список покупок (либо одна покупка) </returns>
         public List<PurchaseViewModel> Read(PurchaseBindingModel model, int BuyerId)
         {
             if (model == null)
             {
-                return _purchaseStorage.GetFullList();
+                return purchaseStorage.GetFullList();
             }
             if (model.Id.HasValue)
             {
                 return new List<PurchaseViewModel>
                 {
-                    _purchaseStorage.GetElement(model)
+                    purchaseStorage.GetElement(model)
                 };
             }
-            return _purchaseStorage.GetFilteredList(model);
+            return purchaseStorage.GetFilteredList(model);
         }
+
+        /// <summary>
+        /// Создать или обновить покупку
+        /// </summary>
+        /// <param name="model"> Модель покупки </param>
         public void CreateOrUpdate(PurchaseBindingModel model)
         {
-            var element = _purchaseStorage.GetElement(new PurchaseBindingModel
+            var element = purchaseStorage.GetElement(new PurchaseBindingModel
             {
                 PurchaseName = model.PurchaseName
             });
@@ -40,16 +63,21 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             }
             if (model.Id.HasValue)
             {
-                _purchaseStorage.Update(model);
+                purchaseStorage.Update(model);
             }
             else
             {
-                _purchaseStorage.Insert(model);
+                purchaseStorage.Insert(model);
             }
         }
+
+        /// <summary>
+        /// Удалить покупку
+        /// </summary>
+        /// <param name="model"> Модель покупки </param>
         public void Delete(PurchaseBindingModel model)
         {
-            var element = _purchaseStorage.GetElement(new PurchaseBindingModel
+            var element = purchaseStorage.GetElement(new PurchaseBindingModel
             {
                 Id = model.Id
             });
@@ -57,7 +85,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             {
                 throw new Exception("Покупка не найдена");
             }
-            _purchaseStorage.Delete(model);
+            purchaseStorage.Delete(model);
         }
     }
 }

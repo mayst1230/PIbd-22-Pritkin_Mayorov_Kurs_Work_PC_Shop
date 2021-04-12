@@ -4,20 +4,34 @@ using System.Text;
 
 namespace ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels
 {
+    /// <summary>
+    /// Отчет по комплектующим и комментариям за период по покупкам
+    /// </summary>
     public class ReportPurchasesViewModel
     {
-
+        /// <summary>
+        /// Дата покупки
+        /// </summary>
         public DateTime DatePurchase { get; set; }
 
-        //Название покупки
+        /// <summary>
+        /// Название покупки
+        /// </summary>
         public string PurchaseName { get; set; }
 
+        /// <summary>
+        /// Количество
+        /// </summary>
         public int Count { get; set; }
 
-        //Список компонентов (Название, Количество)
+        /// <summary>
+        /// Список компонентов (Название, Количество)
+        /// </summary>
         public List<Tuple<string, int>> Components { get; set; }
-        
-        //Список компонентов (Текст комментария, Дата)
+
+        /// <summary>
+        /// Список компонентов (Текст комментария, Дата)
+        /// </summary>
         public List<Tuple<string, DateTime>> Comments { get; set; }
     }
 }

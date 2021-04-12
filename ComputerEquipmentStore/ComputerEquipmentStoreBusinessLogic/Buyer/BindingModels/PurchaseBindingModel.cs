@@ -8,33 +8,49 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
     /// </summary>
     public class PurchaseBindingModel
     {
-
-        //ID покупки
+        /// <summary>
+        /// ID покупки
+        /// </summary>
         public int? Id { get; set; }
 
-        //ID покупателя
+        /// <summary>
+        /// ID покупателя
+        /// </summary>
         public int BuyerId { get; set; }
 
-        //Название покупки
+        /// <summary>
+        /// Название покупки
+        /// </summary>
         public string PurchaseName { get; set; }
 
-        //Общая стоимость покупки
+        /// <summary>
+        /// Общая стоимость покупки
+        /// </summary>
         public decimal TotalCost { get; set; }
 
-        //Дата покупки
+        /// <summary>
+        /// Дата покупки
+        /// </summary>
         public DateTime DatePurchase { get; set; }
 
-        //Начальная дата периода (нужно для отчета)
+        /// <summary>
+        /// Начальная дата периода (нужно для отчета)
+        /// </summary>
         public DateTime? DateFrom { get; set; }
 
-        //Конечная дата периода (нужно для отчета)
+        /// <summary>
+        /// Конечная дата периода (нужно для отчета)
+        /// </summary>
         public DateTime? DateTo { get; set; }
 
-        //Сборки находящиеся в этой покупке
+        /// <summary>
+        /// Сборки находящиеся в этой покупке
+        /// </summary>
         public Dictionary<int, (string, int, decimal)> Assemblies { get; set; }
 
-        //Товары находящиеся в этой покупке
+        /// <summary>
+        /// Товары находящиеся в этой покупке
+        /// </summary>
         public Dictionary<int, (string, int, decimal)> Products { get; set; }
-
     }
 }
