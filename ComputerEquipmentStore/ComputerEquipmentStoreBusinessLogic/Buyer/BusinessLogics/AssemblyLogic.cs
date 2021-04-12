@@ -6,31 +6,47 @@ using System.Collections.Generic;
 
 namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
 {
+    /// <summary>
+    /// Логика сборки
+    /// </summary>
     public class AssemblyLogic
     {
-        private readonly IAssemblyStorage _assemblyStorage;
+        //Хранилище сборок
+        private readonly IAssemblyStorage assemblyStorage;
+
         public AssemblyLogic(IAssemblyStorage assemblyStorage)
         {
-            this._assemblyStorage = assemblyStorage;
+            this.assemblyStorage = assemblyStorage;
         }
+
+        /// <summary>
+        /// Получить список с сборок (либо одну сборку)
+        /// </summary>
+        /// <param name="model"> Модель сборки </param>
+        /// <returns> Список сборок (либо одна сборка) </returns>
         public List<AssemblyViewModel> Read(AssemblyBindingModel model)
         {
             if (model == null)
             {
-                return _assemblyStorage.GetFullList();
+                return assemblyStorage.GetFullList();
             }
             if (model.Id.HasValue)
             {
                 return new List<AssemblyViewModel>
                 {
-                    _assemblyStorage.GetElement(model)
+                    assemblyStorage.GetElement(model)
                 };
             }
-            return _assemblyStorage.GetFilteredList(model);
+            return assemblyStorage.GetFilteredList(model);
         }
+
+        /// <summary>
+        /// Создать или обновить сборку
+        /// </summary>
+        /// <param name="model"> Модель сборки </param>
         public void CreateOrUpdate(AssemblyBindingModel model)
         {
-            var element = _assemblyStorage.GetElement(new AssemblyBindingModel
+            var element = assemblyStorage.GetElement(new AssemblyBindingModel
             {
                 AssemblyName = model.AssemblyName
             });
@@ -40,16 +56,21 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             }
             if (model.Id.HasValue)
             {
-                _assemblyStorage.Update(model);
+                assemblyStorage.Update(model);
             }
             else
             {
-                _assemblyStorage.Insert(model);
+                assemblyStorage.Insert(model);
             }
         }
+
+        /// <summary>
+        /// Удалить сборку
+        /// </summary>
+        /// <param name="model"> Модель сборки </param>
         public void Delete(AssemblyBindingModel model)
         {
-            var element = _assemblyStorage.GetElement(new AssemblyBindingModel
+            var element = assemblyStorage.GetElement(new AssemblyBindingModel
             {
                 Id = model.Id
             });
@@ -57,7 +78,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             {
                 throw new Exception("Сборка не найдена");
             }
-            _assemblyStorage.Delete(model);
+            assemblyStorage.Delete(model);
         }
     }
 }

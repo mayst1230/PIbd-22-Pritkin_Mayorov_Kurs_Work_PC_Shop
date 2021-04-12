@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
 {
@@ -12,14 +10,16 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
         //ID сборки
         public int? Id { get; set; }
 
+        //ID покупателя
         public int BuyerId { get; set; }
 
+        //Название сборки
         public string AssemblyName { get; set; }
 
-        //Общая стоимость сборки
+        //Стоимость сборки
         public decimal Cost { get; set; }
 
-        //Комплектующие находящиеся в этой сборке
+        //Комплектующие находящиеся в этой сборке <ID компонента (Название компонента, количество, цена)>
         public Dictionary<int, (string, int, decimal)> Components { get; set; }
     }
 }

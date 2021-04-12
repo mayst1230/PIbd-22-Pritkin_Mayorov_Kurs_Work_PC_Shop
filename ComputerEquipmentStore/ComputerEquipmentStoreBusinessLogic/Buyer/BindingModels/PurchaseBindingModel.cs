@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
 {
@@ -13,8 +12,10 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
         //ID покупки
         public int? Id { get; set; }
 
+        //ID покупателя
         public int BuyerId { get; set; }
 
+        //Название покупки
         public string PurchaseName { get; set; }
 
         //Общая стоимость покупки
@@ -22,7 +23,11 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
 
         //Дата покупки
         public DateTime DatePurchase { get; set; }
+
+        //Начальная дата периода (нужно для отчета)
         public DateTime? DateFrom { get; set; }
+
+        //Конечная дата периода (нужно для отчета)
         public DateTime? DateTo { get; set; }
 
         //Сборки находящиеся в этой покупке

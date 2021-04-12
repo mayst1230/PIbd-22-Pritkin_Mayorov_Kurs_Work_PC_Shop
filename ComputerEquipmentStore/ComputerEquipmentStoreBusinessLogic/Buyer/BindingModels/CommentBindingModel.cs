@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
 {
@@ -12,8 +10,10 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
         //ID комментария
         public int? Id { get; set; }
 
+        //ID сборки
         public int AssemblyId { get; set; }
 
+        //ID покупателя
         public int BuyerId { get; set; }
 
         //Текст комментария

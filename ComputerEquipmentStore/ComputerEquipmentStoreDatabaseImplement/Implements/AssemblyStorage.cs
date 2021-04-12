@@ -175,8 +175,6 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         /// <returns></returns>
         private Assembly CreateModel(AssemblyBindingModel model, Assembly assembly, ComputerEquipmentStoreDatabase context)
         {
-
-
             assembly.AssemblyName = model.AssemblyName;
             assembly.BuyerId = model.BuyerId;
             assembly.Cost = model.Cost;
@@ -189,12 +187,10 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             if (model.Id.HasValue)
             {
                 List<AssemblyComponent> assemblyComponent = context.AssemblyComponents.Where(rec => rec.AssemblyId == model.Id.Value).ToList();
-                // удалили те, которых нет в модели
-
-
-
+               
                 if (model.Components != null)
                 {
+                    // удалили те, которых нет в модели
                     context.AssemblyComponents.RemoveRange(assemblyComponent.Where(rec => !model.Components.ContainsKey(rec.ComponentId)).ToList());
                     //обновляем кол-во и цену у записей, которые существуют
                     foreach (AssemblyComponent updateComponent in assemblyComponent)
