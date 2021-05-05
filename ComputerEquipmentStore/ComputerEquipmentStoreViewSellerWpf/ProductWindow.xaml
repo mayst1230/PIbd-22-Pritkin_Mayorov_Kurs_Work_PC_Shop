@@ -27,6 +27,5 @@
         <Button x:Name="buttonChangeComponent" Content="Изменить" Background="Brown" Foreground="White" Margin="0,119,10,0" VerticalAlignment="Top" Click="buttonChangeComponent_Click" HorizontalAlignment="Right" Width="134"/>
         <Button x:Name="buttonDeleteComponent" Content="Удалить" Background="Brown" Foreground="White" Margin="0,144,10,0" VerticalAlignment="Top" Click="buttonDeleteComponent_Click" HorizontalAlignment="Right" Width="134"/>
         <Button x:Name="buttonUpdateComponents" Content="Обновить" Background="Brown" Foreground="White" Margin="0,169,10,0" VerticalAlignment="Top" Click="buttonUpdateComponents_Click" HorizontalAlignment="Right" Width="134"/>
-
     </Grid>
 </Window>

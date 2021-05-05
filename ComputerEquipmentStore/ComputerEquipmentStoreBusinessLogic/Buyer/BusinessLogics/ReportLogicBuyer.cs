@@ -1,11 +1,11 @@
-﻿using ComputerEquipmentStoreBusinessLogic.BindingModels;
+﻿using ComputerEquipmentStoreBusinessLogic.HelperModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
-using ComputerEquipmentStoreBusinessLogic.HelperModels;
+using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
-using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
+using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
-using ComputerEquipmentStoreBusinessLogic.BusinessLogics;
+using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
 using System.Collections.Generic;
 using System;
 

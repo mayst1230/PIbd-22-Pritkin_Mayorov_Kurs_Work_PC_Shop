@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ComputerEquipmentStoreBusinessLogic.BindingModels
+namespace ComputerEquipmentStoreBusinessLogic.Seller.BindingModels
 {
     public class ProductBindingModel
     {

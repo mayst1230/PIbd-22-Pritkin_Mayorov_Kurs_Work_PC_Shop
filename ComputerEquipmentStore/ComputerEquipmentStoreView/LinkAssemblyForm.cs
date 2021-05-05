@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Unity;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics;
-using ComputerEquipmentStoreBusinessLogic.BusinessLogics;
+using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
-using ComputerEquipmentStoreBusinessLogic.BindingModels;
+using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 
 namespace ComputerEquipmentStoreView
 {

@@ -1,6 +1,7 @@
 ﻿using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
 using System;
+using NLog;
 using System.Windows;
 using System.Windows.Forms;
 using Unity;
@@ -17,14 +18,16 @@ namespace ComputerEquipmentStoreViewSellerWpf
         [Dependency]
         public IUnityContainer Container { get; set; }
         private readonly ReportLogic logic;
+        private readonly Logger logger;
 
         public ReportComponentProductAssemblyWindow(ReportLogic logicR)
         {
             InitializeComponent();
             logic = logicR;
+            logger = LogManager.GetCurrentClassLogger();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void buttonSaveToPdf_Click(object sender, RoutedEventArgs e)
         {
             if (DatePikerFrom.SelectedDate >= DatePikerTo.SelectedDate)
             {
@@ -53,6 +56,36 @@ namespace ComputerEquipmentStoreViewSellerWpf
                         MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+        private void buttonCreateList_Click(object sender, RoutedEventArgs e)
+        {
+            if (DatePikerTo.SelectedDate == null || DatePikerFrom.SelectedDate == null)
+            {
+                MessageBox.Show("Выберите даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (DatePikerFrom.SelectedDate >= DatePikerTo.SelectedDate)
+            {
+                MessageBox.Show("Дата начала должна быть меньше даты окончания", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                var dataSource = logic.GetComponentProductAssembly(new ReportBindingModel
+                {
+                    DateFrom = DatePikerFrom.SelectedDate,
+                    DateTo = DatePikerTo.SelectedDate
+                });
+                dataGridList.ItemsSource = dataSource;
+                
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Ошибка формирования отчета : " + ex.Message);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
             }
         }
     }

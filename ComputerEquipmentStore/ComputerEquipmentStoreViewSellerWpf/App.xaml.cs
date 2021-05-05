@@ -1,5 +1,4 @@
-﻿using ComputerEquipmentStoreBusinessLogic.BusinessLogics;
-using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
+﻿using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
