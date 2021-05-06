@@ -14,6 +14,15 @@
         <Button x:Name="buttonCreateReport" Content="Сформировать" Background="DarkBlue" Foreground="White"  HorizontalAlignment="Left" Margin="385,12,0,0" VerticalAlignment="Top" Width="134" Height="25" Click="buttonCreateReport_Click"/>
         <Button x:Name="buttonToPdf" Content="В PDF" Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="524,12,0,0" VerticalAlignment="Top" Width="67" Height="26" Click="buttonToPdf_Click"/>
         <Button x:Name="buttonToEmail" Content="На почту" Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="596,12,0,0" VerticalAlignment="Top" Width="79" Height="26" Click="buttonToEmail_Click"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="380" Margin="0,41,0,-0.333" VerticalAlignment="Top" Width="686"/>
+        <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="false" HorizontalAlignment="Left" Height="380" Margin="0,41,0,-0.333" VerticalAlignment="Top" Width="686">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название покупки" Binding="{Binding Path=Purchasename}" Width="0.2*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата покупки" Binding="{Binding Path=DatePurchase}" Width="0.15*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Комплектующее" Binding="{Binding Path=Component}" Width="0.15*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Path=CountOfComponent}" Width="0.15*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Комментарий" Binding="{Binding Path=Comment}" Width="0.2*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата комментария" Binding="{Binding Path=DateComment}" Width="0.15*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

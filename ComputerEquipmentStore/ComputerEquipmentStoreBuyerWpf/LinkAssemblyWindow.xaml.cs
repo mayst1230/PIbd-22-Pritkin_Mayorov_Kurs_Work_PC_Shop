@@ -11,6 +11,7 @@ using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using System.Windows.Forms;
 using MessageBox = System.Windows.Forms.MessageBox;
+using NLog;
 
 namespace ComputerEquipmentStoreBuyerWpf
 {
@@ -35,6 +36,8 @@ namespace ComputerEquipmentStoreBuyerWpf
 
         public int Id { set { id = value; } }
 
+        private readonly Logger logger;
+
         public string AssemblyName
         {
             get { return textBoxAssembly.Text; }
@@ -47,7 +50,7 @@ namespace ComputerEquipmentStoreBuyerWpf
             this.purchaseLogic = purchaseLogic;
             this.assemblyLogic = assemblyLogic;
             this.componentLogic = componentLogic;
-
+            logger = LogManager.GetCurrentClassLogger();
 
             var list = purchaseLogic.Read(null, App.Buyer.Id);
             if (list != null)
@@ -91,6 +94,7 @@ namespace ComputerEquipmentStoreBuyerWpf
                 }
                 catch (Exception ex)
                 {
+                    logger.Error("Ошибка при подсчете стоимости: " + ex.Message);
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -156,13 +160,15 @@ namespace ComputerEquipmentStoreBuyerWpf
                             TotalCost = view.TotalCost,
                             Products = view.Products,
                             Assemblies = purchaseAssemblies,
-                        }); ;
+                        });
+                        logger.Info("Сохранение привязки сборки к покупки прошло успешно");
                         MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
             catch (Exception ex)
             {
+                logger.Error("Ошибка при привязке сборки к покупке: " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -193,6 +199,7 @@ namespace ComputerEquipmentStoreBuyerWpf
             }
             catch (Exception ex)
             {
+                logger.Error("Ошибка при изменении индекса в комбобоксе покупки: " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

@@ -6,6 +6,7 @@ using System;
 using System.Windows;
 using System.Windows.Forms;
 using MessageBox = System.Windows.Forms.MessageBox;
+using NLog;
 
 namespace ComputerEquipmentStoreBuyerWpf
 {
@@ -20,11 +21,14 @@ namespace ComputerEquipmentStoreBuyerWpf
 
         private readonly AssemblyLogic assemblyLogic;
 
+        private readonly Logger logger;
+
 
         public AssembliesWindow(AssemblyLogic assemblyLogic)
         {
             InitializeComponent();
             this.assemblyLogic = assemblyLogic;
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         private void AssembliesWindow_Loaded(object sender, EventArgs e)
@@ -44,6 +48,7 @@ namespace ComputerEquipmentStoreBuyerWpf
             }
             catch (Exception ex)
             {
+                logger.Error("Ошибка заполнения списка сборок на форме: " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -84,6 +89,7 @@ namespace ComputerEquipmentStoreBuyerWpf
                     }
                     catch (Exception ex)
                     {
+                        logger.Error("Ошибка удаления сборки: " + ex.Message);
                         MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     LoadData();

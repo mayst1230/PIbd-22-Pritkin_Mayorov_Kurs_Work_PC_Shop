@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Unity;
+using NLog;
 
 namespace ComputerEquipmentStoreBuyerWpf
 {
@@ -11,9 +12,12 @@ namespace ComputerEquipmentStoreBuyerWpf
         [Dependency]
         public IUnityContainer Container { get; set; }
 
+        private readonly Logger logger;
+
         public MainWindow()
         {
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         private void buttonPurchases_Click(object sender, RoutedEventArgs e)

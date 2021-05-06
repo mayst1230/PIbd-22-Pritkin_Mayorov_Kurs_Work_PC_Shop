@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Forms;
 using MessageBox = System.Windows.Forms.MessageBox;
-
+using NLog;
 
 namespace ComputerEquipmentStoreBuyerWpf
 {
@@ -49,10 +49,13 @@ namespace ComputerEquipmentStoreBuyerWpf
 
         private Dictionary<int, (string, int, decimal)> purchaseAssemblies;
 
+        private readonly Logger logger;
+
         public PurchaseWindow(PurchaseLogic purchaseLogic)
         {
             InitializeComponent();
             this.purchaseLogic = purchaseLogic;
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         private void PurchaseWindow_Load(object sender, RoutedEventArgs e)
@@ -76,6 +79,7 @@ namespace ComputerEquipmentStoreBuyerWpf
                 }
                 catch (Exception ex)
                 {
+                    logger.Error("Ошибка при загрузки данных о покупке: " + ex.Message);
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -124,6 +128,7 @@ namespace ComputerEquipmentStoreBuyerWpf
             }
             catch (Exception ex)
             {
+                logger.Error("Ошибка при привязке сборки к покупке: " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -186,6 +191,7 @@ namespace ComputerEquipmentStoreBuyerWpf
                     }
                     catch (Exception ex)
                     {
+                        logger.Error("Ошибка при удалении продукта из покупки: " + ex.Message);
                         MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     LoadData();
@@ -246,6 +252,7 @@ namespace ComputerEquipmentStoreBuyerWpf
             }
             catch (Exception ex)
             {
+                logger.Error("Ошибка при сохранении покупки: " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

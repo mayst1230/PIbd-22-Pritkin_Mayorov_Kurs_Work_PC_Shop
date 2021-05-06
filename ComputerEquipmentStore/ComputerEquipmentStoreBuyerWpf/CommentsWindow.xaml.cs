@@ -6,6 +6,7 @@ using System;
 using System.Windows;
 using System.Windows.Forms;
 using MessageBox = System.Windows.Forms.MessageBox;
+using NLog;
 
 namespace ComputerEquipmentStoreBuyerWpf
 {
@@ -20,10 +21,13 @@ namespace ComputerEquipmentStoreBuyerWpf
 
         private readonly CommentLogic commentLogic;
 
+        private readonly Logger logger;
+
         public CommentsWindow(CommentLogic commentLogic)
         {
             InitializeComponent();
             this.commentLogic = commentLogic;
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         private void CommentsWindows_Load(object sender, EventArgs e)
@@ -43,6 +47,7 @@ namespace ComputerEquipmentStoreBuyerWpf
             }
             catch (Exception ex)
             {
+                logger.Error("Ошибка загрузки списка комментариев: " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -84,6 +89,7 @@ namespace ComputerEquipmentStoreBuyerWpf
                     }
                     catch (Exception ex)
                     {
+                        logger.Error("Ошибка удаления комментария: " + ex.Message);
                         MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     LoadData();

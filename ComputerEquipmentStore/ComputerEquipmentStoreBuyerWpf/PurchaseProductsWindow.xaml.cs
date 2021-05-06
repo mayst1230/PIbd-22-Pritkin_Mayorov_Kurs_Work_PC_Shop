@@ -9,6 +9,7 @@ using System;
 using System.Windows;
 using System.Windows.Forms;
 using MessageBox = System.Windows.Forms.MessageBox;
+using NLog;
 
 namespace ComputerEquipmentStoreBuyerWpf
 {
@@ -24,6 +25,8 @@ namespace ComputerEquipmentStoreBuyerWpf
         private readonly PurchaseLogic purchaseLogic;
 
         private readonly ProductLogic productLogic;
+
+        private readonly Logger logger;
 
         public int Id
         {
@@ -59,6 +62,7 @@ namespace ComputerEquipmentStoreBuyerWpf
             InitializeComponent();
             this.purchaseLogic = purchaseLogic;
             this.productLogic = productLogic;
+            logger = LogManager.GetCurrentClassLogger();
 
             var list = productLogic.Read(null);
             if (list != null)
@@ -66,14 +70,6 @@ namespace ComputerEquipmentStoreBuyerWpf
                 comboBoxProducts.ItemsSource = list;
             }
         }
-
-        
-
-        
-
-
-
-
 
         private void CalcSum()
         {
@@ -91,6 +87,7 @@ namespace ComputerEquipmentStoreBuyerWpf
                 }
                 catch (Exception ex)
                 {
+                    logger.Error("Ошибка при подсчете стоимости: " + ex.Message);
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

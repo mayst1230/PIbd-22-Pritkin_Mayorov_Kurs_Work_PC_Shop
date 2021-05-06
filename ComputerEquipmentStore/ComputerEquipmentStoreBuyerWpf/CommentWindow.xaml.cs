@@ -6,6 +6,7 @@ using System;
 using System.Windows;
 using System.Windows.Forms;
 using MessageBox = System.Windows.Forms.MessageBox;
+using NLog;
 
 namespace ComputerEquipmentStoreBuyerWpf
 {
@@ -24,14 +25,15 @@ namespace ComputerEquipmentStoreBuyerWpf
         private int? id;
 
         public int Id { set { id = value; } }
-        
-        
+
+        private readonly Logger logger;
 
         public CommentWindow(AssemblyLogic assemblyLogic,CommentLogic commentLogic)
         {
             InitializeComponent();
             this.assemblyLogic = assemblyLogic;
             this.commentLogic = commentLogic;
+            logger = LogManager.GetCurrentClassLogger();
 
             var list = assemblyLogic.Read(null);
             if (list != null)
@@ -61,6 +63,7 @@ namespace ComputerEquipmentStoreBuyerWpf
                 }
                 catch (Exception ex)
                 {
+                    logger.Error("Ошибка загрузки данных о комментарии: " + ex.Message);
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -92,14 +95,15 @@ namespace ComputerEquipmentStoreBuyerWpf
                     BuyerId = App.Buyer.Id,
                     Text = textBoxText.Text,
                     DateComment = (DateTime)(datePickerDateOfComment.SelectedDate == null ? new DateTime(0, 0, 0) : datePickerDateOfComment.SelectedDate)
-                    //DateComment = new DateTime(2015, 7, 20)
                 });
+                logger.Info("Сохранение комментария прошло успешно");
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = true;
                 Close();
             }
             catch (Exception ex)
             {
+                logger.Error("Ошибка сохранения комментария: " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

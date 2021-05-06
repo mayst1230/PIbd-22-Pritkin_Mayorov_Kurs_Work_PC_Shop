@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Forms;
 using Unity;
 using MessageBox = System.Windows.Forms.MessageBox;
+using NLog;
 
 namespace ComputerEquipmentStoreBuyerWpf
 {
@@ -18,10 +19,13 @@ namespace ComputerEquipmentStoreBuyerWpf
 
         private readonly BuyerLogic buyerLogic;
 
+        private readonly Logger logger;
+
         public AuthorizationWindowBuyer(BuyerLogic buyerLogic)
         {
             InitializeComponent();
             this.buyerLogic = buyerLogic;
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         private void buttonLogin_Click(object sender, RoutedEventArgs e)

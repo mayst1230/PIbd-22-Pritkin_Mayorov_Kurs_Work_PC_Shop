@@ -1,0 +1,1 @@
+2021-05-06 15:45:19.5790|INFO|ComputerEquipmentStoreBuyerWpf.CommentWindow|Сохранение комментария прошло успешно

@@ -18,6 +18,7 @@ using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
 using System.Windows.Forms;
 using MessageBox = System.Windows.Forms.MessageBox;
 using SWF = System.Windows.Forms;
+using NLog;
 
 namespace ComputerEquipmentStoreBuyerWpf
 {
@@ -35,11 +36,14 @@ namespace ComputerEquipmentStoreBuyerWpf
 
         private List<PurchaseViewModel> purchases = new List<PurchaseViewModel>();
 
+        private readonly Logger logger;
+
         public ListPurchaseComponentWindow(PurchaseLogic purchaseLogic, ReportLogicBuyer reportLogic)
         {
             InitializeComponent();
             this.reportLogic = reportLogic;
             this.purchaseLogic = purchaseLogic;
+            logger = LogManager.GetCurrentClassLogger();
 
             var list = purchaseLogic.Read(null, App.Buyer.Id);
             if (list != null)
@@ -65,6 +69,7 @@ namespace ComputerEquipmentStoreBuyerWpf
                     }
                     catch (Exception ex)
                     {
+                        logger.Error("Ошибка при создании документа EXCEL: " + ex.Message);
                         MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }     

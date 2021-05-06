@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Forms;
 using Unity;
 using MessageBox = System.Windows.Forms.MessageBox;
+using NLog;
 
 namespace ComputerEquipmentStoreBuyerWpf
 {
@@ -19,10 +20,13 @@ namespace ComputerEquipmentStoreBuyerWpf
 
         private readonly BuyerLogic buyerLogic;
 
+        private readonly Logger logger;
+
         public RegistrationWindowBuyer(BuyerLogic buyerLogic)
         {
             InitializeComponent();
             this.buyerLogic = buyerLogic;
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         private void buttonRegistration_Click(object sender, RoutedEventArgs e)
@@ -69,6 +73,7 @@ namespace ComputerEquipmentStoreBuyerWpf
                 }
                 catch (Exception ex)
                 {
+                    logger.Error("Ошибка при регистрации: " + ex.Message);
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

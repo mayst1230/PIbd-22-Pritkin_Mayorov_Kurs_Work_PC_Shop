@@ -6,6 +6,7 @@ using System;
 using System.Windows;
 using System.Windows.Forms;
 using MessageBox = System.Windows.Forms.MessageBox;
+using NLog;
 
 namespace ComputerEquipmentStoreBuyerWpf
 {
@@ -19,10 +20,13 @@ namespace ComputerEquipmentStoreBuyerWpf
 
         private readonly PurchaseLogic purchaseLogic;
 
+        private readonly Logger logger;
+
         public PurchasesWindow(PurchaseLogic purchaseLogic)
         {
             InitializeComponent();
             this.purchaseLogic = purchaseLogic;
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         private void PurchasesWindow_Load(object sender, RoutedEventArgs e)
@@ -42,6 +46,7 @@ namespace ComputerEquipmentStoreBuyerWpf
             }
             catch (Exception ex)
             {
+                logger.Error("Ошибка при загрузке данных о покупках: " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -82,6 +87,7 @@ namespace ComputerEquipmentStoreBuyerWpf
                     }
                     catch (Exception ex)
                     {
+                        logger.Error("Ошибка при удалении покупки: " + ex.Message);
                         MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     LoadData();
