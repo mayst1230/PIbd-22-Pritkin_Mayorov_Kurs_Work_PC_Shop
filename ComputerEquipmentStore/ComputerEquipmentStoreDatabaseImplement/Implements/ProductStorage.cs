@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ComputerEquipmentStoreBusinessLogic.BindingModels;
+using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using ComputerEquipmentStoreDatabaseImplement.Models;
@@ -65,7 +65,8 @@ namespace ComputerStoreEquipmentDatabaseImplement.Implements
             }
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                var product = context.Products.Include(rec => rec.ProductComponents)
+                var product = context.Products
+                    .Include(rec => rec.ProductComponents)
                     .ThenInclude(rec => rec.Component)
                     .Include(rec => rec.Seller)
                     .FirstOrDefault(rec => rec.Id == model.Id || rec.ProductName == model.ProductName);

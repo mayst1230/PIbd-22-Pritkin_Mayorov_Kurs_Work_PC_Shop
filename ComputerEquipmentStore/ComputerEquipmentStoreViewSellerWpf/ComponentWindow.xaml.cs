@@ -1,6 +1,6 @@
 ﻿using Unity;
-using ComputerEquipmentStoreBusinessLogic.BindingModels;
-using ComputerEquipmentStoreBusinessLogic.BusinessLogics;
+using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
+using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using System;
 using System.Windows;

@@ -1,23 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Unity;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics;
-using ComputerEquipmentStoreBusinessLogic.BusinessLogics;
+using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
-using ComputerEquipmentStoreBusinessLogic.BindingModels;
+using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using System.Windows.Forms;
 using MessageBox = System.Windows.Forms.MessageBox;
 

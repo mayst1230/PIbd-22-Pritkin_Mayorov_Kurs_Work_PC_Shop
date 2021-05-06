@@ -1,11 +1,11 @@
-﻿using ComputerEquipmentStoreBusinessLogic.BindingModels;
+﻿using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.Enums;
 using System;
 using System.Collections.Generic;
 
-namespace ComputerEquipmentStoreBusinessLogic.BusinessLogics
+namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
 {
     public class OrderLogic
     {

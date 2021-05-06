@@ -4,7 +4,6 @@ using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using ComputerEquipmentStoreBusinessLogic.HelperModels;
-using ComputerEquipmentStoreBusinessLogic.BindingModels;
 using System.Collections.Generic;
 
 

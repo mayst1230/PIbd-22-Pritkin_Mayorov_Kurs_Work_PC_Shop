@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ComputerEquipmentStoreBusinessLogic.BindingModels;
+using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using ComputerEquipmentStoreDatabaseImplement.Models;
@@ -20,8 +20,9 @@ namespace ComputerStoreEquipmentDatabaseImplement.Implements
             }
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                Component component = context.Components.Include(rec => rec.Seller)
-                .FirstOrDefault(rec => rec.Id == model.Id);
+                Component component = context.Components
+                .Include(rec => rec.Seller)
+                .FirstOrDefault(rec => rec.Id == model.Id || rec.ComponentName == model.ComponentName);
                 return component != null ?
                 new ComponentViewModel
                 {
@@ -42,7 +43,8 @@ namespace ComputerStoreEquipmentDatabaseImplement.Implements
             }
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                return context.Components.Include(rec => rec.Seller)
+                return context.Components
+                    .Include(rec => rec.Seller)
                     .Where(rec => rec.ComponentName.Contains(model.ComponentName))
                     .Select(rec => new ComponentViewModel
                 {
@@ -58,7 +60,9 @@ namespace ComputerStoreEquipmentDatabaseImplement.Implements
         {
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                return context.Components.Include(rec => rec.Seller).Select(rec => new ComponentViewModel
+                return context.Components
+                    .Include(rec => rec.Seller)
+                    .Select(rec => new ComponentViewModel
                 {
                     Id = rec.Id,
                     ComponentName = rec.ComponentName,

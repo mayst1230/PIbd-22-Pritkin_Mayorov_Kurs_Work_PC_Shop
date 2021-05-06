@@ -1,4 +1,4 @@
-﻿using ComputerEquipmentStoreBusinessLogic.BindingModels;
+﻿using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using ComputerEquipmentStoreDatabaseImplement.Models;

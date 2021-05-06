@@ -1,7 +1,7 @@
 ﻿using System;
 using ComputerEquipmentStoreBusinessLogic.Seller.Enums;
 
-namespace ComputerEquipmentStoreBusinessLogic.BindingModels
+namespace ComputerEquipmentStoreBusinessLogic.Seller.BindingModels
 {
     public class OrderBindingModel
     {

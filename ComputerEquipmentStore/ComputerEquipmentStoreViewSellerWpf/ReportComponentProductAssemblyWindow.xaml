@@ -14,17 +14,16 @@
             <Label Content="по" Foreground="White" FontSize="14" Margin="10,5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
             <DatePicker x:Name="DatePikerTo" Height="25" Width="120">
             </DatePicker>
-            <Button Content="Сформировать" Background="Brown" Foreground="White" Width="100" Margin="20" ></Button>
-            <Button Content="в PDF" Background="Brown" Foreground="White" Width="100"  Margin="20" Click="Button_Click" ></Button>
-            <Button Content="На почту" Background="Brown" Foreground="White" Width="100" Margin="20"></Button>
+            <Button x:Name="buttonCreateList" Content="Сформировать" Background="Brown" Foreground="White" Width="100" Margin="20" Click="buttonCreateList_Click"></Button>
+            <Button x:Name="buttonSaveToPdf" Content="в PDF" Background="Brown" Foreground="White" Width="100"  Margin="20" Click="buttonSaveToPdf_Click" ></Button>
+            <Button x:Name="buttonSaveToPdfInEmail" Content="На почту" Background="Brown" Foreground="White" Width="100" Margin="20"></Button>
         </StackPanel>
-        <DataGrid x:Name="dataGrid" Height="360">
+        <DataGrid x:Name="dataGridList" AutoGenerateColumns="False" CanUserAddRows="false" Height="360" Margin="0,0,-2,0" VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Id}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Комплектующее" Binding="{Binding Path=ComponentName}" Width="0.5*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата использования" Binding="{Binding Path=DatePurchase}" Width="0.5*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Товар" Binding="{Binding Path=ProductName}" Width="0.5*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Сборка" Binding="{Binding Path=AssemblyName}" Width="0.5*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Комплектующее" Binding="{Binding Path=Component}" Width="0.3*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата использования" Binding="{Binding Path=DataSale}" Width="0.4*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Товар/Сборка" Binding="{Binding Path=AssemblyProduct}" Width="0.3*"></DataGridTextColumn>
             </DataGrid.Columns> 
         </DataGrid>
     </StackPanel>

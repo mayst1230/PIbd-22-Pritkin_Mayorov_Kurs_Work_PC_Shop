@@ -5,10 +5,9 @@ using Unity.Lifetime;
 using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
 using ComputerStoreEquipmentDatabaseImplement.Implements;
 using ComputerEquipmentStoreDatabaseImplement.Implements;
-using ComputerEquipmentStoreBusinessLogic.BusinessLogics;
+using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces;
-using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 
 namespace ComputerEquipmentStoreViewSeller

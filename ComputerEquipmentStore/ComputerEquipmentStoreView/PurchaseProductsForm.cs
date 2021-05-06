@@ -1,7 +1,7 @@
 ﻿using System;
-using ComputerEquipmentStoreBusinessLogic.BusinessLogics;
+using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
-using ComputerEquipmentStoreBusinessLogic.BindingModels;
+using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using System.Windows.Forms;
 using Unity;
 using System.Collections.Generic;

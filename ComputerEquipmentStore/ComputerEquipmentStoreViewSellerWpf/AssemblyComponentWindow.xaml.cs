@@ -1,7 +1,7 @@
 ﻿using Unity;
-using ComputerEquipmentStoreBusinessLogic.BindingModels;
+using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
-using ComputerEquipmentStoreBusinessLogic.BusinessLogics;
+using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
@@ -23,7 +23,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
         private readonly ComponentLogic componentLogic;
         private readonly AssemblyLogic assemblyLogic;
         private Dictionary<int, (string, int, decimal)> assemblyComponents;
-        private int id;//id компонента
+        private int id;
 
         public int Id { set { id = value; } }
 
@@ -112,7 +112,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                             Id = view.Id,
                             AssemblyName = view.AssemblyName,
                             BuyerId = view.BuyerId,
-                            Cost = CalculateTotalCostAssembly(),
+                            Cost = view.Cost,
                             Components = assemblyComponents,
                         }); ;
                         MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -152,10 +152,8 @@ namespace ComputerEquipmentStoreViewSellerWpf
             {
                 try
                 {
-<<<<<<< HEAD
+
                     //int id = (int)comboBoxAssembly.SelectedValue;
-=======
->>>>>>> 981f7cacbc54182d449e792b5d4d8ff8de51bb0a
                     ComponentViewModel component = componentLogic.Read(new ComponentBindingModel
                     {
                         Id = id
