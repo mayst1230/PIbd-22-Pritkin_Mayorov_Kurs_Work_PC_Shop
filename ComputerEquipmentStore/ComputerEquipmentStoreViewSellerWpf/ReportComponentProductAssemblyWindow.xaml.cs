@@ -1,5 +1,6 @@
 ﻿using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
+using ComputerEquipmentStoreBusinessLogic.HelperModels;
 using System;
 using NLog;
 using System.Windows;
@@ -86,6 +87,48 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 logger.Error("Ошибка формирования отчета : " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
                MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonSaveToPdfInEmail_Click(object sender, RoutedEventArgs e)
+        {
+            if (DatePikerTo.SelectedDate == null || DatePikerFrom.SelectedDate == null)
+            {
+                MessageBox.Show("Выберите даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Warn("Не выбраны даты для отчета");
+                return;
+            }
+
+            if (DatePikerFrom.SelectedDate >= DatePikerTo.SelectedDate)
+            {
+                MessageBox.Show("Дата начала должна быть меньше даты окончания", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Warn("Выбранная дата начала больше, чем дата окончания");
+                return;
+            }
+            try
+            {
+                var fileName = "Report.pdf";
+                logic.SaveComponentsToPdfFile(new ReportBindingModel
+                {
+                    FileName = fileName,
+                    DateFrom = DatePikerFrom.SelectedDate,
+                    DateTo = DatePikerTo.SelectedDate
+                });
+                MailLogic.MailSend(new MailSendInfo
+                {
+                    MailAddress = App.Seller.Login,
+                    Subject = "Отчет по комплектующим",
+                    Text = "Отчет по комплектующим от " + DatePikerFrom.SelectedDate.Value.ToShortDateString() + " по " + DatePikerTo.SelectedDate.Value.ToShortDateString(),
+                    FileName = fileName
+                });
+                MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Ошибка отправки отчета: " + ex.Message);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
             }
         }
     }

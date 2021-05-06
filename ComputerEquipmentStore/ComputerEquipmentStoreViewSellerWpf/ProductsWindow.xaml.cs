@@ -5,6 +5,7 @@ using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using System;
 using System.Windows;
 using System.Windows.Forms;
+using NLog;
 using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace ComputerEquipmentStoreViewSellerWpf
@@ -17,11 +18,13 @@ namespace ComputerEquipmentStoreViewSellerWpf
         [Dependency]
         public IUnityContainer Container { get; set; }
         private readonly ProductLogic logic;
+        private readonly Logger logger;
 
         public ProductsWindow(ProductLogic logic)
         {
             InitializeComponent();
             this.logic = logic;
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         private void ProductsWindow_Loaded(object sender, EventArgs e)
@@ -41,6 +44,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
             }
             catch (Exception ex)
             {
+                logger.Error("Ошибка загрузки данных : " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -81,6 +85,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                     }
                     catch (Exception ex)
                     {
+                        logger.Error("Ошибка при удалении записи : " + ex.Message);
                         MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     LoadData();

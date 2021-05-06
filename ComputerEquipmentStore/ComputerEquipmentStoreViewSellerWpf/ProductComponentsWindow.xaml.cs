@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Forms;
+using NLog;
 using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace ComputerEquipmentStoreViewSellerWpf
@@ -46,10 +47,13 @@ namespace ComputerEquipmentStoreViewSellerWpf
             }
         }
 
+        private readonly Logger logger;
+
         public ProductComponentsWindow(ComponentLogic logic)
         {
             InitializeComponent();
             this._logic = logic;
+            logger = LogManager.GetCurrentClassLogger();
 
             List<ComponentViewModel> list = logic.Read(null);
             if (list != null)
@@ -77,6 +81,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 }
                 catch (Exception ex)
                 {
+                    logger.Error("Ошибка при суммировании : " + ex.Message);
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

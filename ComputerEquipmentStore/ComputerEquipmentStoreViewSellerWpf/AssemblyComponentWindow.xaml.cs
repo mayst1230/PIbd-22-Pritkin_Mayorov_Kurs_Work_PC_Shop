@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Forms;
+using NLog;
 using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace ComputerEquipmentStoreViewSellerWpf
@@ -23,6 +24,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
         private readonly ComponentLogic componentLogic;
         private readonly AssemblyLogic assemblyLogic;
         private Dictionary<int, (string, int, decimal)> assemblyComponents;
+        private readonly Logger logger;
         private int id;
 
         public int Id { set { id = value; } }
@@ -56,6 +58,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
             InitializeComponent();
             this.componentLogic = componentLogic;
             this.assemblyLogic = assemblyLogic;
+            logger = LogManager.GetCurrentClassLogger();
 
             var listAssemblies = assemblyLogic.Read(null);
             if (listAssemblies != null)
@@ -136,6 +139,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
             }
             catch (Exception ex)
             {
+                logger.Error("Ошибка при сохранении данных : " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

@@ -1,8 +1,10 @@
 ﻿using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
 using System.Windows;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Unity;
+using NLog;
 using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace ComputerEquipmentStoreViewSellerWpf
@@ -15,19 +17,19 @@ namespace ComputerEquipmentStoreViewSellerWpf
         [Dependency]
         public IUnityContainer Container { get; set; }
         private readonly SellerLogic logic;
-
+        private readonly Logger logger;
         public AuthorizationWindow(SellerLogic logic)
         {
             InitializeComponent();
             this.logic = logic;
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(textBoxEmail.Text))
+            if (!Regex.IsMatch(textBoxEmail.Text, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
             {
-                MessageBox.Show("Введите почту", "Ошибка", MessageBoxButtons.OK,
-               MessageBoxIcon.Error);
+                MessageBox.Show("Почта введена некорректно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (string.IsNullOrEmpty(passwordBox.Password))

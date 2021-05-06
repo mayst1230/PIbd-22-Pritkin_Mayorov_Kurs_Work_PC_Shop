@@ -5,6 +5,7 @@ using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using System;
 using System.Windows;
 using System.Windows.Forms;
+using NLog;
 using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace ComputerEquipmentStoreViewSellerWpf
@@ -18,11 +19,13 @@ namespace ComputerEquipmentStoreViewSellerWpf
         public IUnityContainer Container { get; set; }
 
         private readonly ComponentLogic logic;
+        private readonly Logger logger;
 
         public ComponentsWindow(ComponentLogic logic)
         {
             InitializeComponent();
             this.logic = logic;
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         private void ComponentsWindow_Load(object sender, EventArgs e)
@@ -42,6 +45,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
             }
             catch (Exception ex)
             {
+                logger.Error("Ошибка загрузки данных : " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -82,6 +86,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                     }
                     catch (Exception ex)
                     {
+                        logger.Error("Ошибка удаления : " + ex.Message);
                         MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     LoadData();
@@ -96,11 +101,19 @@ namespace ComputerEquipmentStoreViewSellerWpf
 
         private void buttonAssemblyComponent_Click(object sender, RoutedEventArgs e)
         {
-            var form = Container.Resolve<AssemblyComponentWindow>();
-            int id = ((ComponentViewModel)dataGridComponents.SelectedItems[0]).Id;
-            form.Id = id;
-            form.ComponentName = ((ComponentViewModel)dataGridComponents.SelectedItems[0]).ComponentName;
-            form.ShowDialog();
+            try
+            {
+                var form = Container.Resolve<AssemblyComponentWindow>();
+                int id = ((ComponentViewModel)dataGridComponents.SelectedItems[0]).Id;
+                form.Id = id;
+                form.ComponentName = ((ComponentViewModel)dataGridComponents.SelectedItems[0]).ComponentName;
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Ошибка выбора комплектующего : " + ex.Message);
+                MessageBox.Show(ex.Message, "Ошибка, выберите комплектующее", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

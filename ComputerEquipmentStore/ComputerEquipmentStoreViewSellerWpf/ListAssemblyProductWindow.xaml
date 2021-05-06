@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreViewSellerWpf"
         mc:Ignorable="d"
-        Title="Список сборок" Height="450" Width="533" Icon="Images/ico.ico" ResizeMode="NoResize" Loaded="ListAssemblyProductWindow_Loaded">
+        Title="Список сборок" Height="460" Width="533" Icon="Images/ico.ico" ResizeMode="NoResize" Loaded="ListAssemblyProductWindow_Loaded">
     <Grid Background="Maroon">
         <DataGrid x:Name="dataGridProducts" HorizontalAlignment="Left" Height="383" AutoGenerateColumns="False" CanUserAddRows="false" VerticalAlignment="Top" Width="527">
             <DataGrid.Columns>
