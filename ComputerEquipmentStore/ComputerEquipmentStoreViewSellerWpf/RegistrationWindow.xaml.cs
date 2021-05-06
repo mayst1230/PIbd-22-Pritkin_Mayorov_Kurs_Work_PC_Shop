@@ -4,6 +4,7 @@ using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Forms;
+using NLog;
 using Unity;
 using MessageBox = System.Windows.Forms.MessageBox;
 
@@ -17,10 +18,12 @@ namespace ComputerEquipmentStoreViewSellerWpf
         [Dependency]
         public IUnityContainer Container { get; set; }
         private readonly SellerLogic logic;
+        private readonly Logger logger;
         public RegistrationWindow(SellerLogic logic)
         {
             InitializeComponent();
             this.logic = logic;
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         private void buttonRegistration_Click(object sender, RoutedEventArgs e)
@@ -67,6 +70,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 }
                 catch (Exception ex)
                 {
+                    logger.Error("Ошибка при регистрации : " + ex.Message);
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

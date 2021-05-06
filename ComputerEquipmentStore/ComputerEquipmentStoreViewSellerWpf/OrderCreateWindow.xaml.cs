@@ -4,6 +4,7 @@ using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
 using System;
 using System.Windows;
 using System.Windows.Forms;
+using NLog;
 using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace ComputerEquipmentStoreViewSellerWpf
@@ -19,6 +20,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
         private readonly OrderLogic _logicO;
         public int Id { set { id = value; } }
         private int? id;
+        private readonly Logger logger;
 
         public string OrderName
         {
@@ -40,6 +42,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
             InitializeComponent();
             _logicP = logicP;
             _logicO = logicO;
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         private void OrderCreateWindow_Loaded(object sender, EventArgs e)
@@ -56,6 +59,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
             }
             catch (Exception ex)
             {
+                logger.Error("Ошибка загрузки данных : " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             if (id.HasValue)
@@ -75,6 +79,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 }
                 catch (Exception ex)
                 {
+                    logger.Error("Ошибка загрузки данных : " + ex.Message);
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -108,6 +113,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
             }
             catch (Exception ex)
             {
+                logger.Error("Ошибка при сохранении данных : " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

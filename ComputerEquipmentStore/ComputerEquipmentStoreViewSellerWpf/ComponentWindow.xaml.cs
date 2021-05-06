@@ -1,10 +1,10 @@
 ﻿using Unity;
 using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
-using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using System;
 using System.Windows;
 using System.Windows.Forms;
+using NLog;
 using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace ComputerEquipmentStoreViewSellerWpf
@@ -20,10 +20,12 @@ namespace ComputerEquipmentStoreViewSellerWpf
         public int Id { set { id = value; } }
         private readonly ComponentLogic logic;
         private int? id;
+        private readonly Logger logger;
         public ComponentWindow(ComponentLogic logic)
         {
             InitializeComponent();
             this.logic = logic;
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         private void ComponentWindow_Load(object sender, EventArgs e)
@@ -41,6 +43,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 }
                 catch (Exception ex)
                 {
+                    logger.Error("Ошибка загрузки данных : " + ex.Message);
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -68,6 +71,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
             }
             catch (Exception ex)
             {
+                logger.Error("Ошибка сохранения данных : " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

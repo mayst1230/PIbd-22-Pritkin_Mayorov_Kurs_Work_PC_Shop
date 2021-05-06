@@ -1,4 +1,5 @@
 ﻿using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
+using ComputerEquipmentStoreBusinessLogic.HelperModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
@@ -6,6 +7,8 @@ using ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces;
 using ComputerEquipmentStoreDatabaseImplement.Implements;
 using ComputerStoreEquipmentDatabaseImplement.Implements;
 using System.Windows;
+using System.Configuration;
+using System;
 using Unity;
 using Unity.Lifetime;
 
@@ -19,6 +22,14 @@ namespace ComputerEquipmentStoreViewSellerWpf
         {
             base.OnStartup(e);
             var container = BuildUnityContainer();
+            MailLogic.MailConfig(new MailConfig
+            {
+                SmtpClientHost = ConfigurationManager.AppSettings["SmtpClientHost"],
+                SmtpClientPort = Convert.ToInt32(ConfigurationManager.AppSettings["SmtpClientPort"]),
+                MailLogin = ConfigurationManager.AppSettings["MailLogin"],
+                MailPassword = ConfigurationManager.AppSettings["MailPassword"],
+                MailName = ConfigurationManager.AppSettings["MailName"]
+            });
             var authWindow = container.Resolve<AuthorizationWindow>();
             authWindow.ShowDialog();
         }

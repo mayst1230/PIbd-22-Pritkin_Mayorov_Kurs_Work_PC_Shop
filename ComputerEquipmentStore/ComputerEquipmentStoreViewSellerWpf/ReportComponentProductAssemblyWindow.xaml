@@ -16,7 +16,7 @@
             </DatePicker>
             <Button x:Name="buttonCreateList" Content="Сформировать" Background="Brown" Foreground="White" Width="100" Margin="20" Click="buttonCreateList_Click"></Button>
             <Button x:Name="buttonSaveToPdf" Content="в PDF" Background="Brown" Foreground="White" Width="100"  Margin="20" Click="buttonSaveToPdf_Click" ></Button>
-            <Button x:Name="buttonSaveToPdfInEmail" Content="На почту" Background="Brown" Foreground="White" Width="100" Margin="20"></Button>
+            <Button x:Name="buttonSaveToPdfInEmail" Content="На почту" Background="Brown" Foreground="White" Width="100" Margin="20" Click="buttonSaveToPdfInEmail_Click"></Button>
         </StackPanel>
         <DataGrid x:Name="dataGridList" AutoGenerateColumns="False" CanUserAddRows="false" Height="360" Margin="0,0,-2,0" VerticalAlignment="Top">
             <DataGrid.Columns>

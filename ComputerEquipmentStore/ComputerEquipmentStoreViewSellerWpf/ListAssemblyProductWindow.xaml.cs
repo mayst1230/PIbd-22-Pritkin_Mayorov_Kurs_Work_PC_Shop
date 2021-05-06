@@ -5,6 +5,7 @@ using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using NLog;
 using Unity;
 
 namespace ComputerEquipmentStoreViewSellerWpf
@@ -18,6 +19,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
         public IUnityContainer Container { get; set; }
         private readonly ProductLogic logicP;
         private readonly ReportLogic logicR;
+        private readonly Logger logger;
 
         public ListAssemblyProductWindow(ProductLogic logicP, ReportLogic logicR)
         {
@@ -43,6 +45,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
             }
             catch (Exception ex)
             {
+                logger.Error("Ошибка загрузки данных : " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK,
                MessageBoxImage.Question);
             }
@@ -77,6 +80,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
             }
             catch (Exception ex)
             {
+                logger.Error("Ошибка сохранения данных в Word: " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK,
                MessageBoxImage.Error);
             }
@@ -110,6 +114,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 }
                 catch (Exception ex)
                 {
+                    logger.Error("Ошибка сохранения данных в Excel: " + ex.Message);
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK,
                    MessageBoxImage.Error);
                 }

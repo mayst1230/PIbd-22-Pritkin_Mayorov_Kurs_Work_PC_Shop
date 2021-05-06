@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Forms;
+using NLog;
 using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace ComputerEquipmentStoreViewSellerWpf
@@ -30,12 +31,14 @@ namespace ComputerEquipmentStoreViewSellerWpf
         private readonly ComponentLogic logicC;
         private int? id;
         private Dictionary<int, (string, int, decimal)> productComponents;
+        private readonly Logger logger;
 
         public ProductWindow(ProductLogic logicP, ComponentLogic logicC)
         {
             InitializeComponent();
             this.logicP = logicP;
             this.logicC = logicC;
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         private void ProductWindow_Load(object sender, EventArgs e)
@@ -58,6 +61,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 }
                 catch (Exception ex)
                 {
+                    logger.Error("Ошибка загрузки данных : " + ex.Message);
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -88,6 +92,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
             }
             catch (Exception ex)
             {
+                logger.Error("Ошибка загрузки данных : " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -139,6 +144,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                     }
                     catch (Exception ex)
                     {
+                        logger.Error("Ошибка при удалении записи : " + ex.Message);
                         MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     LoadData();
@@ -179,6 +185,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
             }
             catch (Exception ex)
             {
+                logger.Error("Ошибка при сохранении данных : " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
