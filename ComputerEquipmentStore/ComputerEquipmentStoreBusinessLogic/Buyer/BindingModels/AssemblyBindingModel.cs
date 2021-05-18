@@ -27,6 +27,8 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
         /// </summary>
         public decimal Cost { get; set; }
 
+        public decimal Allowance { get; set; }
+
         /// <summary>
         /// Комплектующие находящиеся в этой сборке <ID \компонента (Название компонента, количество, цена)>
         /// </summary>

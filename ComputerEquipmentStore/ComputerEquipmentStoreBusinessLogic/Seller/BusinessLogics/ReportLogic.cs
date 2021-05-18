@@ -77,7 +77,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
                     {
                         Id = product.Key
                     });
-                    view.Components.ToList().ForEach(component =>
+                    view.Components.Where(rec => view.SellerId == model.SellerId).ToList().ForEach(component =>
                     {
                         componentsProductAssembly.Add(new ReportComponentsViewModel
                         {
@@ -92,7 +92,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
                         {
                             Id = assembly.Key
                         });
-                        view.Components.ToList().ForEach(component =>
+                        view.Components.Where(rec => view.SellerId == model.SellerId).ToList().ForEach(component =>
                         {
                             componentsProductAssembly.Add(new ReportComponentsViewModel
                             {

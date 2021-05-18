@@ -26,6 +26,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                      {
                          Id = rec.Id,
                          Cost = rec.Cost,
+                         Allowance = rec.Allowance,
                          AssemblyName = rec.AssemblyName,
                          BuyerId = rec.BuyerId,
                          Components = rec.AssemblyComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => (recCSP.Component?.ComponentName, recCSP.Count, recCSP.Price))
@@ -57,6 +58,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                     {
                         Id = rec.Id,
                         Cost = rec.Cost,
+                        Allowance = rec.Allowance,
                         AssemblyName = rec.AssemblyName,
                         BuyerId = rec.BuyerId,
                         Components = rec.AssemblyComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => (recCSP.Component?.ComponentName, recCSP.Count, recCSP.Price)),
@@ -89,6 +91,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                 {
                     Id = assembly.Id,
                     Cost = assembly.Cost,
+                    Allowance = assembly.Allowance,
                     AssemblyName = assembly.AssemblyName,
                     BuyerId = assembly.BuyerId,
                     Components = assembly.AssemblyComponents.ToDictionary(recCSP => recCSP.ComponentId, recCSP => (recCSP.Component?.ComponentName, recCSP.Count, recCSP.Price)),
@@ -178,6 +181,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             assembly.AssemblyName = model.AssemblyName;
             assembly.BuyerId = (int)model.BuyerId;
             assembly.Cost = model.Cost;
+            assembly.Allowance = model.Allowance;
 
             if (assembly.Id == 0)
             {

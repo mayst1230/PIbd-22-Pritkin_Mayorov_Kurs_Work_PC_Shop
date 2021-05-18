@@ -116,6 +116,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                             AssemblyName = view.AssemblyName,
                             BuyerId = view.BuyerId,
                             Cost = view.Cost,
+                            Allowance = view.Allowance,
                             Components = assemblyComponents,
                         }); ;
                         MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -130,6 +131,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                             Id = view.Id,
                             AssemblyName = view.AssemblyName,
                             BuyerId = view.BuyerId,
+                            Allowance = view.Allowance,
                             Cost = view.Cost,
                             Components = assemblyComponents
                         });

@@ -58,12 +58,10 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                     .ThenInclude(rec => rec.Product)
                     .Include(rec => rec.PurchaseAssemblies)
                     .ThenInclude(rec => rec.Assembly)
-                    .Where(rec => 
-                    (model.ReportSeller.HasValue && model.ReportSeller.Value && rec.DatePurchase >= model.DateFrom && rec.DatePurchase <= model.DateTo)
-                    ||
-                    (model.ReportBuyer.HasValue && model.ReportBuyer.Value && model.BuyerId.HasValue && rec.BuyerId == model.BuyerId)
-                    ||
-                    (model.BuyerId.HasValue && rec.BuyerId == model.BuyerId))
+                    .Where(rec => model.BuyerId.HasValue && rec.BuyerId == model.BuyerId
+                    || 
+                    (rec.DatePurchase >= model.DateFrom && rec.DatePurchase <= model.DateTo && model.BuyerId.HasValue && rec.BuyerId == model.BuyerId)
+                    || (model.ReportSeller.HasValue && model.ReportSeller.Value && rec.DatePurchase >= model.DateFrom && rec.DatePurchase <= model.DateTo))
                     .ToList()
                     .Select(rec => new PurchaseViewModel
                     {

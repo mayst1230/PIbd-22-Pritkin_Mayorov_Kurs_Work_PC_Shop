@@ -48,6 +48,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                             FileName = dialog.FileName,
                             DateFrom = DatePikerFrom.SelectedDate,
                             DateTo = DatePikerTo.SelectedDate,
+                            SellerId = App.Seller.Id
                         });
                         MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
@@ -113,7 +114,8 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 {
                     FileName = fileName,
                     DateFrom = DatePikerFrom.SelectedDate,
-                    DateTo = DatePikerTo.SelectedDate
+                    DateTo = DatePikerTo.SelectedDate,
+                    SellerId = App.Seller.Id
                 });
                 MailLogic.MailSend(new MailSendInfo
                 {

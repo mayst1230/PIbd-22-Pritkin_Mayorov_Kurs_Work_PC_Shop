@@ -76,13 +76,12 @@ namespace ComputerEquipmentStoreBuyerWpf
                 var dataSource = reportLogic.GetInfoAboutPurchases(new ReportBindingModelBuyer
                 {
                     DateFrom = DatePickerFrom.SelectedDate,
-                    DateTo = DatePickerTo.SelectedDate
+                    DateTo = DatePickerTo.SelectedDate,
+                    BuyerId = App.Buyer.Id
                 });
 
 
                 List<DataGridItemReportPurchaseComponentComment> list = new List<DataGridItemReportPurchaseComponentComment>(); 
-                    
-                //dataGrid.    Row.Background = new SolidColorBrush(Colors.Green);
 
                 foreach (var line in dataSource)
                 {
@@ -144,7 +143,8 @@ namespace ComputerEquipmentStoreBuyerWpf
                         {
                             FileName = dialog.FileName,
                             DateFrom = DatePickerFrom.SelectedDate,
-                            DateTo = DatePickerTo.SelectedDate
+                            DateTo = DatePickerTo.SelectedDate,
+                            BuyerId = App.Buyer.Id
                         });
                         MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -180,7 +180,8 @@ namespace ComputerEquipmentStoreBuyerWpf
                 {
                     FileName = fileName,
                     DateFrom = DatePickerFrom.SelectedDate,
-                    DateTo = DatePickerTo.SelectedDate
+                    DateTo = DatePickerTo.SelectedDate,
+                    BuyerId = App.Buyer.Id
                 });
 
                 MailLogic.MailSend(new MailSendInfo

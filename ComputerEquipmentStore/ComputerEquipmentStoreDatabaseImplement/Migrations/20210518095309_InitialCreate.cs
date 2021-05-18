@@ -43,6 +43,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BuyerId = table.Column<int>(nullable: false),
                     Cost = table.Column<decimal>(nullable: false),
+                    Allowance = table.Column<decimal>(nullable: false),
                     AssemblyName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -231,7 +232,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         column: x => x.SellerId,
                         principalTable: "Sellers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
