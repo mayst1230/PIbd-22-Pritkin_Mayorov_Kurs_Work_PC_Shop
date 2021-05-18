@@ -8,6 +8,7 @@ using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
 {
@@ -96,13 +97,12 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
         {
             var list = new List<ReportPurchaseComponentsViewModel>();//Тут будет результат
 
-            foreach (var selectedPurchase in selectedPurchases)
+            selectedPurchases.ForEach(purchase =>
             {
-
                 //Тут будет запись в список
                 var record = new ReportPurchaseComponentsViewModel
                 {
-                    PurchaseName = selectedPurchase.PurchaseName,
+                    PurchaseName = purchase.PurchaseName,
                     Components = new List<Tuple<string, int>>(),
                     TotalCount = 0
                 };
@@ -110,7 +110,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
                 var neededProducts = new List<ProductViewModel>();//Сюда записываются все товары покупки
                 var neededAssemblies = new List<AssemblyViewModel>();//Сюда записываются все сборки покупки
 
-                foreach (var product in selectedPurchase.Products)
+                purchase.Products.ToList().ForEach(product =>
                 {
                     ProductViewModel productViewModel = productLogic.Read(new ProductBindingModel
                     {
@@ -118,9 +118,9 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
                     })?[0];
 
                     neededProducts.Add(productViewModel);
-                }
+                });
 
-                foreach (var assembly in selectedPurchase.Assemblies)
+                purchase.Assemblies.ToList().ForEach(assembly =>
                 {
                     AssemblyViewModel assemblyViewModel = assemblyLogic.Read(new AssemblyBindingModel
                     {
@@ -128,41 +128,47 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
                     })?[0];
 
                     neededAssemblies.Add(assemblyViewModel);
-                }
-             
-                foreach (var neededProduct in neededProducts)
+                });
+
+                neededProducts.ForEach(neededProduct =>
                 {
                     int totalCount = 0;
-                    foreach (var component in neededProduct.Components)
+
+                    neededProduct.Components.ToList().ForEach(component =>
                     {
                         ComponentViewModel commentViewModel = componentLogic.Read(new ComponentBindingModel
                         {
                             Id = component.Key
                         })?[0];
 
-                        record.Components.Add(new Tuple<string, int>(commentViewModel.ComponentName, neededProduct.Components[commentViewModel.Id].Item2 * selectedPurchase.Products[neededProduct.Id].Item2));
+                        record.Components.Add(new Tuple<string, int>(commentViewModel.ComponentName, neededProduct.Components[commentViewModel.Id].Item2 * purchase.Products[neededProduct.Id].Item2));
                         totalCount += neededProduct.Components[commentViewModel.Id].Item2;
-                    }
-                    record.TotalCount += totalCount * selectedPurchase.Products[neededProduct.Id].Item2;
-                }
-                
-                foreach (var neededAssembly in neededAssemblies)
+                    });
+
+                    record.TotalCount += totalCount * purchase.Products[neededProduct.Id].Item2;
+                });
+
+                neededAssemblies.ForEach(neededAssembly =>
                 {
                     int totalCount = 0;
-                    foreach (var component in neededAssembly.Components)
+
+                    neededAssembly.Components.ToList().ForEach(component =>
                     {
                         ComponentViewModel commentViewModel = componentLogic.Read(new ComponentBindingModel
                         {
                             Id = component.Key
                         })?[0];
 
-                        record.Components.Add(new Tuple<string, int>(commentViewModel.ComponentName, neededAssembly.Components[commentViewModel.Id].Item2 * selectedPurchase.Assemblies[neededAssembly.Id].Item2));
+                        record.Components.Add(new Tuple<string, int>(commentViewModel.ComponentName, neededAssembly.Components[commentViewModel.Id].Item2 * purchase.Assemblies[neededAssembly.Id].Item2));
                         totalCount += neededAssembly.Components[commentViewModel.Id].Item2;
-                    }
-                    record.TotalCount += totalCount * selectedPurchase.Assemblies[neededAssembly.Id].Item2;
-                }
+                    });
+
+                    record.TotalCount += totalCount * purchase.Products[neededAssembly.Id].Item2;
+                });
+
                 list.Add(record);
-            }
+            });
+
             return list;
         }
 
@@ -182,7 +188,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
                 BuyerId = model.BuyerId
             });
 
-            foreach (var selectedPurchase in neededPurchases)
+            neededPurchases.ForEach(selectedPurchase =>
             {
                 //Тут будет запись в список
                 var record = new ReportPurchasesViewModel
@@ -196,7 +202,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
                 var neededProducts = new List<ProductViewModel>();//Сюда записываются все товары покупки
                 var neededAssemblies = new List<AssemblyViewModel>();//Сюда записываются все сборки покупки
 
-                foreach (var product in selectedPurchase.Products)
+                selectedPurchase.Products.ToList().ForEach(product =>
                 {
                     ProductViewModel productViewModel = productLogic.Read(new ProductBindingModel
                     {
@@ -204,9 +210,9 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
                     })?[0];
 
                     neededProducts.Add(productViewModel);
-                }
+                });
 
-                foreach (var assembly in selectedPurchase.Assemblies)
+                selectedPurchase.Assemblies.ToList().ForEach(assembly =>
                 {
                     AssemblyViewModel assemblyViewModel = assemblyLogic.Read(new AssemblyBindingModel
                     {
@@ -214,12 +220,13 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
                     })?[0];
 
                     neededAssemblies.Add(assemblyViewModel);
-                }
+                });
 
-                foreach (var neededProduct in neededProducts)
+                neededProducts.ForEach(neededProduct =>
                 {
                     int totalCount = 0;
-                    foreach (var component in neededProduct.Components)
+
+                    neededProduct.Components.ToList().ForEach(component =>
                     {
                         ComponentViewModel commentViewModel = componentLogic.Read(new ComponentBindingModel
                         {
@@ -228,14 +235,35 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
 
                         record.Components.Add(new Tuple<string, int>(commentViewModel.ComponentName, neededProduct.Components[commentViewModel.Id].Item2 * selectedPurchase.Products[neededProduct.Id].Item2));
                         totalCount += neededProduct.Components[commentViewModel.Id].Item2;
-                    }
-                    record.Count += totalCount * selectedPurchase.Products[neededProduct.Id].Item2;
-                }
+                    });
 
-                foreach (var neededAssembly in neededAssemblies)
+                    record.Count += totalCount * selectedPurchase.Products[neededProduct.Id].Item2;
+                });
+
+                neededProducts.ForEach(neededProduct =>
                 {
                     int totalCount = 0;
-                    foreach (var component in neededAssembly.Components)
+
+                    neededProduct.Components.ToList().ForEach(component =>
+                    {
+                        ComponentViewModel commentViewModel = componentLogic.Read(new ComponentBindingModel
+                        {
+                            Id = component.Key
+                        })?[0];
+
+                        record.Components.Add(new Tuple<string, int>(commentViewModel.ComponentName, neededProduct.Components[commentViewModel.Id].Item2 * selectedPurchase.Products[neededProduct.Id].Item2));
+                        totalCount += neededProduct.Components[commentViewModel.Id].Item2;
+                    });
+
+                    record.Count += totalCount * selectedPurchase.Products[neededProduct.Id].Item2;
+
+                });
+
+                neededAssemblies.ForEach(neededAssembly =>
+                {
+                    int totalCount = 0;
+
+                    neededAssembly.Components.ToList().ForEach(component =>
                     {
                         ComponentViewModel commentViewModel = componentLogic.Read(new ComponentBindingModel
                         {
@@ -244,7 +272,8 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
 
                         record.Components.Add(new Tuple<string, int>(commentViewModel.ComponentName, neededAssembly.Components[commentViewModel.Id].Item2 * selectedPurchase.Assemblies[neededAssembly.Id].Item2));
                         totalCount += neededAssembly.Components[commentViewModel.Id].Item2;
-                    }
+                    });
+
                     record.Count += totalCount * selectedPurchase.Assemblies[neededAssembly.Id].Item2;
 
                     var listComment = commentLogic.Read(new CommentBindingModel
@@ -252,12 +281,14 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
                         Id = neededAssembly.Id
                     })?[0];
 
-                    if (listComment != null) {
+                    if (listComment != null)
+                    {
                         record.Comments.Add(new Tuple<string, DateTime>(listComment.Text, listComment.DateComment));
                     }
-                }
+                });
                 list.Add(record);
-            }
+            });
+
             return list;
         }
 

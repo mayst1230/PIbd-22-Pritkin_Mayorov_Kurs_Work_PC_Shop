@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="Получить список комплектующих по выбранным покупкам" Height="329.334" Width="444.667" ResizeMode="NoResize" Icon="Images/blueico.ico">
+        Title="Получить список комплектующих по выбранным покупкам" Height="329.334" Width="880" ResizeMode="NoResize" Icon="Images/blueico.ico">
     <Grid Background="Blue">
         <Button x:Name="buttonToExcwl" Content="В Excel" Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="190" Height="29" Click="buttonToExcel_Click"/>
         <Button x:Name="buttonToWord" Content="В Word" Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="216,10,0,0" VerticalAlignment="Top" Width="199" Height="29" Click="buttonToWord_Click"/>
@@ -14,5 +14,14 @@
         <Label x:Name="label" Content="Покупка:" Foreground="White" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top"/>
         <Button x:Name="buttonAddPurchase" Content="Добавить покупку"  Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="10,246,0,0" VerticalAlignment="Top" Width="190" Height="34" Click="buttonAddPurchase_Click"/>
         <Button x:Name="buttonRemovePurchase" Content="Убрать покупку"  Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="216,246,0,0" VerticalAlignment="Top" Width="199" Height="34" Click="buttonRemovePurchase_Click"/>
+        <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="false" HorizontalAlignment="Left" Height="231" Margin="434,10,0,0" VerticalAlignment="Top" Width="431">
+            <DataGrid.Columns>
+                <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Продукт" Binding="{Binding Path=PurchaseName}" Width="0.4*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Компонент" Binding="{Binding Path=ComponentName}" Width="0.4*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Path=Count}" Width="0.2*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="buttonToFormPurchase" Content="Вывести на форму"  Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="553,246,0,0" VerticalAlignment="Top" Width="199" Height="34" Click="buttonToFormPurchase_Click"/>
     </Grid>
 </Window>

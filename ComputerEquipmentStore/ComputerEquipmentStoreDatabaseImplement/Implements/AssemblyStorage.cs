@@ -180,8 +180,12 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         {
             assembly.AssemblyName = model.AssemblyName;
             assembly.BuyerId = (int)model.BuyerId;
-            assembly.Cost = model.Cost;
             assembly.Allowance = model.Allowance;
+
+            //assembly.Cost = model.Cost;
+
+            decimal costOfComponents = 0;
+
 
             if (assembly.Id == 0)
             {
@@ -220,7 +224,22 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                         context.SaveChanges();
                     }
                 }
+
+                //Получаем список всех компонентов этой сборки
+                assemblyComponent = context.AssemblyComponents.Where(rec => rec.AssemblyId == model.Id.Value).ToList();
+
+                //Считаем цену всех компонентов сборки
+                foreach (var component in assemblyComponent)
+                {
+                    costOfComponents += component.Price * component.Count;
+                }
             }
+
+            //Записываем полную стоимость сборки (Если комплектующих нет то, записывается только наценка)
+            assembly.Cost = model.Allowance + costOfComponents;
+
+            context.SaveChanges();
+
             return assembly;
         }
     }

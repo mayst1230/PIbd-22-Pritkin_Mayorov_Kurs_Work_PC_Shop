@@ -27,6 +27,15 @@ namespace ComputerEquipmentStoreBuyerWpf
     /// </summary>
     public partial class ListPurchaseComponentWindow : Window
     {
+        private class DataGridItemReportPurchaseComponents
+        {
+            public string PurchaseName { get; set; }
+
+            public string ComponentName { get; set; }
+
+            public string Count { get; set; }
+        }
+
         [Dependency]
         public IUnityContainer Container { get; set; }
 
@@ -167,6 +176,53 @@ namespace ComputerEquipmentStoreBuyerWpf
             foreach (var purchase in purchases)
             {
                 listBoxPurchases.Items.Add(purchase.PurchaseName);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonToFormPurchase_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var dataSource = reportLogic.GetPurchaseComponents(purchases);
+
+                List <DataGridItemReportPurchaseComponents> list = new List<DataGridItemReportPurchaseComponents>();
+
+                foreach (var line in dataSource)
+                {
+                    list.Add(new DataGridItemReportPurchaseComponents
+                    {
+                        PurchaseName = line.PurchaseName,
+                    });
+                    Console.WriteLine(line.PurchaseName);
+
+                    foreach (var component in line.Components)
+                    {
+                        list.Add(new DataGridItemReportPurchaseComponents
+                        {
+                            ComponentName = component.Item1,
+                            Count = component.Item2.ToString()
+                        });
+                    }
+
+                    list.Add(new DataGridItemReportPurchaseComponents
+                    {
+                        ComponentName = "Итого",
+                        Count = line.TotalCount.ToString()
+                    });
+
+                }
+
+                dataGrid.ItemsSource = list;
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Ошибка вывода отчета в PDF на форму: " + ex.Message);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

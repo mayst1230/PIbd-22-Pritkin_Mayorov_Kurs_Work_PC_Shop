@@ -4,3 +4,8 @@
 2021-05-18 14:19:55.9016|ERROR|ComputerEquipmentStoreBuyerWpf.LinkAssemblyWindow|Ошибка при подсчете стоимости: Входная строка имела неверный формат.
 2021-05-18 14:19:58.1006|ERROR|ComputerEquipmentStoreBuyerWpf.LinkAssemblyWindow|Ошибка при подсчете стоимости: Входная строка имела неверный формат.
 2021-05-18 14:19:59.6860|ERROR|ComputerEquipmentStoreBuyerWpf.LinkAssemblyWindow|Ошибка при подсчете стоимости: Входная строка имела неверный формат.
+2021-05-18 16:22:44.0461|ERROR|ComputerEquipmentStoreBuyerWpf.LinkAssemblyWindow|Ошибка при подсчете стоимости: Входная строка имела неверный формат.
+2021-05-18 16:22:48.3170|ERROR|ComputerEquipmentStoreBuyerWpf.LinkAssemblyWindow|Ошибка при подсчете стоимости: Входная строка имела неверный формат.
+2021-05-18 16:23:01.8650|ERROR|ComputerEquipmentStoreBuyerWpf.LinkAssemblyWindow|Ошибка при подсчете стоимости: Входная строка имела неверный формат.
+2021-05-18 16:23:16.1112|ERROR|ComputerEquipmentStoreBuyerWpf.LinkAssemblyWindow|Ошибка при подсчете стоимости: Входная строка имела неверный формат.
+2021-05-18 16:48:16.8439|ERROR|ComputerEquipmentStoreBuyerWpf.LinkAssemblyWindow|Ошибка при подсчете стоимости: Значение было недопустимо малым или недопустимо большим для Int32.

@@ -2,3 +2,5 @@
 Имя параметра: index
 2021-05-18 14:19:15.1078|ERROR|ComputerEquipmentStoreViewSellerWpf.ComponentsWindow|Ошибка выбора комплектующего : Индекс за пределами диапазона. Индекс должен быть положительным числом, а его размер не должен превышать размер коллекции.
 Имя параметра: index
+2021-05-18 16:12:48.9009|ERROR|ComputerEquipmentStoreViewSellerWpf.RegistrationWindow|Ошибка при регистрации : Cannot open database "ComputerEquipmentStoreDatabase" requested by the login. The login failed.
+Login failed for user 'LAPTOP-GV4FSJ96\swedl'.

@@ -37,8 +37,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
                 Style = "NormalTitle",
                 ParagraphAlignment = ParagraphAlignment.Center
             });
-
-            
+    
             foreach (var purchaseInfo in info.InfoAboutPurchases)
             {
                 CreateRow(new PdfRowParameters
@@ -72,7 +71,6 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
                 }
             }
             
-
             PdfDocumentRenderer renderer = new PdfDocumentRenderer(true, PdfSharp.Pdf.PdfFontEmbedding.Always)
             {
                 Document = document

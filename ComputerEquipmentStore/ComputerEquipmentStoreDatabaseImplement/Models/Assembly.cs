@@ -23,7 +23,6 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
         //Название сборки
         [Required]
         public string AssemblyName { get; set; }
-
         
         public virtual Buyer Buyer { get; set; }
 

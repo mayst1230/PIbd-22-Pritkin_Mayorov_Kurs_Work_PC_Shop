@@ -32,9 +32,9 @@ namespace ComputerEquipmentStoreBuyerWpf
     {
         public class DataGridItemReportPurchaseComponentComment
         {
-            public string Purchasename { get; set; }
+            public string PurchaseName { get; set; }
 
-            public DateTime DatePurchase { get; set; }
+            public DateTime? DatePurchase { get; set; }
 
             public string Component { get; set; }
 
@@ -42,7 +42,7 @@ namespace ComputerEquipmentStoreBuyerWpf
 
             public string Comment { get; set; }
 
-            public DateTime DateComment { get; set; }
+            public DateTime? DateComment { get; set; }
         }
 
         [Dependency]
@@ -88,7 +88,7 @@ namespace ComputerEquipmentStoreBuyerWpf
 
                     list.Add(new DataGridItemReportPurchaseComponentComment
                     {
-                        Purchasename = line.PurchaseName,
+                        PurchaseName = line.PurchaseName,
                         DatePurchase = line.DatePurchase
                     });
 

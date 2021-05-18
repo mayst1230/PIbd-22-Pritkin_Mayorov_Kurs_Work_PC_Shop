@@ -232,7 +232,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         column: x => x.SellerId,
                         principalTable: "Sellers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
