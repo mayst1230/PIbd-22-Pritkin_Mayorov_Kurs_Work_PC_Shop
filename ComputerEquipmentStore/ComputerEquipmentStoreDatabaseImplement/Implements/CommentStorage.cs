@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
 using ComputerEquipmentStoreDatabaseImplement.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace ComputerEquipmentStoreDatabaseImplement.Implements
@@ -16,13 +16,12 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<CommentViewModel> GetFullList(int BuyerId, bool superAcces)
+        public List<CommentViewModel> GetFullList()
         {
-            if (superAcces)
-            {
                 using (var context = new ComputerEquipmentStoreDatabase())
                 {
                     return context.Comments
+                        .Include(rec => rec.Buyer)
                         .Select(rec => new CommentViewModel
                         {
                             Id = rec.Id,
@@ -33,25 +32,6 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                         })
                     .ToList();
                 }
-            }
-            else
-            {
-                using (var context = new ComputerEquipmentStoreDatabase())
-                {
-                    return context.Comments
-                        .Where(rec => rec.BuyerId == BuyerId)
-                        .Select(rec => new CommentViewModel
-                        {
-                            Id = rec.Id,
-                            Text = rec.Text,
-                            DateComment = rec.DateComment,
-                            BuyerId = rec.BuyerId,
-                            AssemblyId = rec.AssemblyId,
-                        })
-                    .ToList();
-                }
-            }
-            
         }
         
         /// <summary>
@@ -68,7 +48,8 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             using (var context = new ComputerEquipmentStoreDatabase())
             {
                 return context.Comments
-                .Where(rec => rec.Id.Equals(model.Id))
+                .Include(rec => rec.Buyer)
+                .Where(rec => rec.Id.Equals(model.Id) || (model.BuyerId.HasValue && rec.BuyerId == model.BuyerId))
                 .Select(rec => new CommentViewModel
                 {
                     Id = rec.Id,
@@ -171,7 +152,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         {
             comment.Text = model.Text;
             comment.DateComment = model.DateComment;
-            comment.BuyerId = model.BuyerId;
+            comment.BuyerId = (int)model.BuyerId;
             comment.AssemblyId = model.AssemblyId;
             return comment;
         }

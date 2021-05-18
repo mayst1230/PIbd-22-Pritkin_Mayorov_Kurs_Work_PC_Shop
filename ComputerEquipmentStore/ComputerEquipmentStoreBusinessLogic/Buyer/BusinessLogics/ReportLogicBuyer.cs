@@ -173,12 +173,14 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
         /// <returns> Список отчетов по комплектующим и комментариям </returns>
         public List<ReportPurchasesViewModel> GetInfoAboutPurchases(ReportBindingModelBuyer model)
         {
-            var list = new List<ReportPurchasesViewModel>();//Тут будет результат
+            var list = new List<ReportPurchasesViewModel>(); //Тут будет результат
 
             List<PurchaseViewModel> neededPurchases = purchaseStorage.GetFilteredList(new PurchaseBindingModel
             {
                 DateFrom = model.DateFrom,
-                DateTo = model.DateTo
+                DateTo = model.DateTo,
+                ReportSeller = true,
+                BuyerId = model.BuyerId
             });
 
             foreach (var selectedPurchase in neededPurchases)
@@ -249,7 +251,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
                     var listComment = commentLogic.Read(new CommentBindingModel
                     {
                         Id = neededAssembly.Id
-                    }, 0, true)?[0];
+                    })?[0];
 
                     if (listComment != null) {
                         record.Comments.Add(new Tuple<string, DateTime>(listComment.Text, listComment.DateComment));

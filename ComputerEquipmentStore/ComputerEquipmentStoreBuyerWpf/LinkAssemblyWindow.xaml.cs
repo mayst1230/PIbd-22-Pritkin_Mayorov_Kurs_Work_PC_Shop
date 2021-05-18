@@ -52,14 +52,12 @@ namespace ComputerEquipmentStoreBuyerWpf
             this.componentLogic = componentLogic;
             logger = LogManager.GetCurrentClassLogger();
 
-            var list = purchaseLogic.Read(null, App.Buyer.Id);
+            var list = purchaseLogic.Read(new PurchaseBindingModel { BuyerId = App.Buyer.Id });
             if (list != null)
             {
                 comboBoxPurchase.ItemsSource = list;
             }
         }
-
-
 
         /// <summary>
         /// Подсчитать стоимость сборки (по комплектующим)
@@ -119,7 +117,7 @@ namespace ComputerEquipmentStoreBuyerWpf
                 PurchaseViewModel view = purchaseLogic.Read(new PurchaseBindingModel
                 {
                     Id = int.Parse(comboBoxPurchase.SelectedValue.ToString())
-                }, App.Buyer.Id)?[0];
+                })?[0];
 
                 if (view.Assemblies.ContainsKey(id))
                 {
@@ -191,7 +189,7 @@ namespace ComputerEquipmentStoreBuyerWpf
                 PurchaseViewModel view = purchaseLogic.Read(new PurchaseBindingModel
                 {
                     Id = int.Parse(comboBoxPurchase.SelectedValue.ToString())
-                }, App.Buyer.Id)?[0];
+                })?[0];
                 if (view != null)
                 {
                     purchaseAssemblies = view.Assemblies;

@@ -38,7 +38,7 @@ namespace ComputerEquipmentStoreBuyerWpf
         {
             try
             {
-                var list = purchaseLogic.Read(null, App.Buyer.Id);
+                var list = purchaseLogic.Read(new PurchaseBindingModel { BuyerId = App.Buyer.Id });
                 if (list != null)
                 {
                     dataGridPurchases.ItemsSource = list;

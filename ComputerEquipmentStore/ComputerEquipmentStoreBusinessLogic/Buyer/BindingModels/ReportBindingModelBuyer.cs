@@ -28,5 +28,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
         /// Покупки по которым будет производиться отчет
         /// </summary>
         public List<PurchaseViewModel> Purchases { get; set; }
+
+        public int? BuyerId { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace ComputerStoreEquipmentDatabaseImplement.Implements
         public Product CreateModel(ProductBindingModel model, Product product, ComputerEquipmentStoreDatabase context)
         {
             product.ProductName = model.ProductName;
-            product.SellerId = model.SellerId;
+            product.SellerId = (int)model.SellerId;
             product.Price = model.Price;
             if (product.Id == 0)
             {
@@ -66,9 +66,9 @@ namespace ComputerStoreEquipmentDatabaseImplement.Implements
             using (var context = new ComputerEquipmentStoreDatabase())
             {
                 var product = context.Products
+                    .Include(rec => rec.Seller)
                     .Include(rec => rec.ProductComponents)
                     .ThenInclude(rec => rec.Component)
-                    .Include(rec => rec.Seller)
                     .FirstOrDefault(rec => rec.Id == model.Id || rec.ProductName == model.ProductName);
                 return product != null ?
                 new ProductViewModel
@@ -91,10 +91,11 @@ namespace ComputerStoreEquipmentDatabaseImplement.Implements
             }
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                return context.Products.Include(rec => rec.ProductComponents)
-                    .ThenInclude(rec => rec.Component)
+                return context.Products
                     .Include(rec => rec.Seller)
-                    .Where(rec => rec.ProductName.Contains(model.ProductName))
+                    .Include(rec => rec.ProductComponents)
+                    .ThenInclude(rec => rec.Component)
+                    .Where(rec => rec.ProductName.Contains(model.ProductName) || (model.SellerId.HasValue && rec.SellerId == model.SellerId))
                     .ToList()
                     .Select(rec => new ProductViewModel
                     {
@@ -111,9 +112,10 @@ namespace ComputerStoreEquipmentDatabaseImplement.Implements
         {
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                return context.Products.Include(rec => rec.ProductComponents)
-                    .ThenInclude(rec => rec.Component)
+                return context.Products
                     .Include(rec => rec.Seller)
+                    .Include(rec => rec.ProductComponents)
+                    .ThenInclude(rec => rec.Component)
                     .ToList()
                     .Select(rec => new ProductViewModel
                     {

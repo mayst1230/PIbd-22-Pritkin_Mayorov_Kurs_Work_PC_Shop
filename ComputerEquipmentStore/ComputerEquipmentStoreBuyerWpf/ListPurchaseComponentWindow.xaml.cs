@@ -45,7 +45,7 @@ namespace ComputerEquipmentStoreBuyerWpf
             this.purchaseLogic = purchaseLogic;
             logger = LogManager.GetCurrentClassLogger();
 
-            var list = purchaseLogic.Read(null, App.Buyer.Id);
+            var list = purchaseLogic.Read(new PurchaseBindingModel { BuyerId = App.Buyer.Id });
             if (list != null)
             {
                 comboBoxPurchases.ItemsSource = list;
@@ -104,7 +104,7 @@ namespace ComputerEquipmentStoreBuyerWpf
                 PurchaseViewModel view = purchaseLogic.Read(new PurchaseBindingModel
                 {
                     Id = int.Parse(comboBoxPurchases.SelectedValue.ToString())
-                }, App.Buyer.Id)?[0];
+                })?[0];
 
                 if (purchases != null) {
 
@@ -140,7 +140,7 @@ namespace ComputerEquipmentStoreBuyerWpf
                 PurchaseViewModel view = purchaseLogic.Read(new PurchaseBindingModel
                 {
                     Id = int.Parse(comboBoxPurchases.SelectedValue.ToString())
-                }, App.Buyer.Id)?[0];
+                })?[0];
 
 
                 if (purchases != null)

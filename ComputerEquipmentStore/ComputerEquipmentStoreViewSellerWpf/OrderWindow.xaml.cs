@@ -34,7 +34,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
         {
             try
             {
-                var list = _orderLogic.Read(null);
+                var list = _orderLogic.Read(new OrderBindingModel { SellerId = App.Seller.Id});
                 if (list != null)
                 {
                     dataGridOrders.ItemsSource = list;

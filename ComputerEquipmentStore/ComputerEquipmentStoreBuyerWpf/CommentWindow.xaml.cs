@@ -35,7 +35,7 @@ namespace ComputerEquipmentStoreBuyerWpf
             this.commentLogic = commentLogic;
             logger = LogManager.GetCurrentClassLogger();
 
-            var list = assemblyLogic.Read(null);
+            var list = assemblyLogic.Read(new AssemblyBindingModel { BuyerId = App.Buyer.Id });
             if (list != null)
             {
                 comboBoxAssembly.ItemsSource = list;
@@ -51,9 +51,7 @@ namespace ComputerEquipmentStoreBuyerWpf
                     var list = commentLogic.Read(new CommentBindingModel
                     {
                         Id = id.Value
-                    },
-                    App.Buyer.Id,
-                    false)?[0];
+                    })?[0];
                     if (list != null)
                     {
                         comboBoxAssembly.SelectedValue = list.AssemblyId;

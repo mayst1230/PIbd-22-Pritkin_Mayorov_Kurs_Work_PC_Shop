@@ -67,7 +67,7 @@ namespace ComputerEquipmentStoreBuyerWpf
                     PurchaseViewModel view = purchaseLogic.Read(new PurchaseBindingModel
                     {
                         Id = id.Value
-                    }, App.Buyer.Id)?[0];
+                    })?[0];
                     if (view != null)
                     {
                         textBoxNamePurchase.Text = view.PurchaseName;

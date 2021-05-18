@@ -31,7 +31,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
         /// <param name="model"> Модель покупки </param>
         /// <param name="BuyerId"> ID покупателя </param>
         /// <returns> Список покупок (либо одна покупка) </returns>
-        public List<PurchaseViewModel> Read(PurchaseBindingModel model, int BuyerId)
+        public List<PurchaseViewModel> Read(PurchaseBindingModel model)
         {
             if (model == null)
             {

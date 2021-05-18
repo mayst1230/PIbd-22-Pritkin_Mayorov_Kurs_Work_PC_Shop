@@ -36,7 +36,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
         {
             try
             {
-                var list = logic.Read(null);
+                var list = logic.Read(new ProductBindingModel { SellerId = App.Seller.Id});
                 if (list != null)
                 {
                     dataGridProducts.ItemsSource = list;

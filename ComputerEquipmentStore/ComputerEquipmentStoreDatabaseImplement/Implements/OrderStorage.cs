@@ -45,9 +45,9 @@ namespace ComputerStoreEquipmentDatabaseImplement.Implements
             }
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                return context.Orders.Include(rec => rec.Seller).
-                Where(rec => rec.OrderName.Contains(model.OrderName)).
-                Select(rec => new OrderViewModel
+                return context.Orders.Include(rec => rec.Seller)
+                .Where(rec => rec.OrderName.Contains(model.OrderName) || (model.SellerId.HasValue && rec.SellerId == model.SellerId))
+                .Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
                     OrderName = rec.OrderName,
@@ -123,7 +123,7 @@ namespace ComputerStoreEquipmentDatabaseImplement.Implements
             order.DateOrder = model.DateOrder;
             order.Status = model.Status;
             order.Count = model.Count;
-            order.SellerId = model.SellerId;
+            order.SellerId = (int)model.SellerId;
             order.ProductId = model.ProductId;
             return order;
         }

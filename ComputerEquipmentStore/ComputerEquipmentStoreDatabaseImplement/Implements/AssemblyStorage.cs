@@ -48,10 +48,10 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             using (ComputerEquipmentStoreDatabase context = new ComputerEquipmentStoreDatabase())
             {
                 return context.Assemblies
+                    .Include(rec => rec.Buyer)
                     .Include(rec => rec.AssemblyComponents)
                     .ThenInclude(rec => rec.Component)
-                    .Include(rec => rec.Buyer)
-                    .Where(rec => rec.AssemblyName.Contains(model.AssemblyName))
+                    .Where(rec => rec.AssemblyName.Contains(model.AssemblyName) || (model.BuyerId.HasValue && rec.BuyerId == model.BuyerId))
                     .ToList()
                     .Select(rec => new AssemblyViewModel
                     {
@@ -176,7 +176,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         private Assembly CreateModel(AssemblyBindingModel model, Assembly assembly, ComputerEquipmentStoreDatabase context)
         {
             assembly.AssemblyName = model.AssemblyName;
-            assembly.BuyerId = model.BuyerId;
+            assembly.BuyerId = (int)model.BuyerId;
             assembly.Cost = model.Cost;
 
             if (assembly.Id == 0)

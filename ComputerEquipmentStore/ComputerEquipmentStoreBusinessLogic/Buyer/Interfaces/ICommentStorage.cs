@@ -14,10 +14,8 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces
         /// <summary>
         /// Метод получения полного списка комментариев
         /// </summary>
-        /// <param name="BuyerId"> ID покупателя </param>
-        /// <param name="superAccess"> Супер-доступ </param>
         /// <returns> Список комментариев </returns>
-        List<CommentViewModel> GetFullList(int BuyerId, bool superAccess);
+        List<CommentViewModel> GetFullList();
 
         /// <summary>
         /// Метод получения отфильтрованного списка комментариев

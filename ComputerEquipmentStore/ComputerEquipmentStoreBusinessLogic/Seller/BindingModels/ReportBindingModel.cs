@@ -10,5 +10,6 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BindingModels
         public DateTime? DateFrom { get; set; }
         public DateTime? DateTo { get; set; }
         public List<ProductViewModel> Products { get; set; }
+        public int? SellerId { get; set; }
     }
 }

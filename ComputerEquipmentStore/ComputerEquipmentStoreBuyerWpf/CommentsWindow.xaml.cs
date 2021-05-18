@@ -39,7 +39,7 @@ namespace ComputerEquipmentStoreBuyerWpf
         {
             try
             {
-                var list = commentLogic.Read(null, App.Buyer.Id, false);
+                var list = commentLogic.Read(new CommentBindingModel { BuyerId = App.Buyer.Id });
                 if (list != null)
                 {
                     dataGridComments.ItemsSource = list;

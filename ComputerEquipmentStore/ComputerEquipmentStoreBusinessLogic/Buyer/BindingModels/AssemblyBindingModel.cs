@@ -15,7 +15,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
         /// <summary>
         /// ID покупателя
         /// </summary>
-        public int BuyerId { get; set; }
+        public int? BuyerId { get; set; }
 
         /// <summary>
         /// Название сборки

@@ -55,7 +55,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
             this._logic = logic;
             logger = LogManager.GetCurrentClassLogger();
 
-            List<ComponentViewModel> list = logic.Read(null);
+            List<ComponentViewModel> list = logic.Read(new ComponentBindingModel { SellerId = App.Seller.Id });
             if (list != null)
             {
                 comboBoxComponent.ItemsSource = list;

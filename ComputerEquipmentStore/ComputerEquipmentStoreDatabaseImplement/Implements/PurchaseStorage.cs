@@ -52,12 +52,18 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             }
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                return context.Purchases.Include(rec => rec.PurchaseProducts)
+                return context.Purchases
+                    .Include(rec => rec.Buyer)
+                    .Include(rec => rec.PurchaseProducts)
                     .ThenInclude(rec => rec.Product)
                     .Include(rec => rec.PurchaseAssemblies)
                     .ThenInclude(rec => rec.Assembly)
-                    .Include(rec => rec.Buyer)
-                    .Where(rec => rec.DatePurchase >= model.DateFrom && rec.DatePurchase <= model.DateTo)
+                    .Where(rec => 
+                    (model.ReportSeller.HasValue && model.ReportSeller.Value && rec.DatePurchase >= model.DateFrom && rec.DatePurchase <= model.DateTo)
+                    ||
+                    (model.ReportBuyer.HasValue && model.ReportBuyer.Value && model.BuyerId.HasValue && rec.BuyerId == model.BuyerId)
+                    ||
+                    (model.BuyerId.HasValue && rec.BuyerId == model.BuyerId))
                     .ToList()
                     .Select(rec => new PurchaseViewModel
                     {
@@ -182,7 +188,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         public Purchase CreateModel(PurchaseBindingModel model, Purchase purchase, ComputerEquipmentStoreDatabase context)
         {
             purchase.PurchaseName = model.PurchaseName;
-            purchase.BuyerId = model.BuyerId;
+            purchase.BuyerId = (int)model.BuyerId;
             purchase.TotalCost = model.TotalCost;
             purchase.DatePurchase = model.DatePurchase;
             if (purchase.Id == 0)

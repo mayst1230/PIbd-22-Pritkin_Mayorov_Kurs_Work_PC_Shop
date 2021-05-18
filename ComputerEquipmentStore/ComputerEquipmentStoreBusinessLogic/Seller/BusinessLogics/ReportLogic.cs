@@ -1,10 +1,11 @@
-﻿using ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces;
-using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
-using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
-using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
-using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
+﻿using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
+using ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.HelperModels;
+using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
+using ComputerEquipmentStoreBusinessLogic.Seller.Interfaces;
+using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
@@ -14,70 +15,69 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
         private readonly IPurchaseStorage _purchaseStorage;
         private readonly IProductStorage _productStorage;
         private readonly IAssemblyStorage _assemblyStorage;
-        private readonly IComponentStorage _componentStorage;
 
-        public ReportLogic(IPurchaseStorage purchaseStorage, IProductStorage productStorage, IAssemblyStorage assemblyStorage, IComponentStorage componentStorage)
+        public ReportLogic(IPurchaseStorage purchaseStorage, IProductStorage productStorage, IAssemblyStorage assemblyStorage)
         {
             _productStorage = productStorage;
             _purchaseStorage = purchaseStorage;
             _assemblyStorage = assemblyStorage;
-            _componentStorage = componentStorage;
         }
 
         //получение списка сборок по товарам
         private List<ReportAssemblyProductViewModel> GetAssemblyProduct(List<ProductViewModel> selectedProducts)
         {
             List<ReportAssemblyProductViewModel> record = new List<ReportAssemblyProductViewModel>();
-            var listAssembly = _assemblyStorage.GetFullList();
-            foreach (var assembly in listAssembly)
+            List<Buyer.ViewModels.AssemblyViewModel> listAssembly = _assemblyStorage.GetFullList();
+            listAssembly.ForEach(assembly =>
             {
                 Dictionary<int, (string, decimal)> neededProducts = new Dictionary<int, (string, decimal)>();
-                foreach (var product in selectedProducts)
+                selectedProducts.ForEach(product =>
                 {
                     bool needed = true;
-                    foreach (var component in product.Components)
+                    product.Components.ToList().ForEach(component =>
                     {
                         if (!assembly.Components.ContainsKey(component.Key))
                         {
                             needed = false;
                         }
-                    }
+                    });
                     if (needed)
                     {
                         neededProducts.Add(product.Id, (product.ProductName, product.Price));
                     }
-                }
+                });
                 if (neededProducts.Count > 0)
                 {
                     record.Add(new ReportAssemblyProductViewModel
                     {
                         AssemblyName = assembly.AssemblyName,
                         Products = neededProducts
-                    });    
+                    });
                 }
-            }
+            });
             return record;
         }
 
         //Получение списка комплектующих с указанием товаров и сборок за определенный период
         public List<ReportComponentsViewModel> GetComponentProductAssembly(ReportBindingModel model)
         {
-            var purchases = _purchaseStorage.GetFilteredList(new PurchaseBindingModel
+            List<Buyer.ViewModels.PurchaseViewModel> purchases = _purchaseStorage.GetFilteredList(new PurchaseBindingModel
             {
                 DateFrom = model.DateFrom,
-                DateTo = model.DateTo
+                DateTo = model.DateTo,
+                ReportSeller = true
             });
 
-            var componentsProductAssembly = new List<ReportComponentsViewModel>();
-            foreach (var purchase in purchases)
+            List<ReportComponentsViewModel> componentsProductAssembly = new List<ReportComponentsViewModel>();
+            purchases.ForEach(purchase =>
             {
-                foreach (var product in purchase.Products)
-                
+                purchase.Products.ToList().ForEach(product =>
                 {
-                    var view = _productStorage.GetElement(new ProductBindingModel {
+                    ProductViewModel view = _productStorage.GetElement(new ProductBindingModel
+                    {
                         Id = product.Key
                     });
-                    foreach (var component in view.Components)
+                    view.Components.ToList().ForEach(component =>
                     {
                         componentsProductAssembly.Add(new ReportComponentsViewModel
                         {
@@ -85,25 +85,25 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
                             DataSale = purchase.DatePurchase,
                             AssemblyProduct = view.ProductName
                         });
-                    }
-                }
-                foreach (var assembly in purchase.Assemblies)
-                {
-                    var view = _assemblyStorage.GetElement(new AssemblyBindingModel
-                    {
-                        Id = assembly.Key
                     });
-                    foreach (var component in view.Components)
+                    purchase.Assemblies.ToList().ForEach(assembly =>
                     {
-                        componentsProductAssembly.Add(new ReportComponentsViewModel
+                        Buyer.ViewModels.AssemblyViewModel viewAssembly = _assemblyStorage.GetElement(new AssemblyBindingModel
                         {
-                            Component = component.Value.Item1,
-                            DataSale = purchase.DatePurchase,
-                            AssemblyProduct = view.AssemblyName
+                            Id = assembly.Key
                         });
-                    }
-                }
-            }
+                        view.Components.ToList().ForEach(component =>
+                        {
+                            componentsProductAssembly.Add(new ReportComponentsViewModel
+                            {
+                                Component = component.Value.Item1,
+                                DataSale = purchase.DatePurchase,
+                                AssemblyProduct = viewAssembly.AssemblyName
+                            });
+                        });
+                    });
+                });
+            });
             return componentsProductAssembly;
         }
 

@@ -40,7 +40,7 @@ namespace ComputerEquipmentStoreBuyerWpf
         {
             try
             {
-                var list = assemblyLogic.Read(null);
+                var list = assemblyLogic.Read(new AssemblyBindingModel { BuyerId = App.Buyer.Id });
                 if (list != null)
                 {
                     dataGridAssemblies.ItemsSource = list;

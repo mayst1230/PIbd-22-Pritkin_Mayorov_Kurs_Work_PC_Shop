@@ -32,11 +32,11 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
         /// <param name="BuyerId"> ID покупателя </param>
         /// <param name="SuperAccess"> Супер-доступ </param>
         /// <returns> Список комментариев (либо один комментариев) </returns>
-        public List<CommentViewModel> Read(CommentBindingModel model, int BuyerId, bool SuperAccess)
+        public List<CommentViewModel> Read(CommentBindingModel model)
         {
             if (model == null)
             {
-                return commentStorage.GetFullList(BuyerId, SuperAccess);
+                return commentStorage.GetFullList();
             }
             if (model.Id.HasValue)
             {

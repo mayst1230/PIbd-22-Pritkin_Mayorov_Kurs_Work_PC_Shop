@@ -16,7 +16,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
         /// <summary>
         /// ID покупателя
         /// </summary>
-        public int BuyerId { get; set; }
+        public int? BuyerId { get; set; }
 
         /// <summary>
         /// Название покупки
@@ -42,6 +42,10 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
         /// Конечная дата периода (нужно для отчета)
         /// </summary>
         public DateTime? DateTo { get; set; }
+
+        public bool? ReportBuyer { get; set; }
+
+        public bool? ReportSeller { get; set; }
 
         /// <summary>
         /// Сборки находящиеся в этой покупке

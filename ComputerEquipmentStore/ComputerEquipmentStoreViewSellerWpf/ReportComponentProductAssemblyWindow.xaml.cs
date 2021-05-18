@@ -77,7 +77,8 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 var dataSource = logic.GetComponentProductAssembly(new ReportBindingModel
                 {
                     DateFrom = DatePikerFrom.SelectedDate,
-                    DateTo = DatePikerTo.SelectedDate
+                    DateTo = DatePikerTo.SelectedDate,
+                    SellerId = App.Seller.Id
                 });
                 dataGridList.ItemsSource = dataSource;
                 

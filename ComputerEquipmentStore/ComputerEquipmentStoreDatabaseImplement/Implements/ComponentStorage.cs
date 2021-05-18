@@ -45,7 +45,7 @@ namespace ComputerStoreEquipmentDatabaseImplement.Implements
             {
                 return context.Components
                     .Include(rec => rec.Seller)
-                    .Where(rec => rec.ComponentName.Contains(model.ComponentName))
+                    .Where(rec => rec.ComponentName.Contains(model.ComponentName) || (model.SellerId.HasValue && rec.SellerId == model.SellerId))
                     .Select(rec => new ComponentViewModel
                 {
                     Id = rec.Id,
@@ -116,7 +116,7 @@ namespace ComputerStoreEquipmentDatabaseImplement.Implements
         {
             component.ComponentName = model.ComponentName;
             component.Price = model.Price;
-            component.SellerId = model.SellerId;
+            component.SellerId = (int)model.SellerId;
             return component;
         }
     }
