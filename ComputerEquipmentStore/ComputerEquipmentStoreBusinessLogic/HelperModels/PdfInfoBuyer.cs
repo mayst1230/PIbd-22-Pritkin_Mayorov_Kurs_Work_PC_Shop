@@ -16,5 +16,7 @@ namespace ComputerEquipmentStoreBusinessLogic.HelperModels
         public DateTime DateTo { get; set; }
 
         public List<ReportPurchasesViewModel> InfoAboutPurchases { get; set; }
+
+        public int? BuyerId { get; set; }
     }
 }

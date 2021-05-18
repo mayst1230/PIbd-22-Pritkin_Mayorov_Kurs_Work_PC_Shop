@@ -74,7 +74,7 @@ namespace ComputerEquipmentStoreBuyerWpf
                     })?[0];
                     int count = Convert.ToInt32(textBoxCount.Text);
 
-                    decimal costOfAssembly = 0;
+                    decimal costOfAssembly = Convert.ToDecimal(textBoxCost.Text);
                     if (assembly.Components != null)
                     {
                         foreach (var componentId in assembly.Components)

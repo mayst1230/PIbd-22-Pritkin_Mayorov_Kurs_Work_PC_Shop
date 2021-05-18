@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ComputerEquipmentStoreDatabaseImplement.Migrations
 {
     [DbContext(typeof(ComputerEquipmentStoreDatabase))]
-    [Migration("20210409093103_InitialCreate")]
+    [Migration("20210518095309_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,6 +27,9 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("Allowance")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("AssemblyName")
                         .IsRequired()

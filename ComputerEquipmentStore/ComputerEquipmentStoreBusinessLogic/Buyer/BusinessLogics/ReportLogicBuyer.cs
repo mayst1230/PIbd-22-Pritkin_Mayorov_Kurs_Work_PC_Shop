@@ -179,7 +179,6 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             {
                 DateFrom = model.DateFrom,
                 DateTo = model.DateTo,
-                ReportSeller = true,
                 BuyerId = model.BuyerId
             });
 
@@ -272,7 +271,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             SaveToWord.CreateDoc(new WordInfoBuyer
             {
                 FileName = model.FileName,
-                Title = "Список компонентов",
+                Title = "Список комплектующих",
                 PurchaseComponents = GetPurchaseComponents(purchases)
             });
         }
@@ -287,7 +286,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
             SaveToExcel.CreateDoc(new ExcelInfoBuyer
             {
                 FileName = model.FileName,
-                Title = "Список компонентов",
+                Title = "Список комплектующих",
                 PurchaseComponents = GetPurchaseComponents(purchases)
             });
         }
@@ -306,6 +305,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
                 Title = "Список покупок",
                 DateFrom = model.DateFrom.Value,
                 DateTo = model.DateTo.Value,
+                BuyerId = model.BuyerId,
                 InfoAboutPurchases = GetInfoAboutPurchases(model)
             });
         }

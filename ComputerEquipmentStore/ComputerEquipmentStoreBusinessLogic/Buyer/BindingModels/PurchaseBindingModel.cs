@@ -43,9 +43,6 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
         /// </summary>
         public DateTime? DateTo { get; set; }
 
-        public bool? ReportBuyer { get; set; }
-
-        public bool? ReportSeller { get; set; }
 
         /// <summary>
         /// Сборки находящиеся в этой покупке
@@ -56,5 +53,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels
         /// Товары находящиеся в этой покупке
         /// </summary>
         public Dictionary<int, (string, int, decimal)> Products { get; set; }
+
+        public bool? ReportSeller { get; set; }
     }
 }

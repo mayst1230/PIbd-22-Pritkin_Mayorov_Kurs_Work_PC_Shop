@@ -26,6 +26,9 @@ namespace ComputerEquipmentStoreDatabaseImplement.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<decimal>("Allowance")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("AssemblyName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

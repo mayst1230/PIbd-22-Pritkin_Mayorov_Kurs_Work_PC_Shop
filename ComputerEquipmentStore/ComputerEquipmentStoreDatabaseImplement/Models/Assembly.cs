@@ -16,6 +16,10 @@ namespace ComputerEquipmentStoreDatabaseImplement.Models
         [Required]
         public decimal Cost { get; set; }
 
+        //Наценка
+        [Required]
+        public decimal Allowance { get; set; }
+
         //Название сборки
         [Required]
         public string AssemblyName { get; set; }

@@ -31,6 +31,9 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels
         [DisplayName("Cтоимость")]
         public decimal Cost { get; set; }
 
+        [DisplayName("Наценка")]
+        public decimal Allowance { get; set; }
+
         /// <summary>
         /// Комплектующие этой сборки
         /// </summary>
