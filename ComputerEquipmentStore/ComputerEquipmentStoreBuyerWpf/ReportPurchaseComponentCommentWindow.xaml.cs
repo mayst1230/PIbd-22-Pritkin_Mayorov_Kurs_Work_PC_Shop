@@ -200,10 +200,5 @@ namespace ComputerEquipmentStoreBuyerWpf
                 MessageBoxIcon.Error);
             }
         }
-
-
-
-
-
     }
 }

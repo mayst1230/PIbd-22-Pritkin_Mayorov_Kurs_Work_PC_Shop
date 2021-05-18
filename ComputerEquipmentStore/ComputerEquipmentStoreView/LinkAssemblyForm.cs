@@ -41,7 +41,7 @@ namespace ComputerEquipmentStoreView
             this.assemblyLogic = assemblyLogic;
             this.componentLogic = componentLogic;
 
-            List<PurchaseViewModel> list = purchaseLogic.Read(null, Program.Buyer.Id);
+            List<PurchaseViewModel> list = purchaseLogic.Read(new PurchaseBindingModel { BuyerId = Program.Buyer.Id });
             if (list != null)
             {
                 comboBoxPurchase.DisplayMember = "PurchaseName";
@@ -107,10 +107,7 @@ namespace ComputerEquipmentStoreView
             }
             try
             {
-                PurchaseViewModel view = purchaseLogic.Read(new PurchaseBindingModel
-                {
-                    Id = int.Parse(comboBoxPurchase.SelectedValue.ToString())
-                }, Program.Buyer.Id)?[0];
+                PurchaseViewModel view = purchaseLogic.Read(new PurchaseBindingModel { BuyerId = Program.Buyer.Id })?[0];
 
                 if (view.Assemblies.ContainsKey(id))
                 {
@@ -192,10 +189,7 @@ namespace ComputerEquipmentStoreView
         {
             try
             {
-                PurchaseViewModel view = purchaseLogic.Read(new PurchaseBindingModel
-                {
-                    Id = int.Parse(comboBoxPurchase.SelectedValue.ToString())
-                }, Program.Buyer.Id)?[0];
+                PurchaseViewModel view = purchaseLogic.Read(new PurchaseBindingModel { BuyerId = Program.Buyer.Id })?[0];
                 if (view != null)
                 {
                     purchaseAssemblies = view.Assemblies;
