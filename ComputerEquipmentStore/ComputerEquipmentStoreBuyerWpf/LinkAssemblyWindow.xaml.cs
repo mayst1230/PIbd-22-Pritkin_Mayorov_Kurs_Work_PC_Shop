@@ -72,23 +72,8 @@ namespace ComputerEquipmentStoreBuyerWpf
                     {
                         Id = id
                     })?[0];
-                    int count = Convert.ToInt32(textBoxCount.Text);
 
-                    decimal costOfAssembly = Convert.ToDecimal(textBoxCost.Text);
-                    if (assembly.Components != null)
-                    {
-                        foreach (var componentId in assembly.Components)
-                        {
-                            ComponentViewModel component = componentLogic.Read(new ComponentBindingModel
-                            {
-                                Id = componentId.Key
-                            })?[0];
-
-                            costOfAssembly += component.Price;
-                        }
-                    }
-
-                    textBoxCost.Text = (count * costOfAssembly).ToString();
+                    textBoxCost.Text = (Convert.ToInt32(textBoxCount.Text) * assembly.Cost).ToString();
                 }
                 catch (Exception ex)
                 {

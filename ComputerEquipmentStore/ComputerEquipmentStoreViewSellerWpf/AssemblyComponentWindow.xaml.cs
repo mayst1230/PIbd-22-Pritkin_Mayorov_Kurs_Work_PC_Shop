@@ -92,7 +92,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 AssemblyViewModel view = assemblyLogic.Read(new AssemblyBindingModel
                 {
                     Id = (int)comboBoxAssembly.SelectedValue
-            })?[0];
+                })?[0];
 
                 if (view != null)
                 {
@@ -105,6 +105,12 @@ namespace ComputerEquipmentStoreViewSellerWpf
                         }
                     }
 
+
+
+
+
+
+
                     if (assemblyComponents.ContainsKey(id))
                     {
                         assemblyComponents[id] = (ComponentName, int.Parse(textBoxCount.Text), decimal.Parse(textBoxPrice.Text));
@@ -115,7 +121,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                             Id = view.Id,
                             AssemblyName = view.AssemblyName,
                             BuyerId = view.BuyerId,
-                            Cost = view.Cost,
+                            //Cost = view.Cost,
                             Allowance = view.Allowance,
                             Components = assemblyComponents,
                         }); ;
@@ -132,7 +138,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                             AssemblyName = view.AssemblyName,
                             BuyerId = view.BuyerId,
                             Allowance = view.Allowance,
-                            Cost = view.Cost,
+                            //Cost = view.Cost,
                             Components = assemblyComponents
                         });
                         MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -159,7 +165,6 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 try
                 {
 
-                    //int id = (int)comboBoxAssembly.SelectedValue;
                     ComponentViewModel component = componentLogic.Read(new ComponentBindingModel
                     {
                         Id = id
