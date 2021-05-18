@@ -7,7 +7,6 @@ using ComputerEquipmentStoreBusinessLogic.Seller.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
 {
     public class ReportLogic
@@ -77,6 +76,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
                     {
                         Id = product.Key
                     });
+                    //выборка комплектуюших для отчета из товаров с ID продавца, который их создал
                     view.Components.Where(rec => view.SellerId == model.SellerId).ToList().ForEach(component =>
                     {
                         componentsProductAssembly.Add(new ReportComponentsViewModel
@@ -92,6 +92,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
                         {
                             Id = assembly.Key
                         });
+                        //выборка комплектуюших для отчета из сборок с ID продавца, который их создал
                         view.Components.Where(rec => view.SellerId == model.SellerId).ToList().ForEach(component =>
                         {
                             componentsProductAssembly.Add(new ReportComponentsViewModel
