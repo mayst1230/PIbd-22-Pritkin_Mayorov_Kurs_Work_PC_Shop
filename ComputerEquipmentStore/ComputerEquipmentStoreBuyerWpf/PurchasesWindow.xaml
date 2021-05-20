@@ -26,7 +26,7 @@
 
         <DataGrid x:Name="dataGridPurchases" Grid.Column="0" AutoGenerateColumns="False" CanUserAddRows="false" Grid.RowSpan="5">
             <DataGrid.Columns>
-                <DataGridTextColumn Visibility="Hidden" Binding="{Binding Path=Id}"></DataGridTextColumn>
+                <DataGridTextColumn Visibility="Hidden"  Binding="{Binding Path=Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="ID покупателя" Binding="{Binding Path=BuyerId}" Width="0.15*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Название покупки" Binding="{Binding Path=PurchaseName}" Width="0.35*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Стоимость покупки" Binding="{Binding Path=TotalCost}" Width="0.25*"></DataGridTextColumn>

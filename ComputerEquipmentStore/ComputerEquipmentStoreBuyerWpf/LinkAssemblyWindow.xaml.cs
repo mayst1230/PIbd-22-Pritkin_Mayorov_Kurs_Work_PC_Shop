@@ -30,6 +30,8 @@ namespace ComputerEquipmentStoreBuyerWpf
 
         private readonly ComponentLogic componentLogic;
 
+
+        //Список сборок выбранной покупки
         private Dictionary<int, (string, int, decimal)> purchaseAssemblies;
 
         private int id;
@@ -123,7 +125,6 @@ namespace ComputerEquipmentStoreBuyerWpf
                             PurchaseName = view.PurchaseName,
                             BuyerId = view.BuyerId,
                             DatePurchase = view.DatePurchase,
-                            TotalCost = view.TotalCost,
                             Products = view.Products,
                             Assemblies = purchaseAssemblies,
                         }); ;
@@ -140,7 +141,6 @@ namespace ComputerEquipmentStoreBuyerWpf
                             PurchaseName = view.PurchaseName,
                             BuyerId = view.BuyerId,
                             DatePurchase = view.DatePurchase,
-                            TotalCost = view.TotalCost,
                             Products = view.Products,
                             Assemblies = purchaseAssemblies,
                         });

@@ -186,8 +186,29 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
         {
             purchase.PurchaseName = model.PurchaseName;
             purchase.BuyerId = (int)model.BuyerId;
-            purchase.TotalCost = model.TotalCost;
+
+
+
+
+
+            /////
+
+            //purchase.TotalCost = model.TotalCost;
+
+            /////
+
+
+
+
+
+
+
+
+
+
+
             purchase.DatePurchase = model.DatePurchase;
+
             if (purchase.Id == 0)
             {
                 context.Purchases.Add(purchase);
@@ -215,15 +236,16 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                 }
                 context.SaveChanges();
 
+
+                //Получаем список покупок, в которых есть эта сборка
                 List<PurchaseAssembly> purchaseAssemblies = context.PurchaseAssemblies.Where(rec => rec.PurchaseId == model.Id.Value).ToList();
-                // удалили те, которых нет в модели
+               
+                //Удаляем те в которых нет нужной сборки
                 context.PurchaseAssemblies.RemoveRange(purchaseAssemblies.Where(rec => !model.Assemblies.ContainsKey(rec.AssemblyId)).ToList());
                 
                 //обновляем кол-во и цену у записей, которые существуют
                 foreach (var updateAssemblies in purchaseAssemblies)
                 {
-
-                    Console.WriteLine(updateAssemblies.AssemblyId);
                     
                     if (model.Assemblies.ContainsKey(updateAssemblies.AssemblyId))
                     { 
@@ -235,7 +257,8 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
 
                 context.SaveChanges();
             }
-            // добавили новые
+
+            //Добавляем новые продукты
             foreach (KeyValuePair<int, (string, int, decimal)> CSP in model.Products)
             {
                 context.PurchaseProducts.Add(new PurchaseProduct
@@ -244,11 +267,11 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                     ProductId = CSP.Key,
                     Count = CSP.Value.Item2,
                     Price = CSP.Value.Item3
-
                 });
                 context.SaveChanges();
             }
             
+            //Добавляем новые сборки
             foreach (KeyValuePair<int, (string, int, decimal)> CSP in model.Assemblies)
                 {
                     context.PurchaseAssemblies.Add(new PurchaseAssembly
@@ -257,14 +280,68 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                         AssemblyId = CSP.Key,
                         Count = CSP.Value.Item2,
                         Cost = CSP.Value.Item3
-
                     });
                     context.SaveChanges();
 
                 Console.WriteLine("Добавляем сборку" + CSP.Key);
             }
-            
+
+
+
+
+
+            decimal totalCost = 0; 
+
+            List<PurchaseProduct> pp = context.PurchaseProducts.Where(rec => rec.PurchaseId == model.Id.Value).ToList();      
+            foreach (var updateProducts in pp)
+            {
+                totalCost += updateProducts.Price * updateProducts.Count;
+            }
+            context.SaveChanges();
+
+            List<PurchaseAssembly> pa = context.PurchaseAssemblies.Where(rec => rec.PurchaseId == model.Id.Value).ToList();
+            foreach (var updateAssemblies in pa)
+            {
+                totalCost += updateAssemblies.Cost * updateAssemblies.Count;
+            }
+            context.SaveChanges();
+
+            purchase.TotalCost = totalCost;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            context.SaveChanges();
+
             return purchase;
+
+
+
+
+
+
         }
     }
 }

@@ -9,3 +9,5 @@
 2021-05-18 16:23:01.8650|ERROR|ComputerEquipmentStoreBuyerWpf.LinkAssemblyWindow|Ошибка при подсчете стоимости: Входная строка имела неверный формат.
 2021-05-18 16:23:16.1112|ERROR|ComputerEquipmentStoreBuyerWpf.LinkAssemblyWindow|Ошибка при подсчете стоимости: Входная строка имела неверный формат.
 2021-05-18 16:48:16.8439|ERROR|ComputerEquipmentStoreBuyerWpf.LinkAssemblyWindow|Ошибка при подсчете стоимости: Значение было недопустимо малым или недопустимо большим для Int32.
+2021-05-20 12:44:48.9715|ERROR|ComputerEquipmentStoreBuyerWpf.LinkAssemblyWindow|Ошибка при привязке сборки к покупке: Данный ключ отсутствует в словаре.
+2021-05-20 12:44:55.1247|ERROR|ComputerEquipmentStoreBuyerWpf.LinkAssemblyWindow|Ошибка при привязке сборки к покупке: Данный ключ отсутствует в словаре.

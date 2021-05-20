@@ -1,4 +1,5 @@
 ﻿using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
+using ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics;
 using ComputerEquipmentStoreBusinessLogic.Buyer.Interfaces;
 using ComputerEquipmentStoreBusinessLogic.Buyer.ViewModels;
 using ComputerEquipmentStoreDatabaseImplement.Models;
@@ -239,6 +240,20 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             assembly.Cost = model.Allowance + costOfComponents;
 
             context.SaveChanges();
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
 
             return assembly;
         }

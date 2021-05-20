@@ -223,26 +223,12 @@ namespace ComputerEquipmentStoreBuyerWpf
             }
             try
             {
-
-                decimal totalCost = 0;
-
-                foreach (var product in purchaseProducts)
-                {
-                    totalCost += product.Value.Item3;
-                }
-
-                foreach (var assembly in purchaseAssemblies)
-                {
-                    totalCost += assembly.Value.Item3;
-                }
-
                 purchaseLogic.CreateOrUpdate(new PurchaseBindingModel
                 {
                     Id = id,
                     PurchaseName = textBoxNamePurchase.Text,
                     DatePurchase = Convert.ToDateTime(datePickerPurchaseDate.SelectedDate),
                     BuyerId = App.Buyer.Id,
-                    TotalCost = (int)totalCost,
                     Products = purchaseProducts,
                     Assemblies = purchaseAssemblies
                 }); ;
