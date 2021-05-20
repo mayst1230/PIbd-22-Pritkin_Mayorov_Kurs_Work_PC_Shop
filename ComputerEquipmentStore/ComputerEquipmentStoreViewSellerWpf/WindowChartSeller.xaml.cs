@@ -1,16 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ComputerEquipmentStoreBusinessLogic.Seller.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics;
 using LiveCharts;
@@ -87,9 +78,6 @@ namespace ComputerEquipmentStoreViewSellerWpf
 
                 foreach (var date in dataSource)
                 {
-                    //barLabels[i] = date.Component;
-                    //i++;
-
                     if (dictionary.ContainsKey(date.Component))
                     {
                         dictionary[date.Component] += 1;
@@ -120,14 +108,14 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 {
                     SeriesCollection.Add(new ColumnSeries
                     {
-                        Title = "Количество вхождение в сборки/товары",
+                        Title = "Количество вхождений в сборки/товары",
                         Values = values,
                         Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255))
                     });
                 }
                 else
                 {
-                    MessageBox.Show("ашиииибка!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ошибка!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 Formatter = value => value.ToString("N");
