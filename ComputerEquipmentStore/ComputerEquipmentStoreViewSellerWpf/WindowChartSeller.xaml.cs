@@ -41,7 +41,6 @@ namespace ComputerEquipmentStoreViewSellerWpf
         private readonly Logger logger;
 
 
-
         public WindowChartSeller(ReportLogic reportLogic)
         {
             InitializeComponent();
@@ -122,7 +121,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                     {
                         Title = "Количество вхождение в сборки/товары",
                         Values = values,
-                        Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255))
+                        Fill = new SolidColorBrush(Color.FromRgb(0, 255, 0))
                     });
                 }
                 else
