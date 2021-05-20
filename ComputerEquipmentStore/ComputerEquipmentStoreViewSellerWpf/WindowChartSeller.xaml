@@ -8,23 +8,14 @@
         mc:Ignorable="d"
         Title="График (продавец)"  Height="450" Width="1000" ResizeMode="NoResize" Icon="Images/ico.ico">
     <Grid Background="Maroon">
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="6*"/>
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
-
         <lvc:CartesianChart Grid.Column="0" Series="{Binding SeriesCollection}" LegendLocation="Top">
-
-            
-                
-                
-
-
             <lvc:CartesianChart.AxisX>
                 <lvc:Axis Title="Комплектующее" Labels="{Binding BarLabels}"/>
             </lvc:CartesianChart.AxisX>
-
             <lvc:CartesianChart.AxisY>
                 <lvc:Axis Title="Количество сборок/товаров" LabelFormatter="{Binding Formatter}"/>
             </lvc:CartesianChart.AxisY>

@@ -31,16 +31,12 @@ namespace ComputerEquipmentStoreViewSellerWpf
 
         private readonly Logger logger;
 
-
         public WindowChartSeller(ReportLogic reportLogic)
         {
             InitializeComponent();
             this.reportLogic = reportLogic;
             logger = LogManager.GetCurrentClassLogger();
         }
-
-
-
 
         private void buttonCreateChart_Click(object sender, RoutedEventArgs e)
         {
@@ -57,18 +53,14 @@ namespace ComputerEquipmentStoreViewSellerWpf
             }
             try
             {
-                
-                
                 var dataSource = reportLogic.GetComponentProductAssembly(new ReportBindingModel
                 {
                     DateFrom = DatePickerFrom.SelectedDate,
                     DateTo = DatePickerTo.SelectedDate,
                     SellerId = App.Seller.Id
                 });
-
                 //Заполняем нижние отметки дат
                 string[] barLabels = new string[dataSource.Count];
-
 
                 ChartValues<double> values = new ChartValues<double>();
 
@@ -94,14 +86,11 @@ namespace ComputerEquipmentStoreViewSellerWpf
                     i++;
                 }
 
-
                 BarLabels = barLabels;
 
-
-                //Заполняем количество компонентов
+                //Заполняем количество комплектующих
 
                 SeriesCollection = new SeriesCollection();
-
 
                 if (values != null)
                 {
@@ -116,11 +105,8 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 {
                     MessageBox.Show("Ошибка!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
                 Formatter = value => value.ToString("N");
                 DataContext = this;
-
-                
             }
             catch (Exception ex)
             {
