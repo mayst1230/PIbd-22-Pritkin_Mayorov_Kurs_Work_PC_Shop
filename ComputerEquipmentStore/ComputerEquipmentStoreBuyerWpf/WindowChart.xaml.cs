@@ -79,7 +79,7 @@ namespace ComputerEquipmentStoreBuyerWpf
 
                 foreach (var purchaseDate in dataSource)
                 {
-                    barLabels[i] = purchaseDate.DatePurchase.ToString();
+                    barLabels[i] = purchaseDate.DatePurchase.ToShortDateString();
                     i++;
 
                     int count = 0;
@@ -91,22 +91,9 @@ namespace ComputerEquipmentStoreBuyerWpf
 
                     values.Add(count);
                 }
+
                 BarLabels = barLabels;
-
-
-                //Заполняем количество компонентов
-                
-                SeriesCollection = new SeriesCollection
-                {
-                    /*
-                    new LineSeries
-                    {
-                        Title = "Количество компонентов",
-                        Values = values
-                    },
-                    */
-                };
-                
+                SeriesCollection = new SeriesCollection();         
 
                 if (values != null)
                 {
@@ -114,22 +101,10 @@ namespace ComputerEquipmentStoreBuyerWpf
                     {
                         Title = "Количество компонентов",
                         Values = values,
-                        Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255))
+                        Fill = new SolidColorBrush(Color.FromRgb(255, 255, 0))
                     });
                 }
-                else
-                {
-                    MessageBox.Show("ашиииибка!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
 
-                /*
-                SeriesCollection.Add(new ColumnSeries
-                {
-                    Title = "val3",
-                    Values = new ChartValues<double> { 1, 2, 3, 5 }
-                });
-                */
-                //BarLabels = new[] { "values 1", "values 2", "values 3", "values 4" };
                 Formatter = value => value.ToString("N");
                 DataContext = this;
             }
@@ -139,17 +114,5 @@ namespace ComputerEquipmentStoreBuyerWpf
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-        
-
-
-
-
-
-
-
-
-
     }
 }
