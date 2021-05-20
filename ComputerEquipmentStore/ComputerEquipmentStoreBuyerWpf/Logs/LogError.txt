@@ -11,3 +11,8 @@
 2021-05-18 16:48:16.8439|ERROR|ComputerEquipmentStoreBuyerWpf.LinkAssemblyWindow|Ошибка при подсчете стоимости: Значение было недопустимо малым или недопустимо большим для Int32.
 2021-05-20 12:44:48.9715|ERROR|ComputerEquipmentStoreBuyerWpf.LinkAssemblyWindow|Ошибка при привязке сборки к покупке: Данный ключ отсутствует в словаре.
 2021-05-20 12:44:55.1247|ERROR|ComputerEquipmentStoreBuyerWpf.LinkAssemblyWindow|Ошибка при привязке сборки к покупке: Данный ключ отсутствует в словаре.
+2021-05-20 19:30:02.8121|ERROR|ComputerEquipmentStoreBuyerWpf.WindowChart|Ошибка вывода отчета в PDF на форму: Ссылка на объект не указывает на экземпляр объекта.
+2021-05-20 20:27:49.5577|ERROR|ComputerEquipmentStoreBuyerWpf.PurchaseWindow|Ошибка при сохранении покупки: An exception was thrown while attempting to evaluate a LINQ query parameter expression. To show additional information call EnableSensitiveDataLogging() when overriding DbContext.OnConfiguring.
+2021-05-20 20:27:56.4866|ERROR|ComputerEquipmentStoreBuyerWpf.PurchaseWindow|Ошибка при сохранении покупки: An exception was thrown while attempting to evaluate a LINQ query parameter expression. To show additional information call EnableSensitiveDataLogging() when overriding DbContext.OnConfiguring.
+2021-05-20 20:28:24.0686|ERROR|ComputerEquipmentStoreBuyerWpf.PurchaseWindow|Ошибка при сохранении покупки: Уже есть покупка с таким названием
+2021-05-20 20:28:31.5879|ERROR|ComputerEquipmentStoreBuyerWpf.PurchaseWindow|Ошибка при сохранении покупки: An exception was thrown while attempting to evaluate a LINQ query parameter expression. To show additional information call EnableSensitiveDataLogging() when overriding DbContext.OnConfiguring.

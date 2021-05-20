@@ -45,5 +45,11 @@ namespace ComputerEquipmentStoreViewSellerWpf
             var form = Container.Resolve<ReportComponentProductAssemblyWindow>();
             form.ShowDialog();
         }
+
+        private void buttonChart_Click(object sender, RoutedEventArgs e)
+        {
+            var form = Container.Resolve<WindowChartSeller>();
+            form.ShowDialog();
+        }
     }
 }
