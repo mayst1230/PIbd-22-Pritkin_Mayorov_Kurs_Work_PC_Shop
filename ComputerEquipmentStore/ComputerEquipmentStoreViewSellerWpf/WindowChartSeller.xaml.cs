@@ -61,6 +61,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 });
 
                 string[] barLabels = new string[dataSource.Count];
+
                 ChartValues<double> values = new ChartValues<double>();
 
                 //Ключ - комплектующее, Значение количество сборок/товаров в которых он используется
@@ -86,6 +87,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 }
 
                 BarLabels = barLabels;
+
                 SeriesCollection = new SeriesCollection();
 
                 if (values != null)
@@ -101,9 +103,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 {
                     MessageBox.Show("Ошибка!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
                 Formatter = value => value.ToString("N");
-
                 DataContext = null;
                 DataContext = this;
             }
