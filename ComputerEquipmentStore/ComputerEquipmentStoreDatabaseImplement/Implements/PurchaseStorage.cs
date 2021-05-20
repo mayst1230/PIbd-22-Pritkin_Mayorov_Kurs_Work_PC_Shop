@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
@@ -52,14 +52,17 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             }
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                return context.Purchases
+                if (model.DateFrom.HasValue && model.DateTo.HasValue)
+                {
+                    return context.Purchases
                     .Include(rec => rec.Buyer)
                     .Include(rec => rec.PurchaseProducts)
                     .ThenInclude(rec => rec.Product)
                     .Include(rec => rec.PurchaseAssemblies)
                     .ThenInclude(rec => rec.Assembly)
-                    .Where(rec => model.BuyerId.HasValue && rec.BuyerId == model.BuyerId || 
-                    (rec.DatePurchase >= model.DateFrom && rec.DatePurchase <= model.DateTo && model.BuyerId.HasValue && rec.BuyerId == model.BuyerId)|| 
+                    .Where(rec =>
+                    (rec.DatePurchase >= model.DateFrom && rec.DatePurchase <= model.DateTo && model.BuyerId.HasValue && rec.BuyerId == model.BuyerId)
+                    ||
                     (model.ReportSeller.HasValue && model.ReportSeller.Value && rec.DatePurchase >= model.DateFrom && rec.DatePurchase <= model.DateTo))
                     .ToList()
                     .Select(rec => new PurchaseViewModel
@@ -72,6 +75,30 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                         Products = rec.PurchaseProducts.ToDictionary(recCSP => recCSP.ProductId, recCSP => (recCSP.Product?.ProductName, recCSP.Count, recCSP.Price)),
                         Assemblies = rec.PurchaseAssemblies.ToDictionary(recCSP => recCSP.AssemblyId, recCSP => (recCSP.Assembly?.AssemblyName, recCSP.Count, recCSP.Cost))
                     }).ToList();
+                }
+                else
+                {
+                    return context.Purchases
+                    .Include(rec => rec.Buyer)
+                    .Include(rec => rec.PurchaseProducts)
+                    .ThenInclude(rec => rec.Product)
+                    .Include(rec => rec.PurchaseAssemblies)
+                    .ThenInclude(rec => rec.Assembly)
+                    .Where(rec => model.BuyerId.HasValue && rec.BuyerId == model.BuyerId)
+                    .ToList()
+                    .Select(rec => new PurchaseViewModel
+                    {
+                        Id = rec.Id,
+                        PurchaseName = rec.PurchaseName,
+                        BuyerId = rec.BuyerId,
+                        TotalCost = rec.TotalCost,
+                        DatePurchase = rec.DatePurchase,
+                        Products = rec.PurchaseProducts.ToDictionary(recCSP => recCSP.ProductId, recCSP => (recCSP.Product?.ProductName, recCSP.Count, recCSP.Price)),
+                        Assemblies = rec.PurchaseAssemblies.ToDictionary(recCSP => recCSP.AssemblyId, recCSP => (recCSP.Assembly?.AssemblyName, recCSP.Count, recCSP.Cost))
+                    }).ToList();
+                }
+
+                
             }
         }
 
@@ -236,7 +263,6 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                 }
                 context.SaveChanges();
 
-
                 //Получаем список покупок, в которых есть эта сборка
                 List<PurchaseAssembly> purchaseAssemblies = context.PurchaseAssemblies.Where(rec => rec.PurchaseId == model.Id.Value).ToList();
                
@@ -245,8 +271,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                 
                 //обновляем кол-во и цену у записей, которые существуют
                 foreach (var updateAssemblies in purchaseAssemblies)
-                {
-                    
+                {     
                     if (model.Assemblies.ContainsKey(updateAssemblies.AssemblyId))
                     { 
                         updateAssemblies.Count = model.Assemblies[updateAssemblies.AssemblyId].Item2;
@@ -270,7 +295,7 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                 });
                 context.SaveChanges();
             }
-            
+
             //Добавляем новые сборки
             foreach (KeyValuePair<int, (string, int, decimal)> CSP in model.Assemblies)
                 {
@@ -286,62 +311,39 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
                 Console.WriteLine("Добавляем сборку" + CSP.Key);
             }
 
+            decimal totalCost = 0;
 
-
-
-
-            decimal totalCost = 0; 
-
-            List<PurchaseProduct> pp = context.PurchaseProducts.Where(rec => rec.PurchaseId == model.Id.Value).ToList();      
-            foreach (var updateProducts in pp)
+            if (model.Id.HasValue)
             {
-                totalCost += updateProducts.Price * updateProducts.Count;
-            }
-            context.SaveChanges();
+                List<PurchaseProduct> pp = context.PurchaseProducts.Where(rec => rec.PurchaseId == model.Id.Value).ToList();
 
-            List<PurchaseAssembly> pa = context.PurchaseAssemblies.Where(rec => rec.PurchaseId == model.Id.Value).ToList();
-            foreach (var updateAssemblies in pa)
-            {
-                totalCost += updateAssemblies.Cost * updateAssemblies.Count;
+                foreach (var updateProducts in pp)
+                {
+                    totalCost += updateProducts.Price * updateProducts.Count;
+                }
+                context.SaveChanges();
+
+                List<PurchaseAssembly> pa = context.PurchaseAssemblies.Where(rec => rec.PurchaseId == model.Id.Value).ToList();
+                foreach (var updateAssemblies in pa)
+                {
+                    totalCost += updateAssemblies.Cost * updateAssemblies.Count;
+                }
+                context.SaveChanges();
             }
-            context.SaveChanges();
+            else
+            {
+                foreach (var product in model.Products)
+                {
+                    totalCost += product.Value.Item2 * product.Value.Item3;
+                }
+                context.SaveChanges();
+            }
 
             purchase.TotalCost = totalCost;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             context.SaveChanges();
 
             return purchase;
-
-
-
-
-
-
         }
     }
 }

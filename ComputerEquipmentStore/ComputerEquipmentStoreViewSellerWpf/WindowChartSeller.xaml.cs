@@ -31,16 +31,12 @@ namespace ComputerEquipmentStoreViewSellerWpf
 
         private readonly Logger logger;
 
-
         public WindowChartSeller(ReportLogic reportLogic)
         {
             InitializeComponent();
             this.reportLogic = reportLogic;
             logger = LogManager.GetCurrentClassLogger();
         }
-
-
-
 
         private void buttonCreateChart_Click(object sender, RoutedEventArgs e)
         {
@@ -56,9 +52,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 return;
             }
             try
-            {
-                
-                
+            {  
                 var dataSource = reportLogic.GetComponentProductAssembly(new ReportBindingModel
                 {
                     DateFrom = DatePickerFrom.SelectedDate,
@@ -66,10 +60,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
                     SellerId = App.Seller.Id
                 });
 
-                //Заполняем нижние отметки дат
                 string[] barLabels = new string[dataSource.Count];
-
-
                 ChartValues<double> values = new ChartValues<double>();
 
                 //Ключ - комплектующее, Значение количество сборок/товаров в которых он используется
@@ -94,14 +85,8 @@ namespace ComputerEquipmentStoreViewSellerWpf
                     i++;
                 }
 
-
                 BarLabels = barLabels;
-
-
-                //Заполняем количество компонентов
-
                 SeriesCollection = new SeriesCollection();
-
 
                 if (values != null)
                 {
@@ -118,23 +103,15 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 }
 
                 Formatter = value => value.ToString("N");
-                DataContext = this;
 
-                
+                DataContext = null;
+                DataContext = this;
             }
             catch (Exception ex)
             {
-                logger.Error("Ошибка вывода отчета в PDF на форму: " + ex.Message);
+                logger.Error("Ошибка формирования диаграммы: " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
-
-
-
-
-
     }
 }

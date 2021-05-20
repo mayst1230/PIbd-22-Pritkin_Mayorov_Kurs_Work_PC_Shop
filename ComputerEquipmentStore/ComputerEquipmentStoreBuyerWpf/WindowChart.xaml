@@ -10,24 +10,27 @@
         Title="График (покупатель)" Height="450" Width="1000" ResizeMode="NoResize" Icon="Images/blueico.ico">
     <Grid Background="Blue">
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="6*"/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-
-        <lvc:CartesianChart Grid.Column="0" Series="{Binding SeriesCollection}" LegendLocation="Top">
+        <lvc:CartesianChart x:Name="Chart" Hoverable="False" DataTooltip="{x:Null}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Series="{Binding SeriesCollection}" LegendLocation="Top">
             <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="Дата покупки" Labels="{Binding BarLabels}"/>
+                <lvc:Axis x:Name="AxisX" Title="Дата/Покупка" Labels="{Binding BarLabels, UpdateSourceTrigger=PropertyChanged}" Foreground="White"/>
             </lvc:CartesianChart.AxisX>
-
             <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Количество комплектующих" LabelFormatter="{Binding Formatter}"/>
+                <lvc:Axis x:Name="AxisY" Title="Количество комплектующих" LabelFormatter="{Binding Formatter, UpdateSourceTrigger=PropertyChanged}" Foreground="White"/>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
-        <DatePicker Grid.Column="1" x:Name="DatePickerFrom" HorizontalAlignment="Left" Margin="32.333,10,0,0" VerticalAlignment="Top" Width="161"/>
-        <DatePicker Grid.Column="1" x:Name="DatePickerTo" HorizontalAlignment="Left" Margin="227.333,10,0,0" VerticalAlignment="Top" Width="161"/>
-        <Label Grid.Column="1" x:Name="labelFrom" Content="С" Foreground="White"  HorizontalAlignment="Left" Margin="10.333,10,0,0" VerticalAlignment="Top"/>
-        <Label Grid.Column="1" x:Name="labelTo" Content="по" Foreground="White" HorizontalAlignment="Left" Margin="198.333,9,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="buttonCreateChartBuyer" Content="Первый график" Background="DarkBlue" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Margin="10.333,51,0,0" VerticalAlignment="Top" Width="183" Height="31" Click="buttonCreateChart_Click"/>
+        <DatePicker Grid.Column="0" x:Name="DatePickerFrom" HorizontalAlignment="Left" Margin="32.333,10,0,0" VerticalAlignment="Top" Width="161"/>
+        <DatePicker Grid.Column="0" x:Name="DatePickerTo" HorizontalAlignment="Left" Margin="227.333,10,0,0" VerticalAlignment="Top" Width="161"/>
+        <Label Grid.Column="0" x:Name="labelFrom" Content="С" Foreground="White"  HorizontalAlignment="Left" Margin="10.333,10,0,0" VerticalAlignment="Top"/>
+        <Label Grid.Column="0" x:Name="labelTo" Content="по" Foreground="White" HorizontalAlignment="Left" Margin="198.333,9,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="buttonCreateChartBuyer" Content="Первый график" Background="DarkBlue" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Margin="9.667,10,0,0" VerticalAlignment="Top" Width="236" Height="31" Click="buttonCreateChart_Click"/>
+        <Button x:Name="buttonCreateSecondChartBuyer" Content="Второй график" Background="DarkBlue" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Margin="250.667,10,0,0" VerticalAlignment="Top" Width="237" Height="31" Click="buttonCreateSecondChartBuyer_Click"/>
     </Grid>
 </Window>
