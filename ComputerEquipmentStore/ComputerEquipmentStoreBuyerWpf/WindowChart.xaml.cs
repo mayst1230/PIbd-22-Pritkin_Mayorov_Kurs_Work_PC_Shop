@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BindingModels;
 using ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics;
 using LiveCharts;
@@ -51,7 +41,6 @@ namespace ComputerEquipmentStoreBuyerWpf
 
         private void buttonCreateChart_Click(object sender, RoutedEventArgs e)
         {
-
             if (DatePickerFrom.SelectedDate == null || DatePickerTo.SelectedDate == null)
             {
                 MessageBox.Show("Выберите даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
