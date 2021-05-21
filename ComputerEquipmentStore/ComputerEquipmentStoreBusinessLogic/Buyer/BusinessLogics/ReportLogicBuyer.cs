@@ -95,6 +95,18 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
         /// <returns> Список компонентов </returns>
         public List<ReportPurchaseComponentsViewModel> GetPurchaseComponents(List<PurchaseViewModel> selectedPurchases)  
         {
+            var list = new List<ReportPurchaseComponentsViewModel>();
+
+
+
+
+
+
+
+
+
+            /*
+
             var list = new List<ReportPurchaseComponentsViewModel>();//Тут будет результат
 
             selectedPurchases.ForEach(purchase =>
@@ -168,6 +180,8 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
 
                 list.Add(record);
             });
+
+            */
 
             return list;
         }

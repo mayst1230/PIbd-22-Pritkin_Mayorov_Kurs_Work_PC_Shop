@@ -16,6 +16,7 @@
 2021-05-20 20:27:56.4866|ERROR|ComputerEquipmentStoreBuyerWpf.PurchaseWindow|Ошибка при сохранении покупки: An exception was thrown while attempting to evaluate a LINQ query parameter expression. To show additional information call EnableSensitiveDataLogging() when overriding DbContext.OnConfiguring.
 2021-05-20 20:28:24.0686|ERROR|ComputerEquipmentStoreBuyerWpf.PurchaseWindow|Ошибка при сохранении покупки: Уже есть покупка с таким названием
 2021-05-20 20:28:31.5879|ERROR|ComputerEquipmentStoreBuyerWpf.PurchaseWindow|Ошибка при сохранении покупки: An exception was thrown while attempting to evaluate a LINQ query parameter expression. To show additional information call EnableSensitiveDataLogging() when overriding DbContext.OnConfiguring.
+<<<<<<< HEAD
 2021-05-20 22:33:30.5534|ERROR|ComputerEquipmentStoreBuyerWpf.PurchaseWindow|Ошибка при сохранении покупки: An exception was thrown while attempting to evaluate a LINQ query parameter expression. To show additional information call EnableSensitiveDataLogging() when overriding DbContext.OnConfiguring.
 2021-05-20 22:42:37.6609|ERROR|ComputerEquipmentStoreBuyerWpf.PurchaseWindow|Ошибка при сохранении покупки: An exception was thrown while attempting to evaluate a LINQ query parameter expression. To show additional information call EnableSensitiveDataLogging() when overriding DbContext.OnConfiguring.
 2021-05-20 22:49:41.5303|ERROR|ComputerEquipmentStoreBuyerWpf.PurchaseWindow|Ошибка при сохранении покупки: An exception was thrown while attempting to evaluate a LINQ query parameter expression. To show additional information call EnableSensitiveDataLogging() when overriding DbContext.OnConfiguring.
@@ -28,3 +29,6 @@
 2021-05-21 10:26:35.8242|ERROR|ComputerEquipmentStoreBuyerWpf.ListPurchaseComponentWindow|Ошибка вывода отчета в PDF на форму: Данный ключ отсутствует в словаре.
 2021-05-21 10:28:05.2703|ERROR|ComputerEquipmentStoreBuyerWpf.ListPurchaseComponentWindow|Ошибка вывода отчета в PDF на форму: Данный ключ отсутствует в словаре.
 2021-05-21 10:29:40.4952|ERROR|ComputerEquipmentStoreBuyerWpf.ListPurchaseComponentWindow|Ошибка вывода отчета в PDF на форму: Данный ключ отсутствует в словаре.
+=======
+2021-05-20 23:29:52.8249|ERROR|ComputerEquipmentStoreBuyerWpf.PurchaseWindow|Ошибка при сохранении покупки: An exception was thrown while attempting to evaluate a LINQ query parameter expression. To show additional information call EnableSensitiveDataLogging() when overriding DbContext.OnConfiguring.
+>>>>>>> f4c83a1d230644638f5704444c7c7ce1598ba153
