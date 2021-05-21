@@ -52,14 +52,14 @@ namespace ComputerEquipmentStoreViewSellerWpf
                 return;
             }
             try
-            {
+            {  
                 var dataSource = reportLogic.GetComponentProductAssembly(new ReportBindingModel
                 {
                     DateFrom = DatePickerFrom.SelectedDate,
                     DateTo = DatePickerTo.SelectedDate,
                     SellerId = App.Seller.Id
                 });
-                //Заполняем нижние отметки дат
+
                 string[] barLabels = new string[dataSource.Count];
 
                 ChartValues<double> values = new ChartValues<double>();
@@ -88,8 +88,6 @@ namespace ComputerEquipmentStoreViewSellerWpf
 
                 BarLabels = barLabels;
 
-                //Заполняем количество комплектующих
-
                 SeriesCollection = new SeriesCollection();
 
                 if (values != null)
@@ -106,21 +104,14 @@ namespace ComputerEquipmentStoreViewSellerWpf
                     MessageBox.Show("Ошибка!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 Formatter = value => value.ToString("N");
+                DataContext = null;
                 DataContext = this;
             }
             catch (Exception ex)
             {
-                logger.Error("Ошибка вывода отчета в PDF на форму: " + ex.Message);
+                logger.Error("Ошибка формирования диаграммы: " + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
-
-
-
-
-
     }
 }
