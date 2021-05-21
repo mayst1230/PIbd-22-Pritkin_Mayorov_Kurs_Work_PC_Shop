@@ -24,7 +24,7 @@
         <Button x:Name="buttonOrders" Content="Заказы на товары" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="130" Height="35" Background="Brown" Foreground="White" Click="buttonOrders_Click"/>
         <Button x:Name="buttonReports" Content="Отчеты" Grid.Column="3" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="131" Height="35" Background="Brown" Foreground="White" Click="buttonReports_Click"/>
         <Button x:Name="buttonExit" Content="Список" Grid.Column="4" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="131" Height="35" Background="Brown" Foreground="White" Click="buttonExit_Click"/>
-        <Button x:Name="buttonChart" Content="График" Grid.Column="5" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="131" Height="35" Background="Brown" Foreground="White" Click="buttonChart_Click"/>
+        <Button x:Name="buttonChart" Content="Диаграмма" Grid.Column="5" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="131" Height="35" Background="Brown" Foreground="White" Click="buttonChart_Click"/>
         <Canvas Grid.Column="1" HorizontalAlignment="Left" Height="384" Grid.Row="1" VerticalAlignment="Top" Width="504" Grid.ColumnSpan="3">
             <Image x:Name="image" Height="233" Canvas.Left="131" Canvas.Top="80" Width="217" Source="Images/LogoRed.png" Stretch="None"/>
         </Canvas>

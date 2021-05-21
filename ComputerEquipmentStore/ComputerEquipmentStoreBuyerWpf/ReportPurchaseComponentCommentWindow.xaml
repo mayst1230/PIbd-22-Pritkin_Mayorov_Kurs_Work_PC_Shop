@@ -5,23 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerEquipmentStoreBuyerWpf"
         mc:Ignorable="d"
-        Title="Вывод отчета за период" Height="450" Width="693.333" ResizeMode="NoResize" Icon="Images/blueico.ico">
-    <Grid Background="Blue">
+        Title="Вывод отчета за период" Height="450" Width="800" ResizeMode="NoResize" Icon="Images/blueico.ico">
+    <Grid Background="Blue" Margin="0,0,-71,0">
         <Label x:Name="labelFrom" Content="С" Foreground="White"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelTo" Content="по" Foreground="White"  HorizontalAlignment="Left" Margin="194,11,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="DatePickerFrom"  HorizontalAlignment="Left" Margin="32,11,0,0" VerticalAlignment="Top" Width="157"/>
         <DatePicker x:Name="DatePickerTo" HorizontalAlignment="Left" Margin="223,12,0,0" VerticalAlignment="Top" Width="157"/>
-        <Button x:Name="buttonCreateReport" Content="Сформировать" Background="DarkBlue" Foreground="White"  HorizontalAlignment="Left" Margin="385,12,0,0" VerticalAlignment="Top" Width="134" Height="25" Click="buttonCreateReport_Click"/>
-        <Button x:Name="buttonToPdf" Content="В PDF" Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="524,12,0,0" VerticalAlignment="Top" Width="67" Height="26" Click="buttonToPdf_Click"/>
-        <Button x:Name="buttonToEmail" Content="На почту" Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="596,12,0,0" VerticalAlignment="Top" Width="79" Height="26" Click="buttonToEmail_Click"/>
-        <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="false" HorizontalAlignment="Left" Height="380" Margin="0,41,0,-0.333" VerticalAlignment="Top" Width="686">
+        <Button x:Name="buttonCreateReport" Content="Сформировать" Background="DarkBlue" Foreground="White"  HorizontalAlignment="Left" Margin="412,10,0,0" VerticalAlignment="Top" Width="134" Height="25" Click="buttonCreateReport_Click"/>
+        <Button x:Name="buttonToPdf" Content="В PDF" Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="593,9,0,0" VerticalAlignment="Top" Width="67" Height="26" Click="buttonToPdf_Click"/>
+        <Button x:Name="buttonToEmail" Content="На почту" Background="DarkBlue" Foreground="White" HorizontalAlignment="Left" Margin="701,10,0,0" VerticalAlignment="Top" Width="79" Height="26" Click="buttonToEmail_Click"/>
+        <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="false" HorizontalAlignment="Left" Height="380" Margin="0,41,0,0" VerticalAlignment="Top" Width="817">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Название покупки" Binding="{Binding Path=Purchasename}" Width="0.2*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Название покупки" Binding="{Binding Path=PurchaseName}" Width="0.2*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Дата покупки" Binding="{Binding Path=DatePurchase}" Width="0.15*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Комплектующее" Binding="{Binding Path=Component}" Width="0.15*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Количество" Binding="{Binding Path=CountOfComponent}" Width="0.15*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Комментарий" Binding="{Binding Path=Comment}" Width="0.2*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата комментария" Binding="{Binding Path=DateComment}" Width="0.15*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата комментария" Binding="{Binding Path=DateComment}" Width="0.25*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

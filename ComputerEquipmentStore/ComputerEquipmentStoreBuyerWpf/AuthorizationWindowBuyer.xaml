@@ -11,7 +11,10 @@
         <Label x:Name="labelLogin" Foreground="White" Content="Логин:" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top"/>
         <Image x:Name="imageLogo" Source="Images/LogoBlue.png" HorizontalAlignment="Left" Height="100" Margin="294,30,0,0" VerticalAlignment="Top" Width="100"/>
         <Label x:Name="labelPassword" Foreground="White" Content="Пароль:" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxEmail" HorizontalAlignment="Left" Height="19" Margin="69,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153"/>
+
+        <ComboBox x:Name="comboBoxBuyer" DisplayMemberPath="Login" SelectedValuePath="Id" HorizontalAlignment="Left" Margin="69,62,0,0" VerticalAlignment="Top" Width="153" Height="19"/>
+
+
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="69,93,0,0" VerticalAlignment="Top" Width="153"/>
         <Button x:Name="buttonSave" Foreground="White" Content="Войти" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top" Width="75" Background="DarkBlue" Click="buttonLogin_Click"/>
         <Button x:Name="buttonRegistration" Foreground="White" Content="Зарегистрироваться" HorizontalAlignment="Left" Margin="184,146,0,0" VerticalAlignment="Top" Width="153" Background="DarkBlue" Click="buttonRegistration_Click"/>

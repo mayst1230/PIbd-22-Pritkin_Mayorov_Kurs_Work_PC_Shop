@@ -49,7 +49,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
         {
             try
             {
-                var list = _logicP.Read(null);
+                var list = _logicP.Read(new ProductBindingModel { SellerId = App.Seller.Id });
                 if (list != null)
                 {
                     comboBoxProduct.ItemsSource = list;

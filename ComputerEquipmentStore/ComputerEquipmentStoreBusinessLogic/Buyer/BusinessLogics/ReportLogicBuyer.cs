@@ -56,7 +56,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
         /// Логика комментария
         /// </summary>
         private readonly CommentLogic commentLogic;
-
+        
         /// <summary>
         /// Конструктор логики отчета покупателя
         /// </summary>
@@ -136,13 +136,13 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
 
                     neededProduct.Components.ToList().ForEach(component =>
                     {
-                        ComponentViewModel commentViewModel = componentLogic.Read(new ComponentBindingModel
+                        ComponentViewModel componentViewModel = componentLogic.Read(new ComponentBindingModel
                         {
                             Id = component.Key
                         })?[0];
 
-                        record.Components.Add(new Tuple<string, int>(commentViewModel.ComponentName, neededProduct.Components[commentViewModel.Id].Item2 * purchase.Products[neededProduct.Id].Item2));
-                        totalCount += neededProduct.Components[commentViewModel.Id].Item2;
+                        record.Components.Add(new Tuple<string, int>(componentViewModel.ComponentName, neededProduct.Components[componentViewModel.Id].Item2 * purchase.Products[neededProduct.Id].Item2));
+                        totalCount += neededProduct.Components[componentViewModel.Id].Item2;
                     });
 
                     record.TotalCount += totalCount * purchase.Products[neededProduct.Id].Item2;
@@ -163,7 +163,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
                         totalCount += neededAssembly.Components[commentViewModel.Id].Item2;
                     });
 
-                    record.TotalCount += totalCount * purchase.Products[neededAssembly.Id].Item2;
+                    record.TotalCount += totalCount * purchase.Assemblies[neededAssembly.Id].Item2;
                 });
 
                 list.Add(record);
@@ -265,25 +265,37 @@ namespace ComputerEquipmentStoreBusinessLogic.Buyer.BusinessLogics
 
                     neededAssembly.Components.ToList().ForEach(component =>
                     {
-                        ComponentViewModel commentViewModel = componentLogic.Read(new ComponentBindingModel
+                        ComponentViewModel componentViewModel = componentLogic.Read(new ComponentBindingModel
                         {
                             Id = component.Key
                         })?[0];
 
-                        record.Components.Add(new Tuple<string, int>(commentViewModel.ComponentName, neededAssembly.Components[commentViewModel.Id].Item2 * selectedPurchase.Assemblies[neededAssembly.Id].Item2));
-                        totalCount += neededAssembly.Components[commentViewModel.Id].Item2;
+                        record.Components.Add(new Tuple<string, int>(componentViewModel.ComponentName, neededAssembly.Components[componentViewModel.Id].Item2 * selectedPurchase.Assemblies[neededAssembly.Id].Item2));
+                        totalCount += neededAssembly.Components[componentViewModel.Id].Item2;
                     });
 
                     record.Count += totalCount * selectedPurchase.Assemblies[neededAssembly.Id].Item2;
 
+
+
+
                     var listComment = commentLogic.Read(new CommentBindingModel
                     {
-                        Id = neededAssembly.Id
-                    })?[0];
+                        AssemblyId = neededAssembly.Id
+                    });
+
+
+
+
+
+                    Console.WriteLine(listComment.Count.ToString());
 
                     if (listComment != null)
                     {
-                        record.Comments.Add(new Tuple<string, DateTime>(listComment.Text, listComment.DateComment));
+                        foreach (var comment in listComment)
+                        {
+                            record.Comments.Add(new Tuple<string, DateTime>(comment.Text, comment.DateComment));
+                        }       
                     }
                 });
                 list.Add(record);

@@ -3,3 +3,4 @@
 2021-05-18 14:19:15.1078|ERROR|ComputerEquipmentStoreViewSellerWpf.ComponentsWindow|Ошибка выбора комплектующего : Индекс за пределами диапазона. Индекс должен быть положительным числом, а его размер не должен превышать размер коллекции.
 Имя параметра: index
 2021-05-18 14:39:44.9792|ERROR|ComputerEquipmentStoreViewSellerWpf.ComponentWindow|Ошибка сохранения данных : Входная строка имела неверный формат.
+2021-05-21 10:10:52.9491|ERROR|ComputerEquipmentStoreViewSellerWpf.ComponentWindow|Ошибка сохранения данных : Входная строка имела неверный формат.

@@ -47,18 +47,36 @@ namespace ComputerEquipmentStoreDatabaseImplement.Implements
             }
             using (var context = new ComputerEquipmentStoreDatabase())
             {
-                return context.Comments
-                .Include(rec => rec.Buyer)
-                .Where(rec => rec.Id.Equals(model.Id) || (model.BuyerId.HasValue && rec.BuyerId == model.BuyerId))
-                .Select(rec => new CommentViewModel
+                if (model.AssemblyId != null)
                 {
-                    Id = rec.Id,
-                    Text = rec.Text,
-                    DateComment = rec.DateComment,
-                    BuyerId = rec.BuyerId,
-                    AssemblyId = rec.AssemblyId
-                })
-                .ToList();
+                     return context.Comments
+                    .Include(rec => rec.Buyer)
+                    .Where(rec => (rec.Id.Equals(model.Id) || (model.BuyerId.HasValue && rec.BuyerId == model.BuyerId)) || (rec.AssemblyId == model.AssemblyId))
+                    .Select(rec => new CommentViewModel
+                    {
+                        Id = rec.Id,
+                        Text = rec.Text,
+                        DateComment = rec.DateComment,
+                        BuyerId = rec.BuyerId,
+                        AssemblyId = rec.AssemblyId
+                    })
+                    .ToList();
+                }
+                else
+                {
+                    return context.Comments
+                    .Include(rec => rec.Buyer)
+                    .Where(rec => rec.Id.Equals(model.Id) || (model.BuyerId.HasValue && rec.BuyerId == model.BuyerId))
+                    .Select(rec => new CommentViewModel
+                    {
+                        Id = rec.Id,
+                        Text = rec.Text,
+                        DateComment = rec.DateComment,
+                        BuyerId = rec.BuyerId,
+                        AssemblyId = rec.AssemblyId
+                    })
+                    .ToList();
+                }
             }
         }
 

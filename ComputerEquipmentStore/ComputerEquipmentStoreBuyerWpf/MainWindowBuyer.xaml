@@ -24,7 +24,7 @@
         <Button x:Name="buttonComments" Content="Комметарии к сборкам" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="168" Height="35" Background="DarkBlue" Foreground="White" Click="buttonComments_Click"/>
         <Button x:Name="buttonGetList" Content="Получить список" Grid.Column="3" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="168" Height="35" Background="DarkBlue" Foreground="White" Grid.ColumnSpan="2" Click="buttonGetList_Click"/>
         <Button x:Name="buttonGetReport" Content="Получить отчет" Grid.Column="4" HorizontalAlignment="Left" Width="168" Background="DarkBlue" Foreground="White" Click="buttonGetReport_Click"/>
-        <Button x:Name="buttonChart" Content="Построить график" Grid.Column="5" HorizontalAlignment="Left" Width="168" Background="DarkBlue" Foreground="White" Click="buttonChart_Click"/>
+        <Button x:Name="buttonChart" Content="Построить диаграмму" Grid.Column="5" HorizontalAlignment="Left" Width="168" Background="DarkBlue" Foreground="White" Click="buttonChart_Click"/>
 
 
         <Canvas Grid.Column="1" HorizontalAlignment="Left" Height="384" Grid.Row="1" VerticalAlignment="Top" Width="504" Grid.ColumnSpan="3">

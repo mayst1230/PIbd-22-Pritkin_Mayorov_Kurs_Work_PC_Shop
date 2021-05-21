@@ -29,7 +29,12 @@
             <Image x:Name="image" Height="205" Canvas.Left="88" Canvas.Top="101" Width="221" Source="Images/LogoRed.png"/>
         </Canvas>
         <Label x:Name="labelAuthorization" Content="Авторизация" HorizontalContentAlignment="Center" FontSize="30" Foreground="White" Margin="0,0,27,0"/>
-        <TextBox x:Name="textBoxEmail" Height="24" TextWrapping="NoWrap" Margin="72,1,86,1" VerticalAlignment="Center" Grid.Row="3"/>
+
+
+
+
+        <ComboBox x:Name="comboBoxSeller" DisplayMemberPath="Login" SelectedValuePath="Id" HorizontalAlignment="Left" Margin="72,7.333,0,0" VerticalAlignment="Top" Width="201" Height="29" Grid.Row="3" Grid.RowSpan="2"/>
+
         <PasswordBox x:Name="passwordBox" Margin="72,0,86,2" Grid.Row="6" Height="25" VerticalAlignment="Bottom"/>
         <Label x:Name="labelLogin" Content="Логин:" HorizontalAlignment="Left" Margin="72,0,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="15" Foreground="White" Height="27" Width="238"/>
         <Label x:Name="labelPassword" Content="Пароль:" HorizontalAlignment="Left" Margin="72,0,0,0" Grid.Row="5" VerticalAlignment="Top" FontSize="15" Foreground="White" Height="30" Width="238"/>

@@ -131,6 +131,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
         }
 
         /// Сохранение отчета продаж комплектующих в файл-Pdf
+        [System.Obsolete]
         public void SaveComponentsToPdfFile(ReportBindingModel model)
         {
             SaveToPdf.CreateDoc(new PdfInfoStorekeeper

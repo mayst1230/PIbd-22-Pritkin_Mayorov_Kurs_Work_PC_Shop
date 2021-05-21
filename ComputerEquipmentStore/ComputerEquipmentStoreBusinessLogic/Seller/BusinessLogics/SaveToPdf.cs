@@ -8,6 +8,7 @@ namespace ComputerEquipmentStoreBusinessLogic.Seller.BusinessLogics
 {
     public class SaveToPdf
     {
+        [System.Obsolete]
         public static void CreateDoc(PdfInfoStorekeeper info)
         {
             Document document = new Document();

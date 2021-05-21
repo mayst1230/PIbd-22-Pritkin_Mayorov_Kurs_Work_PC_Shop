@@ -10,11 +10,10 @@ using MessageBox = System.Windows.Forms.MessageBox;
 using System.Windows.Forms;
 using NLog;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Windows.Data;
 
 namespace ComputerEquipmentStoreBuyerWpf
 {
+
     /// <summary>
     /// Логика взаимодействия для WindowChart.xaml
     /// </summary>
@@ -34,7 +33,6 @@ namespace ComputerEquipmentStoreBuyerWpf
 
         private readonly Logger logger;
 
-        private string labelYname { get; set; }
 
         public WindowChart(ReportLogicBuyer reportLogic)
         {
@@ -62,9 +60,7 @@ namespace ComputerEquipmentStoreBuyerWpf
             }
             try
             {
-
                 SeriesCollection = new SeriesCollection();
-
 
                 var dataSource = reportLogic.GetInfoAboutPurchases(new ReportBindingModelBuyer
                 {
@@ -108,18 +104,13 @@ namespace ComputerEquipmentStoreBuyerWpf
                     i++;
                 }
 
-
-                //labelYname = "Дата";
-
                 BarLabels = barLabels;
-
-                       
 
                 if (values != null)
                 {
                     SeriesCollection.Add(new ColumnSeries
                     {
-                        Title = "Количество компонентов",
+                        Title = "Количество комплектующих",
                         Values = values,
                         Fill = new SolidColorBrush(Color.FromRgb(255, 255, 0)),
                         Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 0))
@@ -139,44 +130,6 @@ namespace ComputerEquipmentStoreBuyerWpf
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         private void buttonCreateSecondChartBuyer_Click(object sender, RoutedEventArgs e)
         {
             if (DatePickerFrom.SelectedDate == null || DatePickerTo.SelectedDate == null)
@@ -192,28 +145,7 @@ namespace ComputerEquipmentStoreBuyerWpf
             try
 
             {
-
-                Chart.Update();
-
-                //BindingOperations.ClearAllBindings(Chart);
-
-                //BindingOperations.ClearAllBindings(AxisX);
-                //BindingOperations.ClearAllBindings(AxisY);
-
-
-                /*
-                if(Chart.Series != null)
-                {
-                    Chart.Series.Clear();
-                }
-                //Chart.AxisX.Clear();
-                //Chart.AxisY.Clear();
-                */
-
-
                 SeriesCollection = new SeriesCollection();
-
-
 
                 var dataSource = reportLogic.GetInfoAboutPurchases(new ReportBindingModelBuyer
                 {
@@ -257,25 +189,20 @@ namespace ComputerEquipmentStoreBuyerWpf
                     i++;
                 }
 
-                //labelYname = "Покупка";
-
                 BarLabels = barLabels;
 
                 if (values != null)
                 {
                     SeriesCollection.Add(new ColumnSeries
                     {
-                        Title = "Количество компонентов",
+                        Title = "Количество комплектующих",
                         Values = values,
                         Fill = new SolidColorBrush(Color.FromRgb(255, 255, 0)),
                     });
                 }
 
                 Formatter = value => value.ToString("N");
-
                 DataContext = null;
-
-
                 DataContext = this;
             }
             catch (Exception ex)
@@ -283,6 +210,6 @@ namespace ComputerEquipmentStoreBuyerWpf
                 logger.Error("Ошибка формирования диаграммы" + ex.Message);
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+        }  
     }
 }

@@ -23,11 +23,17 @@ namespace ComputerEquipmentStoreViewSellerWpf
             InitializeComponent();
             this.logic = logic;
             logger = LogManager.GetCurrentClassLogger();
+
+            var list = logic.Read(null);
+            if (list != null)
+            {
+                comboBoxSeller.ItemsSource = list;
+            }
         }
 
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (!Regex.IsMatch(textBoxEmail.Text, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
+            if (!Regex.IsMatch(comboBoxSeller.Text, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
             {
                 MessageBox.Show("Почта введена некорректно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -41,7 +47,7 @@ namespace ComputerEquipmentStoreViewSellerWpf
 
             var seller = logic.Read(new SellerBindingModel
             {
-                Login = textBoxEmail.Text,
+                Login = comboBoxSeller.Text,
                 Password = passwordBox.Password
             });
 

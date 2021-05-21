@@ -26,16 +26,29 @@ namespace ComputerEquipmentStoreBuyerWpf
             InitializeComponent();
             this.buyerLogic = buyerLogic;
             logger = LogManager.GetCurrentClassLogger();
+
+
+
+            var list = buyerLogic.Read(null);
+            if (list != null)
+            {
+                comboBoxBuyer.ItemsSource = list;
+            }
         }
+
+
+
+
+
+
 
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(textBoxEmail.Text))
+            if (string.IsNullOrEmpty(comboBoxBuyer.SelectedItem.ToString()))
             {
                 MessageBox.Show("Введите почту", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             if (string.IsNullOrEmpty(passwordBox.Password))
             {
                 MessageBox.Show("Введите пароль", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -44,7 +57,7 @@ namespace ComputerEquipmentStoreBuyerWpf
 
             var buyer = buyerLogic.Read(new BuyerBindingModel
             {
-                Login = textBoxEmail.Text,
+                Login = comboBoxBuyer.Text,
                 Password = passwordBox.Password
             });
 

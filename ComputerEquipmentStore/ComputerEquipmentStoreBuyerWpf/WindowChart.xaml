@@ -9,7 +9,6 @@
        
         Title="График (покупатель)" Height="450" Width="1000" ResizeMode="NoResize" Icon="Images/blueico.ico">
     <Grid Background="Blue">
-
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="8*"/>
@@ -18,9 +17,9 @@
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <lvc:CartesianChart x:Name="Chart" Hoverable="False" DataTooltip="{x:Null}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Series="{Binding SeriesCollection}" LegendLocation="Top">
+        <lvc:CartesianChart x:Name="Chart" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Series="{Binding SeriesCollection}" LegendLocation="Top">
             <lvc:CartesianChart.AxisX>
-                <lvc:Axis x:Name="AxisX" Title="Дата/Покупка" Labels="{Binding BarLabels, UpdateSourceTrigger=PropertyChanged}" Foreground="White"/>
+                <lvc:Axis x:Name="AxisX" Title="Дата/Покупка" Labels="{Binding BarLabels}" Foreground="White"></lvc:Axis>
             </lvc:CartesianChart.AxisX>
             <lvc:CartesianChart.AxisY>
                 <lvc:Axis x:Name="AxisY" Title="Количество комплектующих" LabelFormatter="{Binding Formatter, UpdateSourceTrigger=PropertyChanged}" Foreground="White"/>
